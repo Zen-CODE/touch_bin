@@ -5,7 +5,6 @@
 #define __USE_EGL 0
 #define __USE_OPENGL_ES2 1
 #define __USE_OPENGL_DEBUG 0
-#define __USE_OPENGL_MOCK 0
 #define __USE_GLEW 0
 #define __USE_SDL2 0
 #define __USE_IOS 0

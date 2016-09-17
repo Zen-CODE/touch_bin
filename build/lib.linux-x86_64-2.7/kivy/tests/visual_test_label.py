@@ -141,7 +141,7 @@ kv = '''
             text: 'valign: '
         TSpinner:
             name: 'valign'
-            values: ['top', 'middle', 'center', 'bottom']
+            values: ['top', 'middle', 'bottom']
             text: 'bottom'
         TBoolButton:
             text: 'markup'

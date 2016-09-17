@@ -479,7 +479,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y
@@ -575,9 +575,9 @@ struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update;
 struct __pyx_opt_args_4kivy_8graphics_12instructions_13RenderContext_set_state;
 
 /* "kivy/graphics/instructions.pxd":33
- *         cpdef flag_update(self, int do_parent=?, list _instrs=?)
+ *         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
  *     ELSE:
- *         cpdef flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
+ *         cdef void flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
  *     cdef void flag_update_done(self)
  *     cdef void set_parent(self, Instruction parent)
  */
@@ -1486,7 +1486,7 @@ static struct __pyx_vtabstruct_4kivy_6_event_EventObservers *__pyx_vtabptr_4kivy
 
 struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Instruction {
   int (*apply)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
-  PyObject *(*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, int __pyx_skip_dispatch, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
+  void (*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
   void (*flag_update_done)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*set_parent)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*reload)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
@@ -1848,7 +1848,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Callback {
 static struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Callback *__pyx_vtabptr_4kivy_8graphics_12instructions_Callback;
 
 
-/* "kivy/graphics/stencil_instructions.pyx":129
+/* "kivy/graphics/stencil_instructions.pyx":127
  * 
  * 
  * cdef class StencilPush(Instruction):             # <<<<<<<<<<<<<<
@@ -1862,7 +1862,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilPush {
 static struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilPush *__pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPush;
 
 
-/* "kivy/graphics/stencil_instructions.pyx":162
+/* "kivy/graphics/stencil_instructions.pyx":160
  *         return 0
  * 
  * cdef class StencilPop(Instruction):             # <<<<<<<<<<<<<<
@@ -1876,7 +1876,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilPop {
 static struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilPop *__pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPop;
 
 
-/* "kivy/graphics/stencil_instructions.pyx":185
+/* "kivy/graphics/stencil_instructions.pyx":183
  * 
  * 
  * cdef class StencilUse(Instruction):             # <<<<<<<<<<<<<<
@@ -1890,7 +1890,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilUse {
 static struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilUse *__pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUse;
 
 
-/* "kivy/graphics/stencil_instructions.pyx":228
+/* "kivy/graphics/stencil_instructions.pyx":226
  * 
  * 
  * cdef class StencilUnUse(Instruction):             # <<<<<<<<<<<<<<
@@ -2255,7 +2255,7 @@ static char __pyx_k_Cannot_push_more_than_128_level[] = "Cannot push more than 1
 static char __pyx_k_Determine_the_stencil_operation[] = "Determine the stencil operation to use for glStencilFunc(). Can be\n        one of 'never', 'less', 'equal', 'lequal', 'greater', 'notequal',\n        'gequal' or 'always'.\n\n        By default, the operator is set to 'equal'.\n\n        .. versionadded:: 1.5.0\n        ";
 static char __pyx_k_StencilPush_apply_glStencilFunc[] = "StencilPush.apply-glStencilFunc";
 static char __pyx_k_StencilPush_apply_glStencilMask[] = "StencilPush.apply-glStencilMask";
-static char __pyx_k_Stencil_instructions_versionadd[] = "\nStencil instructions\n====================\n\n.. versionadded:: 1.0.4\n\n.. versionchanged:: 1.3.0\n    The stencil operation has been updated to resolve some issues that appeared\n    when nested. You **must** now have a StencilUnUse and repeat the same\n    operation as you did after StencilPush.\n\nStencil instructions permit you to draw and use the current drawing as a mask.\nThey don't give as much control as pure OpenGL, but you can still do fancy\nthings!\n\nThe stencil buffer can be controlled using these 3 instructions:\n\n    - :class:`StencilPush`: push a new stencil layer.\n      Any drawing that happens after this will be used as a mask.\n    - :class:`StencilUse` : now draw the next instructions and use the stencil\n      for masking them.\n    - :class:`StencilUnUse` : stop using the stencil i.e. remove the mask and\n      draw normally.\n    - :class:`StencilPop` : pop the current stencil layer.\n\n\nYou should always respect this scheme:\n\n.. code-block:: kv\n\n    StencilPush\n\n    # PHASE 1: put any drawing instructions to use as a mask here.\n\n    StencilUse\n\n    # PHASE 2: all the drawing here will be automatically clipped by the\n    # mask created in PHASE 1.\n\n    StencilUnUse\n\n    # PHASE 3: drawing instructions will now be drawn without clipping but the\n    # mask will still be on the stack. You can return to PHASE 2 at any\n    # time by issuing another *StencilUse* command.\n\n    StencilPop\n\n    # PHASE 4: the stencil is now removed from the stack and unloaded.\n\n\nLimitations\n-----------\n\n- Drawing in PHASE 1 and PHASE 3 must not collide or you\n  will get unexpected results\n- The stencil is activated as soon as you perform a StencilPush\n- The stencil is deactivated as soon as you've correctly popped all the stencil\n  layers\n- You must not play with stencils yourself between a StencilPush / StencilPop\n- You can push another stencil after a StencilUse / before the StencilPop\n- You can push up to 128 layers of stenc""ils (8 for kivy < 1.3.0)\n\n\nExample of stencil usage\n------------------------\n\nHere is an example, in kv style::\n\n    StencilPush\n\n    # create a rectangular mask with a pos of (100, 100) and a (100, 100) size.\n    Rectangle:\n        pos: 100, 100\n        size: 100, 100\n\n    StencilUse\n\n    # we want to show a big green rectangle, however, the previous stencil\n    # mask will crop us :)\n    Color:\n        rgb: 0, 1, 0\n    Rectangle:\n        size: 900, 900\n\n    StencilUnUse\n\n    # you must redraw the stencil mask to remove it\n    Rectangle:\n        pos: 100, 100\n        size: 100, 100\n\n    StencilPop\n\n";
+static char __pyx_k_Stencil_instructions_versionadd[] = "\nStencil instructions\n====================\n\n.. versionadded:: 1.0.4\n\n.. versionchanged:: 1.3.0\n    The stencil operation has been updated to resolve some issues that appeared\n    when nested. You **must** now have a StencilUnUse and repeat the same\n    operation as you did after StencilPush.\n\nStencil instructions permit you to draw and use the current drawing as a mask.\nThey don't give as much control as pure OpenGL, but you can still do fancy\nthings!\n\nThe stencil buffer can be controlled using these 3 instructions:\n\n    - :class:`StencilPush`: push a new stencil layer.\n      Any drawing that happens after this will be used as a mask.\n    - :class:`StencilUse` : now draw the next instructions and use the stencil\n      for masking them.\n    - :class:`StencilUnUse` : stop using the stencil i.e. remove the mask and\n      draw normally.\n    - :class:`StencilPop` : pop the current stencil layer.\n\n\nYou should always respect this scheme:\n\n.. code-block:: kv\n\n    StencilPush\n\n    # PHASE 1: put any drawing instructions to use as a mask here.\n\n    StencilUse\n\n    # PHASE 2: all the drawing here will be automatically clipped by the\n    # mask created in PHASE 1.\n\n    StencilUnUse\n\n    # PHASE 3: drawing instructions wil now be drawn without clipping but the\n    # mask will still be on the stack. You can return to PHASE 2 at any\n    # time by issuing another *StencilUse* command.\n\n    StencilPop\n\n    # PHASE 4: the stencil is now removed from the stack and unloaded.\n\n\nLimitations\n-----------\n\n- Drawing in PHASE 1 and PHASE 3 must not collide or you\n  will get unexpected results\n- The stencil is activated as soon as you perform a StencilPush\n- The stencil is deactivated as soon as you've correctly popped all the stencil\n  layers\n- You must not play with stencils yourself between a StencilPush / StencilPop\n- You can push another stencil after a StencilUse / before the StencilPop\n- You can push up to 128 layers of stenci""ls (8 for kivy < 1.3.0)\n\n\nExample of stencil usage\n------------------------\n\nHere is an example, in kv style::\n\n    StencilPush\n\n    # create a rectangular mask with a pos of (100, 100) and a (100, 100) size.\n    Rectangle:\n        pos: 100, 100\n        size: 100, 100\n\n    StencilUse\n\n    # we want to show a big green rectangle, however, the previous stencil\n    # mask will crop us :)\n    Color:\n        rgb: 0, 1, 0\n    Rectangle:\n        size: 900, 900\n\n    StencilUnUse\n\n    # you must redraw the stencil mask to remove it\n    Rectangle:\n        pos: 100, 100\n        size: 100, 100\n\n    StencilPop\n\n";
 static char __pyx_k_Cannot_use_StencilPush_inside_an[] = "Cannot use StencilPush inside another StencilPush.\nUse StencilUse before.";
 static char __pyx_k_StencilPush_apply_glClearStencil[] = "StencilPush.apply-glClearStencil";
 static char __pyx_k_StencilPush_apply_glClear_GL_STE[] = "StencilPush.apply-glClear(GL_STENCIL_BUFFER_BIT)";
@@ -2316,12 +2316,12 @@ static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 
-/* "kivy/graphics/gl_debug_logger.pxi":11
- *     cimport kivy.graphics.c_opengl as c_opengl
+/* "kivy/graphics/gl_debug_logger.pxi":5
+ * include "config.pxi"
  * 
  * cdef inline void log_gl_error(str note):             # <<<<<<<<<<<<<<
  *     IF DEBUG_GL:
- *         ret = c_opengl.glGetError()
+ *         ret = glGetError()
  */
 
 static CYTHON_INLINE void __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(CYTHON_UNUSED PyObject *__pyx_v_note) {
@@ -2332,7 +2332,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":119
+/* "kivy/graphics/stencil_instructions.pyx":117
  * 
  * 
  * cdef inline int _stencil_op_to_gl(x):             # <<<<<<<<<<<<<<
@@ -2358,14 +2358,14 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
   __Pyx_RefNannySetupContext("_stencil_op_to_gl", 0);
   __Pyx_INCREF(__pyx_v_x);
 
-  /* "kivy/graphics/stencil_instructions.pyx":122
+  /* "kivy/graphics/stencil_instructions.pyx":120
  *     '''Return the GL numeric value from a stencil operator
  *     '''
  *     x = x.lower()             # <<<<<<<<<<<<<<
  *     try:
  *         return _gl_stencil_op[x]
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_lower); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_lower); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2378,17 +2378,17 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_x, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":123
+  /* "kivy/graphics/stencil_instructions.pyx":121
  *     '''
  *     x = x.lower()
  *     try:             # <<<<<<<<<<<<<<
@@ -2402,7 +2402,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
     __Pyx_XGOTREF(__pyx_t_6);
     /*try:*/ {
 
-      /* "kivy/graphics/stencil_instructions.pyx":124
+      /* "kivy/graphics/stencil_instructions.pyx":122
  *     x = x.lower()
  *     try:
  *         return _gl_stencil_op[x]             # <<<<<<<<<<<<<<
@@ -2411,11 +2411,11 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
  */
       if (unlikely(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
-      __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op, __pyx_v_x); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L3_error;};
+      __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op, __pyx_v_x); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L3_error;};
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_r = __pyx_t_7;
       goto __pyx_L7_try_return;
@@ -2425,7 +2425,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "kivy/graphics/stencil_instructions.pyx":125
+    /* "kivy/graphics/stencil_instructions.pyx":123
  *     try:
  *         return _gl_stencil_op[x]
  *     except KeyError:             # <<<<<<<<<<<<<<
@@ -2435,31 +2435,31 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
     __pyx_t_7 = PyErr_ExceptionMatches(__pyx_builtin_KeyError);
     if (__pyx_t_7) {
       __Pyx_AddTraceback("kivy.graphics.stencil_instructions._stencil_op_to_gl", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_3);
 
-      /* "kivy/graphics/stencil_instructions.pyx":126
+      /* "kivy/graphics/stencil_instructions.pyx":124
  *         return _gl_stencil_op[x]
  *     except KeyError:
  *         raise Exception('Unknow <%s> stencil op' % x)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-      __pyx_t_8 = __Pyx_PyString_Format(__pyx_kp_s_Unknow_s_stencil_op, __pyx_v_x); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
+      __pyx_t_8 = __Pyx_PyString_Format(__pyx_kp_s_Unknow_s_stencil_op, __pyx_v_x); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
+      __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
       __Pyx_GOTREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
       __Pyx_GIVEREF(__pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L5_except_error;}
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
@@ -2476,7 +2476,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/stencil_instructions.pyx":119
+  /* "kivy/graphics/stencil_instructions.pyx":117
  * 
  * 
  * cdef inline int _stencil_op_to_gl(x):             # <<<<<<<<<<<<<<
@@ -2499,7 +2499,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_8graphics_20stencil_instructions__stencil
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":133
+/* "kivy/graphics/stencil_instructions.pyx":131
  *     information.
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -2517,7 +2517,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":135
+  /* "kivy/graphics/stencil_instructions.pyx":133
  *     cdef int apply(self) except -1:
  *         global _stencil_level, _stencil_in_push
  *         if _stencil_in_push:             # <<<<<<<<<<<<<<
@@ -2527,21 +2527,21 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   __pyx_t_1 = (__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_in_push != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":136
+    /* "kivy/graphics/stencil_instructions.pyx":134
  *         global _stencil_level, _stencil_in_push
  *         if _stencil_in_push:
  *             raise Exception('Cannot use StencilPush inside another '             # <<<<<<<<<<<<<<
  *                             'StencilPush.\nUse StencilUse before.')
  *         _stencil_in_push = 1
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/graphics/stencil_instructions.pyx":138
+  /* "kivy/graphics/stencil_instructions.pyx":136
  *             raise Exception('Cannot use StencilPush inside another '
  *                             'StencilPush.\nUse StencilUse before.')
  *         _stencil_in_push = 1             # <<<<<<<<<<<<<<
@@ -2550,7 +2550,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_in_push = 1;
 
-  /* "kivy/graphics/stencil_instructions.pyx":139
+  /* "kivy/graphics/stencil_instructions.pyx":137
  *                             'StencilPush.\nUse StencilUse before.')
  *         _stencil_in_push = 1
  *         _stencil_level += 1             # <<<<<<<<<<<<<<
@@ -2559,7 +2559,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level = (__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level + 1);
 
-  /* "kivy/graphics/stencil_instructions.pyx":141
+  /* "kivy/graphics/stencil_instructions.pyx":139
  *         _stencil_level += 1
  * 
  *         if _stencil_level == 1:             # <<<<<<<<<<<<<<
@@ -2569,7 +2569,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level == 1) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":142
+    /* "kivy/graphics/stencil_instructions.pyx":140
  * 
  *         if _stencil_level == 1:
  *             glStencilMask(0xff)             # <<<<<<<<<<<<<<
@@ -2578,7 +2578,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
     glStencilMask(0xff);
 
-    /* "kivy/graphics/stencil_instructions.pyx":143
+    /* "kivy/graphics/stencil_instructions.pyx":141
  *         if _stencil_level == 1:
  *             glStencilMask(0xff)
  *             log_gl_error('StencilPush.apply-glStencilMask')             # <<<<<<<<<<<<<<
@@ -2587,7 +2587,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
     __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPush_apply_glStencilMask);
 
-    /* "kivy/graphics/stencil_instructions.pyx":144
+    /* "kivy/graphics/stencil_instructions.pyx":142
  *             glStencilMask(0xff)
  *             log_gl_error('StencilPush.apply-glStencilMask')
  *             glClearStencil(0)             # <<<<<<<<<<<<<<
@@ -2596,7 +2596,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
     glClearStencil(0);
 
-    /* "kivy/graphics/stencil_instructions.pyx":145
+    /* "kivy/graphics/stencil_instructions.pyx":143
  *             log_gl_error('StencilPush.apply-glStencilMask')
  *             glClearStencil(0)
  *             log_gl_error('StencilPush.apply-glClearStencil')             # <<<<<<<<<<<<<<
@@ -2605,7 +2605,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
     __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPush_apply_glClearStencil);
 
-    /* "kivy/graphics/stencil_instructions.pyx":146
+    /* "kivy/graphics/stencil_instructions.pyx":144
  *             glClearStencil(0)
  *             log_gl_error('StencilPush.apply-glClearStencil')
  *             glClear(GL_STENCIL_BUFFER_BIT)             # <<<<<<<<<<<<<<
@@ -2614,7 +2614,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
     glClear(GL_STENCIL_BUFFER_BIT);
 
-    /* "kivy/graphics/stencil_instructions.pyx":147
+    /* "kivy/graphics/stencil_instructions.pyx":145
  *             log_gl_error('StencilPush.apply-glClearStencil')
  *             glClear(GL_STENCIL_BUFFER_BIT)
  *             log_gl_error('StencilPush.apply-glClear(GL_STENCIL_BUFFER_BIT)')             # <<<<<<<<<<<<<<
@@ -2626,7 +2626,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/stencil_instructions.pyx":148
+  /* "kivy/graphics/stencil_instructions.pyx":146
  *             glClear(GL_STENCIL_BUFFER_BIT)
  *             log_gl_error('StencilPush.apply-glClear(GL_STENCIL_BUFFER_BIT)')
  *         if _stencil_level > 128:             # <<<<<<<<<<<<<<
@@ -2636,21 +2636,21 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level > 128) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":149
+    /* "kivy/graphics/stencil_instructions.pyx":147
  *             log_gl_error('StencilPush.apply-glClear(GL_STENCIL_BUFFER_BIT)')
  *         if _stencil_level > 128:
  *             raise Exception('Cannot push more than 128 level of stencil.'             # <<<<<<<<<<<<<<
  *                             ' (stack overflow)')
  * 
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/graphics/stencil_instructions.pyx":152
+  /* "kivy/graphics/stencil_instructions.pyx":150
  *                             ' (stack overflow)')
  * 
  *         glEnable(GL_STENCIL_TEST)             # <<<<<<<<<<<<<<
@@ -2659,7 +2659,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   glEnable(GL_STENCIL_TEST);
 
-  /* "kivy/graphics/stencil_instructions.pyx":153
+  /* "kivy/graphics/stencil_instructions.pyx":151
  * 
  *         glEnable(GL_STENCIL_TEST)
  *         log_gl_error('StencilPush.apply-glEnable(GL_STENCIL_TEST)')             # <<<<<<<<<<<<<<
@@ -2668,7 +2668,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPush_apply_glEnable_GL_ST);
 
-  /* "kivy/graphics/stencil_instructions.pyx":154
+  /* "kivy/graphics/stencil_instructions.pyx":152
  *         glEnable(GL_STENCIL_TEST)
  *         log_gl_error('StencilPush.apply-glEnable(GL_STENCIL_TEST)')
  *         glStencilFunc(GL_ALWAYS, 0, 0)             # <<<<<<<<<<<<<<
@@ -2677,7 +2677,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   glStencilFunc(GL_ALWAYS, 0, 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":155
+  /* "kivy/graphics/stencil_instructions.pyx":153
  *         log_gl_error('StencilPush.apply-glEnable(GL_STENCIL_TEST)')
  *         glStencilFunc(GL_ALWAYS, 0, 0)
  *         log_gl_error('StencilPush.apply-glStencilFunc')             # <<<<<<<<<<<<<<
@@ -2686,7 +2686,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPush_apply_glStencilFunc);
 
-  /* "kivy/graphics/stencil_instructions.pyx":156
+  /* "kivy/graphics/stencil_instructions.pyx":154
  *         glStencilFunc(GL_ALWAYS, 0, 0)
  *         log_gl_error('StencilPush.apply-glStencilFunc')
  *         glStencilOp(GL_INCR, GL_INCR, GL_INCR)             # <<<<<<<<<<<<<<
@@ -2695,7 +2695,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   glStencilOp(GL_INCR, GL_INCR, GL_INCR);
 
-  /* "kivy/graphics/stencil_instructions.pyx":157
+  /* "kivy/graphics/stencil_instructions.pyx":155
  *         log_gl_error('StencilPush.apply-glStencilFunc')
  *         glStencilOp(GL_INCR, GL_INCR, GL_INCR)
  *         log_gl_error('StencilPush.apply-glStencilOp')             # <<<<<<<<<<<<<<
@@ -2704,7 +2704,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPush_apply_glStencilOp);
 
-  /* "kivy/graphics/stencil_instructions.pyx":158
+  /* "kivy/graphics/stencil_instructions.pyx":156
  *         glStencilOp(GL_INCR, GL_INCR, GL_INCR)
  *         log_gl_error('StencilPush.apply-glStencilOp')
  *         glColorMask(0, 0, 0, 0)             # <<<<<<<<<<<<<<
@@ -2713,7 +2713,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   glColorMask(0, 0, 0, 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":159
+  /* "kivy/graphics/stencil_instructions.pyx":157
  *         log_gl_error('StencilPush.apply-glStencilOp')
  *         glColorMask(0, 0, 0, 0)
  *         log_gl_error('StencilPush.apply-glColorMask')             # <<<<<<<<<<<<<<
@@ -2722,7 +2722,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPush_apply_glColorMask);
 
-  /* "kivy/graphics/stencil_instructions.pyx":160
+  /* "kivy/graphics/stencil_instructions.pyx":158
  *         glColorMask(0, 0, 0, 0)
  *         log_gl_error('StencilPush.apply-glColorMask')
  *         return 0             # <<<<<<<<<<<<<<
@@ -2732,7 +2732,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":133
+  /* "kivy/graphics/stencil_instructions.pyx":131
  *     information.
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -2750,7 +2750,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply(CY
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":165
+/* "kivy/graphics/stencil_instructions.pyx":163
  *     '''Pop the stencil stack. See the module documentation for more information.
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -2768,7 +2768,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":167
+  /* "kivy/graphics/stencil_instructions.pyx":165
  *     cdef int apply(self) except -1:
  *         global _stencil_level, _stencil_in_push
  *         if _stencil_level == 0:             # <<<<<<<<<<<<<<
@@ -2778,21 +2778,21 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":168
+    /* "kivy/graphics/stencil_instructions.pyx":166
  *         global _stencil_level, _stencil_in_push
  *         if _stencil_level == 0:
  *             raise Exception('Too much StencilPop (stack underflow)')             # <<<<<<<<<<<<<<
  *         _stencil_level -= 1
  *         _stencil_in_push = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 166; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 166; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/graphics/stencil_instructions.pyx":169
+  /* "kivy/graphics/stencil_instructions.pyx":167
  *         if _stencil_level == 0:
  *             raise Exception('Too much StencilPop (stack underflow)')
  *         _stencil_level -= 1             # <<<<<<<<<<<<<<
@@ -2801,7 +2801,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level = (__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level - 1);
 
-  /* "kivy/graphics/stencil_instructions.pyx":170
+  /* "kivy/graphics/stencil_instructions.pyx":168
  *             raise Exception('Too much StencilPop (stack underflow)')
  *         _stencil_level -= 1
  *         _stencil_in_push = 0             # <<<<<<<<<<<<<<
@@ -2810,7 +2810,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_in_push = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":171
+  /* "kivy/graphics/stencil_instructions.pyx":169
  *         _stencil_level -= 1
  *         _stencil_in_push = 0
  *         glColorMask(1, 1, 1, 1)             # <<<<<<<<<<<<<<
@@ -2819,7 +2819,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   glColorMask(1, 1, 1, 1);
 
-  /* "kivy/graphics/stencil_instructions.pyx":172
+  /* "kivy/graphics/stencil_instructions.pyx":170
  *         _stencil_in_push = 0
  *         glColorMask(1, 1, 1, 1)
  *         log_gl_error('StencilPop.apply-glColorMask')             # <<<<<<<<<<<<<<
@@ -2828,7 +2828,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPop_apply_glColorMask);
 
-  /* "kivy/graphics/stencil_instructions.pyx":173
+  /* "kivy/graphics/stencil_instructions.pyx":171
  *         glColorMask(1, 1, 1, 1)
  *         log_gl_error('StencilPop.apply-glColorMask')
  *         if _stencil_level == 0:             # <<<<<<<<<<<<<<
@@ -2838,7 +2838,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":174
+    /* "kivy/graphics/stencil_instructions.pyx":172
  *         log_gl_error('StencilPop.apply-glColorMask')
  *         if _stencil_level == 0:
  *             glDisable(GL_STENCIL_TEST)             # <<<<<<<<<<<<<<
@@ -2847,7 +2847,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
     glDisable(GL_STENCIL_TEST);
 
-    /* "kivy/graphics/stencil_instructions.pyx":175
+    /* "kivy/graphics/stencil_instructions.pyx":173
  *         if _stencil_level == 0:
  *             glDisable(GL_STENCIL_TEST)
  *             log_gl_error('StencilPop.apply-glDisable')             # <<<<<<<<<<<<<<
@@ -2856,7 +2856,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
     __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPop_apply_glDisable);
 
-    /* "kivy/graphics/stencil_instructions.pyx":176
+    /* "kivy/graphics/stencil_instructions.pyx":174
  *             glDisable(GL_STENCIL_TEST)
  *             log_gl_error('StencilPop.apply-glDisable')
  *             return 0             # <<<<<<<<<<<<<<
@@ -2867,7 +2867,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/stencil_instructions.pyx":178
+  /* "kivy/graphics/stencil_instructions.pyx":176
  *             return 0
  *         # reset for previous
  *         glStencilFunc(GL_EQUAL, _stencil_level, 0xff)             # <<<<<<<<<<<<<<
@@ -2876,7 +2876,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   glStencilFunc(GL_EQUAL, __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level, 0xff);
 
-  /* "kivy/graphics/stencil_instructions.pyx":179
+  /* "kivy/graphics/stencil_instructions.pyx":177
  *         # reset for previous
  *         glStencilFunc(GL_EQUAL, _stencil_level, 0xff)
  *         log_gl_error('StencilPop.apply-glStencilFunc')             # <<<<<<<<<<<<<<
@@ -2885,7 +2885,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPop_apply_glStencilFunc);
 
-  /* "kivy/graphics/stencil_instructions.pyx":180
+  /* "kivy/graphics/stencil_instructions.pyx":178
  *         glStencilFunc(GL_EQUAL, _stencil_level, 0xff)
  *         log_gl_error('StencilPop.apply-glStencilFunc')
  *         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)             # <<<<<<<<<<<<<<
@@ -2894,7 +2894,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
-  /* "kivy/graphics/stencil_instructions.pyx":181
+  /* "kivy/graphics/stencil_instructions.pyx":179
  *         log_gl_error('StencilPop.apply-glStencilFunc')
  *         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
  *         log_gl_error('StencilPop.apply-glStencilOp')             # <<<<<<<<<<<<<<
@@ -2903,7 +2903,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilPop_apply_glStencilOp);
 
-  /* "kivy/graphics/stencil_instructions.pyx":182
+  /* "kivy/graphics/stencil_instructions.pyx":180
  *         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
  *         log_gl_error('StencilPop.apply-glStencilOp')
  *         return 0             # <<<<<<<<<<<<<<
@@ -2913,7 +2913,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":165
+  /* "kivy/graphics/stencil_instructions.pyx":163
  *     '''Pop the stencil stack. See the module documentation for more information.
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -2931,7 +2931,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply(CYT
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":189
+/* "kivy/graphics/stencil_instructions.pyx":187
  *     more information.
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -2973,14 +2973,14 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse___init__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":190
+  /* "kivy/graphics/stencil_instructions.pyx":188
  *     '''
  *     def __init__(self, **kwargs):
  *         super(StencilUse, self).__init__(**kwargs)             # <<<<<<<<<<<<<<
  *         if 'op' in kwargs:
  *             self._op = _stencil_op_to_gl(kwargs['op'])
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20stencil_instructions_StencilUse)));
   PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20stencil_instructions_StencilUse)));
@@ -2988,39 +2988,39 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse___init__
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":191
+  /* "kivy/graphics/stencil_instructions.pyx":189
  *     def __init__(self, **kwargs):
  *         super(StencilUse, self).__init__(**kwargs)
  *         if 'op' in kwargs:             # <<<<<<<<<<<<<<
  *             self._op = _stencil_op_to_gl(kwargs['op'])
  *         else:
  */
-  __pyx_t_4 = (__Pyx_PyDict_Contains(__pyx_n_s_op, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 191; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = (__Pyx_PyDict_Contains(__pyx_n_s_op, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 189; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (__pyx_t_5) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":192
+    /* "kivy/graphics/stencil_instructions.pyx":190
  *         super(StencilUse, self).__init__(**kwargs)
  *         if 'op' in kwargs:
  *             self._op = _stencil_op_to_gl(kwargs['op'])             # <<<<<<<<<<<<<<
  *         else:
  *             self._op = GL_EQUAL
  */
-    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_op); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 192; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_op); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_v_self->_op = __pyx_f_4kivy_8graphics_20stencil_instructions__stencil_op_to_gl(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3028,7 +3028,7 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse___init__
   }
   /*else*/ {
 
-    /* "kivy/graphics/stencil_instructions.pyx":194
+    /* "kivy/graphics/stencil_instructions.pyx":192
  *             self._op = _stencil_op_to_gl(kwargs['op'])
  *         else:
  *             self._op = GL_EQUAL             # <<<<<<<<<<<<<<
@@ -3039,7 +3039,7 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse___init__
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/stencil_instructions.pyx":189
+  /* "kivy/graphics/stencil_instructions.pyx":187
  *     more information.
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -3061,7 +3061,7 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse___init__
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":196
+/* "kivy/graphics/stencil_instructions.pyx":194
  *             self._op = GL_EQUAL
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -3074,7 +3074,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":198
+  /* "kivy/graphics/stencil_instructions.pyx":196
  *     cdef int apply(self) except -1:
  *         global _stencil_in_push
  *         _stencil_in_push = 0             # <<<<<<<<<<<<<<
@@ -3083,7 +3083,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_in_push = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":199
+  /* "kivy/graphics/stencil_instructions.pyx":197
  *         global _stencil_in_push
  *         _stencil_in_push = 0
  *         glColorMask(1, 1, 1, 1)             # <<<<<<<<<<<<<<
@@ -3092,7 +3092,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   glColorMask(1, 1, 1, 1);
 
-  /* "kivy/graphics/stencil_instructions.pyx":200
+  /* "kivy/graphics/stencil_instructions.pyx":198
  *         _stencil_in_push = 0
  *         glColorMask(1, 1, 1, 1)
  *         log_gl_error('StencilUse.apply-glColorMask')             # <<<<<<<<<<<<<<
@@ -3101,7 +3101,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilUse_apply_glColorMask);
 
-  /* "kivy/graphics/stencil_instructions.pyx":201
+  /* "kivy/graphics/stencil_instructions.pyx":199
  *         glColorMask(1, 1, 1, 1)
  *         log_gl_error('StencilUse.apply-glColorMask')
  *         glStencilFunc(self._op, _stencil_level, 0xff)             # <<<<<<<<<<<<<<
@@ -3110,7 +3110,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   glStencilFunc(__pyx_v_self->_op, __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level, 0xff);
 
-  /* "kivy/graphics/stencil_instructions.pyx":202
+  /* "kivy/graphics/stencil_instructions.pyx":200
  *         log_gl_error('StencilUse.apply-glColorMask')
  *         glStencilFunc(self._op, _stencil_level, 0xff)
  *         log_gl_error('StencilUse.apply-glStencilFunc')             # <<<<<<<<<<<<<<
@@ -3119,7 +3119,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilUse_apply_glStencilFunc);
 
-  /* "kivy/graphics/stencil_instructions.pyx":203
+  /* "kivy/graphics/stencil_instructions.pyx":201
  *         glStencilFunc(self._op, _stencil_level, 0xff)
  *         log_gl_error('StencilUse.apply-glStencilFunc')
  *         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)             # <<<<<<<<<<<<<<
@@ -3128,7 +3128,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
-  /* "kivy/graphics/stencil_instructions.pyx":204
+  /* "kivy/graphics/stencil_instructions.pyx":202
  *         log_gl_error('StencilUse.apply-glStencilFunc')
  *         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
  *         log_gl_error('StencilUse.apply-glStencilOp')             # <<<<<<<<<<<<<<
@@ -3137,7 +3137,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilUse_apply_glStencilOp);
 
-  /* "kivy/graphics/stencil_instructions.pyx":205
+  /* "kivy/graphics/stencil_instructions.pyx":203
  *         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
  *         log_gl_error('StencilUse.apply-glStencilOp')
  *         return 0             # <<<<<<<<<<<<<<
@@ -3147,7 +3147,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":196
+  /* "kivy/graphics/stencil_instructions.pyx":194
  *             self._op = GL_EQUAL
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -3161,7 +3161,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply(str
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":217
+/* "kivy/graphics/stencil_instructions.pyx":215
  *         '''
  * 
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3196,7 +3196,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7f
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":218
+  /* "kivy/graphics/stencil_instructions.pyx":216
  * 
  *         def __get__(self):
  *             index = _gl_stencil_op.values().index(self._op)             # <<<<<<<<<<<<<<
@@ -3205,14 +3205,14 @@ static PyObject *__pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7f
  */
   if (unlikely(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "values");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_2 = __Pyx_PyDict_Values(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyDict_Values(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->_op); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->_op); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_3))) {
@@ -3225,17 +3225,17 @@ static PyObject *__pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7f
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __Pyx_GIVEREF(__pyx_t_4); __pyx_t_4 = NULL;
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3243,7 +3243,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7f
   __pyx_v_index = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":219
+  /* "kivy/graphics/stencil_instructions.pyx":217
  *         def __get__(self):
  *             index = _gl_stencil_op.values().index(self._op)
  *             return _gl_stencil_op.keys()[index]             # <<<<<<<<<<<<<<
@@ -3253,18 +3253,18 @@ static PyObject *__pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7f
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "keys");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_GetItem(__pyx_t_1, __pyx_v_index); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_3 = PyObject_GetItem(__pyx_t_1, __pyx_v_index); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 217; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":217
+  /* "kivy/graphics/stencil_instructions.pyx":215
  *         '''
  * 
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -3288,7 +3288,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7f
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":221
+/* "kivy/graphics/stencil_instructions.pyx":219
  *             return _gl_stencil_op.keys()[index]
  * 
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -3314,13 +3314,9 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7func_op
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":222
+  /* "kivy/graphics/stencil_instructions.pyx":220
  * 
  *         def __set__(self, x):
  *             cdef int op = _stencil_op_to_gl(x)             # <<<<<<<<<<<<<<
@@ -3329,7 +3325,7 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7func_op
  */
   __pyx_v_op = __pyx_f_4kivy_8graphics_20stencil_instructions__stencil_op_to_gl(__pyx_v_x);
 
-  /* "kivy/graphics/stencil_instructions.pyx":223
+  /* "kivy/graphics/stencil_instructions.pyx":221
  *         def __set__(self, x):
  *             cdef int op = _stencil_op_to_gl(x)
  *             if op != self._op:             # <<<<<<<<<<<<<<
@@ -3339,7 +3335,7 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7func_op
   __pyx_t_1 = ((__pyx_v_op != __pyx_v_self->_op) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/stencil_instructions.pyx":224
+    /* "kivy/graphics/stencil_instructions.pyx":222
  *             cdef int op = _stencil_op_to_gl(x)
  *             if op != self._op:
  *                 self._op = op             # <<<<<<<<<<<<<<
@@ -3348,21 +3344,19 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7func_op
  */
     __pyx_v_self->_op = __pyx_v_op;
 
-    /* "kivy/graphics/stencil_instructions.pyx":225
+    /* "kivy/graphics/stencil_instructions.pyx":223
  *             if op != self._op:
  *                 self._op = op
  *                 self.flag_update()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilUse *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), 0, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    ((struct __pyx_vtabstruct_4kivy_8graphics_20stencil_instructions_StencilUse *)__pyx_v_self->__pyx_base.__pyx_vtab)->__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), NULL);
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/stencil_instructions.pyx":221
+  /* "kivy/graphics/stencil_instructions.pyx":219
  *             return _gl_stencil_op.keys()[index]
  * 
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -3372,17 +3366,11 @@ static int __pyx_pf_4kivy_8graphics_20stencil_instructions_10StencilUse_7func_op
 
   /* function exit code */
   __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("kivy.graphics.stencil_instructions.StencilUse.func_op.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "kivy/graphics/stencil_instructions.pyx":231
+/* "kivy/graphics/stencil_instructions.pyx":229
  *     '''Use current stencil buffer to unset the mask.
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -3395,7 +3383,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":232
+  /* "kivy/graphics/stencil_instructions.pyx":230
  *     '''
  *     cdef int apply(self) except -1:
  *         glStencilFunc(GL_ALWAYS, 0, 0)             # <<<<<<<<<<<<<<
@@ -3404,7 +3392,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
  */
   glStencilFunc(GL_ALWAYS, 0, 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":233
+  /* "kivy/graphics/stencil_instructions.pyx":231
  *     cdef int apply(self) except -1:
  *         glStencilFunc(GL_ALWAYS, 0, 0)
  *         log_gl_error('StencilUnUse.apply-glStencilFunc')             # <<<<<<<<<<<<<<
@@ -3413,7 +3401,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilUnUse_apply_glStencilFunc);
 
-  /* "kivy/graphics/stencil_instructions.pyx":234
+  /* "kivy/graphics/stencil_instructions.pyx":232
  *         glStencilFunc(GL_ALWAYS, 0, 0)
  *         log_gl_error('StencilUnUse.apply-glStencilFunc')
  *         glStencilOp(GL_DECR, GL_DECR, GL_DECR)             # <<<<<<<<<<<<<<
@@ -3422,7 +3410,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
  */
   glStencilOp(GL_DECR, GL_DECR, GL_DECR);
 
-  /* "kivy/graphics/stencil_instructions.pyx":235
+  /* "kivy/graphics/stencil_instructions.pyx":233
  *         log_gl_error('StencilUnUse.apply-glStencilFunc')
  *         glStencilOp(GL_DECR, GL_DECR, GL_DECR)
  *         log_gl_error('StencilUnUse.apply-glStencilOp')             # <<<<<<<<<<<<<<
@@ -3431,7 +3419,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilUnUse_apply_glStencilOp);
 
-  /* "kivy/graphics/stencil_instructions.pyx":236
+  /* "kivy/graphics/stencil_instructions.pyx":234
  *         glStencilOp(GL_DECR, GL_DECR, GL_DECR)
  *         log_gl_error('StencilUnUse.apply-glStencilOp')
  *         glColorMask(0, 0, 0, 0)             # <<<<<<<<<<<<<<
@@ -3440,7 +3428,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
  */
   glColorMask(0, 0, 0, 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":237
+  /* "kivy/graphics/stencil_instructions.pyx":235
  *         log_gl_error('StencilUnUse.apply-glStencilOp')
  *         glColorMask(0, 0, 0, 0)
  *         log_gl_error('StencilUnUse.apply-glColorMask')             # <<<<<<<<<<<<<<
@@ -3448,7 +3436,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
  */
   __pyx_f_4kivy_8graphics_20stencil_instructions_log_gl_error(__pyx_kp_s_StencilUnUse_apply_glColorMask);
 
-  /* "kivy/graphics/stencil_instructions.pyx":238
+  /* "kivy/graphics/stencil_instructions.pyx":236
  *         glColorMask(0, 0, 0, 0)
  *         log_gl_error('StencilUnUse.apply-glColorMask')
  *         return 0             # <<<<<<<<<<<<<<
@@ -3456,7 +3444,7 @@ static int __pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply(C
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":231
+  /* "kivy/graphics/stencil_instructions.pyx":229
  *     '''Use current stencil buffer to unset the mask.
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -3924,9 +3912,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3936,36 +3924,36 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "kivy/graphics/stencil_instructions.pyx":136
+  /* "kivy/graphics/stencil_instructions.pyx":134
  *         global _stencil_level, _stencil_in_push
  *         if _stencil_in_push:
  *             raise Exception('Cannot use StencilPush inside another '             # <<<<<<<<<<<<<<
  *                             'StencilPush.\nUse StencilUse before.')
  *         _stencil_in_push = 1
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Cannot_use_StencilPush_inside_an); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Cannot_use_StencilPush_inside_an); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "kivy/graphics/stencil_instructions.pyx":149
+  /* "kivy/graphics/stencil_instructions.pyx":147
  *             log_gl_error('StencilPush.apply-glClear(GL_STENCIL_BUFFER_BIT)')
  *         if _stencil_level > 128:
  *             raise Exception('Cannot push more than 128 level of stencil.'             # <<<<<<<<<<<<<<
  *                             ' (stack overflow)')
  * 
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Cannot_push_more_than_128_level); if (unlikely(!__pyx_tuple__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Cannot_push_more_than_128_level); if (unlikely(!__pyx_tuple__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "kivy/graphics/stencil_instructions.pyx":168
+  /* "kivy/graphics/stencil_instructions.pyx":166
  *         global _stencil_level, _stencil_in_push
  *         if _stencil_level == 0:
  *             raise Exception('Too much StencilPop (stack underflow)')             # <<<<<<<<<<<<<<
  *         _stencil_level -= 1
  *         _stencil_in_push = 0
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Too_much_StencilPop_stack_underf); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Too_much_StencilPop_stack_underf); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 166; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
@@ -4082,40 +4070,40 @@ PyMODINIT_FUNC PyInit_stencil_instructions(void)
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilPush.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_Instruction;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilPush.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20stencil_instructions_11StencilPush_apply;
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_Instruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPush) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "StencilPush", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPush) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "StencilPush", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20stencil_instructions_StencilPush, __pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20stencil_instructions_StencilPush = &__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPush;
   __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPop = &__pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilPop;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilPop.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_Instruction;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilPop.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20stencil_instructions_10StencilPop_apply;
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_Instruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "StencilPop", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilPop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "StencilPop", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20stencil_instructions_StencilPop, __pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20stencil_instructions_StencilPop = &__pyx_type_4kivy_8graphics_20stencil_instructions_StencilPop;
   __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUse = &__pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilUse;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilUse.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_Instruction;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilUse.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20stencil_instructions_10StencilUse_apply;
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_Instruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 185; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 183; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 185; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "StencilUse", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 185; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 183; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "StencilUse", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 183; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20stencil_instructions_StencilUse, __pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20stencil_instructions_StencilUse = &__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUse;
   __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUnUse = &__pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilUnUse;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilUnUse.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_Instruction;
   __pyx_vtable_4kivy_8graphics_20stencil_instructions_StencilUnUse.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20stencil_instructions_12StencilUnUse_apply;
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_Instruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUnUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "StencilUnUse", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 228; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse.tp_dict, __pyx_vtabptr_4kivy_8graphics_20stencil_instructions_StencilUnUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "StencilUnUse", (PyObject *)&__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20stencil_instructions_StencilUnUse, __pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20stencil_instructions_StencilUnUse = &__pyx_type_4kivy_8graphics_20stencil_instructions_StencilUnUse;
   /*--- Type import code ---*/
@@ -4284,26 +4272,27 @@ PyMODINIT_FUNC PyInit_stencil_instructions(void)
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions_GI_NO_REMOVE = 256;
 
-  /* "kivy/graphics/gl_debug_logger.pxi":1
+  /* "kivy/graphics/gl_debug_logger.pxi":2
+ * from kivy.graphics.c_opengl cimport GLenum, glGetError
  * from kivy.logger import Logger             # <<<<<<<<<<<<<<
  * include "config.pxi"
  * 
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_Logger);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[11]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":109
+  /* "kivy/graphics/stencil_instructions.pyx":107
  * from kivy.graphics.instructions cimport Instruction
  * 
  * cdef int _stencil_level = 0             # <<<<<<<<<<<<<<
@@ -4312,7 +4301,7 @@ PyMODINIT_FUNC PyInit_stencil_instructions(void)
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_level = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":110
+  /* "kivy/graphics/stencil_instructions.pyx":108
  * 
  * cdef int _stencil_level = 0
  * cdef int _stencil_in_push = 0             # <<<<<<<<<<<<<<
@@ -4321,70 +4310,70 @@ PyMODINIT_FUNC PyInit_stencil_instructions(void)
  */
   __pyx_v_4kivy_8graphics_20stencil_instructions__stencil_in_push = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":113
+  /* "kivy/graphics/stencil_instructions.pyx":111
  * 
  * 
  * cdef dict _gl_stencil_op = {             # <<<<<<<<<<<<<<
  *     'never': GL_NEVER, 'less': GL_LESS, 'equal': GL_EQUAL,
  *     'lequal': GL_LEQUAL, 'greater': GL_GREATER, 'notequal': GL_NOTEQUAL,
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "kivy/graphics/stencil_instructions.pyx":114
+  /* "kivy/graphics/stencil_instructions.pyx":112
  * 
  * cdef dict _gl_stencil_op = {
  *     'never': GL_NEVER, 'less': GL_LESS, 'equal': GL_EQUAL,             # <<<<<<<<<<<<<<
  *     'lequal': GL_LEQUAL, 'greater': GL_GREATER, 'notequal': GL_NOTEQUAL,
  *     'gequal': GL_GEQUAL, 'always': GL_ALWAYS }
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_NEVER); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_NEVER); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_never, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_never, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_LESS); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_LESS); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_less, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_less, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_EQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_EQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_equal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_equal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":115
+  /* "kivy/graphics/stencil_instructions.pyx":113
  * cdef dict _gl_stencil_op = {
  *     'never': GL_NEVER, 'less': GL_LESS, 'equal': GL_EQUAL,
  *     'lequal': GL_LEQUAL, 'greater': GL_GREATER, 'notequal': GL_NOTEQUAL,             # <<<<<<<<<<<<<<
  *     'gequal': GL_GEQUAL, 'always': GL_ALWAYS }
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_LEQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_LEQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_lequal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_lequal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_GREATER); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_GREATER); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_greater, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_greater, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_NOTEQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_NOTEQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_notequal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_notequal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/stencil_instructions.pyx":116
+  /* "kivy/graphics/stencil_instructions.pyx":114
  *     'never': GL_NEVER, 'less': GL_LESS, 'equal': GL_EQUAL,
  *     'lequal': GL_LEQUAL, 'greater': GL_GREATER, 'notequal': GL_NOTEQUAL,
  *     'gequal': GL_GEQUAL, 'always': GL_ALWAYS }             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_GEQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_GEQUAL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_gequal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_gequal, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(GL_ALWAYS); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 116; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(GL_ALWAYS); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_always, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_always, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op);
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_20stencil_instructions__gl_stencil_op, ((PyObject*)__pyx_t_3));

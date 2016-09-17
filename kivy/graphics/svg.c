@@ -594,7 +594,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y
@@ -690,9 +690,9 @@ struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update;
 struct __pyx_opt_args_4kivy_8graphics_12instructions_13RenderContext_set_state;
 
 /* "kivy/graphics/instructions.pxd":33
- *         cpdef flag_update(self, int do_parent=?, list _instrs=?)
+ *         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
  *     ELSE:
- *         cpdef flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
+ *         cdef void flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
  *     cdef void flag_update_done(self)
  *     cdef void set_parent(self, Instruction parent)
  */
@@ -1817,7 +1817,7 @@ static struct __pyx_vtabstruct_4kivy_6_event_EventObservers *__pyx_vtabptr_4kivy
 
 struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Instruction {
   int (*apply)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
-  PyObject *(*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, int __pyx_skip_dispatch, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
+  void (*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
   void (*flag_update_done)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*set_parent)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*reload)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);

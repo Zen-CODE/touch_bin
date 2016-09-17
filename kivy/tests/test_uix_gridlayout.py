@@ -6,6 +6,7 @@ uix.gridlayout tests
 import unittest
 
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.widget import Widget
 
 
 class UixGridLayoutTest(unittest.TestCase):

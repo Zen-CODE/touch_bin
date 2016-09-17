@@ -786,8 +786,8 @@ static char __pyx_k_PVRTC_texture_support[] = "PVRTC texture support";
 static char __pyx_k_gl_has_texture_format[] = "gl_has_texture_format";
 static char __pyx_k_gl_get_texture_formats[] = "gl_get_texture_formats";
 static char __pyx_k_Unpack_subimage_support[] = "Unpack subimage support";
-static char __pyx_k_gl_has_extension_line_59[] = "gl_has_extension (line 59)";
-static char __pyx_k_gl_get_extensions_line_41[] = "gl_get_extensions (line 41)";
+static char __pyx_k_gl_has_extension_line_52[] = "gl_has_extension (line 52)";
+static char __pyx_k_gl_get_extensions_line_34[] = "gl_get_extensions (line 34)";
 static char __pyx_k_gl_has_texture_conversion[] = "gl_has_texture_conversion";
 static char __pyx_k_EXT_texture_format_BGRA888[] = "EXT_texture_format_BGRA888";
 static char __pyx_k_ARB_texture_non_power_of_two[] = "ARB_texture_non_power_of_two";
@@ -795,7 +795,7 @@ static char __pyx_k_EXT_texture_compression_dxt1[] = "EXT_texture_compression_dx
 static char __pyx_k_EXT_texture_compression_s3tc[] = "EXT_texture_compression_s3tc";
 static char __pyx_k_OES_texture_compression_s3tc[] = "OES_texture_compression_s3tc";
 static char __pyx_k_gl_has_texture_native_format[] = "gl_has_texture_native_format";
-static char __pyx_k_gl_register_get_size_line_77[] = "gl_register_get_size (line 77)";
+static char __pyx_k_gl_register_get_size_line_68[] = "gl_register_get_size (line 68)";
 static char __pyx_k_APPLE_texture_format_BGRA8888[] = "APPLE_texture_format_BGRA8888";
 static char __pyx_k_IMG_texture_compression_pvrtc[] = "IMG_texture_compression_pvrtc";
 static char __pyx_k_Check_if_an_OpenGL_extension_is[] = "Check if an OpenGL extension is available. If the name starts with `GL_`,\n    it will be stripped for the test and converted to lowercase.\n\n        >>> gl_has_extension('NV_get_tex_image')\n        False\n        >>> gl_has_extension('OES_texture_npot')\n        True\n\n    ";
@@ -806,7 +806,7 @@ static char __pyx_k_OES_compressed_ETC1_RGB8_texture[] = "OES_compressed_ETC1_RG
 static char __pyx_k_OpenGL_Error_while_parsing_GL_VE[] = "OpenGL: Error while parsing GL_VERSION";
 static char __pyx_k_Return_1_if_the_texture_format_i[] = "Return 1 if the texture format is handled natively.\n\n    >>> gl_has_texture_format('azdmok')\n    0\n    >>> gl_has_texture_format('rgba')\n    1\n    >>> gl_has_texture_format('s3tc_dxt1')\n    [INFO   ] [GL          ] S3TC texture support is available\n    [INFO   ] [GL          ] DXT1 texture support is available\n    1\n\n    ";
 static char __pyx_k_Return_a_list_of_OpenGL_extensio[] = "Return a list of OpenGL extensions available. All the names in the list\n    have the `GL_` stripped at the start (if it exists) and are in lowercase.\n\n    >>> print(gl_get_extensions())\n    ['arb_blend_func_extended', 'arb_color_buffer_float', 'arb_compatibility',\n     'arb_copy_buffer'... ]\n\n    ";
-static char __pyx_k_gl_has_texture_native_format_lin[] = "gl_has_texture_native_format (line 197)";
+static char __pyx_k_gl_has_texture_native_format_lin[] = "gl_has_texture_native_format (line 188)";
 static PyObject *__pyx_n_s_APPLE_texture_format_BGRA8888;
 static PyObject *__pyx_n_s_ARB_texture_non_power_of_two;
 static PyObject *__pyx_kp_s_Adreno_200;
@@ -859,20 +859,20 @@ static PyObject *__pyx_n_s_constid;
 static PyObject *__pyx_n_s_etc1;
 static PyObject *__pyx_n_s_get;
 static PyObject *__pyx_n_s_gl_get_extensions;
-static PyObject *__pyx_kp_u_gl_get_extensions_line_41;
+static PyObject *__pyx_kp_u_gl_get_extensions_line_34;
 static PyObject *__pyx_n_s_gl_get_texture_formats;
 static PyObject *__pyx_n_s_gl_get_version;
 static PyObject *__pyx_n_s_gl_get_version_major;
 static PyObject *__pyx_n_s_gl_get_version_minor;
 static PyObject *__pyx_n_s_gl_has_capability;
 static PyObject *__pyx_n_s_gl_has_extension;
-static PyObject *__pyx_kp_u_gl_has_extension_line_59;
+static PyObject *__pyx_kp_u_gl_has_extension_line_52;
 static PyObject *__pyx_n_s_gl_has_texture_conversion;
 static PyObject *__pyx_n_s_gl_has_texture_format;
 static PyObject *__pyx_n_s_gl_has_texture_native_format;
 static PyObject *__pyx_kp_u_gl_has_texture_native_format_lin;
 static PyObject *__pyx_n_s_gl_register_get_size;
-static PyObject *__pyx_kp_u_gl_register_get_size_line_77;
+static PyObject *__pyx_kp_u_gl_register_get_size_line_68;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_info;
 static PyObject *__pyx_n_s_ios;
@@ -930,7 +930,7 @@ static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_tuple__15;
 
-/* "kivy/graphics/opengl_utils.pyx":41
+/* "kivy/graphics/opengl_utils.pyx":34
  * 
  * 
  * cpdef list gl_get_extensions():             # <<<<<<<<<<<<<<
@@ -959,47 +959,47 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_extensions", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":52
+  /* "kivy/graphics/opengl_utils.pyx":45
  *     global _gl_extensions
  *     cdef str extensions
  *     if not _gl_extensions:             # <<<<<<<<<<<<<<
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\
  */
   __pyx_t_1 = (__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions != Py_None) && (PyList_GET_SIZE(__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions) != 0);
   __pyx_t_2 = ((!__pyx_t_1) != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/opengl_utils.pyx":53
+    /* "kivy/graphics/opengl_utils.pyx":46
  *     cdef str extensions
  *     if not _gl_extensions:
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)             # <<<<<<<<<<<<<<
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)             # <<<<<<<<<<<<<<
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\
  *                 for x in extensions.split()]
  */
-    __pyx_t_3 = __Pyx_PyStr_FromString(((char *)glGetString(GL_EXTENSIONS))); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyStr_FromString(((char *)glGetString(GL_EXTENSIONS))); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_v_extensions = ((PyObject*)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "kivy/graphics/opengl_utils.pyx":54
+    /* "kivy/graphics/opengl_utils.pyx":47
  *     if not _gl_extensions:
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\             # <<<<<<<<<<<<<<
  *                 for x in extensions.split()]
  *     return _gl_extensions
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
 
-    /* "kivy/graphics/opengl_utils.pyx":55
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+    /* "kivy/graphics/opengl_utils.pyx":48
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\
  *                 for x in extensions.split()]             # <<<<<<<<<<<<<<
  *     return _gl_extensions
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_extensions, __pyx_n_s_split); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_extensions, __pyx_n_s_split); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -1012,10 +1012,10 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
       }
     }
     if (__pyx_t_6) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else {
-      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -1023,9 +1023,9 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
       __pyx_t_5 = __pyx_t_4; __Pyx_INCREF(__pyx_t_5); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_7 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -1033,16 +1033,16 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
         if (likely(PyList_CheckExact(__pyx_t_5))) {
           if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_5)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #endif
         } else {
           if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           #endif
         }
       } else {
@@ -1051,7 +1051,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           break;
         }
@@ -1060,21 +1060,21 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
       __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "kivy/graphics/opengl_utils.pyx":54
+      /* "kivy/graphics/opengl_utils.pyx":47
  *     if not _gl_extensions:
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\             # <<<<<<<<<<<<<<
  *                 for x in extensions.split()]
  *     return _gl_extensions
  */
-      __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_v_x, 0, 3, NULL, NULL, &__pyx_slice_, 0, 1, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_v_x, 0, 3, NULL, NULL, &__pyx_slice_, 0, 1, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_6, __pyx_n_s_GL, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_6, __pyx_n_s_GL, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       if (__pyx_t_2) {
-        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_x, 3, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_v_x, 3, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_lower); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_lower); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __pyx_t_9 = NULL;
@@ -1088,17 +1088,17 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
           }
         }
         if (__pyx_t_9) {
-          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         } else {
-          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_4 = __pyx_t_6;
         __pyx_t_6 = 0;
       } else {
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_lower); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_x, __pyx_n_s_lower); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_9 = NULL;
         if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_10))) {
@@ -1111,21 +1111,21 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
           }
         }
         if (__pyx_t_9) {
-          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         } else {
-          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_4 = __pyx_t_6;
         __pyx_t_6 = 0;
       }
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_4))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_4))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "kivy/graphics/opengl_utils.pyx":55
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+      /* "kivy/graphics/opengl_utils.pyx":48
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\
  *                 for x in extensions.split()]             # <<<<<<<<<<<<<<
  *     return _gl_extensions
@@ -1134,24 +1134,24 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "kivy/graphics/opengl_utils.pyx":54
+    /* "kivy/graphics/opengl_utils.pyx":47
  *     if not _gl_extensions:
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\             # <<<<<<<<<<<<<<
  *                 for x in extensions.split()]
  *     return _gl_extensions
  */
     if (unlikely(__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    if (__Pyx_PyObject_SetSlice(__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions, __pyx_t_3, 0, 0, NULL, NULL, NULL, 0, 0, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetSlice(__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions, __pyx_t_3, 0, 0, NULL, NULL, NULL, 0, 0, 1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/opengl_utils.pyx":56
+  /* "kivy/graphics/opengl_utils.pyx":49
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\
  *                 for x in extensions.split()]
  *     return _gl_extensions             # <<<<<<<<<<<<<<
@@ -1163,7 +1163,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHON
   __pyx_r = __pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":41
+  /* "kivy/graphics/opengl_utils.pyx":34
  * 
  * 
  * cpdef list gl_get_extensions():             # <<<<<<<<<<<<<<
@@ -1212,7 +1212,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_extensions", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 41; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 34; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1229,7 +1229,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_gl_get_extensions(CYTHO
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":59
+/* "kivy/graphics/opengl_utils.pyx":52
  * 
  * 
  * cpdef int gl_has_extension(name):             # <<<<<<<<<<<<<<
@@ -1251,14 +1251,14 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(PyObject *__p
   __Pyx_RefNannySetupContext("gl_has_extension", 0);
   __Pyx_INCREF(__pyx_v_name);
 
-  /* "kivy/graphics/opengl_utils.pyx":71
- *     IF USE_OPENGL_MOCK:
- *         return True
+  /* "kivy/graphics/opengl_utils.pyx":62
+ * 
+ *     '''
  *     name = name.lower()             # <<<<<<<<<<<<<<
  *     if name.startswith('GL_'):
  *         name = name[3:]
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_lower); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_lower); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -1271,40 +1271,40 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(PyObject *__p
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_name, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":72
- *         return True
+  /* "kivy/graphics/opengl_utils.pyx":63
+ *     '''
  *     name = name.lower()
  *     if name.startswith('GL_'):             # <<<<<<<<<<<<<<
  *         name = name[3:]
  *     return name in gl_get_extensions()
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 72; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 72; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 72; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":73
+    /* "kivy/graphics/opengl_utils.pyx":64
  *     name = name.lower()
  *     if name.startswith('GL_'):
  *         name = name[3:]             # <<<<<<<<<<<<<<
  *     return name in gl_get_extensions()
  * 
  */
-    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_name, 3, 0, NULL, NULL, &__pyx_slice__4, 1, 0, 1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_v_name, 3, 0, NULL, NULL, &__pyx_slice__4, 1, 0, 1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_name, __pyx_t_2);
     __pyx_t_2 = 0;
@@ -1312,21 +1312,21 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(PyObject *__p
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/opengl_utils.pyx":74
+  /* "kivy/graphics/opengl_utils.pyx":65
  *     if name.startswith('GL_'):
  *         name = name[3:]
  *     return name in gl_get_extensions()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_extensions(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = (__Pyx_PySequence_Contains(__pyx_v_name, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = (__Pyx_PySequence_Contains(__pyx_v_name, __pyx_t_2, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_4;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":59
+  /* "kivy/graphics/opengl_utils.pyx":52
  * 
  * 
  * cpdef int gl_has_extension(name):             # <<<<<<<<<<<<<<
@@ -1370,7 +1370,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_2gl_has_extension(CYTHO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_extension", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(__pyx_v_name, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(__pyx_v_name, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1387,7 +1387,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_2gl_has_extension(CYTHO
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":77
+/* "kivy/graphics/opengl_utils.pyx":68
  * 
  * 
  * cpdef gl_register_get_size(int constid, int size):             # <<<<<<<<<<<<<<
@@ -1406,22 +1406,22 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_register_get_size(int
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_register_get_size", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":90
+  /* "kivy/graphics/opengl_utils.pyx":81
  * 
  *     '''
  *     _GL_GET_SIZE[constid] = size             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_GL_GET_SIZE); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_GL_GET_SIZE); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_constid, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_constid, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":77
+  /* "kivy/graphics/opengl_utils.pyx":68
  * 
  * 
  * cpdef gl_register_get_size(int constid, int size):             # <<<<<<<<<<<<<<
@@ -1475,11 +1475,11 @@ static PyObject *__pyx_pw_4kivy_8graphics_12opengl_utils_5gl_register_get_size(P
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_size)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("gl_register_get_size", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("gl_register_get_size", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "gl_register_get_size") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "gl_register_get_size") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1487,12 +1487,12 @@ static PyObject *__pyx_pw_4kivy_8graphics_12opengl_utils_5gl_register_get_size(P
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_constid = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_constid == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_size = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_constid = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_constid == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_size = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("gl_register_get_size", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("gl_register_get_size", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.opengl_utils.gl_register_get_size", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1514,7 +1514,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_4gl_register_get_size(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_register_get_size", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_register_get_size(__pyx_v_constid, __pyx_v_size, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_register_get_size(__pyx_v_constid, __pyx_v_size, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1531,7 +1531,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_4gl_register_get_size(C
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":93
+/* "kivy/graphics/opengl_utils.pyx":84
  * 
  * 
  * cpdef int gl_has_capability(int cap):             # <<<<<<<<<<<<<<
@@ -1560,7 +1560,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_capability", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":105
+  /* "kivy/graphics/opengl_utils.pyx":96
  * 
  *     '''
  *     cdef int value = _gl_caps.get(cap, -1)             # <<<<<<<<<<<<<<
@@ -1569,18 +1569,18 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
  */
   if (unlikely(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "get");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_cap); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_cap); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_GetItemDefault(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps, __pyx_t_1, __pyx_int_neg_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyDict_GetItemDefault(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps, __pyx_t_1, __pyx_int_neg_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_value = __pyx_t_3;
 
-  /* "kivy/graphics/opengl_utils.pyx":109
+  /* "kivy/graphics/opengl_utils.pyx":100
  * 
  *     # if we got a value, it's already initialized, return it!
  *     if value != -1:             # <<<<<<<<<<<<<<
@@ -1590,7 +1590,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_value != -1) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":110
+    /* "kivy/graphics/opengl_utils.pyx":101
  *     # if we got a value, it's already initialized, return it!
  *     if value != -1:
  *         return value             # <<<<<<<<<<<<<<
@@ -1601,7 +1601,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":113
+  /* "kivy/graphics/opengl_utils.pyx":104
  * 
  *     # ok, never been initialized, do it now.
  *     if cap == c_GLCAP_BGRA:             # <<<<<<<<<<<<<<
@@ -1611,7 +1611,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_BGRA) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":114
+    /* "kivy/graphics/opengl_utils.pyx":105
  *     # ok, never been initialized, do it now.
  *     if cap == c_GLCAP_BGRA:
  *         msg = 'BGRA texture support'             # <<<<<<<<<<<<<<
@@ -1621,18 +1621,18 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_BGRA_texture_support);
     __pyx_v_msg = __pyx_kp_s_BGRA_texture_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":115
+    /* "kivy/graphics/opengl_utils.pyx":106
  *     if cap == c_GLCAP_BGRA:
  *         msg = 'BGRA texture support'
  *         if _platform == 'ios':             # <<<<<<<<<<<<<<
  *             value = gl_has_extension('APPLE_texture_format_BGRA8888')
  *         else:
  */
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_ios, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_ios, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 106; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_5 = (__pyx_t_4 != 0);
     if (__pyx_t_5) {
 
-      /* "kivy/graphics/opengl_utils.pyx":116
+      /* "kivy/graphics/opengl_utils.pyx":107
  *         msg = 'BGRA texture support'
  *         if _platform == 'ios':
  *             value = gl_has_extension('APPLE_texture_format_BGRA8888')             # <<<<<<<<<<<<<<
@@ -1644,7 +1644,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     }
     /*else*/ {
 
-      /* "kivy/graphics/opengl_utils.pyx":118
+      /* "kivy/graphics/opengl_utils.pyx":109
  *             value = gl_has_extension('APPLE_texture_format_BGRA8888')
  *         else:
  *             value = gl_has_extension('EXT_bgra')             # <<<<<<<<<<<<<<
@@ -1655,7 +1655,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     }
     __pyx_L5:;
 
-    /* "kivy/graphics/opengl_utils.pyx":119
+    /* "kivy/graphics/opengl_utils.pyx":110
  *         else:
  *             value = gl_has_extension('EXT_bgra')
  *         if not value:             # <<<<<<<<<<<<<<
@@ -1665,7 +1665,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __pyx_t_5 = ((!(__pyx_v_value != 0)) != 0);
     if (__pyx_t_5) {
 
-      /* "kivy/graphics/opengl_utils.pyx":120
+      /* "kivy/graphics/opengl_utils.pyx":111
  *             value = gl_has_extension('EXT_bgra')
  *         if not value:
  *             value = gl_has_extension('EXT_texture_format_BGRA888')             # <<<<<<<<<<<<<<
@@ -1679,7 +1679,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":122
+  /* "kivy/graphics/opengl_utils.pyx":113
  *             value = gl_has_extension('EXT_texture_format_BGRA888')
  * 
  *     elif cap == c_GLCAP_NPOT:             # <<<<<<<<<<<<<<
@@ -1689,7 +1689,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_5 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_NPOT) != 0);
   if (__pyx_t_5) {
 
-    /* "kivy/graphics/opengl_utils.pyx":123
+    /* "kivy/graphics/opengl_utils.pyx":114
  * 
  *     elif cap == c_GLCAP_NPOT:
  *         msg = 'NPOT texture support'             # <<<<<<<<<<<<<<
@@ -1699,51 +1699,51 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_NPOT_texture_support);
     __pyx_v_msg = __pyx_kp_s_NPOT_texture_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":124
+    /* "kivy/graphics/opengl_utils.pyx":115
  *     elif cap == c_GLCAP_NPOT:
  *         msg = 'NPOT texture support'
  *         if _platform == 'ios' or _platform == 'android':             # <<<<<<<<<<<<<<
  *             # Adreno 200 renderer doesn't support NPOT
- *             sval = <char *>cgl.glGetString(c_opengl.GL_RENDERER)
+ *             sval = <char *>c_opengl.glGetString(c_opengl.GL_RENDERER)
  */
-    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_ios, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_ios, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = (__pyx_t_4 != 0);
     if (!__pyx_t_6) {
     } else {
       __pyx_t_5 = __pyx_t_6;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_android, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_android, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_4 = (__pyx_t_6 != 0);
     __pyx_t_5 = __pyx_t_4;
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_5) {
 
-      /* "kivy/graphics/opengl_utils.pyx":126
+      /* "kivy/graphics/opengl_utils.pyx":117
  *         if _platform == 'ios' or _platform == 'android':
  *             # Adreno 200 renderer doesn't support NPOT
- *             sval = <char *>cgl.glGetString(c_opengl.GL_RENDERER)             # <<<<<<<<<<<<<<
+ *             sval = <char *>c_opengl.glGetString(c_opengl.GL_RENDERER)             # <<<<<<<<<<<<<<
  *             if sval == 'Adreno 200':
  *                 value = 0
  */
-      __pyx_t_2 = __Pyx_PyStr_FromString(((char *)glGetString(GL_RENDERER))); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyStr_FromString(((char *)glGetString(GL_RENDERER))); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 117; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_sval = ((PyObject*)__pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "kivy/graphics/opengl_utils.pyx":127
+      /* "kivy/graphics/opengl_utils.pyx":118
  *             # Adreno 200 renderer doesn't support NPOT
- *             sval = <char *>cgl.glGetString(c_opengl.GL_RENDERER)
+ *             sval = <char *>c_opengl.glGetString(c_opengl.GL_RENDERER)
  *             if sval == 'Adreno 200':             # <<<<<<<<<<<<<<
  *                 value = 0
  *             else:
  */
-      __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_sval, __pyx_kp_s_Adreno_200, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_sval, __pyx_kp_s_Adreno_200, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_t_4 = (__pyx_t_5 != 0);
       if (__pyx_t_4) {
 
-        /* "kivy/graphics/opengl_utils.pyx":128
- *             sval = <char *>cgl.glGetString(c_opengl.GL_RENDERER)
+        /* "kivy/graphics/opengl_utils.pyx":119
+ *             sval = <char *>c_opengl.glGetString(c_opengl.GL_RENDERER)
  *             if sval == 'Adreno 200':
  *                 value = 0             # <<<<<<<<<<<<<<
  *             else:
@@ -1754,7 +1754,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
       }
       /*else*/ {
 
-        /* "kivy/graphics/opengl_utils.pyx":130
+        /* "kivy/graphics/opengl_utils.pyx":121
  *                 value = 0
  *             else:
  *                 value = 1             # <<<<<<<<<<<<<<
@@ -1768,7 +1768,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     }
     /*else*/ {
 
-      /* "kivy/graphics/opengl_utils.pyx":132
+      /* "kivy/graphics/opengl_utils.pyx":123
  *                 value = 1
  *         else:
  *             value = gl_has_extension('ARB_texture_non_power_of_two')             # <<<<<<<<<<<<<<
@@ -1777,7 +1777,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
  */
       __pyx_v_value = __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(__pyx_n_s_ARB_texture_non_power_of_two, 0);
 
-      /* "kivy/graphics/opengl_utils.pyx":133
+      /* "kivy/graphics/opengl_utils.pyx":124
  *         else:
  *             value = gl_has_extension('ARB_texture_non_power_of_two')
  *             if not value:             # <<<<<<<<<<<<<<
@@ -1787,7 +1787,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
       __pyx_t_4 = ((!(__pyx_v_value != 0)) != 0);
       if (__pyx_t_4) {
 
-        /* "kivy/graphics/opengl_utils.pyx":134
+        /* "kivy/graphics/opengl_utils.pyx":125
  *             value = gl_has_extension('ARB_texture_non_power_of_two')
  *             if not value:
  *                 value = gl_has_extension('OES_texture_npot')             # <<<<<<<<<<<<<<
@@ -1799,7 +1799,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
       }
       __pyx_L11:;
 
-      /* "kivy/graphics/opengl_utils.pyx":135
+      /* "kivy/graphics/opengl_utils.pyx":126
  *             if not value:
  *                 value = gl_has_extension('OES_texture_npot')
  *             if not value:             # <<<<<<<<<<<<<<
@@ -1809,7 +1809,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
       __pyx_t_4 = ((!(__pyx_v_value != 0)) != 0);
       if (__pyx_t_4) {
 
-        /* "kivy/graphics/opengl_utils.pyx":137
+        /* "kivy/graphics/opengl_utils.pyx":128
  *             if not value:
  *                 # motorola droid don't have OES_ but IMG_
  *                 value = gl_has_extension('IMG_texture_npot')             # <<<<<<<<<<<<<<
@@ -1825,7 +1825,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":139
+  /* "kivy/graphics/opengl_utils.pyx":130
  *                 value = gl_has_extension('IMG_texture_npot')
  * 
  *     elif cap == c_GLCAP_S3TC:             # <<<<<<<<<<<<<<
@@ -1835,7 +1835,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_S3TC) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":141
+    /* "kivy/graphics/opengl_utils.pyx":132
  *     elif cap == c_GLCAP_S3TC:
  *         # S3TC support DXT1, DXT3 and DXT5
  *         msg = 'S3TC texture support'             # <<<<<<<<<<<<<<
@@ -1845,7 +1845,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_S3TC_texture_support);
     __pyx_v_msg = __pyx_kp_s_S3TC_texture_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":142
+    /* "kivy/graphics/opengl_utils.pyx":133
  *         # S3TC support DXT1, DXT3 and DXT5
  *         msg = 'S3TC texture support'
  *         value = gl_has_extension('S3_s3tc')             # <<<<<<<<<<<<<<
@@ -1854,7 +1854,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
  */
     __pyx_v_value = __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_extension(__pyx_n_s_S3_s3tc, 0);
 
-    /* "kivy/graphics/opengl_utils.pyx":143
+    /* "kivy/graphics/opengl_utils.pyx":134
  *         msg = 'S3TC texture support'
  *         value = gl_has_extension('S3_s3tc')
  *         if not value:             # <<<<<<<<<<<<<<
@@ -1864,7 +1864,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __pyx_t_4 = ((!(__pyx_v_value != 0)) != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/opengl_utils.pyx":144
+      /* "kivy/graphics/opengl_utils.pyx":135
  *         value = gl_has_extension('S3_s3tc')
  *         if not value:
  *             value = gl_has_extension('EXT_texture_compression_s3tc')             # <<<<<<<<<<<<<<
@@ -1876,7 +1876,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     }
     __pyx_L13:;
 
-    /* "kivy/graphics/opengl_utils.pyx":145
+    /* "kivy/graphics/opengl_utils.pyx":136
  *         if not value:
  *             value = gl_has_extension('EXT_texture_compression_s3tc')
  *         if not value:             # <<<<<<<<<<<<<<
@@ -1886,7 +1886,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __pyx_t_4 = ((!(__pyx_v_value != 0)) != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/opengl_utils.pyx":146
+      /* "kivy/graphics/opengl_utils.pyx":137
  *             value = gl_has_extension('EXT_texture_compression_s3tc')
  *         if not value:
  *             value = gl_has_extension('OES_texture_compression_s3tc')             # <<<<<<<<<<<<<<
@@ -1900,7 +1900,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":148
+  /* "kivy/graphics/opengl_utils.pyx":139
  *             value = gl_has_extension('OES_texture_compression_s3tc')
  * 
  *     elif cap == c_GLCAP_DXT1:             # <<<<<<<<<<<<<<
@@ -1910,7 +1910,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_DXT1) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":150
+    /* "kivy/graphics/opengl_utils.pyx":141
  *     elif cap == c_GLCAP_DXT1:
  *         # DXT1 is included inside S3TC, but not the inverse.
  *         msg = 'DXT1 texture support'             # <<<<<<<<<<<<<<
@@ -1920,7 +1920,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_DXT1_texture_support);
     __pyx_v_msg = __pyx_kp_s_DXT1_texture_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":151
+    /* "kivy/graphics/opengl_utils.pyx":142
  *         # DXT1 is included inside S3TC, but not the inverse.
  *         msg = 'DXT1 texture support'
  *         value = gl_has_capability(c_GLCAP_S3TC)             # <<<<<<<<<<<<<<
@@ -1929,7 +1929,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
  */
     __pyx_v_value = __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(__pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_S3TC, 0);
 
-    /* "kivy/graphics/opengl_utils.pyx":152
+    /* "kivy/graphics/opengl_utils.pyx":143
  *         msg = 'DXT1 texture support'
  *         value = gl_has_capability(c_GLCAP_S3TC)
  *         if not value:             # <<<<<<<<<<<<<<
@@ -1939,7 +1939,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __pyx_t_4 = ((!(__pyx_v_value != 0)) != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/opengl_utils.pyx":153
+      /* "kivy/graphics/opengl_utils.pyx":144
  *         value = gl_has_capability(c_GLCAP_S3TC)
  *         if not value:
  *             value = gl_has_extension('EXT_texture_compression_dxt1')             # <<<<<<<<<<<<<<
@@ -1953,7 +1953,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":155
+  /* "kivy/graphics/opengl_utils.pyx":146
  *             value = gl_has_extension('EXT_texture_compression_dxt1')
  * 
  *     elif cap == c_GLCAP_PVRTC:             # <<<<<<<<<<<<<<
@@ -1963,7 +1963,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_PVRTC) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":157
+    /* "kivy/graphics/opengl_utils.pyx":148
  *     elif cap == c_GLCAP_PVRTC:
  *         # PVRTC = PowerVR, mostly available in iOS device
  *         msg = 'PVRTC texture support'             # <<<<<<<<<<<<<<
@@ -1973,7 +1973,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_PVRTC_texture_support);
     __pyx_v_msg = __pyx_kp_s_PVRTC_texture_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":158
+    /* "kivy/graphics/opengl_utils.pyx":149
  *         # PVRTC = PowerVR, mostly available in iOS device
  *         msg = 'PVRTC texture support'
  *         value = gl_has_extension('IMG_texture_compression_pvrtc')             # <<<<<<<<<<<<<<
@@ -1984,7 +1984,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":160
+  /* "kivy/graphics/opengl_utils.pyx":151
  *         value = gl_has_extension('IMG_texture_compression_pvrtc')
  * 
  *     elif cap == c_GLCAP_ETC1:             # <<<<<<<<<<<<<<
@@ -1994,7 +1994,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_ETC1) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":162
+    /* "kivy/graphics/opengl_utils.pyx":153
  *     elif cap == c_GLCAP_ETC1:
  *         # PVRTC = PowerVR, mostly available in iOS device
  *         msg = 'ETC1 texture support'             # <<<<<<<<<<<<<<
@@ -2004,7 +2004,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_ETC1_texture_support);
     __pyx_v_msg = __pyx_kp_s_ETC1_texture_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":163
+    /* "kivy/graphics/opengl_utils.pyx":154
  *         # PVRTC = PowerVR, mostly available in iOS device
  *         msg = 'ETC1 texture support'
  *         value = gl_has_extension('OES_compressed_ETC1_RGB8_texture')             # <<<<<<<<<<<<<<
@@ -2015,7 +2015,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":165
+  /* "kivy/graphics/opengl_utils.pyx":156
  *         value = gl_has_extension('OES_compressed_ETC1_RGB8_texture')
  * 
  *     elif cap == c_GLCAP_UNPACK_SUBIMAGE:             # <<<<<<<<<<<<<<
@@ -2025,7 +2025,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = ((__pyx_v_cap == __pyx_v_4kivy_8graphics_12opengl_utils_c_GLCAP_UNPACK_SUBIMAGE) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":167
+    /* "kivy/graphics/opengl_utils.pyx":158
  *     elif cap == c_GLCAP_UNPACK_SUBIMAGE:
  *         # Is GL_UNPACK_ROW_LENGTH is supported
  *         msg = 'Unpack subimage support'             # <<<<<<<<<<<<<<
@@ -2035,27 +2035,27 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     __Pyx_INCREF(__pyx_kp_s_Unpack_subimage_support);
     __pyx_v_msg = __pyx_kp_s_Unpack_subimage_support;
 
-    /* "kivy/graphics/opengl_utils.pyx":168
+    /* "kivy/graphics/opengl_utils.pyx":159
  *         # Is GL_UNPACK_ROW_LENGTH is supported
  *         msg = 'Unpack subimage support'
  *         if _platform == 'ios' or _platform == 'android':             # <<<<<<<<<<<<<<
  *             value = gl_has_extension('EXT_unpack_subimage')
  *         else:
  */
-    __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_ios, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_ios, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = (__pyx_t_5 != 0);
     if (!__pyx_t_6) {
     } else {
       __pyx_t_4 = __pyx_t_6;
       goto __pyx_L17_bool_binop_done;
     }
-    __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_android, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_v_4kivy_8graphics_12opengl_utils__platform, __pyx_n_s_android, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_5 = (__pyx_t_6 != 0);
     __pyx_t_4 = __pyx_t_5;
     __pyx_L17_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/opengl_utils.pyx":169
+      /* "kivy/graphics/opengl_utils.pyx":160
  *         msg = 'Unpack subimage support'
  *         if _platform == 'ios' or _platform == 'android':
  *             value = gl_has_extension('EXT_unpack_subimage')             # <<<<<<<<<<<<<<
@@ -2067,7 +2067,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
     }
     /*else*/ {
 
-      /* "kivy/graphics/opengl_utils.pyx":171
+      /* "kivy/graphics/opengl_utils.pyx":162
  *             value = gl_has_extension('EXT_unpack_subimage')
  *         else:
  *             value = 1             # <<<<<<<<<<<<<<
@@ -2081,41 +2081,41 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   }
   /*else*/ {
 
-    /* "kivy/graphics/opengl_utils.pyx":174
+    /* "kivy/graphics/opengl_utils.pyx":165
  * 
  *     else:
  *         raise Exception('Unknown capability')             # <<<<<<<<<<<<<<
  * 
  *     _gl_caps[cap] = value
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 174; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 174; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/opengl_utils.pyx":176
+  /* "kivy/graphics/opengl_utils.pyx":167
  *         raise Exception('Unknown capability')
  * 
  *     _gl_caps[cap] = value             # <<<<<<<<<<<<<<
  *     if value:
  *         Logger.info('GL: %s is available' % msg)
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   if (unlikely(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_cap); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_cap); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyDict_SetItem(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps, __pyx_t_1, __pyx_t_2) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(PyDict_SetItem(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps, __pyx_t_1, __pyx_t_2) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":177
+  /* "kivy/graphics/opengl_utils.pyx":168
  * 
  *     _gl_caps[cap] = value
  *     if value:             # <<<<<<<<<<<<<<
@@ -2125,19 +2125,19 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_t_4 = (__pyx_v_value != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/opengl_utils.pyx":178
+    /* "kivy/graphics/opengl_utils.pyx":169
  *     _gl_caps[cap] = value
  *     if value:
  *         Logger.info('GL: %s is available' % msg)             # <<<<<<<<<<<<<<
  *     else:
  *         Logger.warning('GL: %s is not available' % msg)
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_info); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_info); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_GL_s_is_available, __pyx_v_msg); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_GL_s_is_available, __pyx_v_msg); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_8 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_7))) {
@@ -2150,17 +2150,17 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
       }
     }
     if (!__pyx_t_8) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else {
-      __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __Pyx_GIVEREF(__pyx_t_8); __pyx_t_8 = NULL;
       PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 178; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
@@ -2170,19 +2170,19 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   }
   /*else*/ {
 
-    /* "kivy/graphics/opengl_utils.pyx":180
+    /* "kivy/graphics/opengl_utils.pyx":171
  *         Logger.info('GL: %s is available' % msg)
  *     else:
  *         Logger.warning('GL: %s is not available' % msg)             # <<<<<<<<<<<<<<
  * 
  *     return value
  */
-    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 171; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_warning); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_warning); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 171; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_GL_s_is_not_available, __pyx_v_msg); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_GL_s_is_not_available, __pyx_v_msg); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 171; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_1 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -2195,17 +2195,17 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
       }
     }
     if (!__pyx_t_1) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_7); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_7); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 171; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 171; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_1); __Pyx_GIVEREF(__pyx_t_1); __pyx_t_1 = NULL;
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 171; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -2214,7 +2214,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   }
   __pyx_L19:;
 
-  /* "kivy/graphics/opengl_utils.pyx":182
+  /* "kivy/graphics/opengl_utils.pyx":173
  *         Logger.warning('GL: %s is not available' % msg)
  * 
  *     return value             # <<<<<<<<<<<<<<
@@ -2224,7 +2224,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":93
+  /* "kivy/graphics/opengl_utils.pyx":84
  * 
  * 
  * cpdef int gl_has_capability(int cap):             # <<<<<<<<<<<<<<
@@ -2250,7 +2250,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(int __pyx_v_
 
 /* Python wrapper */
 static PyObject *__pyx_pw_4kivy_8graphics_12opengl_utils_7gl_has_capability(PyObject *__pyx_self, PyObject *__pyx_arg_cap); /*proto*/
-static char __pyx_doc_4kivy_8graphics_12opengl_utils_6gl_has_capability[] = "Return the status of a OpenGL Capability. This is a wrapper that\n    auto-discovers all the capabilities that Kivy might need. The current\n    capabilities tested are:\n\n        - GLCAP_BGRA: Test the support of BGRA texture format\n        - GLCAP_NPOT: Test the support of Non Power of Two texture\n        - GLCAP_S3TC: Test the support of S3TC texture (DXT1, DXT3, DXT5)\n        - GLCAP_DXT1: Test the support of DXT texture (subset of S3TC)\n        - GLCAP_ETC1: Test the support of ETC1 texture\n\n    ";
+static char __pyx_doc_4kivy_8graphics_12opengl_utils_6gl_has_capability[] = "Return the status of a OpenGL Capability. This is a wrapper that\n    auto-discovers all the capabilities that Kivy might need. The current\n    capabilites tested are:\n\n        - GLCAP_BGRA: Test the support of BGRA texture format\n        - GLCAP_NPOT: Test the support of Non Power of Two texture\n        - GLCAP_S3TC: Test the support of S3TC texture (DXT1, DXT3, DXT5)\n        - GLCAP_DXT1: Test the support of DXT texture (subset of S3TC)\n        - GLCAP_ETC1: Test the support of ETC1 texture\n\n    ";
 static PyObject *__pyx_pw_4kivy_8graphics_12opengl_utils_7gl_has_capability(PyObject *__pyx_self, PyObject *__pyx_arg_cap) {
   int __pyx_v_cap;
   int __pyx_lineno = 0;
@@ -2260,7 +2260,7 @@ static PyObject *__pyx_pw_4kivy_8graphics_12opengl_utils_7gl_has_capability(PyOb
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("gl_has_capability (wrapper)", 0);
   assert(__pyx_arg_cap); {
-    __pyx_v_cap = __Pyx_PyInt_As_int(__pyx_arg_cap); if (unlikely((__pyx_v_cap == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_cap = __Pyx_PyInt_As_int(__pyx_arg_cap); if (unlikely((__pyx_v_cap == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2284,7 +2284,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_6gl_has_capability(CYTH
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_capability", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(__pyx_v_cap, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_capability(__pyx_v_cap, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2301,7 +2301,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_6gl_has_capability(CYTH
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":185
+/* "kivy/graphics/opengl_utils.pyx":176
  * 
  * 
  * cpdef tuple gl_get_texture_formats():             # <<<<<<<<<<<<<<
@@ -2315,7 +2315,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_texture_formats(C
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("gl_get_texture_formats", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":194
+  /* "kivy/graphics/opengl_utils.pyx":185
  * 
  *     '''
  *     return _gl_texture_fmts             # <<<<<<<<<<<<<<
@@ -2327,7 +2327,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_texture_formats(C
   __pyx_r = __pyx_v_4kivy_8graphics_12opengl_utils__gl_texture_fmts;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":185
+  /* "kivy/graphics/opengl_utils.pyx":176
  * 
  * 
  * cpdef tuple gl_get_texture_formats():             # <<<<<<<<<<<<<<
@@ -2365,7 +2365,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_8gl_get_texture_formats
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_texture_formats", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_texture_formats(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 185; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_texture_formats(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2382,7 +2382,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_8gl_get_texture_formats
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":197
+/* "kivy/graphics/opengl_utils.pyx":188
  * 
  * 
  * cpdef int gl_has_texture_native_format(fmt):             # <<<<<<<<<<<<<<
@@ -2403,7 +2403,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_texture_native_format", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":210
+  /* "kivy/graphics/opengl_utils.pyx":201
  * 
  *     '''
  *     if fmt in ('rgb', 'rgba', 'luminance', 'luminance_alpha', 'red', 'rg'):             # <<<<<<<<<<<<<<
@@ -2412,44 +2412,44 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
  */
   __Pyx_INCREF(__pyx_v_fmt);
   __pyx_t_1 = __pyx_v_fmt;
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_rgb, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_rgb, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_rgba, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_rgba, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_luminance, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_luminance, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_luminance_alpha, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_luminance_alpha, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_red, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_red, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_rg, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_rg, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/opengl_utils.pyx":211
+    /* "kivy/graphics/opengl_utils.pyx":202
  *     '''
  *     if fmt in ('rgb', 'rgba', 'luminance', 'luminance_alpha', 'red', 'rg'):
  *         return 1             # <<<<<<<<<<<<<<
@@ -2460,7 +2460,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":212
+  /* "kivy/graphics/opengl_utils.pyx":203
  *     if fmt in ('rgb', 'rgba', 'luminance', 'luminance_alpha', 'red', 'rg'):
  *         return 1
  *     if fmt in ('palette4_rgb8', 'palette4_rgba8', 'palette4_r5_g6_b5', 'palette4_rgba4', 'palette4_rgb5_a1', 'palette8_rgb8', 'palette8_rgba8', 'palette8_r5_g6_b5', 'palette8_rgba4', 'palette8_rgb5_a1'):             # <<<<<<<<<<<<<<
@@ -2469,68 +2469,68 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
  */
   __Pyx_INCREF(__pyx_v_fmt);
   __pyx_t_1 = __pyx_v_fmt;
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgb8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgb8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgba8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgba8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_r5_g6_b5, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_r5_g6_b5, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgba4, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgba4, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgb5_a1, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette4_rgb5_a1, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgb8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgb8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgba8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgba8, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_r5_g6_b5, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_r5_g6_b5, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgba4, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgba4, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgb5_a1, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_palette8_rgb5_a1, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 203; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = __pyx_t_2;
   __pyx_L11_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/opengl_utils.pyx":213
+    /* "kivy/graphics/opengl_utils.pyx":204
  *         return 1
  *     if fmt in ('palette4_rgb8', 'palette4_rgba8', 'palette4_r5_g6_b5', 'palette4_rgba4', 'palette4_rgb5_a1', 'palette8_rgb8', 'palette8_rgba8', 'palette8_r5_g6_b5', 'palette8_rgba4', 'palette8_rgb5_a1'):
  *         return gl_has_extension('OES_compressed_paletted_texture')             # <<<<<<<<<<<<<<
@@ -2541,7 +2541,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":214
+  /* "kivy/graphics/opengl_utils.pyx":205
  *     if fmt in ('palette4_rgb8', 'palette4_rgba8', 'palette4_r5_g6_b5', 'palette4_rgba4', 'palette4_rgb5_a1', 'palette8_rgb8', 'palette8_rgba8', 'palette8_r5_g6_b5', 'palette8_rgba4', 'palette8_rgb5_a1'):
  *         return gl_has_extension('OES_compressed_paletted_texture')
  *     if fmt in ('bgr', 'bgra'):             # <<<<<<<<<<<<<<
@@ -2550,20 +2550,20 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
  */
   __Pyx_INCREF(__pyx_v_fmt);
   __pyx_t_1 = __pyx_v_fmt;
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgr, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgr, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L22_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgra, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgra, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = __pyx_t_3;
   __pyx_L22_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/opengl_utils.pyx":215
+    /* "kivy/graphics/opengl_utils.pyx":206
  *         return gl_has_extension('OES_compressed_paletted_texture')
  *     if fmt in ('bgr', 'bgra'):
  *         return gl_has_capability(c_GLCAP_BGRA)             # <<<<<<<<<<<<<<
@@ -2574,17 +2574,17 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":216
+  /* "kivy/graphics/opengl_utils.pyx":207
  *     if fmt in ('bgr', 'bgra'):
  *         return gl_has_capability(c_GLCAP_BGRA)
  *     if fmt == 's3tc_dxt1':             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_DXT1)
  *     if fmt.startswith('s3tc_dxt'):
  */
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_v_fmt, __pyx_n_s_s3tc_dxt1, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_v_fmt, __pyx_n_s_s3tc_dxt1, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/opengl_utils.pyx":217
+    /* "kivy/graphics/opengl_utils.pyx":208
  *         return gl_has_capability(c_GLCAP_BGRA)
  *     if fmt == 's3tc_dxt1':
  *         return gl_has_capability(c_GLCAP_DXT1)             # <<<<<<<<<<<<<<
@@ -2595,23 +2595,23 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":218
+  /* "kivy/graphics/opengl_utils.pyx":209
  *     if fmt == 's3tc_dxt1':
  *         return gl_has_capability(c_GLCAP_DXT1)
  *     if fmt.startswith('s3tc_dxt'):             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_S3TC)
  *     if fmt.startswith('pvrtc_'):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/opengl_utils.pyx":219
+    /* "kivy/graphics/opengl_utils.pyx":210
  *         return gl_has_capability(c_GLCAP_DXT1)
  *     if fmt.startswith('s3tc_dxt'):
  *         return gl_has_capability(c_GLCAP_S3TC)             # <<<<<<<<<<<<<<
@@ -2622,23 +2622,23 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":220
+  /* "kivy/graphics/opengl_utils.pyx":211
  *     if fmt.startswith('s3tc_dxt'):
  *         return gl_has_capability(c_GLCAP_S3TC)
  *     if fmt.startswith('pvrtc_'):             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_PVRTC)
  *     if fmt.startswith('etc1_'):
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/opengl_utils.pyx":221
+    /* "kivy/graphics/opengl_utils.pyx":212
  *         return gl_has_capability(c_GLCAP_S3TC)
  *     if fmt.startswith('pvrtc_'):
  *         return gl_has_capability(c_GLCAP_PVRTC)             # <<<<<<<<<<<<<<
@@ -2649,23 +2649,23 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":222
+  /* "kivy/graphics/opengl_utils.pyx":213
  *     if fmt.startswith('pvrtc_'):
  *         return gl_has_capability(c_GLCAP_PVRTC)
  *     if fmt.startswith('etc1_'):             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_ETC1)
  *     return 0
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_fmt, __pyx_n_s_startswith); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/opengl_utils.pyx":223
+    /* "kivy/graphics/opengl_utils.pyx":214
  *         return gl_has_capability(c_GLCAP_PVRTC)
  *     if fmt.startswith('etc1_'):
  *         return gl_has_capability(c_GLCAP_ETC1)             # <<<<<<<<<<<<<<
@@ -2676,7 +2676,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":224
+  /* "kivy/graphics/opengl_utils.pyx":215
  *     if fmt.startswith('etc1_'):
  *         return gl_has_capability(c_GLCAP_ETC1)
  *     return 0             # <<<<<<<<<<<<<<
@@ -2686,7 +2686,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(P
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":197
+  /* "kivy/graphics/opengl_utils.pyx":188
  * 
  * 
  * cpdef int gl_has_texture_native_format(fmt):             # <<<<<<<<<<<<<<
@@ -2728,7 +2728,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_10gl_has_texture_native
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_texture_native_format", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(__pyx_v_fmt, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(__pyx_v_fmt, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2745,7 +2745,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_10gl_has_texture_native
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":227
+/* "kivy/graphics/opengl_utils.pyx":218
  * 
  * 
  * cpdef int gl_has_texture_conversion(fmt):             # <<<<<<<<<<<<<<
@@ -2765,7 +2765,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_conversion(PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_texture_conversion", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":230
+  /* "kivy/graphics/opengl_utils.pyx":221
  *     '''Return 1 if the texture can be converted to a native format.
  *     '''
  *     return fmt in ('bgr', 'bgra')             # <<<<<<<<<<<<<<
@@ -2774,20 +2774,20 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_conversion(PyOb
  */
   __Pyx_INCREF(__pyx_v_fmt);
   __pyx_t_1 = __pyx_v_fmt;
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgr, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgr, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgra, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_bgra, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 221; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = __pyx_t_3;
   __pyx_L3_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":227
+  /* "kivy/graphics/opengl_utils.pyx":218
  * 
  * 
  * cpdef int gl_has_texture_conversion(fmt):             # <<<<<<<<<<<<<<
@@ -2828,7 +2828,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_12gl_has_texture_conver
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_texture_conversion", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_conversion(__pyx_v_fmt, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 227; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_conversion(__pyx_v_fmt, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2845,7 +2845,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_12gl_has_texture_conver
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":233
+/* "kivy/graphics/opengl_utils.pyx":224
  * 
  * 
  * cpdef int gl_has_texture_format(fmt):             # <<<<<<<<<<<<<<
@@ -2860,7 +2860,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_format(PyObject
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("gl_has_texture_format", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":239
+  /* "kivy/graphics/opengl_utils.pyx":230
  *     '''
  *     # check if the support of a format can be done natively
  *     if gl_has_texture_native_format(fmt):             # <<<<<<<<<<<<<<
@@ -2870,7 +2870,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_format(PyObject
   __pyx_t_1 = (__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_native_format(__pyx_v_fmt, 0) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/opengl_utils.pyx":240
+    /* "kivy/graphics/opengl_utils.pyx":231
  *     # check if the support of a format can be done natively
  *     if gl_has_texture_native_format(fmt):
  *         return 1             # <<<<<<<<<<<<<<
@@ -2881,7 +2881,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_format(PyObject
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/opengl_utils.pyx":242
+  /* "kivy/graphics/opengl_utils.pyx":233
  *         return 1
  *     # otherwise, check if it can be converted
  *     return gl_has_texture_conversion(fmt)             # <<<<<<<<<<<<<<
@@ -2891,7 +2891,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_format(PyObject
   __pyx_r = __pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_conversion(__pyx_v_fmt, 0);
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":233
+  /* "kivy/graphics/opengl_utils.pyx":224
  * 
  * 
  * cpdef int gl_has_texture_format(fmt):             # <<<<<<<<<<<<<<
@@ -2928,7 +2928,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_14gl_has_texture_format
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_has_texture_format", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_format(__pyx_v_fmt, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_has_texture_format(__pyx_v_fmt, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2945,7 +2945,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_14gl_has_texture_format
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":245
+/* "kivy/graphics/opengl_utils.pyx":236
  * 
  * 
  * cpdef tuple gl_get_version():             # <<<<<<<<<<<<<<
@@ -2980,7 +2980,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_version", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":254
+  /* "kivy/graphics/opengl_utils.pyx":245
  *     cdef str version
  * 
  *     if _gl_version_major == -1:             # <<<<<<<<<<<<<<
@@ -2990,39 +2990,39 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major == -1) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/opengl_utils.pyx":256
+    /* "kivy/graphics/opengl_utils.pyx":247
  *     if _gl_version_major == -1:
  * 
  *         _gl_version_minor = _gl_version_major = 0             # <<<<<<<<<<<<<<
- *         version = str(<char *>cgl.glGetString(c_opengl.GL_VERSION))
+ *         version = str(<char *>c_opengl.glGetString(c_opengl.GL_VERSION))
  * 
  */
     __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_minor = 0;
     __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major = 0;
 
-    /* "kivy/graphics/opengl_utils.pyx":257
+    /* "kivy/graphics/opengl_utils.pyx":248
  * 
  *         _gl_version_minor = _gl_version_major = 0
- *         version = str(<char *>cgl.glGetString(c_opengl.GL_VERSION))             # <<<<<<<<<<<<<<
+ *         version = str(<char *>c_opengl.glGetString(c_opengl.GL_VERSION))             # <<<<<<<<<<<<<<
  * 
  *         try:
  */
-    __pyx_t_2 = __Pyx_PyUnicode_FromString(((char *)glGetString(GL_VERSION))); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyUnicode_FromString(((char *)glGetString(GL_VERSION))); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyString_Type))), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyString_Type))), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_version = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "kivy/graphics/opengl_utils.pyx":259
- *         version = str(<char *>cgl.glGetString(c_opengl.GL_VERSION))
+    /* "kivy/graphics/opengl_utils.pyx":250
+ *         version = str(<char *>c_opengl.glGetString(c_opengl.GL_VERSION))
  * 
  *         try:             # <<<<<<<<<<<<<<
  *             # same parsing algo as Panda3D
@@ -3035,7 +3035,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
       __Pyx_XGOTREF(__pyx_t_6);
       /*try:*/ {
 
-        /* "kivy/graphics/opengl_utils.pyx":261
+        /* "kivy/graphics/opengl_utils.pyx":252
  *         try:
  *             # same parsing algo as Panda3D
  *             sver = ''             # <<<<<<<<<<<<<<
@@ -3045,7 +3045,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
         __Pyx_INCREF(__pyx_kp_s__9);
         __pyx_v_sver = __pyx_kp_s__9;
 
-        /* "kivy/graphics/opengl_utils.pyx":262
+        /* "kivy/graphics/opengl_utils.pyx":253
  *             # same parsing algo as Panda3D
  *             sver = ''
  *             found = 0             # <<<<<<<<<<<<<<
@@ -3054,16 +3054,16 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
  */
         __pyx_v_found = 0;
 
-        /* "kivy/graphics/opengl_utils.pyx":263
+        /* "kivy/graphics/opengl_utils.pyx":254
  *             sver = ''
  *             found = 0
  *             for c in version:             # <<<<<<<<<<<<<<
  *                 if found and c == ' ':
  *                     break
  */
-        __pyx_t_2 = PyObject_GetIter(__pyx_v_version); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_2 = PyObject_GetIter(__pyx_v_version); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         for (;;) {
           {
             __pyx_t_3 = __pyx_t_7(__pyx_t_2);
@@ -3071,7 +3071,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+                else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
               }
               break;
             }
@@ -3080,7 +3080,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
           __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_3);
           __pyx_t_3 = 0;
 
-          /* "kivy/graphics/opengl_utils.pyx":264
+          /* "kivy/graphics/opengl_utils.pyx":255
  *             found = 0
  *             for c in version:
  *                 if found and c == ' ':             # <<<<<<<<<<<<<<
@@ -3093,12 +3093,12 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
             __pyx_t_1 = __pyx_t_8;
             goto __pyx_L15_bool_binop_done;
           }
-          __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_v_c, __pyx_kp_s__10, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_8 = (__Pyx_PyString_Equals(__pyx_v_c, __pyx_kp_s__10, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 255; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __pyx_t_1 = __pyx_t_8;
           __pyx_L15_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "kivy/graphics/opengl_utils.pyx":265
+            /* "kivy/graphics/opengl_utils.pyx":256
  *             for c in version:
  *                 if found and c == ' ':
  *                     break             # <<<<<<<<<<<<<<
@@ -3108,32 +3108,32 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
             goto __pyx_L13_break;
           }
 
-          /* "kivy/graphics/opengl_utils.pyx":266
+          /* "kivy/graphics/opengl_utils.pyx":257
  *                 if found and c == ' ':
  *                     break
  *                 if 49 <= ord(c) <= 57:             # <<<<<<<<<<<<<<
  *                     found = 1
  *                 if found:
  */
-          __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_INCREF(__pyx_v_c);
           PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_c);
           __Pyx_GIVEREF(__pyx_v_c);
-          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ord, __pyx_t_3, NULL); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ord, __pyx_t_3, NULL); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = PyObject_RichCompare(__pyx_int_49, __pyx_t_9, Py_LE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_3 = PyObject_RichCompare(__pyx_int_49, __pyx_t_9, Py_LE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           if (__Pyx_PyObject_IsTrue(__pyx_t_3)) {
             __Pyx_DECREF(__pyx_t_3);
-            __pyx_t_3 = PyObject_RichCompare(__pyx_t_9, __pyx_int_57, Py_LE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+            __pyx_t_3 = PyObject_RichCompare(__pyx_t_9, __pyx_int_57, Py_LE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           }
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           if (__pyx_t_1) {
 
-            /* "kivy/graphics/opengl_utils.pyx":267
+            /* "kivy/graphics/opengl_utils.pyx":258
  *                     break
  *                 if 49 <= ord(c) <= 57:
  *                     found = 1             # <<<<<<<<<<<<<<
@@ -3145,7 +3145,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
           }
           __pyx_L17:;
 
-          /* "kivy/graphics/opengl_utils.pyx":268
+          /* "kivy/graphics/opengl_utils.pyx":259
  *                 if 49 <= ord(c) <= 57:
  *                     found = 1
  *                 if found:             # <<<<<<<<<<<<<<
@@ -3155,14 +3155,14 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
           __pyx_t_1 = (__pyx_v_found != 0);
           if (__pyx_t_1) {
 
-            /* "kivy/graphics/opengl_utils.pyx":269
+            /* "kivy/graphics/opengl_utils.pyx":260
  *                     found = 1
  *                 if found:
  *                     sver += c             # <<<<<<<<<<<<<<
  * 
  *             component = sver.split('.')
  */
-            __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_sver, __pyx_v_c); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+            __pyx_t_3 = PyNumber_InPlaceAdd(__pyx_v_sver, __pyx_v_c); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 260; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF_SET(__pyx_v_sver, __pyx_t_3);
             __pyx_t_3 = 0;
@@ -3170,7 +3170,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
           }
           __pyx_L18:;
 
-          /* "kivy/graphics/opengl_utils.pyx":263
+          /* "kivy/graphics/opengl_utils.pyx":254
  *             sver = ''
  *             found = 0
  *             for c in version:             # <<<<<<<<<<<<<<
@@ -3181,75 +3181,75 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
         __pyx_L13_break:;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "kivy/graphics/opengl_utils.pyx":271
+        /* "kivy/graphics/opengl_utils.pyx":262
  *                     sver += c
  * 
  *             component = sver.split('.')             # <<<<<<<<<<<<<<
  *             if len(component) >= 1:
  *                 _gl_version_major = int(component[0])
  */
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_sver, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_sver, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_v_component = __pyx_t_3;
         __pyx_t_3 = 0;
 
-        /* "kivy/graphics/opengl_utils.pyx":272
+        /* "kivy/graphics/opengl_utils.pyx":263
  * 
  *             component = sver.split('.')
  *             if len(component) >= 1:             # <<<<<<<<<<<<<<
  *                 _gl_version_major = int(component[0])
  *             if len(component) >= 2:
  */
-        __pyx_t_10 = PyObject_Length(__pyx_v_component); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_10 = PyObject_Length(__pyx_v_component); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_t_1 = ((__pyx_t_10 >= 1) != 0);
         if (__pyx_t_1) {
 
-          /* "kivy/graphics/opengl_utils.pyx":273
+          /* "kivy/graphics/opengl_utils.pyx":264
  *             component = sver.split('.')
  *             if len(component) >= 1:
  *                 _gl_version_major = int(component[0])             # <<<<<<<<<<<<<<
  *             if len(component) >= 2:
  *                 _gl_version_minor = int(component[1])
  */
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_component, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L4_error;};
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_component, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L4_error;};
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_2 = PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major = __pyx_t_11;
           goto __pyx_L19;
         }
         __pyx_L19:;
 
-        /* "kivy/graphics/opengl_utils.pyx":274
+        /* "kivy/graphics/opengl_utils.pyx":265
  *             if len(component) >= 1:
  *                 _gl_version_major = int(component[0])
  *             if len(component) >= 2:             # <<<<<<<<<<<<<<
  *                 _gl_version_minor = int(component[1])
  * 
  */
-        __pyx_t_10 = PyObject_Length(__pyx_v_component); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 274; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+        __pyx_t_10 = PyObject_Length(__pyx_v_component); if (unlikely(__pyx_t_10 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
         __pyx_t_1 = ((__pyx_t_10 >= 2) != 0);
         if (__pyx_t_1) {
 
-          /* "kivy/graphics/opengl_utils.pyx":275
+          /* "kivy/graphics/opengl_utils.pyx":266
  *                 _gl_version_major = int(component[0])
  *             if len(component) >= 2:
  *                 _gl_version_minor = int(component[1])             # <<<<<<<<<<<<<<
  * 
  *         except:
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_component, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L4_error;};
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_component, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;};
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_3 = PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_3 = PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+          __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_minor = __pyx_t_11;
           goto __pyx_L20;
@@ -3265,7 +3265,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "kivy/graphics/opengl_utils.pyx":277
+      /* "kivy/graphics/opengl_utils.pyx":268
  *                 _gl_version_minor = int(component[1])
  * 
  *         except:             # <<<<<<<<<<<<<<
@@ -3274,24 +3274,24 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
  */
       /*except:*/ {
         __Pyx_AddTraceback("kivy.graphics.opengl_utils.gl_get_version", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_2, &__pyx_t_9) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "kivy/graphics/opengl_utils.pyx":278
+        /* "kivy/graphics/opengl_utils.pyx":269
  * 
  *         except:
  *             Logger.warning('OpenGL: Error while parsing GL_VERSION')             # <<<<<<<<<<<<<<
  * 
  *     return _gl_version_major, _gl_version_minor
  */
-        __pyx_t_12 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
+        __pyx_t_12 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_warning); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_warning); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
+        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L6_except_error;}
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -3317,7 +3317,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/opengl_utils.pyx":280
+  /* "kivy/graphics/opengl_utils.pyx":271
  *             Logger.warning('OpenGL: Error while parsing GL_VERSION')
  * 
  *     return _gl_version_major, _gl_version_minor             # <<<<<<<<<<<<<<
@@ -3325,11 +3325,11 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_minor); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_minor); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
@@ -3341,7 +3341,7 @@ static PyObject *__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(CYTHON_UN
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":245
+  /* "kivy/graphics/opengl_utils.pyx":236
  * 
  * 
  * cpdef tuple gl_get_version():             # <<<<<<<<<<<<<<
@@ -3391,7 +3391,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_16gl_get_version(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_version", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3408,7 +3408,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_16gl_get_version(CYTHON
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":283
+/* "kivy/graphics/opengl_utils.pyx":274
  * 
  * 
  * cpdef int gl_get_version_major():             # <<<<<<<<<<<<<<
@@ -3427,7 +3427,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_major(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_version_major", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":288
+  /* "kivy/graphics/opengl_utils.pyx":279
  *     .. versionadded:: 1.2.0
  *     '''
  *     if _gl_version_major == -1:             # <<<<<<<<<<<<<<
@@ -3437,21 +3437,21 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_major(CYTHON_UN
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major == -1) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/opengl_utils.pyx":289
+    /* "kivy/graphics/opengl_utils.pyx":280
  *     '''
  *     if _gl_version_major == -1:
  *         gl_get_version()             # <<<<<<<<<<<<<<
  *     return _gl_version_major
  * 
  */
-    __pyx_t_2 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/opengl_utils.pyx":290
+  /* "kivy/graphics/opengl_utils.pyx":281
  *     if _gl_version_major == -1:
  *         gl_get_version()
  *     return _gl_version_major             # <<<<<<<<<<<<<<
@@ -3461,7 +3461,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_major(CYTHON_UN
   __pyx_r = __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":283
+  /* "kivy/graphics/opengl_utils.pyx":274
  * 
  * 
  * cpdef int gl_get_version_major():             # <<<<<<<<<<<<<<
@@ -3502,7 +3502,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_18gl_get_version_major(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_version_major", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_major(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_major(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 274; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3519,7 +3519,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_18gl_get_version_major(
   return __pyx_r;
 }
 
-/* "kivy/graphics/opengl_utils.pyx":293
+/* "kivy/graphics/opengl_utils.pyx":284
  * 
  * 
  * cpdef int gl_get_version_minor():             # <<<<<<<<<<<<<<
@@ -3538,7 +3538,7 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_minor(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_version_minor", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":298
+  /* "kivy/graphics/opengl_utils.pyx":289
  *     .. versionadded:: 1.2.0
  *     '''
  *     if _gl_version_major == -1:             # <<<<<<<<<<<<<<
@@ -3548,28 +3548,31 @@ static int __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_minor(CYTHON_UN
   __pyx_t_1 = ((__pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major == -1) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/opengl_utils.pyx":299
+    /* "kivy/graphics/opengl_utils.pyx":290
  *     '''
  *     if _gl_version_major == -1:
  *         gl_get_version()             # <<<<<<<<<<<<<<
  *     return _gl_version_minor
+ * 
  */
-    __pyx_t_2 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/opengl_utils.pyx":300
+  /* "kivy/graphics/opengl_utils.pyx":291
  *     if _gl_version_major == -1:
  *         gl_get_version()
  *     return _gl_version_minor             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
   __pyx_r = __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_minor;
   goto __pyx_L0;
 
-  /* "kivy/graphics/opengl_utils.pyx":293
+  /* "kivy/graphics/opengl_utils.pyx":284
  * 
  * 
  * cpdef int gl_get_version_minor():             # <<<<<<<<<<<<<<
@@ -3610,7 +3613,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_12opengl_utils_20gl_get_version_minor(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("gl_get_version_minor", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_minor(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_f_4kivy_8graphics_12opengl_utils_gl_get_version_minor(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 284; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3713,20 +3716,20 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_etc1, __pyx_k_etc1, sizeof(__pyx_k_etc1), 0, 0, 1, 1},
   {&__pyx_n_s_get, __pyx_k_get, sizeof(__pyx_k_get), 0, 0, 1, 1},
   {&__pyx_n_s_gl_get_extensions, __pyx_k_gl_get_extensions, sizeof(__pyx_k_gl_get_extensions), 0, 0, 1, 1},
-  {&__pyx_kp_u_gl_get_extensions_line_41, __pyx_k_gl_get_extensions_line_41, sizeof(__pyx_k_gl_get_extensions_line_41), 0, 1, 0, 0},
+  {&__pyx_kp_u_gl_get_extensions_line_34, __pyx_k_gl_get_extensions_line_34, sizeof(__pyx_k_gl_get_extensions_line_34), 0, 1, 0, 0},
   {&__pyx_n_s_gl_get_texture_formats, __pyx_k_gl_get_texture_formats, sizeof(__pyx_k_gl_get_texture_formats), 0, 0, 1, 1},
   {&__pyx_n_s_gl_get_version, __pyx_k_gl_get_version, sizeof(__pyx_k_gl_get_version), 0, 0, 1, 1},
   {&__pyx_n_s_gl_get_version_major, __pyx_k_gl_get_version_major, sizeof(__pyx_k_gl_get_version_major), 0, 0, 1, 1},
   {&__pyx_n_s_gl_get_version_minor, __pyx_k_gl_get_version_minor, sizeof(__pyx_k_gl_get_version_minor), 0, 0, 1, 1},
   {&__pyx_n_s_gl_has_capability, __pyx_k_gl_has_capability, sizeof(__pyx_k_gl_has_capability), 0, 0, 1, 1},
   {&__pyx_n_s_gl_has_extension, __pyx_k_gl_has_extension, sizeof(__pyx_k_gl_has_extension), 0, 0, 1, 1},
-  {&__pyx_kp_u_gl_has_extension_line_59, __pyx_k_gl_has_extension_line_59, sizeof(__pyx_k_gl_has_extension_line_59), 0, 1, 0, 0},
+  {&__pyx_kp_u_gl_has_extension_line_52, __pyx_k_gl_has_extension_line_52, sizeof(__pyx_k_gl_has_extension_line_52), 0, 1, 0, 0},
   {&__pyx_n_s_gl_has_texture_conversion, __pyx_k_gl_has_texture_conversion, sizeof(__pyx_k_gl_has_texture_conversion), 0, 0, 1, 1},
   {&__pyx_n_s_gl_has_texture_format, __pyx_k_gl_has_texture_format, sizeof(__pyx_k_gl_has_texture_format), 0, 0, 1, 1},
   {&__pyx_n_s_gl_has_texture_native_format, __pyx_k_gl_has_texture_native_format, sizeof(__pyx_k_gl_has_texture_native_format), 0, 0, 1, 1},
   {&__pyx_kp_u_gl_has_texture_native_format_lin, __pyx_k_gl_has_texture_native_format_lin, sizeof(__pyx_k_gl_has_texture_native_format_lin), 0, 1, 0, 0},
   {&__pyx_n_s_gl_register_get_size, __pyx_k_gl_register_get_size, sizeof(__pyx_k_gl_register_get_size), 0, 0, 1, 1},
-  {&__pyx_kp_u_gl_register_get_size_line_77, __pyx_k_gl_register_get_size_line_77, sizeof(__pyx_k_gl_register_get_size_line_77), 0, 1, 0, 0},
+  {&__pyx_kp_u_gl_register_get_size_line_68, __pyx_k_gl_register_get_size_line_68, sizeof(__pyx_k_gl_register_get_size_line_68), 0, 1, 0, 0},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_info, __pyx_k_info, sizeof(__pyx_k_info), 0, 0, 1, 1},
   {&__pyx_n_s_ios, __pyx_k_ios, sizeof(__pyx_k_ios), 0, 0, 1, 1},
@@ -3770,8 +3773,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 174; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_ord = __Pyx_GetBuiltinName(__pyx_n_s_ord); if (!__pyx_builtin_ord) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_ord = __Pyx_GetBuiltinName(__pyx_n_s_ord); if (!__pyx_builtin_ord) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3781,105 +3784,105 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "kivy/graphics/opengl_utils.pyx":54
+  /* "kivy/graphics/opengl_utils.pyx":47
  *     if not _gl_extensions:
- *         extensions = <char *>cgl.glGetString(c_opengl.GL_EXTENSIONS)
+ *         extensions = <char *>c_opengl.glGetString(c_opengl.GL_EXTENSIONS)
  *         _gl_extensions[:] = [x[3:].lower() if x[:3] == 'GL_' else x.lower()\             # <<<<<<<<<<<<<<
  *                 for x in extensions.split()]
  *     return _gl_extensions
  */
-  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_slice_ = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
-  __pyx_slice__2 = PySlice_New(__pyx_int_3, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_slice__2 = PySlice_New(__pyx_int_3, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
 
-  /* "kivy/graphics/opengl_utils.pyx":72
- *         return True
+  /* "kivy/graphics/opengl_utils.pyx":63
+ *     '''
  *     name = name.lower()
  *     if name.startswith('GL_'):             # <<<<<<<<<<<<<<
  *         name = name[3:]
  *     return name in gl_get_extensions()
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_GL); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 72; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_GL); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "kivy/graphics/opengl_utils.pyx":73
+  /* "kivy/graphics/opengl_utils.pyx":64
  *     name = name.lower()
  *     if name.startswith('GL_'):
  *         name = name[3:]             # <<<<<<<<<<<<<<
  *     return name in gl_get_extensions()
  * 
  */
-  __pyx_slice__4 = PySlice_New(__pyx_int_3, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_slice__4 = PySlice_New(__pyx_int_3, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
-  /* "kivy/graphics/opengl_utils.pyx":174
+  /* "kivy/graphics/opengl_utils.pyx":165
  * 
  *     else:
  *         raise Exception('Unknown capability')             # <<<<<<<<<<<<<<
  * 
  *     _gl_caps[cap] = value
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Unknown_capability); if (unlikely(!__pyx_tuple__5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 174; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_Unknown_capability); if (unlikely(!__pyx_tuple__5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "kivy/graphics/opengl_utils.pyx":218
+  /* "kivy/graphics/opengl_utils.pyx":209
  *     if fmt == 's3tc_dxt1':
  *         return gl_has_capability(c_GLCAP_DXT1)
  *     if fmt.startswith('s3tc_dxt'):             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_S3TC)
  *     if fmt.startswith('pvrtc_'):
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_n_s_s3tc_dxt); if (unlikely(!__pyx_tuple__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_n_s_s3tc_dxt); if (unlikely(!__pyx_tuple__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "kivy/graphics/opengl_utils.pyx":220
+  /* "kivy/graphics/opengl_utils.pyx":211
  *     if fmt.startswith('s3tc_dxt'):
  *         return gl_has_capability(c_GLCAP_S3TC)
  *     if fmt.startswith('pvrtc_'):             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_PVRTC)
  *     if fmt.startswith('etc1_'):
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_pvrtc); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_pvrtc); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "kivy/graphics/opengl_utils.pyx":222
+  /* "kivy/graphics/opengl_utils.pyx":213
  *     if fmt.startswith('pvrtc_'):
  *         return gl_has_capability(c_GLCAP_PVRTC)
  *     if fmt.startswith('etc1_'):             # <<<<<<<<<<<<<<
  *         return gl_has_capability(c_GLCAP_ETC1)
  *     return 0
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_n_s_etc1); if (unlikely(!__pyx_tuple__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_n_s_etc1); if (unlikely(!__pyx_tuple__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "kivy/graphics/opengl_utils.pyx":271
+  /* "kivy/graphics/opengl_utils.pyx":262
  *                     sver += c
  * 
  *             component = sver.split('.')             # <<<<<<<<<<<<<<
  *             if len(component) >= 1:
  *                 _gl_version_major = int(component[0])
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__11); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__11); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "kivy/graphics/opengl_utils.pyx":278
+  /* "kivy/graphics/opengl_utils.pyx":269
  * 
  *         except:
  *             Logger.warning('OpenGL: Error while parsing GL_VERSION')             # <<<<<<<<<<<<<<
  * 
  *     return _gl_version_major, _gl_version_minor
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_OpenGL_Error_while_parsing_GL_VE); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_OpenGL_Error_while_parsing_GL_VE); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
@@ -3894,14 +3897,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "kivy/graphics/opengl_utils.pyx":33
+  /* "kivy/graphics/opengl_utils.pyx":26
  * cdef dict _gl_caps = {}
  * cdef tuple _gl_texture_fmts = (
  *     'rgb', 'rgba', 'luminance', 'luminance_alpha',             # <<<<<<<<<<<<<<
  *     'bgr', 'bgra', 's3tc_dxt1', 's3tc_dxt3', 's3tc_dxt5',
  *     'pvrtc_rgb4', 'pvrtc_rgb2', 'pvrtc_rgba4', 'pvrtc_rgba2')
  */
-  __pyx_tuple__15 = PyTuple_Pack(13, __pyx_n_s_rgb, __pyx_n_s_rgba, __pyx_n_s_luminance, __pyx_n_s_luminance_alpha, __pyx_n_s_bgr, __pyx_n_s_bgra, __pyx_n_s_s3tc_dxt1, __pyx_n_s_s3tc_dxt3, __pyx_n_s_s3tc_dxt5, __pyx_n_s_pvrtc_rgb4, __pyx_n_s_pvrtc_rgb2, __pyx_n_s_pvrtc_rgba4, __pyx_n_s_pvrtc_rgba2); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__15 = PyTuple_Pack(13, __pyx_n_s_rgb, __pyx_n_s_rgba, __pyx_n_s_luminance, __pyx_n_s_luminance_alpha, __pyx_n_s_bgr, __pyx_n_s_bgra, __pyx_n_s_s3tc_dxt1, __pyx_n_s_s3tc_dxt3, __pyx_n_s_s3tc_dxt5, __pyx_n_s_pvrtc_rgb4, __pyx_n_s_pvrtc_rgb2, __pyx_n_s_pvrtc_rgba4, __pyx_n_s_pvrtc_rgba2); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 26; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
   __Pyx_RefNannyFinishContext();
@@ -4175,98 +4178,98 @@ PyMODINIT_FUNC PyInit_opengl_utils(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_GLCAP_UNPACK_SUBIMAGE, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 17; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":25
- * else:
- *     cimport kivy.graphics.c_opengl as cgl
+  /* "kivy/graphics/opengl_utils.pyx":18
+ * include "opengl_utils_def.pxi"
+ * cimport c_opengl
  * from kivy.logger import Logger             # <<<<<<<<<<<<<<
  * from kivy.utils import platform
  * from kivy.graphics.opengl import _GL_GET_SIZE
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_Logger);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":26
- *     cimport kivy.graphics.c_opengl as cgl
+  /* "kivy/graphics/opengl_utils.pyx":19
+ * cimport c_opengl
  * from kivy.logger import Logger
  * from kivy.utils import platform             # <<<<<<<<<<<<<<
  * from kivy.graphics.opengl import _GL_GET_SIZE
  * 
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 26; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_platform);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_platform);
   __Pyx_GIVEREF(__pyx_n_s_platform);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_kivy_utils, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 26; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_kivy_utils, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_platform); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 26; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_platform); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_platform, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 26; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_platform, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":27
+  /* "kivy/graphics/opengl_utils.pyx":20
  * from kivy.logger import Logger
  * from kivy.utils import platform
  * from kivy.graphics.opengl import _GL_GET_SIZE             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_GL_GET_SIZE);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_GL_GET_SIZE);
   __Pyx_GIVEREF(__pyx_n_s_GL_GET_SIZE);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_kivy_graphics_opengl, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_kivy_graphics_opengl, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_GL_GET_SIZE); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_GL_GET_SIZE); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GL_GET_SIZE, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 27; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_GL_GET_SIZE, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 20; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":30
+  /* "kivy/graphics/opengl_utils.pyx":23
  * 
  * 
  * cdef list _gl_extensions = []             # <<<<<<<<<<<<<<
  * cdef dict _gl_caps = {}
  * cdef tuple _gl_texture_fmts = (
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 30; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 23; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions);
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_12opengl_utils__gl_extensions, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":31
+  /* "kivy/graphics/opengl_utils.pyx":24
  * 
  * cdef list _gl_extensions = []
  * cdef dict _gl_caps = {}             # <<<<<<<<<<<<<<
  * cdef tuple _gl_texture_fmts = (
  *     'rgb', 'rgba', 'luminance', 'luminance_alpha',
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps);
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_12opengl_utils__gl_caps, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/opengl_utils.pyx":33
+  /* "kivy/graphics/opengl_utils.pyx":26
  * cdef dict _gl_caps = {}
  * cdef tuple _gl_texture_fmts = (
  *     'rgb', 'rgba', 'luminance', 'luminance_alpha',             # <<<<<<<<<<<<<<
@@ -4278,7 +4281,7 @@ PyMODINIT_FUNC PyInit_opengl_utils(void)
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_12opengl_utils__gl_texture_fmts, __pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "kivy/graphics/opengl_utils.pyx":36
+  /* "kivy/graphics/opengl_utils.pyx":29
  *     'bgr', 'bgra', 's3tc_dxt1', 's3tc_dxt3', 's3tc_dxt5',
  *     'pvrtc_rgb4', 'pvrtc_rgb2', 'pvrtc_rgba4', 'pvrtc_rgba2')
  * cdef int _gl_version_major = -1             # <<<<<<<<<<<<<<
@@ -4287,7 +4290,7 @@ PyMODINIT_FUNC PyInit_opengl_utils(void)
  */
   __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_major = -1;
 
-  /* "kivy/graphics/opengl_utils.pyx":37
+  /* "kivy/graphics/opengl_utils.pyx":30
  *     'pvrtc_rgb4', 'pvrtc_rgb2', 'pvrtc_rgba4', 'pvrtc_rgba2')
  * cdef int _gl_version_major = -1
  * cdef int _gl_version_minor = -1             # <<<<<<<<<<<<<<
@@ -4296,24 +4299,24 @@ PyMODINIT_FUNC PyInit_opengl_utils(void)
  */
   __pyx_v_4kivy_8graphics_12opengl_utils__gl_version_minor = -1;
 
-  /* "kivy/graphics/opengl_utils.pyx":38
+  /* "kivy/graphics/opengl_utils.pyx":31
  * cdef int _gl_version_major = -1
  * cdef int _gl_version_minor = -1
  * cdef str _platform = str(platform)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_platform); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_platform); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyString_Type))), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyString_Type))), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_12opengl_utils__platform);
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_12opengl_utils__platform, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4326,9 +4329,9 @@ PyMODINIT_FUNC PyInit_opengl_utils(void)
  */
   __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_get_extensions_line_41, __pyx_kp_u_Return_a_list_of_OpenGL_extensio) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_has_extension_line_59, __pyx_kp_u_Check_if_an_OpenGL_extension_is) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_register_get_size_line_77, __pyx_kp_u_Register_an_association_between) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_get_extensions_line_34, __pyx_kp_u_Return_a_list_of_OpenGL_extensio) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_has_extension_line_52, __pyx_kp_u_Check_if_an_OpenGL_extension_is) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_register_get_size_line_68, __pyx_kp_u_Register_an_association_between) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (PyDict_SetItem(__pyx_t_2, __pyx_kp_u_gl_has_texture_native_format_lin, __pyx_kp_u_Return_1_if_the_texture_format_i) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;

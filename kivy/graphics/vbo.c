@@ -481,7 +481,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y
@@ -577,9 +577,9 @@ struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update;
 struct __pyx_opt_args_4kivy_8graphics_12instructions_13RenderContext_set_state;
 
 /* "kivy/graphics/instructions.pxd":33
- *         cpdef flag_update(self, int do_parent=?, list _instrs=?)
+ *         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
  *     ELSE:
- *         cpdef flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
+ *         cdef void flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
  *     cdef void flag_update_done(self)
  *     cdef void set_parent(self, Instruction parent)
  */
@@ -1447,7 +1447,7 @@ static struct __pyx_vtabstruct_4kivy_6_event_EventObservers *__pyx_vtabptr_4kivy
 
 struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Instruction {
   int (*apply)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
-  PyObject *(*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, int __pyx_skip_dispatch, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
+  void (*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
   void (*flag_update_done)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*set_parent)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*reload)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
@@ -1854,7 +1854,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_7context_Context {
 static struct __pyx_vtabstruct_4kivy_8graphics_7context_Context *__pyx_vtabptr_4kivy_8graphics_7context_Context;
 
 
-/* "kivy/graphics/vbo.pyx":45
+/* "kivy/graphics/vbo.pyx":43
  * cdef short V_HAVEID = 1 << 2
  * 
  * cdef class VBO:             # <<<<<<<<<<<<<<
@@ -1875,7 +1875,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VBO {
 static struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VBO *__pyx_vtabptr_4kivy_8graphics_3vbo_VBO;
 
 
-/* "kivy/graphics/vbo.pyx":141
+/* "kivy/graphics/vbo.pyx":139
  *                 self.data.count(), self.data.size())
  * 
  * cdef class VertexBatch:             # <<<<<<<<<<<<<<
@@ -2299,12 +2299,12 @@ static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__5;
 
-/* "kivy/graphics/gl_debug_logger.pxi":11
- *     cimport kivy.graphics.c_opengl as c_opengl
+/* "kivy/graphics/gl_debug_logger.pxi":5
+ * include "config.pxi"
  * 
  * cdef inline void log_gl_error(str note):             # <<<<<<<<<<<<<<
  *     IF DEBUG_GL:
- *         ret = c_opengl.glGetError()
+ *         ret = glGetError()
  */
 
 static CYTHON_INLINE void __pyx_f_4kivy_8graphics_3vbo_log_gl_error(CYTHON_UNUSED PyObject *__pyx_v_note) {
@@ -2315,7 +2315,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_8graphics_3vbo_log_gl_error(CYTHON_UNUSE
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":51
+/* "kivy/graphics/vbo.pyx":49
  *         at initialization, the default vertex format is used.
  *     '''
  *     def __cinit__(self, VertexFormat vertex_format=None):             # <<<<<<<<<<<<<<
@@ -2354,7 +2354,7 @@ static int __pyx_pw_4kivy_8graphics_3vbo_3VBO_1__cinit__(PyObject *__pyx_v_self,
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2367,13 +2367,13 @@ static int __pyx_pw_4kivy_8graphics_3vbo_3VBO_1__cinit__(PyObject *__pyx_v_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.vbo.VBO.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_vertex_format), __pyx_ptype_4kivy_8graphics_6vertex_VertexFormat, 1, "vertex_format", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_vertex_format), __pyx_ptype_4kivy_8graphics_6vertex_VertexFormat, 1, "vertex_format", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(((struct __pyx_obj_4kivy_8graphics_3vbo_VBO *)__pyx_v_self), __pyx_v_vertex_format);
 
   /* function exit code */
@@ -2396,7 +2396,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   __Pyx_RefNannySetupContext("__cinit__", 0);
   __Pyx_INCREF((PyObject *)__pyx_v_vertex_format);
 
-  /* "kivy/graphics/vbo.pyx":52
+  /* "kivy/graphics/vbo.pyx":50
  *     '''
  *     def __cinit__(self, VertexFormat vertex_format=None):
  *         self.usage  = GL_DYNAMIC_DRAW             # <<<<<<<<<<<<<<
@@ -2405,7 +2405,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
  */
   __pyx_v_self->usage = GL_DYNAMIC_DRAW;
 
-  /* "kivy/graphics/vbo.pyx":53
+  /* "kivy/graphics/vbo.pyx":51
  *     def __cinit__(self, VertexFormat vertex_format=None):
  *         self.usage  = GL_DYNAMIC_DRAW
  *         self.target = GL_ARRAY_BUFFER             # <<<<<<<<<<<<<<
@@ -2414,7 +2414,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
  */
   __pyx_v_self->target = GL_ARRAY_BUFFER;
 
-  /* "kivy/graphics/vbo.pyx":54
+  /* "kivy/graphics/vbo.pyx":52
  *         self.usage  = GL_DYNAMIC_DRAW
  *         self.target = GL_ARRAY_BUFFER
  *         if vertex_format is None:             # <<<<<<<<<<<<<<
@@ -2425,7 +2425,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/vbo.pyx":55
+    /* "kivy/graphics/vbo.pyx":53
  *         self.target = GL_ARRAY_BUFFER
  *         if vertex_format is None:
  *             vertex_format = default_vertex             # <<<<<<<<<<<<<<
@@ -2438,7 +2438,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/vbo.pyx":56
+  /* "kivy/graphics/vbo.pyx":54
  *         if vertex_format is None:
  *             vertex_format = default_vertex
  *         self.vertex_format = vertex_format             # <<<<<<<<<<<<<<
@@ -2451,7 +2451,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   __Pyx_DECREF(((PyObject *)__pyx_v_self->vertex_format));
   __pyx_v_self->vertex_format = __pyx_v_vertex_format;
 
-  /* "kivy/graphics/vbo.pyx":57
+  /* "kivy/graphics/vbo.pyx":55
  *             vertex_format = default_vertex
  *         self.vertex_format = vertex_format
  *         self.format = vertex_format.vattr             # <<<<<<<<<<<<<<
@@ -2461,7 +2461,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   __pyx_t_3 = __pyx_v_vertex_format->vattr;
   __pyx_v_self->format = __pyx_t_3;
 
-  /* "kivy/graphics/vbo.pyx":58
+  /* "kivy/graphics/vbo.pyx":56
  *         self.vertex_format = vertex_format
  *         self.format = vertex_format.vattr
  *         self.format_count = vertex_format.vattr_count             # <<<<<<<<<<<<<<
@@ -2471,7 +2471,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   __pyx_t_4 = __pyx_v_vertex_format->vattr_count;
   __pyx_v_self->format_count = __pyx_t_4;
 
-  /* "kivy/graphics/vbo.pyx":59
+  /* "kivy/graphics/vbo.pyx":57
  *         self.format = vertex_format.vattr
  *         self.format_count = vertex_format.vattr_count
  *         self.format_size = vertex_format.vbytesize             # <<<<<<<<<<<<<<
@@ -2481,7 +2481,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   __pyx_t_5 = __pyx_v_vertex_format->vbytesize;
   __pyx_v_self->format_size = __pyx_t_5;
 
-  /* "kivy/graphics/vbo.pyx":60
+  /* "kivy/graphics/vbo.pyx":58
  *         self.format_count = vertex_format.vattr_count
  *         self.format_size = vertex_format.vbytesize
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -2490,7 +2490,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
  */
   __pyx_v_self->flags = (__pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":61
+  /* "kivy/graphics/vbo.pyx":59
  *         self.format_size = vertex_format.vbytesize
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD
  *         self.vbo_size = 0             # <<<<<<<<<<<<<<
@@ -2499,7 +2499,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
  */
   __pyx_v_self->vbo_size = 0;
 
-  /* "kivy/graphics/vbo.pyx":51
+  /* "kivy/graphics/vbo.pyx":49
  *         at initialization, the default vertex format is used.
  *     '''
  *     def __cinit__(self, VertexFormat vertex_format=None):             # <<<<<<<<<<<<<<
@@ -2514,7 +2514,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO___cinit__(struct __pyx_obj_4kivy_8
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":63
+/* "kivy/graphics/vbo.pyx":61
  *         self.vbo_size = 0
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2541,19 +2541,19 @@ static void __pyx_pf_4kivy_8graphics_3vbo_3VBO_2__dealloc__(struct __pyx_obj_4ki
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "kivy/graphics/vbo.pyx":64
+  /* "kivy/graphics/vbo.pyx":62
  * 
  *     def __dealloc__(self):
  *         get_context().dealloc_vbo(self)             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, VertexFormat vertex_format=None):
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   ((struct __pyx_vtabstruct_4kivy_8graphics_7context_Context *)((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_1)->__pyx_vtab)->dealloc_vbo(((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_1), __pyx_v_self);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":63
+  /* "kivy/graphics/vbo.pyx":61
  *         self.vbo_size = 0
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2570,7 +2570,7 @@ static void __pyx_pf_4kivy_8graphics_3vbo_3VBO_2__dealloc__(struct __pyx_obj_4ki
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":66
+/* "kivy/graphics/vbo.pyx":64
  *         get_context().dealloc_vbo(self)
  * 
  *     def __init__(self, VertexFormat vertex_format=None):             # <<<<<<<<<<<<<<
@@ -2609,7 +2609,7 @@ static int __pyx_pw_4kivy_8graphics_3vbo_3VBO_5__init__(PyObject *__pyx_v_self, 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2622,13 +2622,13 @@ static int __pyx_pw_4kivy_8graphics_3vbo_3VBO_5__init__(PyObject *__pyx_v_self, 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.vbo.VBO.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_vertex_format), __pyx_ptype_4kivy_8graphics_6vertex_VertexFormat, 1, "vertex_format", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_vertex_format), __pyx_ptype_4kivy_8graphics_6vertex_VertexFormat, 1, "vertex_format", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_4kivy_8graphics_3vbo_3VBO_4__init__(((struct __pyx_obj_4kivy_8graphics_3vbo_VBO *)__pyx_v_self), __pyx_v_vertex_format);
 
   /* function exit code */
@@ -2650,21 +2650,21 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO_4__init__(struct __pyx_obj_4kivy_8
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/vbo.pyx":67
+  /* "kivy/graphics/vbo.pyx":65
  * 
  *     def __init__(self, VertexFormat vertex_format=None):
  *         self.data = Buffer(self.format_size)             # <<<<<<<<<<<<<<
  * 
  *     cdef int have_id(self):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_self->format_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 67; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_self->format_size); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 67; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6buffer_Buffer)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 67; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6buffer_Buffer)), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
@@ -2673,7 +2673,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO_4__init__(struct __pyx_obj_4kivy_8
   __pyx_v_self->data = ((struct __pyx_obj_4kivy_8graphics_6buffer_Buffer *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":66
+  /* "kivy/graphics/vbo.pyx":64
  *         get_context().dealloc_vbo(self)
  * 
  *     def __init__(self, VertexFormat vertex_format=None):             # <<<<<<<<<<<<<<
@@ -2694,7 +2694,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_3VBO_4__init__(struct __pyx_obj_4kivy_8
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":69
+/* "kivy/graphics/vbo.pyx":67
  *         self.data = Buffer(self.format_size)
  * 
  *     cdef int have_id(self):             # <<<<<<<<<<<<<<
@@ -2707,7 +2707,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_3VBO_have_id(struct __pyx_obj_4kivy_8gra
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("have_id", 0);
 
-  /* "kivy/graphics/vbo.pyx":70
+  /* "kivy/graphics/vbo.pyx":68
  * 
  *     cdef int have_id(self):
  *         return self.flags & V_HAVEID             # <<<<<<<<<<<<<<
@@ -2717,7 +2717,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_3VBO_have_id(struct __pyx_obj_4kivy_8gra
   __pyx_r = (__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_HAVEID);
   goto __pyx_L0;
 
-  /* "kivy/graphics/vbo.pyx":69
+  /* "kivy/graphics/vbo.pyx":67
  *         self.data = Buffer(self.format_size)
  * 
  *     cdef int have_id(self):             # <<<<<<<<<<<<<<
@@ -2731,7 +2731,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_3VBO_have_id(struct __pyx_obj_4kivy_8gra
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":72
+/* "kivy/graphics/vbo.pyx":70
  *         return self.flags & V_HAVEID
  * 
  *     cdef void update_buffer(self):             # <<<<<<<<<<<<<<
@@ -2744,7 +2744,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("update_buffer", 0);
 
-  /* "kivy/graphics/vbo.pyx":74
+  /* "kivy/graphics/vbo.pyx":72
  *     cdef void update_buffer(self):
  *         # generate VBO if not done yet
  *         if self.flags & V_NEEDGEN:             # <<<<<<<<<<<<<<
@@ -2754,7 +2754,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   __pyx_t_1 = ((__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":75
+    /* "kivy/graphics/vbo.pyx":73
  *         # generate VBO if not done yet
  *         if self.flags & V_NEEDGEN:
  *             glGenBuffers(1, &self.id)             # <<<<<<<<<<<<<<
@@ -2763,7 +2763,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     glGenBuffers(1, (&__pyx_v_self->id));
 
-    /* "kivy/graphics/vbo.pyx":76
+    /* "kivy/graphics/vbo.pyx":74
  *         if self.flags & V_NEEDGEN:
  *             glGenBuffers(1, &self.id)
  *             log_gl_error('VBO.update_buffer-glGenBuffers')             # <<<<<<<<<<<<<<
@@ -2772,7 +2772,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_update_buffer_glGenBuffers);
 
-    /* "kivy/graphics/vbo.pyx":77
+    /* "kivy/graphics/vbo.pyx":75
  *             glGenBuffers(1, &self.id)
  *             log_gl_error('VBO.update_buffer-glGenBuffers')
  *             self.flags &= ~V_NEEDGEN             # <<<<<<<<<<<<<<
@@ -2781,7 +2781,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_v_self->flags = (__pyx_v_self->flags & (~__pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN));
 
-    /* "kivy/graphics/vbo.pyx":78
+    /* "kivy/graphics/vbo.pyx":76
  *             log_gl_error('VBO.update_buffer-glGenBuffers')
  *             self.flags &= ~V_NEEDGEN
  *             self.flags |= V_HAVEID             # <<<<<<<<<<<<<<
@@ -2793,7 +2793,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/vbo.pyx":81
+  /* "kivy/graphics/vbo.pyx":79
  * 
  *         # if the size doesn't match, we need to reupload the whole data
  *         if self.vbo_size < self.data.size():             # <<<<<<<<<<<<<<
@@ -2803,7 +2803,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   __pyx_t_1 = ((__pyx_v_self->vbo_size < ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->size(__pyx_v_self->data)) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":82
+    /* "kivy/graphics/vbo.pyx":80
  *         # if the size doesn't match, we need to reupload the whole data
  *         if self.vbo_size < self.data.size():
  *             self.vbo_size = self.data.size()             # <<<<<<<<<<<<<<
@@ -2812,7 +2812,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_v_self->vbo_size = ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->size(__pyx_v_self->data);
 
-    /* "kivy/graphics/vbo.pyx":83
+    /* "kivy/graphics/vbo.pyx":81
  *         if self.vbo_size < self.data.size():
  *             self.vbo_size = self.data.size()
  *             glBindBuffer(GL_ARRAY_BUFFER, self.id)             # <<<<<<<<<<<<<<
@@ -2821,7 +2821,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     glBindBuffer(GL_ARRAY_BUFFER, __pyx_v_self->id);
 
-    /* "kivy/graphics/vbo.pyx":84
+    /* "kivy/graphics/vbo.pyx":82
  *             self.vbo_size = self.data.size()
  *             glBindBuffer(GL_ARRAY_BUFFER, self.id)
  *             log_gl_error('VBO.update_buffer-glBindBuffer')             # <<<<<<<<<<<<<<
@@ -2830,7 +2830,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_update_buffer_glBindBuffer);
 
-    /* "kivy/graphics/vbo.pyx":85
+    /* "kivy/graphics/vbo.pyx":83
  *             glBindBuffer(GL_ARRAY_BUFFER, self.id)
  *             log_gl_error('VBO.update_buffer-glBindBuffer')
  *             glBufferData(GL_ARRAY_BUFFER, self.vbo_size, self.data.pointer(),             # <<<<<<<<<<<<<<
@@ -2839,7 +2839,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     glBufferData(GL_ARRAY_BUFFER, __pyx_v_self->vbo_size, ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->pointer(__pyx_v_self->data), __pyx_v_self->usage);
 
-    /* "kivy/graphics/vbo.pyx":87
+    /* "kivy/graphics/vbo.pyx":85
  *             glBufferData(GL_ARRAY_BUFFER, self.vbo_size, self.data.pointer(),
  *                 self.usage)
  *             log_gl_error('VBO.update_buffer-glBufferData')             # <<<<<<<<<<<<<<
@@ -2848,7 +2848,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_update_buffer_glBufferData);
 
-    /* "kivy/graphics/vbo.pyx":88
+    /* "kivy/graphics/vbo.pyx":86
  *                 self.usage)
  *             log_gl_error('VBO.update_buffer-glBufferData')
  *             self.flags &= ~V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -2859,7 +2859,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
     goto __pyx_L4;
   }
 
-  /* "kivy/graphics/vbo.pyx":91
+  /* "kivy/graphics/vbo.pyx":89
  * 
  *         # if size match, update only what is needed
  *         elif self.flags & V_NEEDUPLOAD:             # <<<<<<<<<<<<<<
@@ -2869,7 +2869,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   __pyx_t_1 = ((__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":92
+    /* "kivy/graphics/vbo.pyx":90
  *         # if size match, update only what is needed
  *         elif self.flags & V_NEEDUPLOAD:
  *             glBindBuffer(GL_ARRAY_BUFFER, self.id)             # <<<<<<<<<<<<<<
@@ -2878,7 +2878,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     glBindBuffer(GL_ARRAY_BUFFER, __pyx_v_self->id);
 
-    /* "kivy/graphics/vbo.pyx":93
+    /* "kivy/graphics/vbo.pyx":91
  *         elif self.flags & V_NEEDUPLOAD:
  *             glBindBuffer(GL_ARRAY_BUFFER, self.id)
  *             log_gl_error('VBO.update_buffer-glBindBuffer')             # <<<<<<<<<<<<<<
@@ -2887,7 +2887,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_update_buffer_glBindBuffer);
 
-    /* "kivy/graphics/vbo.pyx":94
+    /* "kivy/graphics/vbo.pyx":92
  *             glBindBuffer(GL_ARRAY_BUFFER, self.id)
  *             log_gl_error('VBO.update_buffer-glBindBuffer')
  *             glBufferSubData(GL_ARRAY_BUFFER, 0, self.data.size(),             # <<<<<<<<<<<<<<
@@ -2896,7 +2896,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     glBufferSubData(GL_ARRAY_BUFFER, 0, ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->size(__pyx_v_self->data), ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->pointer(__pyx_v_self->data));
 
-    /* "kivy/graphics/vbo.pyx":96
+    /* "kivy/graphics/vbo.pyx":94
  *             glBufferSubData(GL_ARRAY_BUFFER, 0, self.data.size(),
  *                 self.data.pointer())
  *             log_gl_error('VBO.update_buffer-glBufferSubData')             # <<<<<<<<<<<<<<
@@ -2905,7 +2905,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
  */
     __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_update_buffer_glBufferSubDat);
 
-    /* "kivy/graphics/vbo.pyx":97
+    /* "kivy/graphics/vbo.pyx":95
  *                 self.data.pointer())
  *             log_gl_error('VBO.update_buffer-glBufferSubData')
  *             self.flags &= ~V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -2917,7 +2917,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/vbo.pyx":72
+  /* "kivy/graphics/vbo.pyx":70
  *         return self.flags & V_HAVEID
  * 
  *     cdef void update_buffer(self):             # <<<<<<<<<<<<<<
@@ -2929,7 +2929,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_buffer(struct __pyx_obj_4ki
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":99
+/* "kivy/graphics/vbo.pyx":97
  *             self.flags &= ~V_NEEDUPLOAD
  * 
  *     cdef void bind(self):             # <<<<<<<<<<<<<<
@@ -2953,14 +2953,14 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("bind", 0);
 
-  /* "kivy/graphics/vbo.pyx":100
+  /* "kivy/graphics/vbo.pyx":98
  * 
  *     cdef void bind(self):
  *         cdef Shader shader = getActiveContext()._shader             # <<<<<<<<<<<<<<
  *         cdef vertex_attr_t *attr
  *         cdef int offset = 0, i
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_12instructions_getActiveContext()); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_12instructions_getActiveContext()); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 98; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = ((PyObject *)((struct __pyx_obj_4kivy_8graphics_12instructions_RenderContext *)__pyx_t_1)->_shader);
   __Pyx_INCREF(__pyx_t_2);
@@ -2968,7 +2968,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
   __pyx_v_shader = ((struct __pyx_obj_4kivy_8graphics_6shader_Shader *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/vbo.pyx":102
+  /* "kivy/graphics/vbo.pyx":100
  *         cdef Shader shader = getActiveContext()._shader
  *         cdef vertex_attr_t *attr
  *         cdef int offset = 0, i             # <<<<<<<<<<<<<<
@@ -2977,7 +2977,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
   __pyx_v_offset = 0;
 
-  /* "kivy/graphics/vbo.pyx":103
+  /* "kivy/graphics/vbo.pyx":101
  *         cdef vertex_attr_t *attr
  *         cdef int offset = 0, i
  *         self.update_buffer()             # <<<<<<<<<<<<<<
@@ -2986,7 +2986,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VBO *)__pyx_v_self->__pyx_vtab)->update_buffer(__pyx_v_self);
 
-  /* "kivy/graphics/vbo.pyx":104
+  /* "kivy/graphics/vbo.pyx":102
  *         cdef int offset = 0, i
  *         self.update_buffer()
  *         glBindBuffer(GL_ARRAY_BUFFER, self.id)             # <<<<<<<<<<<<<<
@@ -2995,7 +2995,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
   glBindBuffer(GL_ARRAY_BUFFER, __pyx_v_self->id);
 
-  /* "kivy/graphics/vbo.pyx":105
+  /* "kivy/graphics/vbo.pyx":103
  *         self.update_buffer()
  *         glBindBuffer(GL_ARRAY_BUFFER, self.id)
  *         log_gl_error('VBO.bind-glBindBuffer')             # <<<<<<<<<<<<<<
@@ -3004,7 +3004,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
   __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_bind_glBindBuffer);
 
-  /* "kivy/graphics/vbo.pyx":106
+  /* "kivy/graphics/vbo.pyx":104
  *         glBindBuffer(GL_ARRAY_BUFFER, self.id)
  *         log_gl_error('VBO.bind-glBindBuffer')
  *         shader.bind_vertex_format(self.vertex_format)             # <<<<<<<<<<<<<<
@@ -3016,7 +3016,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
   ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_shader->__pyx_vtab)->bind_vertex_format(__pyx_v_shader, ((struct __pyx_obj_4kivy_8graphics_6vertex_VertexFormat *)__pyx_t_2));
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/vbo.pyx":107
+  /* "kivy/graphics/vbo.pyx":105
  *         log_gl_error('VBO.bind-glBindBuffer')
  *         shader.bind_vertex_format(self.vertex_format)
  *         for i in xrange(self.format_count):             # <<<<<<<<<<<<<<
@@ -3027,7 +3027,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "kivy/graphics/vbo.pyx":108
+    /* "kivy/graphics/vbo.pyx":106
  *         shader.bind_vertex_format(self.vertex_format)
  *         for i in xrange(self.format_count):
  *             attr = &self.format[i]             # <<<<<<<<<<<<<<
@@ -3036,7 +3036,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
     __pyx_v_attr = (&(__pyx_v_self->format[__pyx_v_i]));
 
-    /* "kivy/graphics/vbo.pyx":109
+    /* "kivy/graphics/vbo.pyx":107
  *         for i in xrange(self.format_count):
  *             attr = &self.format[i]
  *             if attr.per_vertex == 0:             # <<<<<<<<<<<<<<
@@ -3046,7 +3046,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
     __pyx_t_5 = ((__pyx_v_attr->per_vertex == 0) != 0);
     if (__pyx_t_5) {
 
-      /* "kivy/graphics/vbo.pyx":110
+      /* "kivy/graphics/vbo.pyx":108
  *             attr = &self.format[i]
  *             if attr.per_vertex == 0:
  *                 continue             # <<<<<<<<<<<<<<
@@ -3056,7 +3056,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
       goto __pyx_L3_continue;
     }
 
-    /* "kivy/graphics/vbo.pyx":111
+    /* "kivy/graphics/vbo.pyx":109
  *             if attr.per_vertex == 0:
  *                 continue
  *             glVertexAttribPointer(attr.index, attr.size, attr.type,             # <<<<<<<<<<<<<<
@@ -3065,7 +3065,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
     glVertexAttribPointer(__pyx_v_attr->index, __pyx_v_attr->size, __pyx_v_attr->type, GL_FALSE, ((GLsizei)__pyx_v_self->format_size), ((GLvoid *)((long)__pyx_v_offset)));
 
-    /* "kivy/graphics/vbo.pyx":113
+    /* "kivy/graphics/vbo.pyx":111
  *             glVertexAttribPointer(attr.index, attr.size, attr.type,
  *                     GL_FALSE, <GLsizei>self.format_size, <GLvoid*><long>offset)
  *             log_gl_error('VBO.bind-glVertexAttribPointer')             # <<<<<<<<<<<<<<
@@ -3074,7 +3074,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
  */
     __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_bind_glVertexAttribPointer);
 
-    /* "kivy/graphics/vbo.pyx":114
+    /* "kivy/graphics/vbo.pyx":112
  *                     GL_FALSE, <GLsizei>self.format_size, <GLvoid*><long>offset)
  *             log_gl_error('VBO.bind-glVertexAttribPointer')
  *             offset += attr.bytesize             # <<<<<<<<<<<<<<
@@ -3085,7 +3085,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
     __pyx_L3_continue:;
   }
 
-  /* "kivy/graphics/vbo.pyx":99
+  /* "kivy/graphics/vbo.pyx":97
  *             self.flags &= ~V_NEEDUPLOAD
  * 
  *     cdef void bind(self):             # <<<<<<<<<<<<<<
@@ -3104,7 +3104,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_bind(struct __pyx_obj_4kivy_8graph
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":116
+/* "kivy/graphics/vbo.pyx":114
  *             offset += attr.bytesize
  * 
  *     cdef void unbind(self):             # <<<<<<<<<<<<<<
@@ -3116,7 +3116,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_unbind(CYTHON_UNUSED struct __pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("unbind", 0);
 
-  /* "kivy/graphics/vbo.pyx":117
+  /* "kivy/graphics/vbo.pyx":115
  * 
  *     cdef void unbind(self):
  *         glBindBuffer(GL_ARRAY_BUFFER, 0)             # <<<<<<<<<<<<<<
@@ -3125,7 +3125,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_unbind(CYTHON_UNUSED struct __pyx_
  */
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-  /* "kivy/graphics/vbo.pyx":118
+  /* "kivy/graphics/vbo.pyx":116
  *     cdef void unbind(self):
  *         glBindBuffer(GL_ARRAY_BUFFER, 0)
  *         log_gl_error('VBO.unbind-glBindBuffer')             # <<<<<<<<<<<<<<
@@ -3134,7 +3134,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_unbind(CYTHON_UNUSED struct __pyx_
  */
   __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VBO_unbind_glBindBuffer);
 
-  /* "kivy/graphics/vbo.pyx":116
+  /* "kivy/graphics/vbo.pyx":114
  *             offset += attr.bytesize
  * 
  *     cdef void unbind(self):             # <<<<<<<<<<<<<<
@@ -3146,7 +3146,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_unbind(CYTHON_UNUSED struct __pyx_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":120
+/* "kivy/graphics/vbo.pyx":118
  *         log_gl_error('VBO.unbind-glBindBuffer')
  * 
  *     cdef void add_vertex_data(self, void *v, unsigned short* indices,             # <<<<<<<<<<<<<<
@@ -3158,7 +3158,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_add_vertex_data(struct __pyx_obj_4
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_vertex_data", 0);
 
-  /* "kivy/graphics/vbo.pyx":122
+  /* "kivy/graphics/vbo.pyx":120
  *     cdef void add_vertex_data(self, void *v, unsigned short* indices,
  *         int count):
  *         self.flags |= V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -3167,7 +3167,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_add_vertex_data(struct __pyx_obj_4
  */
   __pyx_v_self->flags = (__pyx_v_self->flags | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":123
+  /* "kivy/graphics/vbo.pyx":121
  *         int count):
  *         self.flags |= V_NEEDUPLOAD
  *         self.data.add(v, indices, count)             # <<<<<<<<<<<<<<
@@ -3176,7 +3176,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_add_vertex_data(struct __pyx_obj_4
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->add(__pyx_v_self->data, __pyx_v_v, __pyx_v_indices, __pyx_v_count);
 
-  /* "kivy/graphics/vbo.pyx":120
+  /* "kivy/graphics/vbo.pyx":118
  *         log_gl_error('VBO.unbind-glBindBuffer')
  * 
  *     cdef void add_vertex_data(self, void *v, unsigned short* indices,             # <<<<<<<<<<<<<<
@@ -3188,7 +3188,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_add_vertex_data(struct __pyx_obj_4
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":125
+/* "kivy/graphics/vbo.pyx":123
  *         self.data.add(v, indices, count)
  * 
  *     cdef void update_vertex_data(self, int index, void* v, int count):             # <<<<<<<<<<<<<<
@@ -3200,7 +3200,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_vertex_data(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("update_vertex_data", 0);
 
-  /* "kivy/graphics/vbo.pyx":126
+  /* "kivy/graphics/vbo.pyx":124
  * 
  *     cdef void update_vertex_data(self, int index, void* v, int count):
  *         self.flags |= V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -3209,7 +3209,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_vertex_data(struct __pyx_ob
  */
   __pyx_v_self->flags = (__pyx_v_self->flags | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":127
+  /* "kivy/graphics/vbo.pyx":125
  *     cdef void update_vertex_data(self, int index, void* v, int count):
  *         self.flags |= V_NEEDUPLOAD
  *         self.data.update(index, v, count)             # <<<<<<<<<<<<<<
@@ -3218,7 +3218,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_vertex_data(struct __pyx_ob
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->update(__pyx_v_self->data, __pyx_v_index, __pyx_v_v, __pyx_v_count);
 
-  /* "kivy/graphics/vbo.pyx":125
+  /* "kivy/graphics/vbo.pyx":123
  *         self.data.add(v, indices, count)
  * 
  *     cdef void update_vertex_data(self, int index, void* v, int count):             # <<<<<<<<<<<<<<
@@ -3230,7 +3230,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_update_vertex_data(struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":129
+/* "kivy/graphics/vbo.pyx":127
  *         self.data.update(index, v, count)
  * 
  *     cdef void remove_vertex_data(self, unsigned short* indices, int count):             # <<<<<<<<<<<<<<
@@ -3242,7 +3242,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_remove_vertex_data(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("remove_vertex_data", 0);
 
-  /* "kivy/graphics/vbo.pyx":130
+  /* "kivy/graphics/vbo.pyx":128
  * 
  *     cdef void remove_vertex_data(self, unsigned short* indices, int count):
  *         self.data.remove(indices, count)             # <<<<<<<<<<<<<<
@@ -3251,7 +3251,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_remove_vertex_data(struct __pyx_ob
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->remove(__pyx_v_self->data, __pyx_v_indices, __pyx_v_count);
 
-  /* "kivy/graphics/vbo.pyx":129
+  /* "kivy/graphics/vbo.pyx":127
  *         self.data.update(index, v, count)
  * 
  *     cdef void remove_vertex_data(self, unsigned short* indices, int count):             # <<<<<<<<<<<<<<
@@ -3263,7 +3263,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_remove_vertex_data(struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":132
+/* "kivy/graphics/vbo.pyx":130
  *         self.data.remove(indices, count)
  * 
  *     cdef void reload(self):             # <<<<<<<<<<<<<<
@@ -3275,7 +3275,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_reload(struct __pyx_obj_4kivy_8gra
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("reload", 0);
 
-  /* "kivy/graphics/vbo.pyx":133
+  /* "kivy/graphics/vbo.pyx":131
  * 
  *     cdef void reload(self):
  *         self.flags = V_NEEDUPLOAD | V_NEEDGEN             # <<<<<<<<<<<<<<
@@ -3284,7 +3284,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_reload(struct __pyx_obj_4kivy_8gra
  */
   __pyx_v_self->flags = (__pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD | __pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN);
 
-  /* "kivy/graphics/vbo.pyx":134
+  /* "kivy/graphics/vbo.pyx":132
  *     cdef void reload(self):
  *         self.flags = V_NEEDUPLOAD | V_NEEDGEN
  *         self.vbo_size = 0             # <<<<<<<<<<<<<<
@@ -3293,7 +3293,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_reload(struct __pyx_obj_4kivy_8gra
  */
   __pyx_v_self->vbo_size = 0;
 
-  /* "kivy/graphics/vbo.pyx":132
+  /* "kivy/graphics/vbo.pyx":130
  *         self.data.remove(indices, count)
  * 
  *     cdef void reload(self):             # <<<<<<<<<<<<<<
@@ -3305,7 +3305,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_3VBO_reload(struct __pyx_obj_4kivy_8gra
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":136
+/* "kivy/graphics/vbo.pyx":134
  *         self.vbo_size = 0
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -3339,7 +3339,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_3VBO_6__repr__(struct __pyx_obj_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "kivy/graphics/vbo.pyx":137
+  /* "kivy/graphics/vbo.pyx":135
  * 
  *     def __repr__(self):
  *         return '<VBO at %x id=%r count=%d size=%d>' % (             # <<<<<<<<<<<<<<
@@ -3348,23 +3348,23 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_3VBO_6__repr__(struct __pyx_obj_4
  */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "kivy/graphics/vbo.pyx":138
+  /* "kivy/graphics/vbo.pyx":136
  *     def __repr__(self):
  *         return '<VBO at %x id=%r count=%d size=%d>' % (
  *                 id(self), self.id if self.flags & V_HAVEID else None,             # <<<<<<<<<<<<<<
  *                 self.data.count(), self.data.size())
  * 
  */
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (((__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_HAVEID) != 0)) {
-    __pyx_t_3 = __Pyx_PyInt_From_GLuint(__pyx_v_self->id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyInt_From_GLuint(__pyx_v_self->id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
@@ -3373,26 +3373,26 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_3VBO_6__repr__(struct __pyx_obj_4
     __pyx_t_1 = Py_None;
   }
 
-  /* "kivy/graphics/vbo.pyx":139
+  /* "kivy/graphics/vbo.pyx":137
  *         return '<VBO at %x id=%r count=%d size=%d>' % (
  *                 id(self), self.id if self.flags & V_HAVEID else None,
  *                 self.data.count(), self.data.size())             # <<<<<<<<<<<<<<
  * 
  * cdef class VertexBatch:
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->count(__pyx_v_self->data)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_int(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->count(__pyx_v_self->data)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_long(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->size(__pyx_v_self->data)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_long(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->data->__pyx_vtab)->size(__pyx_v_self->data)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "kivy/graphics/vbo.pyx":138
+  /* "kivy/graphics/vbo.pyx":136
  *     def __repr__(self):
  *         return '<VBO at %x id=%r count=%d size=%d>' % (
  *                 id(self), self.id if self.flags & V_HAVEID else None,             # <<<<<<<<<<<<<<
  *                 self.data.count(), self.data.size())
  * 
  */
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3407,21 +3407,21 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_3VBO_6__repr__(struct __pyx_obj_4
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/vbo.pyx":137
+  /* "kivy/graphics/vbo.pyx":135
  * 
  *     def __repr__(self):
  *         return '<VBO at %x id=%r count=%d size=%d>' % (             # <<<<<<<<<<<<<<
  *                 id(self), self.id if self.flags & V_HAVEID else None,
  *                 self.data.count(), self.data.size())
  */
-  __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_VBO_at_x_id_r_count_d_size_d, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_VBO_at_x_id_r_count_d_size_d, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/vbo.pyx":136
+  /* "kivy/graphics/vbo.pyx":134
  *         self.vbo_size = 0
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -3444,7 +3444,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_3VBO_6__repr__(struct __pyx_obj_4
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":142
+/* "kivy/graphics/vbo.pyx":140
  * 
  * cdef class VertexBatch:
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -3486,7 +3486,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/vbo.pyx":143
+  /* "kivy/graphics/vbo.pyx":141
  * cdef class VertexBatch:
  *     def __init__(self, **kwargs):
  *         self.usage  = GL_DYNAMIC_DRAW             # <<<<<<<<<<<<<<
@@ -3495,35 +3495,35 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
  */
   __pyx_v_self->usage = GL_DYNAMIC_DRAW;
 
-  /* "kivy/graphics/vbo.pyx":144
+  /* "kivy/graphics/vbo.pyx":142
  *     def __init__(self, **kwargs):
  *         self.usage  = GL_DYNAMIC_DRAW
  *         cdef object lushort = sizeof(unsigned short)             # <<<<<<<<<<<<<<
  *         self.vbo = kwargs.get('vbo')
  *         if self.vbo is None:
  */
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(unsigned short))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t((sizeof(unsigned short))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_lushort = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":145
+  /* "kivy/graphics/vbo.pyx":143
  *         self.usage  = GL_DYNAMIC_DRAW
  *         cdef object lushort = sizeof(unsigned short)
  *         self.vbo = kwargs.get('vbo')             # <<<<<<<<<<<<<<
  *         if self.vbo is None:
  *             self.vbo = VBO()
  */
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_vbo, Py_None); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_vbo, Py_None); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 143; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_8graphics_3vbo_VBO))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_8graphics_3vbo_VBO))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 143; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->vbo);
   __Pyx_DECREF(((PyObject *)__pyx_v_self->vbo));
   __pyx_v_self->vbo = ((struct __pyx_obj_4kivy_8graphics_3vbo_VBO *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":146
+  /* "kivy/graphics/vbo.pyx":144
  *         cdef object lushort = sizeof(unsigned short)
  *         self.vbo = kwargs.get('vbo')
  *         if self.vbo is None:             # <<<<<<<<<<<<<<
@@ -3534,14 +3534,14 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/vbo.pyx":147
+    /* "kivy/graphics/vbo.pyx":145
  *         self.vbo = kwargs.get('vbo')
  *         if self.vbo is None:
  *             self.vbo = VBO()             # <<<<<<<<<<<<<<
  *         self.vbo_index = Buffer(lushort) #index of every vertex in the vbo
  *         self.elements = Buffer(lushort) #indices translated to vbo indices
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_3vbo_VBO)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_3vbo_VBO)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->vbo);
@@ -3552,19 +3552,19 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/vbo.pyx":148
+  /* "kivy/graphics/vbo.pyx":146
  *         if self.vbo is None:
  *             self.vbo = VBO()
  *         self.vbo_index = Buffer(lushort) #index of every vertex in the vbo             # <<<<<<<<<<<<<<
  *         self.elements = Buffer(lushort) #indices translated to vbo indices
  *         self.elements_size = 0
  */
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_lushort);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_lushort);
   __Pyx_GIVEREF(__pyx_v_lushort);
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6buffer_Buffer)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6buffer_Buffer)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_GIVEREF(__pyx_t_4);
@@ -3573,19 +3573,19 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
   __pyx_v_self->vbo_index = ((struct __pyx_obj_4kivy_8graphics_6buffer_Buffer *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/vbo.pyx":149
+  /* "kivy/graphics/vbo.pyx":147
  *             self.vbo = VBO()
  *         self.vbo_index = Buffer(lushort) #index of every vertex in the vbo
  *         self.elements = Buffer(lushort) #indices translated to vbo indices             # <<<<<<<<<<<<<<
  *         self.elements_size = 0
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD
  */
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_lushort);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_lushort);
   __Pyx_GIVEREF(__pyx_v_lushort);
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6buffer_Buffer)), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6buffer_Buffer)), __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3594,7 +3594,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
   __pyx_v_self->elements = ((struct __pyx_obj_4kivy_8graphics_6buffer_Buffer *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":150
+  /* "kivy/graphics/vbo.pyx":148
  *         self.vbo_index = Buffer(lushort) #index of every vertex in the vbo
  *         self.elements = Buffer(lushort) #indices translated to vbo indices
  *         self.elements_size = 0             # <<<<<<<<<<<<<<
@@ -3603,7 +3603,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
  */
   __pyx_v_self->elements_size = 0;
 
-  /* "kivy/graphics/vbo.pyx":151
+  /* "kivy/graphics/vbo.pyx":149
  *         self.elements = Buffer(lushort) #indices translated to vbo indices
  *         self.elements_size = 0
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -3612,7 +3612,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
  */
   __pyx_v_self->flags = (__pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":153
+  /* "kivy/graphics/vbo.pyx":151
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD
  * 
  *         self.set_data(NULL, 0, NULL, 0)             # <<<<<<<<<<<<<<
@@ -3621,20 +3621,20 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VertexBatch *)__pyx_v_self->__pyx_vtab)->set_data(__pyx_v_self, NULL, 0, NULL, 0);
 
-  /* "kivy/graphics/vbo.pyx":154
+  /* "kivy/graphics/vbo.pyx":152
  * 
  *         self.set_data(NULL, 0, NULL, 0)
  *         self.set_mode(kwargs.get('mode'))             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_mode, Py_None); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 154; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_mode, Py_None); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 152; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 154; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 152; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VertexBatch *)__pyx_v_self->__pyx_vtab)->set_mode(__pyx_v_self, ((PyObject*)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":142
+  /* "kivy/graphics/vbo.pyx":140
  * 
  * cdef class VertexBatch:
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -3656,7 +3656,7 @@ static int __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch___init__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":156
+/* "kivy/graphics/vbo.pyx":154
  *         self.set_mode(kwargs.get('mode'))
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3683,19 +3683,19 @@ static void __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch_2__dealloc__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "kivy/graphics/vbo.pyx":157
+  /* "kivy/graphics/vbo.pyx":155
  * 
  *     def __dealloc__(self):
  *         get_context().dealloc_vertexbatch(self)             # <<<<<<<<<<<<<<
  * 
  *     cdef int have_id(self):
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 157; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 155; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   ((struct __pyx_vtabstruct_4kivy_8graphics_7context_Context *)((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_1)->__pyx_vtab)->dealloc_vertexbatch(((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_1), __pyx_v_self);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/vbo.pyx":156
+  /* "kivy/graphics/vbo.pyx":154
  *         self.set_mode(kwargs.get('mode'))
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3712,7 +3712,7 @@ static void __pyx_pf_4kivy_8graphics_3vbo_11VertexBatch_2__dealloc__(struct __py
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":159
+/* "kivy/graphics/vbo.pyx":157
  *         get_context().dealloc_vertexbatch(self)
  * 
  *     cdef int have_id(self):             # <<<<<<<<<<<<<<
@@ -3725,7 +3725,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_have_id(struct __pyx_obj_4
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("have_id", 0);
 
-  /* "kivy/graphics/vbo.pyx":160
+  /* "kivy/graphics/vbo.pyx":158
  * 
  *     cdef int have_id(self):
  *         return self.flags & V_HAVEID             # <<<<<<<<<<<<<<
@@ -3735,7 +3735,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_have_id(struct __pyx_obj_4
   __pyx_r = (__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_HAVEID);
   goto __pyx_L0;
 
-  /* "kivy/graphics/vbo.pyx":159
+  /* "kivy/graphics/vbo.pyx":157
  *         get_context().dealloc_vertexbatch(self)
  * 
  *     cdef int have_id(self):             # <<<<<<<<<<<<<<
@@ -3749,7 +3749,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_have_id(struct __pyx_obj_4
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":162
+/* "kivy/graphics/vbo.pyx":160
  *         return self.flags & V_HAVEID
  * 
  *     cdef void reload(self):             # <<<<<<<<<<<<<<
@@ -3761,7 +3761,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_reload(struct __pyx_obj_4
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("reload", 0);
 
-  /* "kivy/graphics/vbo.pyx":163
+  /* "kivy/graphics/vbo.pyx":161
  * 
  *     cdef void reload(self):
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -3770,7 +3770,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_reload(struct __pyx_obj_4
  */
   __pyx_v_self->flags = (__pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":164
+  /* "kivy/graphics/vbo.pyx":162
  *     cdef void reload(self):
  *         self.flags = V_NEEDGEN | V_NEEDUPLOAD
  *         self.elements_size = 0             # <<<<<<<<<<<<<<
@@ -3779,7 +3779,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_reload(struct __pyx_obj_4
  */
   __pyx_v_self->elements_size = 0;
 
-  /* "kivy/graphics/vbo.pyx":162
+  /* "kivy/graphics/vbo.pyx":160
  *         return self.flags & V_HAVEID
  * 
  *     cdef void reload(self):             # <<<<<<<<<<<<<<
@@ -3791,7 +3791,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_reload(struct __pyx_obj_4
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":166
+/* "kivy/graphics/vbo.pyx":164
  *         self.elements_size = 0
  * 
  *     cdef void clear_data(self):             # <<<<<<<<<<<<<<
@@ -3803,7 +3803,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_clear_data(struct __pyx_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("clear_data", 0);
 
-  /* "kivy/graphics/vbo.pyx":168
+  /* "kivy/graphics/vbo.pyx":166
  *     cdef void clear_data(self):
  *         # clear old vertices from vbo and then reset index buffer
  *         self.vbo.remove_vertex_data(<unsigned short*>self.vbo_index.pointer(),             # <<<<<<<<<<<<<<
@@ -3812,7 +3812,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_clear_data(struct __pyx_o
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VBO *)__pyx_v_self->vbo->__pyx_vtab)->remove_vertex_data(__pyx_v_self->vbo, ((unsigned short *)((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->vbo_index->__pyx_vtab)->pointer(__pyx_v_self->vbo_index)), ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->vbo_index->__pyx_vtab)->count(__pyx_v_self->vbo_index));
 
-  /* "kivy/graphics/vbo.pyx":170
+  /* "kivy/graphics/vbo.pyx":168
  *         self.vbo.remove_vertex_data(<unsigned short*>self.vbo_index.pointer(),
  *                                     self.vbo_index.count())
  *         self.vbo_index.clear()             # <<<<<<<<<<<<<<
@@ -3821,7 +3821,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_clear_data(struct __pyx_o
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->vbo_index->__pyx_vtab)->clear(__pyx_v_self->vbo_index);
 
-  /* "kivy/graphics/vbo.pyx":171
+  /* "kivy/graphics/vbo.pyx":169
  *                                     self.vbo_index.count())
  *         self.vbo_index.clear()
  *         self.elements.clear()             # <<<<<<<<<<<<<<
@@ -3830,7 +3830,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_clear_data(struct __pyx_o
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->clear(__pyx_v_self->elements);
 
-  /* "kivy/graphics/vbo.pyx":166
+  /* "kivy/graphics/vbo.pyx":164
  *         self.elements_size = 0
  * 
  *     cdef void clear_data(self):             # <<<<<<<<<<<<<<
@@ -3842,7 +3842,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_clear_data(struct __pyx_o
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":173
+/* "kivy/graphics/vbo.pyx":171
  *         self.elements.clear()
  * 
  *     cdef void set_data(self, void *vertices, int vertices_count,             # <<<<<<<<<<<<<<
@@ -3854,7 +3854,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_data(struct __pyx_obj
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_data", 0);
 
-  /* "kivy/graphics/vbo.pyx":176
+  /* "kivy/graphics/vbo.pyx":174
  *                        unsigned short *indices, int indices_count):
  *         #clear old vertices first
  *         self.clear_data()             # <<<<<<<<<<<<<<
@@ -3863,7 +3863,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_data(struct __pyx_obj
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VertexBatch *)__pyx_v_self->__pyx_vtab)->clear_data(__pyx_v_self);
 
-  /* "kivy/graphics/vbo.pyx":177
+  /* "kivy/graphics/vbo.pyx":175
  *         #clear old vertices first
  *         self.clear_data()
  *         self.elements.grow(indices_count)             # <<<<<<<<<<<<<<
@@ -3872,7 +3872,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_data(struct __pyx_obj
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->grow(__pyx_v_self->elements, __pyx_v_indices_count);
 
-  /* "kivy/graphics/vbo.pyx":181
+  /* "kivy/graphics/vbo.pyx":179
  *         # now append the vertices and indices to vbo
  *         #vsize = self.vbo.vertex_format.vsize
  *         self.append_data(vertices, vertices_count, indices, indices_count)             # <<<<<<<<<<<<<<
@@ -3881,7 +3881,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_data(struct __pyx_obj
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VertexBatch *)__pyx_v_self->__pyx_vtab)->append_data(__pyx_v_self, __pyx_v_vertices, __pyx_v_vertices_count, __pyx_v_indices, __pyx_v_indices_count);
 
-  /* "kivy/graphics/vbo.pyx":182
+  /* "kivy/graphics/vbo.pyx":180
  *         #vsize = self.vbo.vertex_format.vsize
  *         self.append_data(vertices, vertices_count, indices, indices_count)
  *         self.flags |= V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -3890,7 +3890,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_data(struct __pyx_obj
  */
   __pyx_v_self->flags = (__pyx_v_self->flags | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":173
+  /* "kivy/graphics/vbo.pyx":171
  *         self.elements.clear()
  * 
  *     cdef void set_data(self, void *vertices, int vertices_count,             # <<<<<<<<<<<<<<
@@ -3902,7 +3902,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_data(struct __pyx_obj
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":184
+/* "kivy/graphics/vbo.pyx":182
  *         self.flags |= V_NEEDUPLOAD
  * 
  *     cdef void append_data(self, void *vertices, int vertices_count,             # <<<<<<<<<<<<<<
@@ -3925,7 +3925,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("append_data", 0);
 
-  /* "kivy/graphics/vbo.pyx":187
+  /* "kivy/graphics/vbo.pyx":185
  *                           unsigned short *indices, int indices_count):
  *         # add vertex data to vbo and get index for every vertex added
  *         cdef unsigned short *vi = <unsigned short *>malloc(sizeof(             # <<<<<<<<<<<<<<
@@ -3934,7 +3934,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
   __pyx_v_vi = ((unsigned short *)malloc(((sizeof(unsigned short)) * __pyx_v_vertices_count)));
 
-  /* "kivy/graphics/vbo.pyx":189
+  /* "kivy/graphics/vbo.pyx":187
  *         cdef unsigned short *vi = <unsigned short *>malloc(sizeof(
  *             unsigned short) * vertices_count)
  *         if vi == NULL:             # <<<<<<<<<<<<<<
@@ -3944,21 +3944,21 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
   __pyx_t_1 = ((__pyx_v_vi == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":190
+    /* "kivy/graphics/vbo.pyx":188
  *             unsigned short) * vertices_count)
  *         if vi == NULL:
  *             raise MemoryError('vertex index allocation')             # <<<<<<<<<<<<<<
  *         self.vbo.add_vertex_data(vertices, vi, vertices_count)
  *         self.vbo_index.add(vi, NULL, vertices_count)
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/graphics/vbo.pyx":191
+  /* "kivy/graphics/vbo.pyx":189
  *         if vi == NULL:
  *             raise MemoryError('vertex index allocation')
  *         self.vbo.add_vertex_data(vertices, vi, vertices_count)             # <<<<<<<<<<<<<<
@@ -3967,7 +3967,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VBO *)__pyx_v_self->vbo->__pyx_vtab)->add_vertex_data(__pyx_v_self->vbo, __pyx_v_vertices, __pyx_v_vi, __pyx_v_vertices_count);
 
-  /* "kivy/graphics/vbo.pyx":192
+  /* "kivy/graphics/vbo.pyx":190
  *             raise MemoryError('vertex index allocation')
  *         self.vbo.add_vertex_data(vertices, vi, vertices_count)
  *         self.vbo_index.add(vi, NULL, vertices_count)             # <<<<<<<<<<<<<<
@@ -3976,7 +3976,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->vbo_index->__pyx_vtab)->add(__pyx_v_self->vbo_index, __pyx_v_vi, NULL, __pyx_v_vertices_count);
 
-  /* "kivy/graphics/vbo.pyx":193
+  /* "kivy/graphics/vbo.pyx":191
  *         self.vbo.add_vertex_data(vertices, vi, vertices_count)
  *         self.vbo_index.add(vi, NULL, vertices_count)
  *         free(vi)             # <<<<<<<<<<<<<<
@@ -3985,7 +3985,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
   free(__pyx_v_vi);
 
-  /* "kivy/graphics/vbo.pyx":199
+  /* "kivy/graphics/vbo.pyx":197
  *         # block. no need to use add() everytime we need to reconstruct the list.
  *         cdef int local_index
  *         cdef unsigned short *vbi = <unsigned short*>self.vbo_index.pointer()             # <<<<<<<<<<<<<<
@@ -3994,7 +3994,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
   __pyx_v_vbi = ((unsigned short *)((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->vbo_index->__pyx_vtab)->pointer(__pyx_v_self->vbo_index));
 
-  /* "kivy/graphics/vbo.pyx":200
+  /* "kivy/graphics/vbo.pyx":198
  *         cdef int local_index
  *         cdef unsigned short *vbi = <unsigned short*>self.vbo_index.pointer()
  *         for i in xrange(indices_count):             # <<<<<<<<<<<<<<
@@ -4005,7 +4005,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "kivy/graphics/vbo.pyx":201
+    /* "kivy/graphics/vbo.pyx":199
  *         cdef unsigned short *vbi = <unsigned short*>self.vbo_index.pointer()
  *         for i in xrange(indices_count):
  *             local_index = indices[i]             # <<<<<<<<<<<<<<
@@ -4014,7 +4014,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
     __pyx_v_local_index = (__pyx_v_indices[__pyx_v_i]);
 
-    /* "kivy/graphics/vbo.pyx":202
+    /* "kivy/graphics/vbo.pyx":200
  *         for i in xrange(indices_count):
  *             local_index = indices[i]
  *             self.elements.add(&vbi[local_index], NULL, 1)             # <<<<<<<<<<<<<<
@@ -4024,7 +4024,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
     ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->add(__pyx_v_self->elements, (&(__pyx_v_vbi[__pyx_v_local_index])), NULL, 1);
   }
 
-  /* "kivy/graphics/vbo.pyx":203
+  /* "kivy/graphics/vbo.pyx":201
  *             local_index = indices[i]
  *             self.elements.add(&vbi[local_index], NULL, 1)
  *         self.flags |= V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -4033,7 +4033,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
  */
   __pyx_v_self->flags = (__pyx_v_self->flags | __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD);
 
-  /* "kivy/graphics/vbo.pyx":184
+  /* "kivy/graphics/vbo.pyx":182
  *         self.flags |= V_NEEDUPLOAD
  * 
  *     cdef void append_data(self, void *vertices, int vertices_count,             # <<<<<<<<<<<<<<
@@ -4050,7 +4050,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_append_data(struct __pyx_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":205
+/* "kivy/graphics/vbo.pyx":203
  *         self.flags |= V_NEEDUPLOAD
  * 
  *     cdef void draw(self):             # <<<<<<<<<<<<<<
@@ -4064,7 +4064,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("draw", 0);
 
-  /* "kivy/graphics/vbo.pyx":206
+  /* "kivy/graphics/vbo.pyx":204
  * 
  *     cdef void draw(self):
  *         cdef int count = self.elements.count()             # <<<<<<<<<<<<<<
@@ -4073,7 +4073,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
   __pyx_v_count = ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->count(__pyx_v_self->elements);
 
-  /* "kivy/graphics/vbo.pyx":207
+  /* "kivy/graphics/vbo.pyx":205
  *     cdef void draw(self):
  *         cdef int count = self.elements.count()
  *         if count == 0:             # <<<<<<<<<<<<<<
@@ -4083,7 +4083,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   __pyx_t_1 = ((__pyx_v_count == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":208
+    /* "kivy/graphics/vbo.pyx":206
  *         cdef int count = self.elements.count()
  *         if count == 0:
  *             return             # <<<<<<<<<<<<<<
@@ -4093,7 +4093,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/vbo.pyx":211
+  /* "kivy/graphics/vbo.pyx":209
  * 
  *         # create when needed
  *         if self.flags & V_NEEDGEN:             # <<<<<<<<<<<<<<
@@ -4103,7 +4103,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   __pyx_t_1 = ((__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":212
+    /* "kivy/graphics/vbo.pyx":210
  *         # create when needed
  *         if self.flags & V_NEEDGEN:
  *             glGenBuffers(1, &self.id)             # <<<<<<<<<<<<<<
@@ -4112,7 +4112,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
     glGenBuffers(1, (&__pyx_v_self->id));
 
-    /* "kivy/graphics/vbo.pyx":213
+    /* "kivy/graphics/vbo.pyx":211
  *         if self.flags & V_NEEDGEN:
  *             glGenBuffers(1, &self.id)
  *             self.flags &= ~V_NEEDGEN             # <<<<<<<<<<<<<<
@@ -4121,7 +4121,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
     __pyx_v_self->flags = (__pyx_v_self->flags & (~__pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN));
 
-    /* "kivy/graphics/vbo.pyx":214
+    /* "kivy/graphics/vbo.pyx":212
  *             glGenBuffers(1, &self.id)
  *             self.flags &= ~V_NEEDGEN
  *             self.flags |= V_HAVEID             # <<<<<<<<<<<<<<
@@ -4133,7 +4133,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/vbo.pyx":217
+  /* "kivy/graphics/vbo.pyx":215
  * 
  *         # bind to the current id
  *         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self.id)             # <<<<<<<<<<<<<<
@@ -4142,7 +4142,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, __pyx_v_self->id);
 
-  /* "kivy/graphics/vbo.pyx":218
+  /* "kivy/graphics/vbo.pyx":216
  *         # bind to the current id
  *         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, self.id)
  *         log_gl_error('VertexBatch.draw-glBindBuffer')             # <<<<<<<<<<<<<<
@@ -4151,7 +4151,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
   __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VertexBatch_draw_glBindBuffer);
 
-  /* "kivy/graphics/vbo.pyx":221
+  /* "kivy/graphics/vbo.pyx":219
  * 
  *         # cache indices in a gpu buffer too
  *         if self.flags & V_NEEDUPLOAD:             # <<<<<<<<<<<<<<
@@ -4161,7 +4161,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   __pyx_t_1 = ((__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":222
+    /* "kivy/graphics/vbo.pyx":220
  *         # cache indices in a gpu buffer too
  *         if self.flags & V_NEEDUPLOAD:
  *             if self.elements_size == self.elements.size():             # <<<<<<<<<<<<<<
@@ -4171,7 +4171,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
     __pyx_t_1 = ((__pyx_v_self->elements_size == ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->size(__pyx_v_self->elements)) != 0);
     if (__pyx_t_1) {
 
-      /* "kivy/graphics/vbo.pyx":223
+      /* "kivy/graphics/vbo.pyx":221
  *         if self.flags & V_NEEDUPLOAD:
  *             if self.elements_size == self.elements.size():
  *                 glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, self.elements_size,             # <<<<<<<<<<<<<<
@@ -4180,7 +4180,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
       glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, __pyx_v_self->elements_size, ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->pointer(__pyx_v_self->elements));
 
-      /* "kivy/graphics/vbo.pyx":225
+      /* "kivy/graphics/vbo.pyx":223
  *                 glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, self.elements_size,
  *                     self.elements.pointer())
  *                 log_gl_error('VertexBatch.draw-glBufferSubData')             # <<<<<<<<<<<<<<
@@ -4192,7 +4192,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
     }
     /*else*/ {
 
-      /* "kivy/graphics/vbo.pyx":227
+      /* "kivy/graphics/vbo.pyx":225
  *                 log_gl_error('VertexBatch.draw-glBufferSubData')
  *             else:
  *                 glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.elements.size(),             # <<<<<<<<<<<<<<
@@ -4201,7 +4201,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
       glBufferData(GL_ELEMENT_ARRAY_BUFFER, ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->size(__pyx_v_self->elements), ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->pointer(__pyx_v_self->elements), __pyx_v_self->usage);
 
-      /* "kivy/graphics/vbo.pyx":229
+      /* "kivy/graphics/vbo.pyx":227
  *                 glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.elements.size(),
  *                     self.elements.pointer(), self.usage)
  *                 self.elements_size = self.elements.size()             # <<<<<<<<<<<<<<
@@ -4210,7 +4210,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
       __pyx_v_self->elements_size = ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->size(__pyx_v_self->elements);
 
-      /* "kivy/graphics/vbo.pyx":230
+      /* "kivy/graphics/vbo.pyx":228
  *                     self.elements.pointer(), self.usage)
  *                 self.elements_size = self.elements.size()
  *                 log_gl_error('VertexBatch.draw-glBufferData')             # <<<<<<<<<<<<<<
@@ -4221,7 +4221,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
     }
     __pyx_L6:;
 
-    /* "kivy/graphics/vbo.pyx":231
+    /* "kivy/graphics/vbo.pyx":229
  *                 self.elements_size = self.elements.size()
  *                 log_gl_error('VertexBatch.draw-glBufferData')
  *             self.flags &= ~V_NEEDUPLOAD             # <<<<<<<<<<<<<<
@@ -4233,7 +4233,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   }
   __pyx_L5:;
 
-  /* "kivy/graphics/vbo.pyx":233
+  /* "kivy/graphics/vbo.pyx":231
  *             self.flags &= ~V_NEEDUPLOAD
  * 
  *         self.vbo.bind()             # <<<<<<<<<<<<<<
@@ -4242,7 +4242,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VBO *)__pyx_v_self->vbo->__pyx_vtab)->bind(__pyx_v_self->vbo);
 
-  /* "kivy/graphics/vbo.pyx":236
+  /* "kivy/graphics/vbo.pyx":234
  * 
  *         # draw the elements pointed by indices in ELEMENT ARRAY BUFFER.
  *         glDrawElements(self.mode, count, GL_UNSIGNED_SHORT, NULL)             # <<<<<<<<<<<<<<
@@ -4251,7 +4251,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
   glDrawElements(__pyx_v_self->mode, __pyx_v_count, GL_UNSIGNED_SHORT, NULL);
 
-  /* "kivy/graphics/vbo.pyx":237
+  /* "kivy/graphics/vbo.pyx":235
  *         # draw the elements pointed by indices in ELEMENT ARRAY BUFFER.
  *         glDrawElements(self.mode, count, GL_UNSIGNED_SHORT, NULL)
  *         log_gl_error('VertexBatch.draw-glDrawElements')             # <<<<<<<<<<<<<<
@@ -4260,7 +4260,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
  */
   __pyx_f_4kivy_8graphics_3vbo_log_gl_error(__pyx_kp_s_VertexBatch_draw_glDrawElements);
 
-  /* "kivy/graphics/vbo.pyx":205
+  /* "kivy/graphics/vbo.pyx":203
  *         self.flags |= V_NEEDUPLOAD
  * 
  *     cdef void draw(self):             # <<<<<<<<<<<<<<
@@ -4273,7 +4273,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_draw(struct __pyx_obj_4ki
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":239
+/* "kivy/graphics/vbo.pyx":237
  *         log_gl_error('VertexBatch.draw-glDrawElements')
  * 
  *     cdef void set_mode(self, str mode):             # <<<<<<<<<<<<<<
@@ -4290,7 +4290,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_mode", 0);
 
-  /* "kivy/graphics/vbo.pyx":241
+  /* "kivy/graphics/vbo.pyx":239
  *     cdef void set_mode(self, str mode):
  *         # most common case in top;
  *         self.mode_str = mode             # <<<<<<<<<<<<<<
@@ -4303,7 +4303,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
   __Pyx_DECREF(__pyx_v_self->mode_str);
   __pyx_v_self->mode_str = __pyx_v_mode;
 
-  /* "kivy/graphics/vbo.pyx":242
+  /* "kivy/graphics/vbo.pyx":240
  *         # most common case in top;
  *         self.mode_str = mode
  *         if mode is None:             # <<<<<<<<<<<<<<
@@ -4314,7 +4314,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/vbo.pyx":243
+    /* "kivy/graphics/vbo.pyx":241
  *         self.mode_str = mode
  *         if mode is None:
  *             self.mode = GL_TRIANGLES             # <<<<<<<<<<<<<<
@@ -4325,18 +4325,18 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/vbo.pyx":244
+  /* "kivy/graphics/vbo.pyx":242
  *         if mode is None:
  *             self.mode = GL_TRIANGLES
  *         elif mode == 'points':             # <<<<<<<<<<<<<<
  *             self.mode = GL_POINTS
  *         elif mode == 'line_strip':
  */
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_points, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_points, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 242; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":245
+    /* "kivy/graphics/vbo.pyx":243
  *             self.mode = GL_TRIANGLES
  *         elif mode == 'points':
  *             self.mode = GL_POINTS             # <<<<<<<<<<<<<<
@@ -4347,18 +4347,18 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/vbo.pyx":246
+  /* "kivy/graphics/vbo.pyx":244
  *         elif mode == 'points':
  *             self.mode = GL_POINTS
  *         elif mode == 'line_strip':             # <<<<<<<<<<<<<<
  *             self.mode = GL_LINE_STRIP
  *         elif mode == 'line_loop':
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_line_strip, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_line_strip, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/vbo.pyx":247
+    /* "kivy/graphics/vbo.pyx":245
  *             self.mode = GL_POINTS
  *         elif mode == 'line_strip':
  *             self.mode = GL_LINE_STRIP             # <<<<<<<<<<<<<<
@@ -4369,18 +4369,18 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/vbo.pyx":248
+  /* "kivy/graphics/vbo.pyx":246
  *         elif mode == 'line_strip':
  *             self.mode = GL_LINE_STRIP
  *         elif mode == 'line_loop':             # <<<<<<<<<<<<<<
  *             self.mode = GL_LINE_LOOP
  *         elif mode == 'lines':
  */
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_line_loop, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_line_loop, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":249
+    /* "kivy/graphics/vbo.pyx":247
  *             self.mode = GL_LINE_STRIP
  *         elif mode == 'line_loop':
  *             self.mode = GL_LINE_LOOP             # <<<<<<<<<<<<<<
@@ -4391,18 +4391,18 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/vbo.pyx":250
+  /* "kivy/graphics/vbo.pyx":248
  *         elif mode == 'line_loop':
  *             self.mode = GL_LINE_LOOP
  *         elif mode == 'lines':             # <<<<<<<<<<<<<<
  *             self.mode = GL_LINES
  *         elif mode == 'triangle_strip':
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_lines, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_lines, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/vbo.pyx":251
+    /* "kivy/graphics/vbo.pyx":249
  *             self.mode = GL_LINE_LOOP
  *         elif mode == 'lines':
  *             self.mode = GL_LINES             # <<<<<<<<<<<<<<
@@ -4413,18 +4413,18 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/vbo.pyx":252
+  /* "kivy/graphics/vbo.pyx":250
  *         elif mode == 'lines':
  *             self.mode = GL_LINES
  *         elif mode == 'triangle_strip':             # <<<<<<<<<<<<<<
  *             self.mode = GL_TRIANGLE_STRIP
  *         elif mode == 'triangle_fan':
  */
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_triangle_strip, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 252; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_triangle_strip, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/vbo.pyx":253
+    /* "kivy/graphics/vbo.pyx":251
  *             self.mode = GL_LINES
  *         elif mode == 'triangle_strip':
  *             self.mode = GL_TRIANGLE_STRIP             # <<<<<<<<<<<<<<
@@ -4435,18 +4435,18 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/vbo.pyx":254
+  /* "kivy/graphics/vbo.pyx":252
  *         elif mode == 'triangle_strip':
  *             self.mode = GL_TRIANGLE_STRIP
  *         elif mode == 'triangle_fan':             # <<<<<<<<<<<<<<
  *             self.mode = GL_TRIANGLE_FAN
  *         else:
  */
-  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_triangle_fan, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = (__Pyx_PyString_Equals(__pyx_v_mode, __pyx_n_s_triangle_fan, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 252; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/vbo.pyx":255
+    /* "kivy/graphics/vbo.pyx":253
  *             self.mode = GL_TRIANGLE_STRIP
  *         elif mode == 'triangle_fan':
  *             self.mode = GL_TRIANGLE_FAN             # <<<<<<<<<<<<<<
@@ -4458,7 +4458,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
   }
   /*else*/ {
 
-    /* "kivy/graphics/vbo.pyx":257
+    /* "kivy/graphics/vbo.pyx":255
  *             self.mode = GL_TRIANGLE_FAN
  *         else:
  *             self.mode = GL_TRIANGLES             # <<<<<<<<<<<<<<
@@ -4469,7 +4469,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/vbo.pyx":239
+  /* "kivy/graphics/vbo.pyx":237
  *         log_gl_error('VertexBatch.draw-glDrawElements')
  * 
  *     cdef void set_mode(self, str mode):             # <<<<<<<<<<<<<<
@@ -4485,7 +4485,7 @@ static void __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_set_mode(struct __pyx_obj
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/vbo.pyx":259
+/* "kivy/graphics/vbo.pyx":257
  *             self.mode = GL_TRIANGLES
  * 
  *     cdef str get_mode(self):             # <<<<<<<<<<<<<<
@@ -4498,7 +4498,7 @@ static PyObject *__pyx_f_4kivy_8graphics_3vbo_11VertexBatch_get_mode(struct __py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_mode", 0);
 
-  /* "kivy/graphics/vbo.pyx":260
+  /* "kivy/graphics/vbo.pyx":258
  * 
  *     cdef str get_mode(self):
  *         return self.mode_str             # <<<<<<<<<<<<<<
@@ -4510,7 +4510,7 @@ static PyObject *__pyx_f_4kivy_8graphics_3vbo_11VertexBatch_get_mode(struct __py
   __pyx_r = __pyx_v_self->mode_str;
   goto __pyx_L0;
 
-  /* "kivy/graphics/vbo.pyx":259
+  /* "kivy/graphics/vbo.pyx":257
  *             self.mode = GL_TRIANGLES
  * 
  *     cdef str get_mode(self):             # <<<<<<<<<<<<<<
@@ -4525,7 +4525,7 @@ static PyObject *__pyx_f_4kivy_8graphics_3vbo_11VertexBatch_get_mode(struct __py
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":262
+/* "kivy/graphics/vbo.pyx":260
  *         return self.mode_str
  * 
  *     cdef int count(self):             # <<<<<<<<<<<<<<
@@ -4538,7 +4538,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_count(struct __pyx_obj_4ki
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("count", 0);
 
-  /* "kivy/graphics/vbo.pyx":263
+  /* "kivy/graphics/vbo.pyx":261
  * 
  *     cdef int count(self):
  *         return self.elements.count()             # <<<<<<<<<<<<<<
@@ -4548,7 +4548,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_count(struct __pyx_obj_4ki
   __pyx_r = ((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->count(__pyx_v_self->elements);
   goto __pyx_L0;
 
-  /* "kivy/graphics/vbo.pyx":262
+  /* "kivy/graphics/vbo.pyx":260
  *         return self.mode_str
  * 
  *     cdef int count(self):             # <<<<<<<<<<<<<<
@@ -4562,7 +4562,7 @@ static int __pyx_f_4kivy_8graphics_3vbo_11VertexBatch_count(struct __pyx_obj_4ki
   return __pyx_r;
 }
 
-/* "kivy/graphics/vbo.pyx":265
+/* "kivy/graphics/vbo.pyx":263
  *         return self.elements.count()
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -4598,7 +4598,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_11VertexBatch_4__repr__(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "kivy/graphics/vbo.pyx":266
+  /* "kivy/graphics/vbo.pyx":264
  * 
  *     def __repr__(self):
  *         return '<VertexBatch at %x id=%r vertex=%d size=%d mode=%s vbo=%x>' % (             # <<<<<<<<<<<<<<
@@ -4607,23 +4607,23 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_11VertexBatch_4__repr__(struct __
  */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "kivy/graphics/vbo.pyx":267
+  /* "kivy/graphics/vbo.pyx":265
  *     def __repr__(self):
  *         return '<VertexBatch at %x id=%r vertex=%d size=%d mode=%s vbo=%x>' % (
  *                 id(self), self.id if self.flags & V_HAVEID else None,             # <<<<<<<<<<<<<<
  *                 self.elements.count(), self.elements.size(), self.get_mode(),
  *                 id(self.vbo))
  */
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (((__pyx_v_self->flags & __pyx_v_4kivy_8graphics_3vbo_V_HAVEID) != 0)) {
-    __pyx_t_3 = __Pyx_PyInt_From_GLuint(__pyx_v_self->id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyInt_From_GLuint(__pyx_v_self->id); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
@@ -4632,41 +4632,41 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_11VertexBatch_4__repr__(struct __
     __pyx_t_1 = Py_None;
   }
 
-  /* "kivy/graphics/vbo.pyx":268
+  /* "kivy/graphics/vbo.pyx":266
  *         return '<VertexBatch at %x id=%r vertex=%d size=%d mode=%s vbo=%x>' % (
  *                 id(self), self.id if self.flags & V_HAVEID else None,
  *                 self.elements.count(), self.elements.size(), self.get_mode(),             # <<<<<<<<<<<<<<
  *                 id(self.vbo))
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->count(__pyx_v_self->elements)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_int(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->count(__pyx_v_self->elements)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_long(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->size(__pyx_v_self->elements)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_long(((struct __pyx_vtabstruct_4kivy_8graphics_6buffer_Buffer *)__pyx_v_self->elements->__pyx_vtab)->size(__pyx_v_self->elements)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VertexBatch *)__pyx_v_self->__pyx_vtab)->get_mode(__pyx_v_self); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_3vbo_VertexBatch *)__pyx_v_self->__pyx_vtab)->get_mode(__pyx_v_self); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "kivy/graphics/vbo.pyx":269
+  /* "kivy/graphics/vbo.pyx":267
  *                 id(self), self.id if self.flags & V_HAVEID else None,
  *                 self.elements.count(), self.elements.size(), self.get_mode(),
  *                 id(self.vbo))             # <<<<<<<<<<<<<<
  */
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(((PyObject *)__pyx_v_self->vbo));
   PyTuple_SET_ITEM(__pyx_t_6, 0, ((PyObject *)__pyx_v_self->vbo));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self->vbo));
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_6, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_id, __pyx_t_6, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "kivy/graphics/vbo.pyx":267
+  /* "kivy/graphics/vbo.pyx":265
  *     def __repr__(self):
  *         return '<VertexBatch at %x id=%r vertex=%d size=%d mode=%s vbo=%x>' % (
  *                 id(self), self.id if self.flags & V_HAVEID else None,             # <<<<<<<<<<<<<<
  *                 self.elements.count(), self.elements.size(), self.get_mode(),
  *                 id(self.vbo))
  */
-  __pyx_t_6 = PyTuple_New(6); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(6); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4687,21 +4687,21 @@ static PyObject *__pyx_pf_4kivy_8graphics_3vbo_11VertexBatch_4__repr__(struct __
   __pyx_t_5 = 0;
   __pyx_t_7 = 0;
 
-  /* "kivy/graphics/vbo.pyx":266
+  /* "kivy/graphics/vbo.pyx":264
  * 
  *     def __repr__(self):
  *         return '<VertexBatch at %x id=%r vertex=%d size=%d mode=%s vbo=%x>' % (             # <<<<<<<<<<<<<<
  *                 id(self), self.id if self.flags & V_HAVEID else None,
  *                 self.elements.count(), self.elements.size(), self.get_mode(),
  */
-  __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_VertexBatch_at_x_id_r_vertex_d, __pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_VertexBatch_at_x_id_r_vertex_d, __pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_r = __pyx_t_7;
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/vbo.pyx":265
+  /* "kivy/graphics/vbo.pyx":263
  *         return self.elements.count()
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -5059,12 +5059,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static int __Pyx_InitCachedBuiltins(void) {
   #if PY_MAJOR_VERSION >= 3
-  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #else
-  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_xrange); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_xrange); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -5074,14 +5074,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "kivy/graphics/vbo.pyx":190
+  /* "kivy/graphics/vbo.pyx":188
  *             unsigned short) * vertices_count)
  *         if vi == NULL:
  *             raise MemoryError('vertex index allocation')             # <<<<<<<<<<<<<<
  *         self.vbo.add_vertex_data(vertices, vi, vertices_count)
  *         self.vbo_index.add(vi, NULL, vertices_count)
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_vertex_index_allocation); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 190; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_vertex_index_allocation); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -5096,36 +5096,36 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "kivy/graphics/vbo.pyx":38
+  /* "kivy/graphics/vbo.pyx":36
  * from kivy.graphics.shader cimport Shader
  * 
  * cdef VertexFormat default_vertex = VertexFormat( (b'vPosition', 2, 'float'),             # <<<<<<<<<<<<<<
  *         (b'vTexCoords0', 2, 'float'))
  * 
  */
-  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_n_b_vPosition, __pyx_int_2, __pyx_n_s_float); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__3 = PyTuple_Pack(3, __pyx_n_b_vPosition, __pyx_int_2, __pyx_n_s_float); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "kivy/graphics/vbo.pyx":39
+  /* "kivy/graphics/vbo.pyx":37
  * 
  * cdef VertexFormat default_vertex = VertexFormat( (b'vPosition', 2, 'float'),
  *         (b'vTexCoords0', 2, 'float'))             # <<<<<<<<<<<<<<
  * 
  * cdef short V_NEEDGEN = 1 << 0
  */
-  __pyx_tuple__4 = PyTuple_Pack(3, __pyx_n_b_vTexCoords0, __pyx_int_2, __pyx_n_s_float); if (unlikely(!__pyx_tuple__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 39; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__4 = PyTuple_Pack(3, __pyx_n_b_vTexCoords0, __pyx_int_2, __pyx_n_s_float); if (unlikely(!__pyx_tuple__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 37; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "kivy/graphics/vbo.pyx":38
+  /* "kivy/graphics/vbo.pyx":36
  * from kivy.graphics.shader cimport Shader
  * 
  * cdef VertexFormat default_vertex = VertexFormat( (b'vPosition', 2, 'float'),             # <<<<<<<<<<<<<<
  *         (b'vTexCoords0', 2, 'float'))
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_tuple__3, __pyx_tuple__4); if (unlikely(!__pyx_tuple__5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_tuple__3, __pyx_tuple__4); if (unlikely(!__pyx_tuple__5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
   __Pyx_RefNannyFinishContext();
@@ -5237,10 +5237,10 @@ PyMODINIT_FUNC PyInit_vbo(void)
   __pyx_vtable_4kivy_8graphics_3vbo_VBO.remove_vertex_data = (void (*)(struct __pyx_obj_4kivy_8graphics_3vbo_VBO *, unsigned short *, int))__pyx_f_4kivy_8graphics_3vbo_3VBO_remove_vertex_data;
   __pyx_vtable_4kivy_8graphics_3vbo_VBO.reload = (void (*)(struct __pyx_obj_4kivy_8graphics_3vbo_VBO *))__pyx_f_4kivy_8graphics_3vbo_3VBO_reload;
   __pyx_vtable_4kivy_8graphics_3vbo_VBO.have_id = (int (*)(struct __pyx_obj_4kivy_8graphics_3vbo_VBO *))__pyx_f_4kivy_8graphics_3vbo_3VBO_have_id;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_3vbo_VBO) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_3vbo_VBO) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 43; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_3vbo_VBO.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_3vbo_VBO.tp_dict, __pyx_vtabptr_4kivy_8graphics_3vbo_VBO) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "VBO", (PyObject *)&__pyx_type_4kivy_8graphics_3vbo_VBO) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_3vbo_VBO.tp_dict, __pyx_vtabptr_4kivy_8graphics_3vbo_VBO) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 43; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "VBO", (PyObject *)&__pyx_type_4kivy_8graphics_3vbo_VBO) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 43; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_3vbo_VBO.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_3vbo_VBO.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_3vbo_VBO, __weakref__);
   __pyx_ptype_4kivy_8graphics_3vbo_VBO = &__pyx_type_4kivy_8graphics_3vbo_VBO;
   __pyx_vtabptr_4kivy_8graphics_3vbo_VertexBatch = &__pyx_vtable_4kivy_8graphics_3vbo_VertexBatch;
@@ -5253,10 +5253,10 @@ PyMODINIT_FUNC PyInit_vbo(void)
   __pyx_vtable_4kivy_8graphics_3vbo_VertexBatch.count = (int (*)(struct __pyx_obj_4kivy_8graphics_3vbo_VertexBatch *))__pyx_f_4kivy_8graphics_3vbo_11VertexBatch_count;
   __pyx_vtable_4kivy_8graphics_3vbo_VertexBatch.reload = (void (*)(struct __pyx_obj_4kivy_8graphics_3vbo_VertexBatch *))__pyx_f_4kivy_8graphics_3vbo_11VertexBatch_reload;
   __pyx_vtable_4kivy_8graphics_3vbo_VertexBatch.have_id = (int (*)(struct __pyx_obj_4kivy_8graphics_3vbo_VertexBatch *))__pyx_f_4kivy_8graphics_3vbo_11VertexBatch_have_id;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_3vbo_VertexBatch) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_3vbo_VertexBatch) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_3vbo_VertexBatch.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_3vbo_VertexBatch.tp_dict, __pyx_vtabptr_4kivy_8graphics_3vbo_VertexBatch) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "VertexBatch", (PyObject *)&__pyx_type_4kivy_8graphics_3vbo_VertexBatch) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_3vbo_VertexBatch.tp_dict, __pyx_vtabptr_4kivy_8graphics_3vbo_VertexBatch) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "VertexBatch", (PyObject *)&__pyx_type_4kivy_8graphics_3vbo_VertexBatch) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_3vbo_VertexBatch.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_3vbo_VertexBatch.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_3vbo_VertexBatch, __weakref__);
   __pyx_ptype_4kivy_8graphics_3vbo_VertexBatch = &__pyx_type_4kivy_8graphics_3vbo_VertexBatch;
   /*--- Type import code ---*/
@@ -5362,22 +5362,23 @@ PyMODINIT_FUNC PyInit_vbo(void)
  */
   __pyx_v_4kivy_8graphics_3vbo_pi = 3.141592653589793;
 
-  /* "kivy/graphics/gl_debug_logger.pxi":1
+  /* "kivy/graphics/gl_debug_logger.pxi":2
+ * from kivy.graphics.c_opengl cimport GLenum, glGetError
  * from kivy.logger import Logger             # <<<<<<<<<<<<<<
  * include "config.pxi"
  * 
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_Logger);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
@@ -5402,42 +5403,42 @@ PyMODINIT_FUNC PyInit_vbo(void)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/vbo.pyx":33
+  /* "kivy/graphics/vbo.pyx":31
  *     from kivy.graphics.c_opengl_debug cimport *
  * from kivy.graphics.vertex cimport *
  * from kivy.logger import Logger             # <<<<<<<<<<<<<<
  * from kivy.graphics.context cimport Context, get_context
  * from kivy.graphics.instructions cimport getActiveContext
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_Logger);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 33; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 31; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/vbo.pyx":38
+  /* "kivy/graphics/vbo.pyx":36
  * from kivy.graphics.shader cimport Shader
  * 
  * cdef VertexFormat default_vertex = VertexFormat( (b'vPosition', 2, 'float'),             # <<<<<<<<<<<<<<
  *         (b'vTexCoords0', 2, 'float'))
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6vertex_VertexFormat)), __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6vertex_VertexFormat)), __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 36; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_XGOTREF(((PyObject *)__pyx_v_4kivy_8graphics_3vbo_default_vertex));
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_3vbo_default_vertex, ((struct __pyx_obj_4kivy_8graphics_6vertex_VertexFormat *)__pyx_t_4));
   __Pyx_GIVEREF(__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/vbo.pyx":41
+  /* "kivy/graphics/vbo.pyx":39
  *         (b'vTexCoords0', 2, 'float'))
  * 
  * cdef short V_NEEDGEN = 1 << 0             # <<<<<<<<<<<<<<
@@ -5446,7 +5447,7 @@ PyMODINIT_FUNC PyInit_vbo(void)
  */
   __pyx_v_4kivy_8graphics_3vbo_V_NEEDGEN = 1;
 
-  /* "kivy/graphics/vbo.pyx":42
+  /* "kivy/graphics/vbo.pyx":40
  * 
  * cdef short V_NEEDGEN = 1 << 0
  * cdef short V_NEEDUPLOAD = 1 << 1             # <<<<<<<<<<<<<<
@@ -5455,7 +5456,7 @@ PyMODINIT_FUNC PyInit_vbo(void)
  */
   __pyx_v_4kivy_8graphics_3vbo_V_NEEDUPLOAD = 2;
 
-  /* "kivy/graphics/vbo.pyx":43
+  /* "kivy/graphics/vbo.pyx":41
  * cdef short V_NEEDGEN = 1 << 0
  * cdef short V_NEEDUPLOAD = 1 << 1
  * cdef short V_HAVEID = 1 << 2             # <<<<<<<<<<<<<<

@@ -5,13 +5,14 @@ SDL2 image loader
 
 __all__ = ('ImageLoaderSDL2', )
 
+from kivy.compat import PY2
 from kivy.logger import Logger
 from kivy.core.image import ImageLoaderBase, ImageData, ImageLoader
 from kivy.core.image import _img_sdl2
 
 
 class ImageLoaderSDL2(ImageLoaderBase):
-    '''Image loader based on SDL2_image'''
+    '''Image loader based on the PIL library'''
 
     def _ensure_ext(self):
         _img_sdl2.init()
@@ -19,8 +20,8 @@ class ImageLoaderSDL2(ImageLoaderBase):
     @staticmethod
     def extensions():
         '''Return accepted extensions for this loader'''
-        return ('bmp', 'jpg', 'jpeg', 'jpe', 'lbm', 'pcx', 'png', 'pnm',
-                'tga', 'tiff', 'webp', 'xcf', 'xpm', 'xv')
+        return ('bmp', 'jpg', 'jpeg', 'lbm', 'pcx', 'png', 'pnm', 'tga', 'tiff',
+                'webp', 'xcf', 'xpm', 'xv')
 
     @staticmethod
     def can_save():

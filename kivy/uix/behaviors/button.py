@@ -1,64 +1,19 @@
-'''
-Button Behavior
-===============
-
-The :class:`~kivy.uix.behaviors.button.ButtonBehavior`
-`mixin <https://en.wikipedia.org/wiki/Mixin>`_ class provides
-:class:`~kivy.uix.button.Button` behavior. You can combine this class with
-other widgets, such as an :class:`~kivy.uix.image.Image`, to provide
-alternative buttons that preserve Kivy button behavior.
-
-For an overview of behaviors, please refer to the :mod:`~kivy.uix.behaviors`
-documentation.
-
-Example
--------
-
-The following example adds button behavior to an image to make a checkbox that
-behaves like a button::
-
-    from kivy.app import App
-    from kivy.uix.image import Image
-    from kivy.uix.behaviors import ButtonBehavior
-
-
-    class MyButton(ButtonBehavior, Image):
-        def __init__(self, **kwargs):
-            super(MyButton, self).__init__(**kwargs)
-            self.source = 'atlas://data/images/defaulttheme/checkbox_off'
-
-        def on_press(self):
-            self.source = 'atlas://data/images/defaulttheme/checkbox_on'
-
-        def on_release(self):
-            self.source = 'atlas://data/images/defaulttheme/checkbox_off'
-
-
-    class SampleApp(App):
-        def build(self):
-            return MyButton()
-
-
-    SampleApp().run()
-
-See :class:`~kivy.uix.behaviors.ButtonBehavior` for details.
+'''See :class:`ButtonBehavior` for details.
 '''
 
 __all__ = ('ButtonBehavior', )
 
 from kivy.clock import Clock
-from kivy.config import Config
 from kivy.properties import OptionProperty, ObjectProperty, \
-    BooleanProperty, NumericProperty
+    BooleanProperty, NumericProperty, AliasProperty
 from time import time
+from kivy.logger import Logger
 
 
 class ButtonBehavior(object):
     '''
     This `mixin <https://en.wikipedia.org/wiki/Mixin>`_ class provides
-    :class:`~kivy.uix.button.Button` behavior. Please see the
-    :mod:`button behaviors module <kivy.uix.behaviors.button>` documentation
-    for more information.
+    :class:`~kivy.uix.button.Button` behavior.
 
     :Events:
         `on_press`
@@ -66,7 +21,6 @@ class ButtonBehavior(object):
         `on_release`
             Fired when the button is released (i.e. the touch/click that
             pressed the button goes away).
-
     '''
 
     state = OptionProperty('normal', options=('normal', 'down'))
@@ -89,35 +43,40 @@ class ButtonBehavior(object):
     defaults to `None`.
     '''
 
-    
-    min_state_time = NumericProperty(0)
+    MIN_STATE_TIME = 0.035
+    '''The minimum period of time which the widget must remain in the
+    `'down'` state.
+
+    ..warning::
+        This is deprecated, and will be removed in the next major release.
+        Use :attr:`min_state_time` instead.
+
+    :attr:`MIN_STATE_TIME` is a float and defaults to 0.035.'''
+
+    min_state_time = NumericProperty(MIN_STATE_TIME)
     '''The minimum period of time which the widget must remain in the
     `'down'` state.
 
     .. versionadded:: 1.9.1
 
-    :attr:`min_state_time` is a float and defaults to 0.035. This value is
-    taken from :class:`~kivy.config.Config`.
+    :attr:`min_state_time` is a float and defaults to 0.035.
     '''
 
-    always_release = BooleanProperty(False)
+    always_release = BooleanProperty(True)
     '''This determines whether or not the widget fires an `on_release` event if
     the touch_up is outside the widget.
 
     .. versionadded:: 1.9.0
 
-    .. versionchanged:: 1.9.2
-        The default value is now False.
-
     :attr:`always_release` is a :class:`~kivy.properties.BooleanProperty` and
-    defaults to `False`.
+    defaults to `True`.
     '''
 
     def __init__(self, **kwargs):
         self.register_event_type('on_press')
         self.register_event_type('on_release')
-        if 'min_state_time' not in kwargs:
-            self.min_state_time = float(Config.get('graphics', 'min_state_time'))
+        # remove this when MIN_STATE_TIME is removed
+        self.min_state_time = kwargs.get('min_state_time', self.MIN_STATE_TIME)
         super(ButtonBehavior, self).__init__(**kwargs)
         self.__state_event = None
         self.__touch_time = None
@@ -167,7 +126,7 @@ class ButtonBehavior(object):
 
         if (not self.always_release
                 and not self.collide_point(*touch.pos)):
-            self._do_release()
+            self.state = 'normal'
             return
 
         touchtime = time() - self.__touch_time

@@ -127,8 +127,6 @@ class Video(Image):
     to {}.
     '''
 
-    _video_load_event = None
-
     def __init__(self, **kwargs):
         self._video = None
         super(Video, self).__init__(**kwargs)
@@ -154,11 +152,8 @@ class Video(Image):
         self._video.seek(percent)
 
     def _trigger_video_load(self, *largs):
-        ev = self._video_load_event
-        if ev is None:
-            ev = self._video_load_event = Clock.schedule_once(
-                self._do_video_load, -1)
-        ev()
+        Clock.unschedule(self._do_video_load)
+        Clock.schedule_once(self._do_video_load, -1)
 
     def _do_video_load(self, *largs):
         if CoreVideo is None:

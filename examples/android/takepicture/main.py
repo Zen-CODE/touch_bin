@@ -23,7 +23,7 @@ __version__ = '0.1'
 from kivy.app import App
 from os.path import exists
 from jnius import autoclass, cast
-from android import activity, mActivity
+from android import activity
 from functools import partial
 from kivy.clock import Clock
 from kivy.uix.scatter import Scatter
@@ -32,6 +32,7 @@ from kivy.properties import StringProperty
 from PIL import Image
 
 Intent = autoclass('android.content.Intent')
+PythonActivity = autoclass('org.renpy.android.PythonActivity')
 MediaStore = autoclass('android.provider.MediaStore')
 Uri = autoclass('android.net.Uri')
 Environment = autoclass('android.os.Environment')
@@ -60,7 +61,7 @@ class TakePictureApp(App):
         self.uri = Uri.parse('file://' + self.last_fn)
         self.uri = cast('android.os.Parcelable', self.uri)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, self.uri)
-        mActivity.startActivityForResult(intent, 0x123)
+        PythonActivity.mActivity.startActivityForResult(intent, 0x123)
 
     def on_activity_result(self, requestCode, resultCode, intent):
         if requestCode == 0x123:

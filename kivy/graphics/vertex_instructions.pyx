@@ -63,8 +63,6 @@ from kivy.graphics.vbo cimport *
 from kivy.graphics.vertex cimport *
 from kivy.graphics.instructions cimport *
 from kivy.graphics.c_opengl cimport *
-IF USE_OPENGL_MOCK == 1:
-    from kivy.graphics.c_opengl_mock cimport *
 IF USE_OPENGL_DEBUG == 1:
     from kivy.graphics.c_opengl_debug cimport *
 from kivy.logger import Logger
@@ -114,7 +112,7 @@ cdef class Bezier(VertexInstruction):
         VertexInstruction.__init__(self, **kwargs)
         v = kwargs.get('points')
         self.points = v if v is not None else [0, 0, 0, 0, 0, 0, 0, 0]
-        self._segments = kwargs.get('segments') or 180
+        self._segments = kwargs.get('segments') or 10
         self._loop = kwargs.get('loop') or False
         if self._loop:
             self.points.extend(self.points[:2])
@@ -288,7 +286,7 @@ cdef class StripMesh(VertexInstruction):
 
         if vcount == 0 or icount < 3:
             return 0
-        if self.icount + icount > 65533:  # (optimization of) self.icount + icount - 2 > 65535
+        if self.icount + icount > 65533:  # (optim of) self.icount + icount - 2 > 65535
             return 0
 
         if self.icount > 0:
@@ -875,7 +873,7 @@ cdef class BorderImage(Rectangle):
         w = self.w
         h = self.h
 
-        # width and height of texture in pixels, and tex coord space
+        # width and heigth of texture in pixels, and tex coord space
         cdef float tw, th, tcw, tch
         cdef float *tc = self._tex_coords
         cdef float tc0, tc1, tc2, tc7
@@ -968,7 +966,7 @@ cdef class BorderImage(Rectangle):
             15, 14,  7,     7,  8, 15,  # top middle
             10, 15,  8,     8,  9, 10,  # top left
             11, 12, 15,    15, 10, 11,  # center left
-            12, 13, 14,    14, 15, 12]  # center middle
+            12, 13, 14,    14, 15, 12]  # center middel
 
         self.batch.set_data(<vertex_t *>vertices, 16, indices, 54)
 
@@ -1034,7 +1032,7 @@ cdef class Ellipse(Rectangle):
         cdef int i, angle_dir
         cdef float angle_start, angle_end, angle_range
         cdef float x, y, angle, rx, ry, ttx, tty, tx, ty, tw, th
-        cdef float cx, cy, tangential_factor, radial_factor, fx, fy
+        cdef float cx, cy, tangetial_factor, radial_factor, fx, fy
         cdef vertex_t *vertices = NULL
         cdef unsigned short *indices = NULL
         cdef int count = self._segments
@@ -1083,7 +1081,7 @@ cdef class Ellipse(Rectangle):
 
         # super fast ellipse drawing
         # credit goes to: http://slabode.exofire.net/circle_draw.shtml
-        tangential_factor = tan(angle_range)
+        tangetial_factor = tan(angle_range)
         radial_factor = cos(angle_range)
 
         # Calculate the coordinates for a circle with radius 0.5 about
@@ -1107,8 +1105,8 @@ cdef class Ellipse(Rectangle):
 
             fx = -y
             fy = x
-            x += fx * tangential_factor
-            y += fy * tangential_factor
+            x += fx * tangetial_factor
+            y += fy * tangetial_factor
             x *= radial_factor
             y *= radial_factor
 
@@ -1295,7 +1293,7 @@ cdef class RoundedRectangle(Rectangle):
 
         index = 1  # vertex index from 1 to count
         for corner in xrange(4):
-            # start angle for the corner. end is 90 degrees lesser (clockwise)
+            # start angle for the corner. end is 90 degress lesser (clockwise)
             angle = 180 - 90 * corner
 
             # coefficients to enable/disable multiplication by width/height

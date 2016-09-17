@@ -202,9 +202,7 @@ cdef class Color(ContextInstruction):
 
         c = Color(b=0.5)  # sets the blue component only
 
-    In kv lang you can set the color properties directly:
-
-    .. code-block:: kv
+    In kv lang you can set the color properties directly::
 
         <Rule>:
             canvas:
@@ -565,7 +563,7 @@ cdef class Transform(MatrixInstruction):
         self.transform( Matrix().translate(tx, ty, tz) )
 
     cpdef rotate(self, float angle, float ax, float ay, float az):
-        '''Rotate the transformation by matrix by *angle* degrees around the
+        '''Rotate the transformation by matrix by *angle* degress around the
         axis defined by the vector ax, ay, az.
         '''
         self.transform( Matrix().rotate(angle, ax, ay, az) )
@@ -584,7 +582,7 @@ cdef class Transform(MatrixInstruction):
 cdef class Rotate(Transform):
     '''Rotate the coordinate space by applying a rotation transformation
     on the modelview matrix. You can set the properties of the instructions
-    afterwards with e.g. ::
+    afterwards with e.g.::
 
         rot.angle = 90
         rot.axis = (0, 0, 1)
@@ -692,7 +690,7 @@ cdef class Scale(Transform):
 
     .. deprecated:: 1.6.0
         Deprecated single scale property in favor of x, y, z, xyz axis
-        independent scaled factors.
+        independant scaled factors.
     '''
     def __init__(self, *args, **kwargs):
         cdef double x, y, z
@@ -741,8 +739,8 @@ cdef class Scale(Transform):
                     "y, z, etc properties to get scale factor based on axis.")
                 return self._x
             else:
-                raise Exception("trying to access deprecated property" +\
-                    " 'scale' on Scale instruction with non uniform scaling!")
+                raise Exception("trying to access deprectaed property" +\
+                    " 'scale' on Scale instruction with non unifrom scaling!")
 
         def __set__(self, s):
             Logger.warning("scale property is deprecated, use xyz, x, " +\

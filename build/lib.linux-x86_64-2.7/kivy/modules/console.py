@@ -5,9 +5,9 @@ Console
 
 .. versionadded:: 1.9.1
 
-Reboot of the old inspector, designed to be modular and keep concerns
-separated. It also have a addons architecture that allow you to add a button,
-panel, or more in the Console itself.
+Reboot of the old inspector, designed to be modular and keep concerns separated.
+It also have a addons architecture that allow you to add a button, panel, or
+more in the Console itself.
 
 .. warning::
 
@@ -39,7 +39,7 @@ Keyboard navigation
 - "Left": select the previous following sibling
 - "Right": select the next following sibling
 
-Additional informations
+Additionnal informations
 ------------------------
 
 Some properties can be edited live. However, due to the delayed usage of
@@ -79,10 +79,10 @@ of the Console::
             self.console.add_toolbar_widget(self.lbl, right=True)
 
         def activate(self):
-            self.event = Clock.schedule_interval(self.update_fps, 1 / 2.)
+            Clock.schedule_interval(self.update_fps, 1 / 2.)
 
         def deactivated(self):
-            self.event.cancel()
+            Clock.unschedule(self.update_fps)
 
         def update_fps(self, *args):
             fps = Clock.get_fps()
@@ -340,7 +340,7 @@ class ConsoleAddon(object):
         self.init()
 
     def init(self):
-        """Method called when the addon is instantiated by the Console
+        """Method called when the addon is instanciated by the Console
         """
         pass
 
@@ -377,23 +377,15 @@ class ConsoleAddonSelect(ConsoleAddon):
 
 
 class ConsoleAddonFps(ConsoleAddon):
-
-    _update_ev = None
-
     def init(self):
         self.lbl = ConsoleLabel(text="0 Fps")
         self.console.add_toolbar_widget(self.lbl, right=True)
 
     def activate(self):
-        ev = self._update_ev
-        if ev is None:
-            self._update_ev = Clock.schedule_interval(self.update_fps, 1 / 2.)
-        else:
-            ev()
+        Clock.schedule_interval(self.update_fps, 1 / 2.)
 
     def deactivated(self):
-        if self._update_ev is not None:
-            self._update_ev.cancel()
+        Clock.unschedule(self.update_fps)
 
     def update_fps(self, *args):
         fps = Clock.get_fps()
@@ -525,7 +517,7 @@ class ConsoleAddonWidgetPanel(ConsoleAddon):
         dtype = None
 
         if isinstance(prop, AliasProperty) or nested:
-            # trying to resolve type dynamically
+            # trying to resolve type dynamicly
             if type(value) in (str, str):
                 dtype = 'string'
             elif type(value) in (int, float):
@@ -760,7 +752,7 @@ class Console(RelativeLayout):
 
     This widget is created by create_console(), when the module is loaded.
     During that time, you can add addons on the console to extend the
-    functionalities, or add your own application stats / debugging module.
+    functionnalities, or add your own application stats / debugging module.
     """
 
     #: Array of addons that will be created at Console creation
@@ -772,7 +764,7 @@ class Console(RelativeLayout):
     #: floating window.
     mode = OptionProperty("docked", options=["docked", "floated"])
 
-    #: Current widget being selected
+    #: Current widget beeing selected
     widget = ObjectProperty(None, allownone=True)
 
     #: Indicate if the inspector inspection is enabled. If yes, the next
@@ -794,7 +786,7 @@ class Console(RelativeLayout):
             PopMatrix()
         Clock.schedule_interval(self.update_widget_graphics, 0)
 
-        # instantiate all addons
+        # instanciate all addons
         self._toolbar = {"left": [], "panels": [], "right": []}
         self._addons = []
         self._panel = None
@@ -837,13 +829,13 @@ class Console(RelativeLayout):
         """Add a new panel in the Console.
 
         - `cb_activate` is a callable that will be called when the panel is
-          activated by the user.
+        activated by the user.
 
         - `cb_deactivate` is a callable that will be called when the panel is
-          deactivated or when the console will hide.
+        deactivated or when the console will hide.
 
-        - `cb_refresh` is an optional callable that is called if the user
-          click again on the button for display the panel
+        - `cb_refresh` is an optionnal callable that is called if the user
+        click again on the button for display the panel
 
         When activated, it's up to the panel to display a content in the
         Console by using :meth:`set_content`.
@@ -980,7 +972,7 @@ class Console(RelativeLayout):
         self.y = -self.height
         self.widget = None
         self.inspect_enabled = False
-        # self.win.remove_widget(self)
+        #self.win.remove_widget(self)
         self._window_node = None
         Logger.info('Console: console deactivated')
 
@@ -1037,8 +1029,8 @@ def create_console(win, ctx, *l):
 
 def start(win, ctx):
     """Create an Console instance attached to the *ctx* and bound to the
-    Window's :meth:`~kivy.core.window.WindowBase.on_keyboard` event for
-    capturing the keyboard shortcut.
+    Windows :meth:`~kivy.core.window.WindowBase.on_keyboard` event for capturing
+    the keyboard shortcut.
 
         :Parameters:
             `win`: A :class:`Window <kivy.core.window.WindowBase>`

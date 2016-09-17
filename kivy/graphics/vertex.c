@@ -429,7 +429,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "kivy/graphics/vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y

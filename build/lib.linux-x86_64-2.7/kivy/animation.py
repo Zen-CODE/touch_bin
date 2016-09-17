@@ -100,11 +100,7 @@ class Animation(EventDispatcher):
             Transition function for animate properties. It can be the name of a
             method from :class:`AnimationTransition`.
         `step` or `s`: float
-            Step in milliseconds of the animation. Defaults to 0, which means
-            the animation is updated for every frame.
-            
-            To update the animation less often, set the step value to a float.
-            For example, if you want to animate at 30 FPS, use s=1/30. 
+            Step in milliseconds of the animation. Defaults to 1 / 60.
 
     :Events:
         `on_start`: widget
@@ -117,11 +113,7 @@ class Animation(EventDispatcher):
     .. versionchanged:: 1.4.0
         Added s/step parameter.
 
-    .. versionchanged:: 1.9.2
-        The default value of the step parameter was changed from 1/60. to 0.
     '''
-
-    _update_ev = None
 
     _instances = set()
 
@@ -133,7 +125,7 @@ class Animation(EventDispatcher):
         self._clock_installed = False
         self._duration = kw.pop('d', kw.pop('duration', 1.))
         self._transition = kw.pop('t', kw.pop('transition', 'linear'))
-        self._step = kw.pop('s', kw.pop('step', 0))
+        self._step = kw.pop('s', kw.pop('step', 1. / 60.))
         if isinstance(self._transition, string_types):
             self._transition = getattr(AnimationTransition, self._transition)
         self._animated_properties = kw
@@ -300,16 +292,14 @@ class Animation(EventDispatcher):
     def _clock_install(self):
         if self._clock_installed:
             return
-        self._update_ev = Clock.schedule_interval(self._update, self._step)
+        Clock.schedule_interval(self._update, self._step)
         self._clock_installed = True
 
     def _clock_uninstall(self):
         if self._widgets or not self._clock_installed:
             return
         self._clock_installed = False
-        if self._update_ev is not None:
-            self._update_ev.cancel()
-            self._update_ev = None
+        Clock.unschedule(self._update)
 
     def _update(self, dt):
         widgets = self._widgets
@@ -436,22 +426,6 @@ class Sequence(Animation):
         self.anim2.cancel(widget)
         super(Sequence, self).cancel(widget)
 
-    def cancel_property(self, widget, prop):
-        '''Even if an animation is running, remove a property. It will not be
-        animated further. If it was the only/last property being animated,
-        the animation will be canceled (see :attr:`cancel`)
-
-        This method overrides `:class:kivy.animation.Animation`'s
-        version, to cancel it on all animations of the Sequence.
-
-        .. versionadded:: 1.9.2
-        '''
-        self.anim1.cancel_property(widget, prop)
-        self.anim2.cancel_property(widget, prop)
-        if (not self.anim1.have_properties_to_animate(widget) and
-                not self.anim2.have_properties_to_animate(widget)):
-            self.cancel(widget)
-
     def on_anim1_start(self, instance, widget):
         self.dispatch('on_start', widget)
 
@@ -528,7 +502,7 @@ class Parallel(Animation):
 class AnimationTransition(object):
     '''Collection of animation functions to be used with the Animation object.
     Easing Functions ported to Kivy from the Clutter Project
-    https://developer.gnome.org/clutter/stable/ClutterAlpha.html
+    http://www.clutter-project.org/docs/clutter/stable/ClutterAlpha.html
 
     The `progress` parameter in each animation function is in the range 0-1.
     '''

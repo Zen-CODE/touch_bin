@@ -169,9 +169,9 @@ user in order to adapt or reload your UI. You can then overload the
             if config is self.config:
                 token = (section, key)
                 if token == ('section1', 'key1'):
-                    print('Our key1 has been changed to', value)
+                    print('Our key1 have been changed to', value)
                 elif token == ('section1', 'key2'):
-                    print('Our key2 has been changed to', value)
+                    print('Our key2 have been changed to', value)
 
 The Kivy configuration panel is added by default to the settings
 instance. If you don't want this panel, you can declare your Application as
@@ -639,7 +639,7 @@ class App(EventDispatcher):
         system-wide, the user might not have write-access to the
         application directory. If you want to store user settings, you
         should overload this method and change the default behavior to
-        save the configuration file in the user directory. ::
+        save the configuration file in the user directory.::
 
             class TestApp(App):
                 def get_application_config(self):
@@ -752,14 +752,14 @@ class App(EventDispatcher):
         This function implements these conventions. The <app_name> directory
         is created when the property is called, unless it already exists.
 
-        On iOS, `~/Documents/<app_name>` is returned (which is inside the
+        On iOS, `~/Documents<app_name>` is returned (which is inside the
         app's sandbox).
 
         On Android, `/sdcard/<app_name>` is returned.
 
         On Windows, `%APPDATA%/<app_name>` is returned.
 
-        On OS X, `~/Library/Application Support/<app_name>` is returned.
+        On Mac OSX, `~/Library/Application Support/<app_name>` is returned.
 
         On Linux, `$XDG_CONFIG_HOME/<app_name>` is returned.
         '''

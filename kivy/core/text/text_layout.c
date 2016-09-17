@@ -835,7 +835,6 @@ static char __pyx_k_lstrip[] = "lstrip";
 static char __pyx_k_old_lh[] = "old_lh";
 static char __pyx_k_rstrip[] = "rstrip";
 static char __pyx_k_indices[] = "indices";
-static char __pyx_k_justify[] = "justify";
 static char __pyx_k_options[] = "options";
 static char __pyx_k_complete[] = "complete";
 static char __pyx_k_endswith[] = "endswith";
@@ -861,7 +860,7 @@ static char __pyx_k_is_last_line[] = "is_last_line";
 static char __pyx_k_strip_reflow[] = "strip_reflow";
 static char __pyx_k_layout_text_line_270[] = "layout_text (line 270)";
 static char __pyx_k_kivy_core_text_text_layout[] = "kivy.core.text.text_layout";
-static char __pyx_k_Lays_out_text_into_a_series_of[] = " Lays out text into a series of :class:`LayoutWord` and\n    :class:`LayoutLine` instances according to the options specified.\n\n    The function is designed to be called many times, each time new text is\n    appended to the last line (or first line if appending upwards), unless a\n    newline is present in the text. Each text appended is described by it's own\n    options which can change between successive calls. If the text is\n    constrained, we stop as soon as the constraint is reached.\n\n    :Parameters:\n        `text`: string or bytes\n            the text to be broken down into lines. If lines is not empty,\n            the text is added to the last line (or first line if `append_down`\n            is False) until a newline is reached which creates a new line in\n            `lines`. See :class:`LayoutLine`.\n        `lines`: list\n            a list of :class:`LayoutLine` instances, each describing a line of\n            the text. Calls to :func:`layout_text` append or create\n            new :class:`LayoutLine` instances in `lines`.\n        `size`: 2-tuple of ints\n            the size of the laid out text so far. Upon first call it should\n            probably be (0, 0), afterwards it should be the (w, h) returned\n            by this function in a previous call. When size reaches the\n            constraining size, `text_size`, we stop adding lines and return\n            True for the clipped parameter. size includes the x and y padding.\n        `text_size`: 2-tuple of ints or None.\n            the size constraint on the laid out text. If either element is\n            None, the text is not constrained in that dimension. For example,\n            (None, 200) will constrain the height, including padding to 200,\n            while the width is unconstrained. The first line, and the first\n            character of a line is always returned, even if it exceeds the\n            constraint. The value be changed between different calls.\n        `option""s`: dict\n            the label options of this `text`. The options are saved with each\n            word allowing different words to have different options from\n            successive calls.\n\n            Note, `options` must include a `space_width` key with a value\n            indicating the width of a space for that set of options.\n        `get_extents`: callable\n            a function called with a string, which returns a tuple containing\n            the width, height of the string.\n        `append_down`: bool\n            Whether successive calls to the function appends lines before or\n            after the existing lines. If True, they are appended to the last\n            line and below it. If False, it's appended at the first line and\n            above. For example, if False, everything after the last\n            newline in `text` is appended to the first line in lines.\n            Everything before the last newline is inserted at the start of\n            lines in same order as text; that is we do not invert the line\n            order.\n\n            This allows laying out from top to bottom until the constrained is\n            reached, or from bottom to top until the constrained is reached.\n        `complete`: bool\n            whether this text complete lines. It use is that normally is\n            strip in `options` is True, all leading and trailing spaces\n            are removed from each line except from the last line (or first\n            line if `append_down` is False) which only removes leading spaces.\n            That's because further text can still be appended to the last line\n            so we cannot strip them. If `complete` is True, it indicates no\n            further text is coming and all lines will be stripped.\n\n            The function can also be called with `text` set to the empty string\n            and `complete` set to True in order for the last (first) line to\n            be stripped.\n\n    :returns:\n        ""3-tuple, (w, h, clipped).\n        w and h is the width and height of the text in lines so far and\n        includes padding. This can be larger than `text_size`, e.g. if not even\n        a single fitted, the first line would still be returned.\n        `clipped` is True if not all the text has been added to lines because\n        w, h reached the constrained size.\n\n    Following is a simple example with no padding and no stripping::\n\n        >>> from kivy.core.text import Label\n        >>> from kivy.core.text.text_layout import layout_text\n\n        >>> l = Label()\n        >>> lines = []\n        >>> # layout text with width constraint by 50, but no height constraint\n        >>> w, h, clipped = layout_text('heres some text\\nah, another line',\n        ... lines, (0, 0), (50, None), l.options, l.get_cached_extents(), True,\n        ... False)\n        >>> w, h, clipped\n        (46, 90, False)\n        # now add text from bottom up, and constrain width only be 100\n        >>> w, h, clipped = layout_text('\\nyay, more text\\n', lines, (w, h),\n        ... (100, None), l.options, l.get_cached_extents(), False, True)\n        >>> w, h, clipped\n        (77, 120, 0)\n        >>> for line in lines:\n        ...     print('line w: {}, line h: {}'.format(line.w, line.h))\n        ...     for word in line.words:\n        ...         print('w: {}, h: {}, text: {}'.format(word.lw, word.lh,\n        ...         [word.text]))\n        line w: 0, line h: 15\n        line w: 77, line h: 15\n        w: 77, h: 15, text: ['yay, more text']\n        line w: 31, line h: 15\n        w: 31, h: 15, text: ['heres']\n        line w: 34, line h: 15\n        w: 34, h: 15, text: [' some']\n        line w: 24, line h: 15\n        w: 24, h: 15, text: [' text']\n        line w: 17, line h: 15\n        w: 17, h: 15, text: ['ah,']\n        line w: 46, line h: 15\n        w: 46, h: 15, text: [' another']\n        line w: 23, line h: 15\n        w: 23, h: 15, text: [' line']\n    ";
+static char __pyx_k_Lays_out_text_into_a_series_of[] = " Lays out text into a series of :class:`LayoutWord` and\n    :class:`LayoutLine` instances according to the options specified.\n\n    The function is designed to be called many times, each time new text is\n    appended to the last line (or first line if appending upwards), unless a\n    newline is present in the text. Each text appended is described by it's own\n    options which can change between successive calls. If the text is\n    constrained, we stop as soon as the constraint is reached.\n\n    :Parameters:\n        `text`: string or bytes\n            the text to be broken down into lines. If lines is not empty,\n            the text is added to the last line (or first line if `append_down`\n            is False) until a newline is reached which creates a new line in\n            `lines`. See :class:`LayoutLine`.\n        `lines`: list\n            a list of :class:`LayoutLine` instances, each describing a line of\n            the text. Calls to :func:`layout_text` append or create\n            new :class:`LayoutLine` instances in `lines`.\n        `size`: 2-tuple of ints\n            the size of the laid out text so far. Upon first call it should\n            probably be (0, 0), afterwards it should be the (w, h) returned\n            by this function in a previous call. When size reaches the\n            constraining size, `text_size`, we stop adding lines and return\n            True for the clipped parameter. size includes the x and y padding.\n        `text_size`: 2-tuple of ints or None.\n            the size constraint on the laid out text. If either element is\n            None, the text is not constrained in that dimension. For example,\n            (None, 200) will constrain the height, including padding to 200,\n            while the width is unconstrained. The first line, and the first\n            character of a line is always returned, even if it exceeds the\n            constraint. The value be changed between different calls.\n        `option""s`: dict\n            the label options of this `text`. The options are saved with each\n            word allowing different words to have different options from\n            successive calls.\n\n            Note, `options` must include a `space_width` key with a value\n            indicating the width of a space for that set of options.\n        `get_extents`: callable\n            a function called with a string, which returns a tuple containing\n            the width, height of the string.\n        `append_down`: bool\n            Whether successive calls to the function appends lines before or\n            after the existing lines. If True, they are appended to the last\n            line and below it. If False, it's appended at the first line and\n            above. For example, if False, everything after the last\n            newline in `text` is appended to the first line in lines.\n            Everything before the last newline is inserted at the start of\n            lines in same order as text; that is we do not invert the line\n            order.\n\n            This allows laying out from top to bottom until the constrained is\n            reached, or from bottom to top until the constrained is reached.\n        `complete`: bool\n            whether this text complete lines. It use is that normally is\n            strip in `options` is True, all leading and trailing spaces\n            are removed from each line except from the last line (or first\n            line if `append_down` is False) which only removes leading spaces.\n            That's because further text can still be appended to the last line\n            so we cannot strip them. If `complete` is True, it indicates no\n            further text is coming and all lines will be stripped.\n\n            The function can also be called with `text` set to the empty string\n            and `complete` set to True in order for the last (first) line to\n            be stripped.\n\n    :returns:\n        ""3-tuple, (w, h, clipped).\n        w and h is the width and height of the text in lines so far and\n        includes padding. This can be larger than `text_size`, e.g. if not even\n        a single fitted, the first line would still be returned.\n        `clipped` is True if not all the text has been added to lines because\n        w, h reached the constrained size.\n\n    Following is a simple example with no padding and no stripping::\n\n        >>> from kivy.core.text import Label\n        >>> from kivy.core.text.text_layout import layout_text\n\n        >>> l = Label()\n        >>> lines = []\n        >>> # layout text with width constraint by 50, but no height constraint\n        >>> w, h, clipped = layout_text('heres some text\\nah, another line',\n        ... lines, (0, 0), (50, None), l.options, l.get_cached_extents(), True,\n        ... False)\n        >>> w, h, clipped\n        (46, 90, False)\n        # now add text from bottom up, and constrain witdh only be 100\n        >>> w, h, clipped = layout_text('\\nyay, more text\\n', lines, (w, h),\n        ... (100, None), l.options, l.get_cached_extents(), False, True)\n        >>> w, h, clipped\n        (77, 120, 0)\n        >>> for line in lines:\n        ...     print('line w: {}, line h: {}'.format(line.w, line.h))\n        ...     for word in line.words:\n        ...         print('w: {}, h: {}, text: {}'.format(word.lw, word.lh,\n        ...         [word.text]))\n        line w: 0, line h: 15\n        line w: 77, line h: 15\n        w: 77, h: 15, text: ['yay, more text']\n        line w: 31, line h: 15\n        w: 31, h: 15, text: ['heres']\n        line w: 34, line h: 15\n        w: 34, h: 15, text: [' some']\n        line w: 24, line h: 15\n        w: 24, h: 15, text: [' text']\n        line w: 17, line h: 15\n        w: 17, h: 15, text: ['ah,']\n        line w: 46, line h: 15\n        w: 46, h: 15, text: [' another']\n        line w: 23, line h: 15\n        w: 23, h: 15, text: [' line']\n    ";
 static char __pyx_k_Text_layout_An_internal_module[] = "\nText layout\n============\n\nAn internal module for laying out text according to options and constraints.\nThis is not part of the API and may change at any time.\n";
 static char __pyx_k_home_richard_Repos_kivy_kivy_co[] = "/home/richard/Repos/kivy/kivy/core/text/text_layout.pyx";
 static PyObject *__pyx_kp_s_;
@@ -890,7 +889,6 @@ static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_indices;
 static PyObject *__pyx_n_s_is_last_line;
 static PyObject *__pyx_n_s_is_space;
-static PyObject *__pyx_n_s_justify;
 static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_s_kivy_core_text_text_layout;
 static PyObject *__pyx_n_s_layout_text;
@@ -4490,7 +4488,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_4core_4text_11text_layout_layout_te
 
 /* Python wrapper */
 static PyObject *__pyx_pw_4kivy_4core_4text_11text_layout_1layout_text(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4kivy_4core_4text_11text_layout_layout_text[] = " Lays out text into a series of :class:`LayoutWord` and\n    :class:`LayoutLine` instances according to the options specified.\n\n    The function is designed to be called many times, each time new text is\n    appended to the last line (or first line if appending upwards), unless a\n    newline is present in the text. Each text appended is described by it's own\n    options which can change between successive calls. If the text is\n    constrained, we stop as soon as the constraint is reached.\n\n    :Parameters:\n        `text`: string or bytes\n            the text to be broken down into lines. If lines is not empty,\n            the text is added to the last line (or first line if `append_down`\n            is False) until a newline is reached which creates a new line in\n            `lines`. See :class:`LayoutLine`.\n        `lines`: list\n            a list of :class:`LayoutLine` instances, each describing a line of\n            the text. Calls to :func:`layout_text` append or create\n            new :class:`LayoutLine` instances in `lines`.\n        `size`: 2-tuple of ints\n            the size of the laid out text so far. Upon first call it should\n            probably be (0, 0), afterwards it should be the (w, h) returned\n            by this function in a previous call. When size reaches the\n            constraining size, `text_size`, we stop adding lines and return\n            True for the clipped parameter. size includes the x and y padding.\n        `text_size`: 2-tuple of ints or None.\n            the size constraint on the laid out text. If either element is\n            None, the text is not constrained in that dimension. For example,\n            (None, 200) will constrain the height, including padding to 200,\n            while the width is unconstrained. The first line, and the first\n            character of a line is always returned, even if it exceeds the\n            constraint. The value be changed between different calls.\n        `option""s`: dict\n            the label options of this `text`. The options are saved with each\n            word allowing different words to have different options from\n            successive calls.\n\n            Note, `options` must include a `space_width` key with a value\n            indicating the width of a space for that set of options.\n        `get_extents`: callable\n            a function called with a string, which returns a tuple containing\n            the width, height of the string.\n        `append_down`: bool\n            Whether successive calls to the function appends lines before or\n            after the existing lines. If True, they are appended to the last\n            line and below it. If False, it's appended at the first line and\n            above. For example, if False, everything after the last\n            newline in `text` is appended to the first line in lines.\n            Everything before the last newline is inserted at the start of\n            lines in same order as text; that is we do not invert the line\n            order.\n\n            This allows laying out from top to bottom until the constrained is\n            reached, or from bottom to top until the constrained is reached.\n        `complete`: bool\n            whether this text complete lines. It use is that normally is\n            strip in `options` is True, all leading and trailing spaces\n            are removed from each line except from the last line (or first\n            line if `append_down` is False) which only removes leading spaces.\n            That's because further text can still be appended to the last line\n            so we cannot strip them. If `complete` is True, it indicates no\n            further text is coming and all lines will be stripped.\n\n            The function can also be called with `text` set to the empty string\n            and `complete` set to True in order for the last (first) line to\n            be stripped.\n\n    :returns:\n        ""3-tuple, (w, h, clipped).\n        w and h is the width and height of the text in lines so far and\n        includes padding. This can be larger than `text_size`, e.g. if not even\n        a single fitted, the first line would still be returned.\n        `clipped` is True if not all the text has been added to lines because\n        w, h reached the constrained size.\n\n    Following is a simple example with no padding and no stripping::\n\n        >>> from kivy.core.text import Label\n        >>> from kivy.core.text.text_layout import layout_text\n\n        >>> l = Label()\n        >>> lines = []\n        >>> # layout text with width constraint by 50, but no height constraint\n        >>> w, h, clipped = layout_text('heres some text\\nah, another line',\n        ... lines, (0, 0), (50, None), l.options, l.get_cached_extents(), True,\n        ... False)\n        >>> w, h, clipped\n        (46, 90, False)\n        # now add text from bottom up, and constrain width only be 100\n        >>> w, h, clipped = layout_text('\\nyay, more text\\n', lines, (w, h),\n        ... (100, None), l.options, l.get_cached_extents(), False, True)\n        >>> w, h, clipped\n        (77, 120, 0)\n        >>> for line in lines:\n        ...     print('line w: {}, line h: {}'.format(line.w, line.h))\n        ...     for word in line.words:\n        ...         print('w: {}, h: {}, text: {}'.format(word.lw, word.lh,\n        ...         [word.text]))\n        line w: 0, line h: 15\n        line w: 77, line h: 15\n        w: 77, h: 15, text: ['yay, more text']\n        line w: 31, line h: 15\n        w: 31, h: 15, text: ['heres']\n        line w: 34, line h: 15\n        w: 34, h: 15, text: [' some']\n        line w: 24, line h: 15\n        w: 24, h: 15, text: [' text']\n        line w: 17, line h: 15\n        w: 17, h: 15, text: ['ah,']\n        line w: 46, line h: 15\n        w: 46, h: 15, text: [' another']\n        line w: 23, line h: 15\n        w: 23, h: 15, text: [' line']\n    ";
+static char __pyx_doc_4kivy_4core_4text_11text_layout_layout_text[] = " Lays out text into a series of :class:`LayoutWord` and\n    :class:`LayoutLine` instances according to the options specified.\n\n    The function is designed to be called many times, each time new text is\n    appended to the last line (or first line if appending upwards), unless a\n    newline is present in the text. Each text appended is described by it's own\n    options which can change between successive calls. If the text is\n    constrained, we stop as soon as the constraint is reached.\n\n    :Parameters:\n        `text`: string or bytes\n            the text to be broken down into lines. If lines is not empty,\n            the text is added to the last line (or first line if `append_down`\n            is False) until a newline is reached which creates a new line in\n            `lines`. See :class:`LayoutLine`.\n        `lines`: list\n            a list of :class:`LayoutLine` instances, each describing a line of\n            the text. Calls to :func:`layout_text` append or create\n            new :class:`LayoutLine` instances in `lines`.\n        `size`: 2-tuple of ints\n            the size of the laid out text so far. Upon first call it should\n            probably be (0, 0), afterwards it should be the (w, h) returned\n            by this function in a previous call. When size reaches the\n            constraining size, `text_size`, we stop adding lines and return\n            True for the clipped parameter. size includes the x and y padding.\n        `text_size`: 2-tuple of ints or None.\n            the size constraint on the laid out text. If either element is\n            None, the text is not constrained in that dimension. For example,\n            (None, 200) will constrain the height, including padding to 200,\n            while the width is unconstrained. The first line, and the first\n            character of a line is always returned, even if it exceeds the\n            constraint. The value be changed between different calls.\n        `option""s`: dict\n            the label options of this `text`. The options are saved with each\n            word allowing different words to have different options from\n            successive calls.\n\n            Note, `options` must include a `space_width` key with a value\n            indicating the width of a space for that set of options.\n        `get_extents`: callable\n            a function called with a string, which returns a tuple containing\n            the width, height of the string.\n        `append_down`: bool\n            Whether successive calls to the function appends lines before or\n            after the existing lines. If True, they are appended to the last\n            line and below it. If False, it's appended at the first line and\n            above. For example, if False, everything after the last\n            newline in `text` is appended to the first line in lines.\n            Everything before the last newline is inserted at the start of\n            lines in same order as text; that is we do not invert the line\n            order.\n\n            This allows laying out from top to bottom until the constrained is\n            reached, or from bottom to top until the constrained is reached.\n        `complete`: bool\n            whether this text complete lines. It use is that normally is\n            strip in `options` is True, all leading and trailing spaces\n            are removed from each line except from the last line (or first\n            line if `append_down` is False) which only removes leading spaces.\n            That's because further text can still be appended to the last line\n            so we cannot strip them. If `complete` is True, it indicates no\n            further text is coming and all lines will be stripped.\n\n            The function can also be called with `text` set to the empty string\n            and `complete` set to True in order for the last (first) line to\n            be stripped.\n\n    :returns:\n        ""3-tuple, (w, h, clipped).\n        w and h is the width and height of the text in lines so far and\n        includes padding. This can be larger than `text_size`, e.g. if not even\n        a single fitted, the first line would still be returned.\n        `clipped` is True if not all the text has been added to lines because\n        w, h reached the constrained size.\n\n    Following is a simple example with no padding and no stripping::\n\n        >>> from kivy.core.text import Label\n        >>> from kivy.core.text.text_layout import layout_text\n\n        >>> l = Label()\n        >>> lines = []\n        >>> # layout text with width constraint by 50, but no height constraint\n        >>> w, h, clipped = layout_text('heres some text\\nah, another line',\n        ... lines, (0, 0), (50, None), l.options, l.get_cached_extents(), True,\n        ... False)\n        >>> w, h, clipped\n        (46, 90, False)\n        # now add text from bottom up, and constrain witdh only be 100\n        >>> w, h, clipped = layout_text('\\nyay, more text\\n', lines, (w, h),\n        ... (100, None), l.options, l.get_cached_extents(), False, True)\n        >>> w, h, clipped\n        (77, 120, 0)\n        >>> for line in lines:\n        ...     print('line w: {}, line h: {}'.format(line.w, line.h))\n        ...     for word in line.words:\n        ...         print('w: {}, h: {}, text: {}'.format(word.lw, word.lh,\n        ...         [word.text]))\n        line w: 0, line h: 15\n        line w: 77, line h: 15\n        w: 77, h: 15, text: ['yay, more text']\n        line w: 31, line h: 15\n        w: 31, h: 15, text: ['heres']\n        line w: 34, line h: 15\n        w: 34, h: 15, text: [' some']\n        line w: 24, line h: 15\n        w: 24, h: 15, text: [' text']\n        line w: 17, line h: 15\n        w: 17, h: 15, text: ['ah,']\n        line w: 46, line h: 15\n        w: 46, h: 15, text: [' another']\n        line w: 23, line h: 15\n        w: 23, h: 15, text: [' line']\n    ";
 static PyMethodDef __pyx_mdef_4kivy_4core_4text_11text_layout_1layout_text = {"layout_text", (PyCFunction)__pyx_pw_4kivy_4core_4text_11text_layout_1layout_text, METH_VARARGS|METH_KEYWORDS, __pyx_doc_4kivy_4core_4text_11text_layout_layout_text};
 static PyObject *__pyx_pw_4kivy_4core_4text_11text_layout_1layout_text(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_text = 0;
@@ -4705,7 +4703,7 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *     cdef int xpad = options['padding_x'], ypad = options['padding_y']
  *     cdef int max_lines = int(options.get('max_lines', 0))             # <<<<<<<<<<<<<<
  *     cdef float line_height = options['line_height']
- *     cdef int strip = options['strip'] or options['halign'] == 'justify'
+ *     cdef int strip = options['strip'] or options['halign'][-1] == 'y'
  */
   if (unlikely(__pyx_v_options == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "get");
@@ -4724,7 +4722,7 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *     cdef int xpad = options['padding_x'], ypad = options['padding_y']
  *     cdef int max_lines = int(options.get('max_lines', 0))
  *     cdef float line_height = options['line_height']             # <<<<<<<<<<<<<<
- *     cdef int strip = options['strip'] or options['halign'] == 'justify'
+ *     cdef int strip = options['strip'] or options['halign'][-1] == 'y'
  *     cdef int ref_strip = options['strip_reflow']
  */
   if (unlikely(__pyx_v_options == Py_None)) {
@@ -4740,7 +4738,7 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   /* "kivy/core/text/text_layout.pyx":392
  *     cdef int max_lines = int(options.get('max_lines', 0))
  *     cdef float line_height = options['line_height']
- *     cdef int strip = options['strip'] or options['halign'] == 'justify'             # <<<<<<<<<<<<<<
+ *     cdef int strip = options['strip'] or options['halign'][-1] == 'y'             # <<<<<<<<<<<<<<
  *     cdef int ref_strip = options['strip_reflow']
  *     cdef int w = size[0], h = size[1]  # width and height of the texture so far
  */
@@ -4765,17 +4763,20 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   }
   __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_options, __pyx_n_s_halign); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_n_s_justify, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_3, -1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __pyx_t_6;
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_n_s_y, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_t_6;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_L3_bool_binop_done:;
   __pyx_v_strip = __pyx_t_2;
 
   /* "kivy/core/text/text_layout.pyx":393
  *     cdef float line_height = options['line_height']
- *     cdef int strip = options['strip'] or options['halign'] == 'justify'
+ *     cdef int strip = options['strip'] or options['halign'][-1] == 'y'
  *     cdef int ref_strip = options['strip_reflow']             # <<<<<<<<<<<<<<
  *     cdef int w = size[0], h = size[1]  # width and height of the texture so far
  *     cdef list new_lines
@@ -4784,14 +4785,14 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 393; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_options, __pyx_n_s_strip_reflow); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 393; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 393; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_options, __pyx_n_s_strip_reflow); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 393; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 393; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_ref_strip = __pyx_t_2;
 
   /* "kivy/core/text/text_layout.pyx":394
- *     cdef int strip = options['strip'] or options['halign'] == 'justify'
+ *     cdef int strip = options['strip'] or options['halign'][-1] == 'y'
  *     cdef int ref_strip = options['strip_reflow']
  *     cdef int w = size[0], h = size[1]  # width and height of the texture so far             # <<<<<<<<<<<<<<
  *     cdef list new_lines
@@ -4801,19 +4802,19 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_size, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_size, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_w = __pyx_t_2;
   if (unlikely(__pyx_v_size == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_size, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_size, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_h = __pyx_t_2;
 
   /* "kivy/core/text/text_layout.pyx":396
@@ -4857,19 +4858,19 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = (__pyx_t_1 != Py_None);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = (__pyx_t_3 != Py_None);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if ((__pyx_t_5 != 0)) {
     if (unlikely(__pyx_v_text_size == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_2 = __pyx_t_6;
   } else {
     __pyx_t_2 = -1;
@@ -4887,19 +4888,19 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = (__pyx_t_1 != Py_None);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = (__pyx_t_3 != Py_None);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if ((__pyx_t_5 != 0)) {
     if (unlikely(__pyx_v_text_size == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_text_size, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_2 = __pyx_t_6;
   } else {
     __pyx_t_2 = -1;
@@ -4954,10 +4955,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  * 
  * 
  */
-    __pyx_t_1 = __pyx_f_4kivy_4core_4text_11text_layout_layout_text_unrestricted(__pyx_v_text, __pyx_v_lines, __pyx_v_w, __pyx_v_h, __pyx_v_uh, __pyx_v_options, __pyx_v_get_extents, __pyx_v_dwn, __pyx_v_complete, __pyx_v_xpad, __pyx_v_max_lines, __pyx_v_line_height, __pyx_v_strip); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_r = __pyx_t_1;
-    __pyx_t_1 = 0;
+    __pyx_t_3 = __pyx_f_4kivy_4core_4text_11text_layout_layout_text_unrestricted(__pyx_v_text, __pyx_v_lines, __pyx_v_w, __pyx_v_h, __pyx_v_uh, __pyx_v_options, __pyx_v_get_extents, __pyx_v_dwn, __pyx_v_complete, __pyx_v_xpad, __pyx_v_max_lines, __pyx_v_line_height, __pyx_v_strip); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
@@ -4968,14 +4969,14 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *     n = len(new_lines)
  *     uw = max(0, uw - xpad * 2)  # actual w, h allowed for rendering
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_text, __pyx_n_s_split); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 412; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 412; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_text, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 412; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 412; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_v_new_lines = ((PyObject*)__pyx_t_3);
-  __pyx_t_3 = 0;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 412; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 412; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_v_new_lines = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
   /* "kivy/core/text/text_layout.pyx":413
  * 
@@ -5007,10 +5008,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *     if dwn:
  *         pos = -1  # don't use pos when going down b/c we append at end of lines
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_get_extents, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
-  if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
-    PyObject* sequence = __pyx_t_3;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_v_get_extents, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
+    PyObject* sequence = __pyx_t_1;
     #if CYTHON_COMPILING_IN_CPYTHON
     Py_ssize_t size = Py_SIZE(sequence);
     #else
@@ -5023,29 +5024,29 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     if (likely(PyTuple_CheckExact(sequence))) {
-      __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
+      __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
       __pyx_t_8 = PyTuple_GET_ITEM(sequence, 1); 
     } else {
-      __pyx_t_1 = PyList_GET_ITEM(sequence, 0); 
+      __pyx_t_3 = PyList_GET_ITEM(sequence, 0); 
       __pyx_t_8 = PyList_GET_ITEM(sequence, 1); 
     }
-    __Pyx_INCREF(__pyx_t_1);
+    __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_8);
     #else
-    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     #endif
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
-    index = 0; __pyx_t_1 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_1)) goto __pyx_L7_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_1);
+    index = 0; __pyx_t_3 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_3)) goto __pyx_L7_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_3);
     index = 1; __pyx_t_8 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_8)) goto __pyx_L7_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_8);
     if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -5061,8 +5062,8 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   }
   __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_v__ = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __pyx_v__ = __pyx_t_3;
+  __pyx_t_3 = 0;
   __pyx_v_bare_h = __pyx_t_2;
 
   /* "kivy/core/text/text_layout.pyx":416
@@ -5097,40 +5098,40 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   if ((__pyx_v_dwn != 0)) {
     __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_8);
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_1, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_3 = __pyx_t_8;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_1 = __pyx_t_8;
     __pyx_t_8 = 0;
   } else {
     __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_8);
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_1, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_8);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_reversed, __pyx_t_1, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_reversed, __pyx_t_3, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 420; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_3 = __pyx_t_8;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_1 = __pyx_t_8;
     __pyx_t_8 = 0;
   }
-  __pyx_v_indices = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_indices = __pyx_t_1;
+  __pyx_t_1 = 0;
 
   /* "kivy/core/text/text_layout.pyx":421
  *     # split into lines and find how many line wraps each line requires
@@ -5140,32 +5141,32 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *         if (max_lines > 0 and k > max_lines or uh != -1 and
  */
   if (likely(PyList_CheckExact(__pyx_v_indices)) || PyTuple_CheckExact(__pyx_v_indices)) {
-    __pyx_t_3 = __pyx_v_indices; __Pyx_INCREF(__pyx_t_3); __pyx_t_7 = 0;
+    __pyx_t_1 = __pyx_v_indices; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     __pyx_t_11 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_indices); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_11 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_indices); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_11 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   for (;;) {
     if (likely(!__pyx_t_11)) {
-      if (likely(PyList_CheckExact(__pyx_t_3))) {
-        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_3)) break;
+      if (likely(PyList_CheckExact(__pyx_t_1))) {
+        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       } else {
-        if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+        if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       }
     } else {
-      __pyx_t_8 = __pyx_t_11(__pyx_t_3);
+      __pyx_t_8 = __pyx_t_11(__pyx_t_1);
       if (unlikely(!__pyx_t_8)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
@@ -5419,11 +5420,11 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
           __pyx_t_14 = (__pyx_v_pos + 1);
           __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_v_lines, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_line_wrap); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_line_wrap); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_13 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_13 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 439; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_15 = ((!__pyx_t_13) != 0);
           __pyx_t_5 = __pyx_t_15;
           __pyx_L34_bool_binop_done:;
@@ -5450,11 +5451,11 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "pop");
           {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_1 = __Pyx_PyList_PopIndex(__pyx_v_lines, __pyx_v_pos, 1, int, __Pyx_PyInt_From_int); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_GOTREF(__pyx_t_1);
-        if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_4core_4text_11text_layout_LayoutLine))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_XDECREF_SET(__pyx_v__line, ((struct __pyx_obj_4kivy_4core_4text_11text_layout_LayoutLine *)__pyx_t_1));
-        __pyx_t_1 = 0;
+        __pyx_t_3 = __Pyx_PyList_PopIndex(__pyx_v_lines, __pyx_v_pos, 1, int, __Pyx_PyInt_From_int); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_3);
+        if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_4kivy_4core_4text_11text_layout_LayoutLine))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_XDECREF_SET(__pyx_v__line, ((struct __pyx_obj_4kivy_4core_4text_11text_layout_LayoutLine *)__pyx_t_3));
+        __pyx_t_3 = 0;
       }
       __pyx_L31:;
     }
@@ -5471,10 +5472,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       {__pyx_filename = __pyx_f[0]; __pyx_lineno = 443; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_new_lines, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 443; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
-    __pyx_t_1 = 0;
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_new_lines, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 443; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_3);
+    __pyx_t_3 = 0;
 
     /* "kivy/core/text/text_layout.pyx":445
  *         line = new_lines[i]
@@ -5526,15 +5527,15 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         }
       }
       if (__pyx_t_9) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 446; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 446; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else {
-        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 446; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 446; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_DECREF_SET(__pyx_v_line, __pyx_t_1);
-      __pyx_t_1 = 0;
+      __Pyx_DECREF_SET(__pyx_v_line, __pyx_t_3);
+      __pyx_t_3 = 0;
       goto __pyx_L36;
     }
     __pyx_L36:;
@@ -5577,15 +5578,15 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         }
       }
       if (__pyx_t_9) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else {
-        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __Pyx_DECREF_SET(__pyx_v_line, __pyx_t_1);
-      __pyx_t_1 = 0;
+      __Pyx_DECREF_SET(__pyx_v_line, __pyx_t_3);
+      __pyx_t_3 = 0;
       goto __pyx_L41;
     }
     __pyx_L41:;
@@ -5641,10 +5642,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *                              xpad, &w, &h, pos, _line.w and ends_line)
  *             continue
  */
-      __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_4core_4text_11text_layout_add_line(__pyx_kp_s__3, 0, __pyx_v_bare_h, __pyx_v__line, __pyx_v_lines, __pyx_v_options, __pyx_v_line_height, __pyx_v_xpad, (&__pyx_v_w), (&__pyx_v_h), __pyx_v_pos, __pyx_t_2)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 454; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF_SET(__pyx_v__line, ((struct __pyx_obj_4kivy_4core_4text_11text_layout_LayoutLine *)__pyx_t_1));
-      __pyx_t_1 = 0;
+      __pyx_t_3 = ((PyObject *)__pyx_f_4kivy_4core_4text_11text_layout_add_line(__pyx_kp_s__3, 0, __pyx_v_bare_h, __pyx_v__line, __pyx_v_lines, __pyx_v_options, __pyx_v_line_height, __pyx_v_xpad, (&__pyx_v_w), (&__pyx_v_h), __pyx_v_pos, __pyx_t_2)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 454; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF_SET(__pyx_v__line, ((struct __pyx_obj_4kivy_4core_4text_11text_layout_LayoutLine *)__pyx_t_3));
+      __pyx_t_3 = 0;
 
       /* "kivy/core/text/text_layout.pyx":456
  *             _line = add_line('', 0, bare_h, _line, lines, options, line_height,
@@ -5707,10 +5708,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
           __pyx_t_5 = __pyx_t_15;
           goto __pyx_L51_bool_binop_done;
         }
-        __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_line, __pyx_v_s, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_line, __pyx_v_s, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_3, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 471; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         if (__pyx_t_15) {
         } else {
           __pyx_t_5 = __pyx_t_15;
@@ -5806,12 +5807,12 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
           PyTuple_SET_ITEM(__pyx_t_17, 1+__pyx_t_12, __pyx_t_9);
           __Pyx_GIVEREF(__pyx_t_9);
           __pyx_t_9 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_17, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_17, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_v_e = __pyx_t_2;
 
           /* "kivy/core/text/text_layout.pyx":481
@@ -5892,9 +5893,9 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         }
       }
       if (!__pyx_t_9) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_GOTREF(__pyx_t_3);
       } else {
         __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_16);
@@ -5902,13 +5903,13 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_16, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_16, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       }
       __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-      if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
-        PyObject* sequence = __pyx_t_1;
+      if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
+        PyObject* sequence = __pyx_t_3;
         #if CYTHON_COMPILING_IN_CPYTHON
         Py_ssize_t size = Py_SIZE(sequence);
         #else
@@ -5935,12 +5936,12 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         __pyx_t_16 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_16);
         #endif
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_8 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_10 = Py_TYPE(__pyx_t_8)->tp_iternext;
         index = 0; __pyx_t_17 = __pyx_t_10(__pyx_t_8); if (unlikely(!__pyx_t_17)) goto __pyx_L61_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_17);
@@ -6044,10 +6045,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
           }
           __pyx_L67_next_and:;
           __pyx_t_14 = (__pyx_v_m - 1);
-          __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_line, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 496; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 496; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_line, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 496; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+          __Pyx_GOTREF(__pyx_t_3);
+          __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_3, __pyx_kp_s_, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 496; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_5 = __pyx_t_15;
           __pyx_L66_bool_binop_done:;
           if (__pyx_t_5) {
@@ -6075,15 +6076,15 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
               }
             }
             if (__pyx_t_16) {
-              __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_16); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 497; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_16); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 497; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             } else {
-              __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_17); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 497; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_17); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 497; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             }
-            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-            __Pyx_DECREF_SET(__pyx_v_ln, __pyx_t_1);
-            __pyx_t_1 = 0;
+            __Pyx_DECREF_SET(__pyx_v_ln, __pyx_t_3);
+            __pyx_t_3 = 0;
 
             /* "kivy/core/text/text_layout.pyx":498
  *                     if (strip or ref_strip) and line[m - 1] == ' ':
@@ -6104,8 +6105,8 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
               }
             }
             if (!__pyx_t_16) {
-              __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_v_ln); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              __Pyx_GOTREF(__pyx_t_1);
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_v_ln); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __Pyx_GOTREF(__pyx_t_3);
             } else {
               __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(__pyx_t_8);
@@ -6113,13 +6114,13 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
               __Pyx_INCREF(__pyx_v_ln);
               PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_ln);
               __Pyx_GIVEREF(__pyx_v_ln);
-              __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              __Pyx_GOTREF(__pyx_t_1);
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
             }
             __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-            if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
-              PyObject* sequence = __pyx_t_1;
+            if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
+              PyObject* sequence = __pyx_t_3;
               #if CYTHON_COMPILING_IN_CPYTHON
               Py_ssize_t size = Py_SIZE(sequence);
               #else
@@ -6146,12 +6147,12 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
               __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(__pyx_t_8);
               #endif
-              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             } else {
               Py_ssize_t index = -1;
-              __pyx_t_16 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __pyx_t_16 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(__pyx_t_16);
-              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __pyx_t_10 = Py_TYPE(__pyx_t_16)->tp_iternext;
               index = 0; __pyx_t_17 = __pyx_t_10(__pyx_t_16); if (unlikely(!__pyx_t_17)) goto __pyx_L69_unpacking_failed;
               __Pyx_GOTREF(__pyx_t_17);
@@ -6185,10 +6186,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *                         lww, lhh = lw, lh
  *                     s = m
  */
-            __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_line, __pyx_v_s, __pyx_v_m, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_DECREF_SET(__pyx_v_ln, __pyx_t_1);
-            __pyx_t_1 = 0;
+            __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_line, __pyx_v_s, __pyx_v_m, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_GOTREF(__pyx_t_3);
+            __Pyx_DECREF_SET(__pyx_v_ln, __pyx_t_3);
+            __pyx_t_3 = 0;
 
             /* "kivy/core/text/text_layout.pyx":501
  *                     else:
@@ -6270,10 +6271,10 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *                         line_height, xpad, &w, &h, pos, _line.w and not lww)
  *                     _line.line_wrap = 1
  */
-          __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_4core_4text_11text_layout_add_line(__pyx_v_ln, __pyx_v_lww, __pyx_v_lhh, __pyx_v__line, __pyx_v_lines, __pyx_v_options, __pyx_v_line_height, __pyx_v_xpad, (&__pyx_v_w), (&__pyx_v_h), __pyx_v_pos, __pyx_t_2)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 508; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF_SET(__pyx_v__line, ((struct __pyx_obj_4kivy_4core_4text_11text_layout_LayoutLine *)__pyx_t_1));
-          __pyx_t_1 = 0;
+          __pyx_t_3 = ((PyObject *)__pyx_f_4kivy_4core_4text_11text_layout_add_line(__pyx_v_ln, __pyx_v_lww, __pyx_v_lhh, __pyx_v__line, __pyx_v_lines, __pyx_v_options, __pyx_v_line_height, __pyx_v_xpad, (&__pyx_v_w), (&__pyx_v_h), __pyx_v_pos, __pyx_t_2)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 508; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF_SET(__pyx_v__line, ((struct __pyx_obj_4kivy_4core_4text_11text_layout_LayoutLine *)__pyx_t_3));
+          __pyx_t_3 = 0;
 
           /* "kivy/core/text/text_layout.pyx":510
  *                     _line = add_line(ln, lww, lhh, _line, lines, options,
@@ -6356,15 +6357,15 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
             }
           }
           if (__pyx_t_8) {
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           } else {
-            __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_17); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_17); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
-          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-          __pyx_t_12 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __pyx_t_12 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_12 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_v_s = (__pyx_v_e - __pyx_t_12);
           goto __pyx_L75;
         }
@@ -6440,9 +6441,9 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_17); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_17); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-            __Pyx_GOTREF(__pyx_t_1);
+            __Pyx_GOTREF(__pyx_t_3);
           } else {
             __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_9);
@@ -6450,13 +6451,13 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
             PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_17);
             __Pyx_GIVEREF(__pyx_t_17);
             __pyx_t_17 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            __Pyx_GOTREF(__pyx_t_1);
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           }
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
-            PyObject* sequence = __pyx_t_1;
+          if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
+            PyObject* sequence = __pyx_t_3;
             #if CYTHON_COMPILING_IN_CPYTHON
             Py_ssize_t size = Py_SIZE(sequence);
             #else
@@ -6483,12 +6484,12 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
             __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_9);
             #endif
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_17 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_17 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_17);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_10 = Py_TYPE(__pyx_t_17)->tp_iternext;
             index = 0; __pyx_t_8 = __pyx_t_10(__pyx_t_17); if (unlikely(!__pyx_t_8)) goto __pyx_L82_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_8);
@@ -6577,9 +6578,9 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
               }
             }
             if (!__pyx_t_17) {
-              __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-              __Pyx_GOTREF(__pyx_t_1);
+              __Pyx_GOTREF(__pyx_t_3);
             } else {
               __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(__pyx_t_16);
@@ -6587,25 +6588,25 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_t_9);
               __Pyx_GIVEREF(__pyx_t_9);
               __pyx_t_9 = 0;
-              __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_16, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-              __Pyx_GOTREF(__pyx_t_1);
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_16, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_8 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_8);
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v__line->w); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_16 = PyNumber_Add(__pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+            __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v__line->w); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_GOTREF(__pyx_t_3);
+            __pyx_t_16 = PyNumber_Add(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_16);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_uw); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_8 = PyObject_RichCompare(__pyx_t_16, __pyx_t_1, Py_LE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+            __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_uw); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_GOTREF(__pyx_t_3);
+            __pyx_t_8 = PyObject_RichCompare(__pyx_t_16, __pyx_t_3, Py_LE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely(__pyx_t_15 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 532; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
             __pyx_t_5 = __pyx_t_15;
@@ -6660,8 +6661,8 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *                     _line = add_line(line[s:m], lww, lhh, _line, lines,
  *                         options, line_height, xpad, &w, &h, pos, 0)
  */
-          __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_line, __pyx_v_s, __pyx_v_m, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_line, __pyx_v_s, __pyx_v_m, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_3);
           __Pyx_INCREF(__pyx_v_get_extents);
           __pyx_t_16 = __pyx_v_get_extents; __pyx_t_9 = NULL;
           if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_16))) {
@@ -6674,16 +6675,16 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
             }
           }
           if (!__pyx_t_9) {
-            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_8);
           } else {
             __pyx_t_17 = PyTuple_New(1+1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_17);
             PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_9); __Pyx_GIVEREF(__pyx_t_9); __pyx_t_9 = NULL;
-            PyTuple_SET_ITEM(__pyx_t_17, 0+1, __pyx_t_1);
-            __Pyx_GIVEREF(__pyx_t_1);
-            __pyx_t_1 = 0;
+            PyTuple_SET_ITEM(__pyx_t_17, 0+1, __pyx_t_3);
+            __Pyx_GIVEREF(__pyx_t_3);
+            __pyx_t_3 = 0;
             __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_17, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_8);
             __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
@@ -6720,20 +6721,20 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           } else {
             Py_ssize_t index = -1;
-            __pyx_t_1 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-            __Pyx_GOTREF(__pyx_t_1);
+            __pyx_t_3 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-            __pyx_t_10 = Py_TYPE(__pyx_t_1)->tp_iternext;
-            index = 0; __pyx_t_16 = __pyx_t_10(__pyx_t_1); if (unlikely(!__pyx_t_16)) goto __pyx_L90_unpacking_failed;
+            __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext;
+            index = 0; __pyx_t_16 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_16)) goto __pyx_L90_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_16);
-            index = 1; __pyx_t_17 = __pyx_t_10(__pyx_t_1); if (unlikely(!__pyx_t_17)) goto __pyx_L90_unpacking_failed;
+            index = 1; __pyx_t_17 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_17)) goto __pyx_L90_unpacking_failed;
             __Pyx_GOTREF(__pyx_t_17);
-            if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_1), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __pyx_t_10 = NULL;
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             goto __pyx_L91_unpacking_done;
             __pyx_L90_unpacking_failed:;
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_10 = NULL;
             if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
             {__pyx_filename = __pyx_f[0]; __pyx_lineno = 538; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -6991,7 +6992,7 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
     __pyx_L10_continue:;
   }
   __pyx_L11_break:;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "kivy/core/text/text_layout.pyx":563
  *             lw, lh = lwe, lhe  # save current lw/lh, then fit more in line
@@ -7009,7 +7010,7 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   } else {
     __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_t_5); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 563; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = __pyx_t_8;
+    __pyx_t_1 = __pyx_t_8;
     __pyx_t_8 = 0;
     goto __pyx_L103_bool_binop_done;
   }
@@ -7019,17 +7020,17 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   } else {
     __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_t_5); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 563; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_3 = __pyx_t_8;
+    __pyx_t_1 = __pyx_t_8;
     __pyx_t_8 = 0;
     goto __pyx_L103_bool_binop_done;
   }
   __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 563; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_3 = __pyx_t_8;
+  __pyx_t_1 = __pyx_t_8;
   __pyx_t_8 = 0;
   __pyx_L103_bool_binop_done:;
-  __pyx_v_val = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_v_val = __pyx_t_1;
+  __pyx_t_1 = 0;
 
   /* "kivy/core/text/text_layout.pyx":566
  *     # ensure the number of lines is not more than the user asked
@@ -7206,8 +7207,8 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
  *                 i -= 1
  *             del lines[i + 1:]  # we stopped when keeping the ith line still fits
  */
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_1);
         if (unlikely(__pyx_v_lines == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
           {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -7217,9 +7218,9 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_h); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_17);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = PyNumber_InPlaceSubtract(__pyx_t_3, __pyx_t_17); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_8 = PyNumber_InPlaceSubtract(__pyx_t_1, __pyx_t_17); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_8);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
         __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -7294,13 +7295,13 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
         }
         __pyx_t_17 = __Pyx_GetItemInt_List(__pyx_v_lines, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(__pyx_t_17 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 586; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
         __Pyx_GOTREF(__pyx_t_17);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_17, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 586; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_17, __pyx_n_s_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 586; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-        __pyx_t_17 = PyNumber_InPlaceSubtract(__pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 586; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = PyNumber_InPlaceSubtract(__pyx_t_8, __pyx_t_1); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 586; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_17);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_17); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 586; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
         __pyx_v_h = __pyx_t_6;
@@ -7341,19 +7342,19 @@ static PyObject *__pyx_pf_4kivy_4core_4text_11text_layout_layout_text(CYTHON_UNU
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_17 = __Pyx_PyInt_From_int(__pyx_v_w); if (unlikely(!__pyx_t_17)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 590; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_17);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 590; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 590; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 590; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
   PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_17);
   __Pyx_GIVEREF(__pyx_t_17);
-  PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_val);
   PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_val);
   __Pyx_GIVEREF(__pyx_v_val);
   __pyx_t_17 = 0;
-  __pyx_t_3 = 0;
+  __pyx_t_1 = 0;
   __pyx_r = __pyx_t_8;
   __pyx_t_8 = 0;
   goto __pyx_L0;
@@ -7832,7 +7833,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_indices, __pyx_k_indices, sizeof(__pyx_k_indices), 0, 0, 1, 1},
   {&__pyx_n_s_is_last_line, __pyx_k_is_last_line, sizeof(__pyx_k_is_last_line), 0, 0, 1, 1},
   {&__pyx_n_s_is_space, __pyx_k_is_space, sizeof(__pyx_k_is_space), 0, 0, 1, 1},
-  {&__pyx_n_s_justify, __pyx_k_justify, sizeof(__pyx_k_justify), 0, 0, 1, 1},
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
   {&__pyx_n_s_kivy_core_text_text_layout, __pyx_k_kivy_core_text_text_layout, sizeof(__pyx_k_kivy_core_text_text_layout), 0, 0, 1, 1},
   {&__pyx_n_s_layout_text, __pyx_k_layout_text, sizeof(__pyx_k_layout_text), 0, 0, 1, 1},

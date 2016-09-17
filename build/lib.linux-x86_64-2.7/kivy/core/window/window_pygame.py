@@ -19,6 +19,7 @@ from kivy.logger import Logger
 from kivy.base import stopTouchApp, EventLoop
 from kivy.utils import platform, deprecated
 from kivy.resources import resource_find
+from kivy.clock import Clock
 
 try:
     android = None
@@ -184,7 +185,7 @@ class WindowPygame(WindowBase):
         # set mouse visibility
         self._set_cursor_state(self.show_cursor)
 
-        # if we are on android platform, automatically create hooks
+        # if we are on android platform, automaticly create hooks
         if android:
             from kivy.support import install_android
             install_android()

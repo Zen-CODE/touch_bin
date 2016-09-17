@@ -2,9 +2,6 @@
 Drop-Down List
 ==============
 
-.. image:: images/dropdown.gif
-    :align: right
-
 .. versionadded:: 1.4.0
 
 A versatile drop-down list that can be used with custom widgets. It allows you
@@ -96,8 +93,6 @@ from kivy.uix.scrollview import ScrollView
 from kivy.properties import ObjectProperty, NumericProperty, BooleanProperty
 from kivy.core.window import Window
 from kivy.lang import Builder
-from kivy.clock import Clock
-from kivy.config import Config
 
 _grid_kv = '''
 GridLayout:
@@ -131,9 +126,6 @@ class DropDown(ScrollView):
     auto_width = BooleanProperty(True)
     '''By default, the width of the dropdown will be the same as the width of
     the attached widget. Set to False if you want to provide your own width.
-    
-    :attr:`auto_width` is a :class:`~kivy.properties.BooleanProperty`
-    and defaults to True.
     '''
 
     max_height = NumericProperty(None, allownone=True)
@@ -155,25 +147,13 @@ class DropDown(ScrollView):
 
     auto_dismiss = BooleanProperty(True)
     '''By default, the dropdown will be automatically dismissed when a
-    touch happens outside of it, this option allows to disable this
+    touch happens outside of it, this option allow to disable this
     feature
 
     :attr:`auto_dismiss` is a :class:`~kivy.properties.BooleanProperty`
     and defaults to True.
 
     .. versionadded:: 1.8.0
-    '''
-
-    min_state_time = NumericProperty(0)
-    '''Minimum time before the :class:`~kivy.uix.DropDown` is dismissed.
-    This is used to allow for the widget inside the dropdown to display
-    a down state or for the :class:`~kivy.uix.DropDown` itself to
-    display a animation for closing.
-
-    :attr:`min_state_time` is a :class:`~kivy.properties.NumericProperty`
-    and defaults to the `Config` value `min_state_time`.
-
-    .. versionadded:: 1.9.2
     '''
 
     attach_to = ObjectProperty(allownone=True)
@@ -193,9 +173,6 @@ class DropDown(ScrollView):
 
     def __init__(self, **kwargs):
         self._win = None
-        if 'min_state_time' not in kwargs:
-            self.min_state_time = float(
-                Config.get('graphics', 'min_state_time'))
         if 'container' not in kwargs:
             c = self.container = Builder.load_string(_grid_kv)
         else:
@@ -222,7 +199,8 @@ class DropDown(ScrollView):
             return True
 
     def on_container(self, instance, value):
-        pass
+        if value is not None:
+            self.container.bind(minimum_size=self._container_minimum_size)
 
     def open(self, widget):
         '''Open the dropdown list and attach it to a specific widget.
@@ -252,10 +230,6 @@ class DropDown(ScrollView):
         '''Remove the dropdown widget from the window and detach it from
         the attached widget.
         '''
-        Clock.schedule_once(lambda dt: self._real_dismiss(),
-                            self.min_state_time)
-
-    def _real_dismiss(self):
         if self.parent:
             self.parent.remove_widget(self)
         if self.attach_to:
@@ -277,6 +251,14 @@ class DropDown(ScrollView):
     def on_select(self, data):
         pass
 
+    def _container_minimum_size(self, instance, size):
+        if self.max_height:
+            self.height = min(size[1], self.max_height)
+            self.do_scroll_y = size[1] > self.max_height
+        else:
+            self.height = size[1]
+            self.do_scroll_y = True
+
     def add_widget(self, *largs):
         if self.container:
             return self.container.add_widget(*largs)
@@ -297,8 +279,7 @@ class DropDown(ScrollView):
             return True
         if self.collide_point(*touch.pos):
             return True
-        if (self.attach_to and self.attach_to.collide_point(
-                *self.attach_to.to_widget(*touch.pos))):
+        if self.attach_to and self.attach_to.collide_point(*touch.pos):
             return True
         if self.auto_dismiss:
             self.dismiss()
@@ -308,8 +289,6 @@ class DropDown(ScrollView):
             return True
         if 'button' in touch.profile and touch.button.startswith('scroll'):
             return
-        if self.collide_point(*touch.pos):
-            return True
         if self.auto_dismiss:
             self.dismiss()
 
@@ -337,26 +316,22 @@ class DropDown(ScrollView):
         self.x = x
 
         # determine if we display the dropdown upper or lower to the widget
-        if self.max_height is not None:
-            height = min(self.max_height, self.container.minimum_height)
-        else:
-            height = self.container.minimum_height
-
-        h_bottom = wy - height
-        h_top = win.height - (wtop + height)
+        h_bottom = wy - self.height
+        h_top = win.height - (wtop + self.height)
         if h_bottom > 0:
             self.top = wy
-            self.height = height
+            self.height = self.container.minimum_height
         elif h_top > 0:
             self.y = wtop
-            self.height = height
+            self.height = self.container.minimum_height
         else:
             # none of both top/bottom have enough place to display the
             # widget at the current size. Take the best side, and fit to
             # it.
-
-            if h_top < h_bottom:
-                self.top = self.height = wy
+            height = max(h_bottom, h_top)
+            if height == h_bottom:
+                self.top = wy
+                self.height = wy
             else:
                 self.y = wtop
                 self.height = win.height - wtop
@@ -382,4 +357,3 @@ if __name__ == '__main__':
     btn.bind(on_release=show_dropdown, on_touch_move=touch_move)
 
     runTouchApp(btn)
-

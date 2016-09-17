@@ -494,7 +494,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y
@@ -578,9 +578,9 @@ struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update;
 struct __pyx_opt_args_4kivy_8graphics_12instructions_13RenderContext_set_state;
 
 /* "instructions.pxd":33
- *         cpdef flag_update(self, int do_parent=?, list _instrs=?)
+ *         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
  *     ELSE:
- *         cpdef flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
+ *         cdef void flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
  *     cdef void flag_update_done(self)
  *     cdef void set_parent(self, Instruction parent)
  */
@@ -1433,7 +1433,7 @@ static struct __pyx_vtabstruct_4kivy_6_event_EventObservers *__pyx_vtabptr_4kivy
 
 struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Instruction {
   int (*apply)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
-  PyObject *(*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, int __pyx_skip_dispatch, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
+  void (*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
   void (*flag_update_done)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*set_parent)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*reload)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
@@ -1592,7 +1592,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Color;
 
 
-/* "kivy/graphics/context_instructions.pyx":327
+/* "kivy/graphics/context_instructions.pyx":325
  * 
  * 
  * cdef class BindTexture(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1648,7 +1648,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_PopState {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_PopState *__pyx_vtabptr_4kivy_8graphics_20context_instructions_PopState;
 
 
-/* "kivy/graphics/context_instructions.pyx":394
+/* "kivy/graphics/context_instructions.pyx":392
  * 
  * 
  * cdef class LoadIdentity(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1662,7 +1662,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_LoadIdentity {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_LoadIdentity *__pyx_vtabptr_4kivy_8graphics_20context_instructions_LoadIdentity;
 
 
-/* "kivy/graphics/context_instructions.pyx":413
+/* "kivy/graphics/context_instructions.pyx":411
  * 
  * 
  * cdef class PushMatrix(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1676,7 +1676,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_PushMatrix {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_PushMatrix *__pyx_vtabptr_4kivy_8graphics_20context_instructions_PushMatrix;
 
 
-/* "kivy/graphics/context_instructions.pyx":433
+/* "kivy/graphics/context_instructions.pyx":431
  * 
  * 
  * cdef class PopMatrix(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1690,7 +1690,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_PopMatrix {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_PopMatrix *__pyx_vtabptr_4kivy_8graphics_20context_instructions_PopMatrix;
 
 
-/* "kivy/graphics/context_instructions.pyx":453
+/* "kivy/graphics/context_instructions.pyx":451
  * 
  * 
  * cdef class ApplyContextMatrix(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1704,7 +1704,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_ApplyContextMatri
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_ApplyContextMatrix *__pyx_vtabptr_4kivy_8graphics_20context_instructions_ApplyContextMatrix;
 
 
-/* "kivy/graphics/context_instructions.pyx":492
+/* "kivy/graphics/context_instructions.pyx":490
  * 
  * 
  * cdef class UpdateNormalMatrix(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1718,7 +1718,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_UpdateNormalMatri
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_UpdateNormalMatrix *__pyx_vtabptr_4kivy_8graphics_20context_instructions_UpdateNormalMatrix;
 
 
-/* "kivy/graphics/context_instructions.pyx":505
+/* "kivy/graphics/context_instructions.pyx":503
  * 
  * 
  * cdef class MatrixInstruction(ContextInstruction):             # <<<<<<<<<<<<<<
@@ -1732,7 +1732,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_MatrixInstruction
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_MatrixInstruction *__pyx_vtabptr_4kivy_8graphics_20context_instructions_MatrixInstruction;
 
 
-/* "kivy/graphics/context_instructions.pyx":549
+/* "kivy/graphics/context_instructions.pyx":547
  * 
  * 
  * cdef class Transform(MatrixInstruction):             # <<<<<<<<<<<<<<
@@ -1751,7 +1751,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform;
 
 
-/* "kivy/graphics/context_instructions.pyx":584
+/* "kivy/graphics/context_instructions.pyx":582
  * 
  * 
  * cdef class Rotate(Transform):             # <<<<<<<<<<<<<<
@@ -1766,7 +1766,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Rotate {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Rotate *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Rotate;
 
 
-/* "kivy/graphics/context_instructions.pyx":685
+/* "kivy/graphics/context_instructions.pyx":683
  * 
  * 
  * cdef class Scale(Transform):             # <<<<<<<<<<<<<<
@@ -1781,7 +1781,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale {
 static struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Scale;
 
 
-/* "kivy/graphics/context_instructions.pyx":811
+/* "kivy/graphics/context_instructions.pyx":809
  * 
  * 
  * cdef class Translate(Transform):             # <<<<<<<<<<<<<<
@@ -2416,7 +2416,7 @@ static char __pyx_k_kivy_core_image[] = "kivy.core.image";
 static char __pyx_k_kivy_shader_dir[] = "kivy_shader_dir";
 static char __pyx_k_MatrixInstruction[] = "MatrixInstruction";
 static char __pyx_k_gl_init_resources[] = "gl_init_resources";
-static char __pyx_k_Rotate_set_line_621[] = "Rotate.set (line 621)";
+static char __pyx_k_Rotate_set_line_619[] = "Rotate.set (line 619)";
 static char __pyx_k_Hue_component_between_0_and_1[] = "Hue component, between 0 and 1.\n        ";
 static char __pyx_k_Red_component_between_0_and_1[] = "Red component, between 0 and 1.\n        ";
 static char __pyx_k_Blue_component_between_0_and_1[] = "Blue component, between 0 and 1.\n        ";
@@ -2432,7 +2432,7 @@ static char __pyx_k_RGB_color_list_of_3_values_in_0[] = "RGB color, list of 3 va
 static char __pyx_k_Value_component_between_0_and_1[] = "Value component, between 0 and 1.\n        ";
 static char __pyx_k_home_richard_Repos_kivy_kivy_gr[] = "/home/richard/Repos/kivy/kivy/graphics/context_instructions.pyx";
 static char __pyx_k_invalid_number_of_components_in[] = "invalid number of components in origin";
-static char __pyx_k_scale_on_Scale_instruction_with[] = " 'scale' on Scale instruction with non uniform scaling!";
+static char __pyx_k_scale_on_Scale_instruction_with[] = " 'scale' on Scale instruction with non unifrom scaling!";
 static char __pyx_k_y_z_etc_properties_to_get_scale[] = "y, z, etc properties to get scale factor based on axis.";
 static char __pyx_k_3_tuple_translation_vector_in_3D[] = "3 tuple translation vector in 3D in x, y, and z axis.\n        ";
 static char __pyx_k_BindTexture_both_source_and_text[] = "BindTexture: both source and texture specified in kwargs! Settings source will overwritetexture property";
@@ -2445,7 +2445,7 @@ static char __pyx_k_Set_get_the_source_filename_to_l[] = "Set/get the source (fi
 static char __pyx_k_Set_the_angle_and_axis_of_rotati[] = "Set the angle and axis of rotation.\n\n        >>> rotationobject.set(90, 0, 0, 1)\n\n        .. deprecated:: 1.7.0\n\n            The set() method doesn't use the new :attr:`origin` property.\n        ";
 static char __pyx_k_kivy_graphics_context_instructio[] = "kivy.graphics.context_instructions";
 static char __pyx_k_scale_property_is_deprecated_use[] = "scale property is deprecated, use xyz, x, ";
-static char __pyx_k_trying_to_access_deprecated_prop[] = "trying to access deprecated property";
+static char __pyx_k_trying_to_access_deprectaed_prop[] = "trying to access deprectaed property";
 static char __pyx_k_Name_of_the_matrix_stack_to_use_2[] = "Name of the matrix stack to use. Can be 'modelview_mat' or\n        'projection_mat'.\n\n        .. versionadded:: 1.6.0\n        ";
 static char __pyx_k_Name_of_the_matrix_stack_to_use_3[] = "Name of the matrix stack to use as a target.\n        Can be 'modelview_mat' or 'projection_mat'.\n\n        .. versionadded:: 1.6.0\n        ";
 static char __pyx_k_Name_of_the_matrix_stack_to_use_4[] = "Name of the matrix stack to use as a source.\n        Can be 'modelview_mat' or 'projection_mat'.\n\n        .. versionadded:: 1.6.0\n        ";
@@ -2468,7 +2468,7 @@ static PyObject *__pyx_n_s_MatrixInstruction;
 static PyObject *__pyx_n_s_PopMatrix;
 static PyObject *__pyx_n_s_PushMatrix;
 static PyObject *__pyx_n_s_Rotate;
-static PyObject *__pyx_kp_u_Rotate_set_line_621;
+static PyObject *__pyx_kp_u_Rotate_set_line_619;
 static PyObject *__pyx_n_s_Scale;
 static PyObject *__pyx_kp_u_Set_the_angle_and_axis_of_rotati;
 static PyObject *__pyx_n_s_Translate;
@@ -2539,7 +2539,7 @@ static PyObject *__pyx_n_s_texture;
 static PyObject *__pyx_n_s_timeout;
 static PyObject *__pyx_n_s_transform;
 static PyObject *__pyx_n_s_translate;
-static PyObject *__pyx_kp_s_trying_to_access_deprecated_prop;
+static PyObject *__pyx_kp_s_trying_to_access_deprectaed_prop;
 static PyObject *__pyx_n_s_tx;
 static PyObject *__pyx_n_s_ty;
 static PyObject *__pyx_n_s_tz;
@@ -4564,7 +4564,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_8PopState_6states_2__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":230
+/* "kivy/graphics/context_instructions.pyx":228
  * 
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -4614,53 +4614,53 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":231
+  /* "kivy/graphics/context_instructions.pyx":229
  *     '''
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         cdef long vec_size = len(args)
  *         if kwargs.get('mode', '') == 'hsv':
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 229; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 229; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 229; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":232
+  /* "kivy/graphics/context_instructions.pyx":230
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)
  *         cdef long vec_size = len(args)             # <<<<<<<<<<<<<<
  *         if kwargs.get('mode', '') == 'hsv':
  *             if vec_size == 4:
  */
-  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_vec_size = __pyx_t_5;
 
-  /* "kivy/graphics/context_instructions.pyx":233
+  /* "kivy/graphics/context_instructions.pyx":231
  *         ContextInstruction.__init__(self, **kwargs)
  *         cdef long vec_size = len(args)
  *         if kwargs.get('mode', '') == 'hsv':             # <<<<<<<<<<<<<<
  *             if vec_size == 4:
  *                 self.hsv = args[:3]
  */
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_mode, __pyx_kp_s__6); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_mode, __pyx_kp_s__6); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_n_s_hsv, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_4, __pyx_n_s_hsv, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":237
+    /* "kivy/graphics/context_instructions.pyx":235
  *                 self.hsv = args[:3]
  *                 self.a = args[3]
  *             elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -4669,7 +4669,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
  */
     switch (__pyx_v_vec_size) {
 
-      /* "kivy/graphics/context_instructions.pyx":234
+      /* "kivy/graphics/context_instructions.pyx":232
  *         cdef long vec_size = len(args)
  *         if kwargs.get('mode', '') == 'hsv':
  *             if vec_size == 4:             # <<<<<<<<<<<<<<
@@ -4678,32 +4678,32 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
  */
       case 4:
 
-      /* "kivy/graphics/context_instructions.pyx":235
+      /* "kivy/graphics/context_instructions.pyx":233
  *         if kwargs.get('mode', '') == 'hsv':
  *             if vec_size == 4:
  *                 self.hsv = args[:3]             # <<<<<<<<<<<<<<
  *                 self.a = args[3]
  *             elif vec_size == 3:
  */
-      __pyx_t_4 = __Pyx_PyTuple_GetSlice(__pyx_v_args, 0, 3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 235; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyTuple_GetSlice(__pyx_v_args, 0, 3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 235; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "kivy/graphics/context_instructions.pyx":236
+      /* "kivy/graphics/context_instructions.pyx":234
  *             if vec_size == 4:
  *                 self.hsv = args[:3]
  *                 self.a = args[3]             # <<<<<<<<<<<<<<
  *             elif vec_size == 3:
  *                 self.hsv = args
  */
-      __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 234; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 234; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       break;
 
-      /* "kivy/graphics/context_instructions.pyx":237
+      /* "kivy/graphics/context_instructions.pyx":235
  *                 self.hsv = args[:3]
  *                 self.a = args[3]
  *             elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -4712,25 +4712,25 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
  */
       case 3:
 
-      /* "kivy/graphics/context_instructions.pyx":238
+      /* "kivy/graphics/context_instructions.pyx":236
  *                 self.a = args[3]
  *             elif vec_size == 3:
  *                 self.hsv = args             # <<<<<<<<<<<<<<
  *             else:
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])
  */
-      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_v_args) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_v_args) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       break;
       default:
 
-      /* "kivy/graphics/context_instructions.pyx":240
+      /* "kivy/graphics/context_instructions.pyx":238
  *                 self.hsv = args
  *             else:
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])             # <<<<<<<<<<<<<<
  *         else:
  *             if vec_size == 4:
  */
-      __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 240; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_float_1_0);
       PyList_SET_ITEM(__pyx_t_4, 0, __pyx_float_1_0);
@@ -4744,7 +4744,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
       __Pyx_INCREF(__pyx_float_1_0);
       PyList_SET_ITEM(__pyx_t_4, 3, __pyx_float_1_0);
       __Pyx_GIVEREF(__pyx_float_1_0);
-      __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_state(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self), __pyx_n_s_color, __pyx_t_4); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 240; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_state(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self), __pyx_n_s_color, __pyx_t_4); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       break;
     }
@@ -4752,7 +4752,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":244
+    /* "kivy/graphics/context_instructions.pyx":242
  *             if vec_size == 4:
  *                 self.rgba = args
  *             elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -4761,7 +4761,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
  */
     switch (__pyx_v_vec_size) {
 
-      /* "kivy/graphics/context_instructions.pyx":242
+      /* "kivy/graphics/context_instructions.pyx":240
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])
  *         else:
  *             if vec_size == 4:             # <<<<<<<<<<<<<<
@@ -4770,17 +4770,17 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
  */
       case 4:
 
-      /* "kivy/graphics/context_instructions.pyx":243
+      /* "kivy/graphics/context_instructions.pyx":241
  *         else:
  *             if vec_size == 4:
  *                 self.rgba = args             # <<<<<<<<<<<<<<
  *             elif vec_size == 3:
  *                 self.rgb = args
  */
-      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_v_args) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_v_args) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 241; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       break;
 
-      /* "kivy/graphics/context_instructions.pyx":244
+      /* "kivy/graphics/context_instructions.pyx":242
  *             if vec_size == 4:
  *                 self.rgba = args
  *             elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -4789,25 +4789,25 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
  */
       case 3:
 
-      /* "kivy/graphics/context_instructions.pyx":245
+      /* "kivy/graphics/context_instructions.pyx":243
  *                 self.rgba = args
  *             elif vec_size == 3:
  *                 self.rgb = args             # <<<<<<<<<<<<<<
  *             else:
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])
  */
-      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgb, __pyx_v_args) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgb, __pyx_v_args) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       break;
       default:
 
-      /* "kivy/graphics/context_instructions.pyx":247
+      /* "kivy/graphics/context_instructions.pyx":245
  *                 self.rgb = args
  *             else:
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])             # <<<<<<<<<<<<<<
  * 
  *         for property_name in ['r', 'g', 'b', 'a',
  */
-      __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_float_1_0);
       PyList_SET_ITEM(__pyx_t_4, 0, __pyx_float_1_0);
@@ -4821,14 +4821,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
       __Pyx_INCREF(__pyx_float_1_0);
       PyList_SET_ITEM(__pyx_t_4, 3, __pyx_float_1_0);
       __Pyx_GIVEREF(__pyx_float_1_0);
-      __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_state(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self), __pyx_n_s_color, __pyx_t_4); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_state(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self), __pyx_n_s_color, __pyx_t_4); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       break;
     }
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":249
+  /* "kivy/graphics/context_instructions.pyx":247
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])
  * 
  *         for property_name in ['r', 'g', 'b', 'a',             # <<<<<<<<<<<<<<
@@ -4839,40 +4839,40 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
   for (;;) {
     if (__pyx_t_5 >= 10) break;
     #if CYTHON_COMPILING_IN_CPYTHON
-    __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     #endif
     __Pyx_XDECREF_SET(__pyx_v_property_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "kivy/graphics/context_instructions.pyx":252
+    /* "kivy/graphics/context_instructions.pyx":250
  *                               'rgb', 'rgba', 'hsv',
  *                               'h', 's', 'v']:
  *             if property_name in kwargs:             # <<<<<<<<<<<<<<
  *                 setattr(self, property_name, kwargs[property_name])
  * 
  */
-    __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_v_property_name, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 252; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_v_property_name, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_8 = (__pyx_t_6 != 0);
     if (__pyx_t_8) {
 
-      /* "kivy/graphics/context_instructions.pyx":253
+      /* "kivy/graphics/context_instructions.pyx":251
  *                               'h', 's', 'v']:
  *             if property_name in kwargs:
  *                 setattr(self, property_name, kwargs[property_name])             # <<<<<<<<<<<<<<
  * 
  *     property rgba:
  */
-      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_v_property_name); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 253; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_v_property_name); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 251; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_9 = PyObject_SetAttr(((PyObject *)__pyx_v_self), __pyx_v_property_name, __pyx_t_3); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 253; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyObject_SetAttr(((PyObject *)__pyx_v_self), __pyx_v_property_name, __pyx_t_3); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 251; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       goto __pyx_L6;
     }
     __pyx_L6:;
 
-    /* "kivy/graphics/context_instructions.pyx":249
+    /* "kivy/graphics/context_instructions.pyx":247
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])
  * 
  *         for property_name in ['r', 'g', 'b', 'a',             # <<<<<<<<<<<<<<
@@ -4882,7 +4882,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":230
+  /* "kivy/graphics/context_instructions.pyx":228
  * 
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -4906,7 +4906,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color___init__(struc
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":258
+/* "kivy/graphics/context_instructions.pyx":256
  *         '''RGBA color, list of 4 values in 0-1 range.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4936,7 +4936,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":259
+  /* "kivy/graphics/context_instructions.pyx":257
  *         '''
  *         def __get__(self):
  *             return self.context_state['color']             # <<<<<<<<<<<<<<
@@ -4946,15 +4946,15 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba___
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_self->__pyx_base.context_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->__pyx_base.context_state, __pyx_n_s_color); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->__pyx_base.context_state, __pyx_n_s_color); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 257; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":258
+  /* "kivy/graphics/context_instructions.pyx":256
  *         '''RGBA color, list of 4 values in 0-1 range.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -4973,7 +4973,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba___
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":260
+/* "kivy/graphics/context_instructions.pyx":258
  *         def __get__(self):
  *             return self.context_state['color']
  *         def __set__(self, rgba):             # <<<<<<<<<<<<<<
@@ -5010,38 +5010,38 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba_2__set__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":261
+  /* "kivy/graphics/context_instructions.pyx":259
  *             return self.context_state['color']
  *         def __set__(self, rgba):
  *             self.set_state('color', [float(x) for x in rgba])             # <<<<<<<<<<<<<<
  *     property rgb:
  *         '''RGB color, list of 3 values in 0-1 range. The alpha will be 1.
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_v_rgba)) || PyTuple_CheckExact(__pyx_v_rgba)) {
     __pyx_t_2 = __pyx_v_rgba; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_rgba); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_rgba); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   for (;;) {
     if (likely(!__pyx_t_4)) {
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       }
     } else {
@@ -5050,7 +5050,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba_2__set__
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         break;
       }
@@ -5058,17 +5058,17 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba_2__set__
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_6 = __Pyx_PyObject_AsDouble(__pyx_v_x); if (unlikely(__pyx_t_6 == ((double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_t_6); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_AsDouble(__pyx_v_x); if (unlikely(__pyx_t_6 == ((double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyFloat_FromDouble(__pyx_t_6); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_state(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self), __pyx_n_s_color, __pyx_t_1); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Color *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.set_state(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self), __pyx_n_s_color, __pyx_t_1); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 259; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":260
+  /* "kivy/graphics/context_instructions.pyx":258
  *         def __get__(self):
  *             return self.context_state['color']
  *         def __set__(self, rgba):             # <<<<<<<<<<<<<<
@@ -5091,7 +5091,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_4rgba_2__set__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":265
+/* "kivy/graphics/context_instructions.pyx":263
  *         '''RGB color, list of 3 values in 0-1 range. The alpha will be 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5122,7 +5122,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_3rgb___g
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":266
+  /* "kivy/graphics/context_instructions.pyx":264
  *         '''
  *         def __get__(self):
  *             return self.rgba[:-1]             # <<<<<<<<<<<<<<
@@ -5130,16 +5130,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_3rgb___g
  *             self.rgba = (rgb[0], rgb[1], rgb[2], 1.0)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, -1, NULL, NULL, &__pyx_slice__8, 0, 1, 1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, -1, NULL, NULL, &__pyx_slice__8, 0, 1, 1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":265
+  /* "kivy/graphics/context_instructions.pyx":263
  *         '''RGB color, list of 3 values in 0-1 range. The alpha will be 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5159,7 +5159,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_3rgb___g
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":267
+/* "kivy/graphics/context_instructions.pyx":265
  *         def __get__(self):
  *             return self.rgba[:-1]
  *         def __set__(self, rgb):             # <<<<<<<<<<<<<<
@@ -5192,20 +5192,20 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_3rgb_2__set__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":268
+  /* "kivy/graphics/context_instructions.pyx":266
  *             return self.rgba[:-1]
  *         def __set__(self, rgb):
  *             self.rgba = (rgb[0], rgb[1], rgb[2], 1.0)             # <<<<<<<<<<<<<<
  *     property r:
  *         '''Red component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_rgb, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_rgb, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_rgb, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_rgb, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_rgb, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_rgb, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -5219,10 +5219,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_3rgb_2__set__(
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 268; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":267
+  /* "kivy/graphics/context_instructions.pyx":265
  *         def __get__(self):
  *             return self.rgba[:-1]
  *         def __set__(self, rgb):             # <<<<<<<<<<<<<<
@@ -5245,7 +5245,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_3rgb_2__set__(
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":272
+/* "kivy/graphics/context_instructions.pyx":270
  *         '''Red component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5276,7 +5276,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1r___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":273
+  /* "kivy/graphics/context_instructions.pyx":271
  *         '''
  *         def __get__(self):
  *             return self.rgba[0]             # <<<<<<<<<<<<<<
@@ -5284,16 +5284,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1r___get
  *             self.rgba = [r, self.g, self.b, self.a]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":272
+  /* "kivy/graphics/context_instructions.pyx":270
  *         '''Red component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5313,7 +5313,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1r___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":274
+/* "kivy/graphics/context_instructions.pyx":272
  *         def __get__(self):
  *             return self.rgba[0]
  *         def __set__(self, r):             # <<<<<<<<<<<<<<
@@ -5346,20 +5346,20 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1r_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":275
+  /* "kivy/graphics/context_instructions.pyx":273
  *             return self.rgba[0]
  *         def __set__(self, r):
  *             self.rgba = [r, self.g, self.b, self.a]             # <<<<<<<<<<<<<<
  *     property g:
  *         '''Green component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_r);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_v_r);
@@ -5373,10 +5373,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1r_2__set__(st
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":274
+  /* "kivy/graphics/context_instructions.pyx":272
  *         def __get__(self):
  *             return self.rgba[0]
  *         def __set__(self, r):             # <<<<<<<<<<<<<<
@@ -5399,7 +5399,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1r_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":279
+/* "kivy/graphics/context_instructions.pyx":277
  *         '''Green component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5430,7 +5430,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1g___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":280
+  /* "kivy/graphics/context_instructions.pyx":278
  *         '''
  *         def __get__(self):
  *             return self.rgba[1]             # <<<<<<<<<<<<<<
@@ -5438,16 +5438,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1g___get
  *             self.rgba = [self.r, g, self.b, self.a]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":279
+  /* "kivy/graphics/context_instructions.pyx":277
  *         '''Green component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5467,7 +5467,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1g___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":281
+/* "kivy/graphics/context_instructions.pyx":279
  *         def __get__(self):
  *             return self.rgba[1]
  *         def __set__(self, g):             # <<<<<<<<<<<<<<
@@ -5500,20 +5500,20 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1g_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":282
+  /* "kivy/graphics/context_instructions.pyx":280
  *             return self.rgba[1]
  *         def __set__(self, g):
  *             self.rgba = [self.r, g, self.b, self.a]             # <<<<<<<<<<<<<<
  *     property b:
  *         '''Blue component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -5527,10 +5527,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1g_2__set__(st
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":281
+  /* "kivy/graphics/context_instructions.pyx":279
  *         def __get__(self):
  *             return self.rgba[1]
  *         def __set__(self, g):             # <<<<<<<<<<<<<<
@@ -5553,7 +5553,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1g_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":286
+/* "kivy/graphics/context_instructions.pyx":284
  *         '''Blue component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5584,7 +5584,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1b___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":287
+  /* "kivy/graphics/context_instructions.pyx":285
  *         '''
  *         def __get__(self):
  *             return self.rgba[2]             # <<<<<<<<<<<<<<
@@ -5592,16 +5592,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1b___get
  *             self.rgba = [self.r, self.g, b, self.a]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":286
+  /* "kivy/graphics/context_instructions.pyx":284
  *         '''Blue component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5621,7 +5621,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1b___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":288
+/* "kivy/graphics/context_instructions.pyx":286
  *         def __get__(self):
  *             return self.rgba[2]
  *         def __set__(self, b):             # <<<<<<<<<<<<<<
@@ -5654,20 +5654,20 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1b_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":289
+  /* "kivy/graphics/context_instructions.pyx":287
  *             return self.rgba[2]
  *         def __set__(self, b):
  *             self.rgba = [self.r, self.g, b, self.a]             # <<<<<<<<<<<<<<
  *     property a:
  *         '''Alpha component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_a); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -5681,10 +5681,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1b_2__set__(st
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":288
+  /* "kivy/graphics/context_instructions.pyx":286
  *         def __get__(self):
  *             return self.rgba[2]
  *         def __set__(self, b):             # <<<<<<<<<<<<<<
@@ -5707,7 +5707,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1b_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":293
+/* "kivy/graphics/context_instructions.pyx":291
  *         '''Alpha component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5738,7 +5738,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1a___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":294
+  /* "kivy/graphics/context_instructions.pyx":292
  *         '''
  *         def __get__(self):
  *             return self.rgba[3]             # <<<<<<<<<<<<<<
@@ -5746,16 +5746,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1a___get
  *             self.rgba = [self.r, self.g, self.b, a]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":293
+  /* "kivy/graphics/context_instructions.pyx":291
  *         '''Alpha component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5775,7 +5775,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1a___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":295
+/* "kivy/graphics/context_instructions.pyx":293
  *         def __get__(self):
  *             return self.rgba[3]
  *         def __set__(self, a):             # <<<<<<<<<<<<<<
@@ -5808,20 +5808,20 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1a_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":296
+  /* "kivy/graphics/context_instructions.pyx":294
  *             return self.rgba[3]
  *         def __set__(self, a):
  *             self.rgba = [self.r, self.g, self.b, a]             # <<<<<<<<<<<<<<
  *     property hsv:
  *         '''HSV color, list of 3 values in 0-1 range, alpha will be 1.
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 296; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 296; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 296; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 296; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyList_New(4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -5835,10 +5835,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1a_2__set__(st
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 296; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgba, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 294; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":295
+  /* "kivy/graphics/context_instructions.pyx":293
  *         def __get__(self):
  *             return self.rgba[3]
  *         def __set__(self, a):             # <<<<<<<<<<<<<<
@@ -5861,7 +5861,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1a_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":300
+/* "kivy/graphics/context_instructions.pyx":298
  *         '''HSV color, list of 3 values in 0-1 range, alpha will be 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5894,7 +5894,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_3hsv___g
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":301
+  /* "kivy/graphics/context_instructions.pyx":299
  *         '''
  *         def __get__(self):
  *             return rgb_to_hsv(self.r, self.g, self.b)             # <<<<<<<<<<<<<<
@@ -5902,25 +5902,25 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_3hsv___g
  *             self.rgb = hsv_to_rgb(x[0], x[1], x[2])
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_r); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_2 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_2 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_g); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_b); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_rgb_to_hsv(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_rgb_to_hsv(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":300
+  /* "kivy/graphics/context_instructions.pyx":298
  *         '''HSV color, list of 3 values in 0-1 range, alpha will be 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -5939,7 +5939,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_3hsv___g
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":302
+/* "kivy/graphics/context_instructions.pyx":300
  *         def __get__(self):
  *             return rgb_to_hsv(self.r, self.g, self.b)
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -5972,31 +5972,31 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_3hsv_2__set__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":303
+  /* "kivy/graphics/context_instructions.pyx":301
  *             return rgb_to_hsv(self.r, self.g, self.b)
  *         def __set__(self, x):
  *             self.rgb = hsv_to_rgb(x[0], x[1], x[2])             # <<<<<<<<<<<<<<
  *     property h:
  *         '''Hue component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_2 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_2 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_x, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_4 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_hsv_to_rgb(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_hsv_to_rgb(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgb, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rgb, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":302
+  /* "kivy/graphics/context_instructions.pyx":300
  *         def __get__(self):
  *             return rgb_to_hsv(self.r, self.g, self.b)
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6016,7 +6016,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_3hsv_2__set__(
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":307
+/* "kivy/graphics/context_instructions.pyx":305
  *         '''Hue component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6047,7 +6047,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1h___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":308
+  /* "kivy/graphics/context_instructions.pyx":306
  *         '''
  *         def __get__(self):
  *             return self.hsv[0]             # <<<<<<<<<<<<<<
@@ -6055,16 +6055,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1h___get
  *             self.hsv = [x, self.s, self.v]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 306; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 306; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":307
+  /* "kivy/graphics/context_instructions.pyx":305
  *         '''Hue component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6084,7 +6084,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1h___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":309
+/* "kivy/graphics/context_instructions.pyx":307
  *         def __get__(self):
  *             return self.hsv[0]
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6116,18 +6116,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1h_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":310
+  /* "kivy/graphics/context_instructions.pyx":308
  *             return self.hsv[0]
  *         def __set__(self, x):
  *             self.hsv = [x, self.s, self.v]             # <<<<<<<<<<<<<<
  *     property s:
  *         '''Saturation component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_s); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_s); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_v); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_v); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_x);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_v_x);
@@ -6138,10 +6138,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1h_2__set__(st
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 310; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":309
+  /* "kivy/graphics/context_instructions.pyx":307
  *         def __get__(self):
  *             return self.hsv[0]
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6163,7 +6163,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1h_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":314
+/* "kivy/graphics/context_instructions.pyx":312
  *         '''Saturation component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6194,7 +6194,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1s___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":315
+  /* "kivy/graphics/context_instructions.pyx":313
  *         '''
  *         def __get__(self):
  *             return self.hsv[1]             # <<<<<<<<<<<<<<
@@ -6202,16 +6202,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1s___get
  *             self.hsv = [self.h, x, self.v]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":314
+  /* "kivy/graphics/context_instructions.pyx":312
  *         '''Saturation component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6231,7 +6231,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1s___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":316
+/* "kivy/graphics/context_instructions.pyx":314
  *         def __get__(self):
  *             return self.hsv[1]
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6263,18 +6263,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1s_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":317
+  /* "kivy/graphics/context_instructions.pyx":315
  *             return self.hsv[1]
  *         def __set__(self, x):
  *             self.hsv = [self.h, x, self.v]             # <<<<<<<<<<<<<<
  *     property v:
  *         '''Value component, between 0 and 1.
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_v); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_v); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6285,10 +6285,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1s_2__set__(st
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":316
+  /* "kivy/graphics/context_instructions.pyx":314
  *         def __get__(self):
  *             return self.hsv[1]
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6310,7 +6310,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1s_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":321
+/* "kivy/graphics/context_instructions.pyx":319
  *         '''Value component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6341,7 +6341,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1v___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":322
+  /* "kivy/graphics/context_instructions.pyx":320
  *         '''
  *         def __get__(self):
  *             return self.hsv[2]             # <<<<<<<<<<<<<<
@@ -6349,16 +6349,16 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1v___get
  *             self.hsv = [self.h, self.s, x]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 320; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 320; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":321
+  /* "kivy/graphics/context_instructions.pyx":319
  *         '''Value component, between 0 and 1.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6378,7 +6378,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Color_1v___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":323
+/* "kivy/graphics/context_instructions.pyx":321
  *         def __get__(self):
  *             return self.hsv[2]
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6410,18 +6410,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1v_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":324
+  /* "kivy/graphics/context_instructions.pyx":322
  *             return self.hsv[2]
  *         def __set__(self, x):
  *             self.hsv = [self.h, self.s, x]             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_h); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_s); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_s); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(3); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -6432,10 +6432,10 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1v_2__set__(st
   __Pyx_GIVEREF(__pyx_v_x);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_hsv, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 322; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":323
+  /* "kivy/graphics/context_instructions.pyx":321
  *         def __get__(self):
  *             return self.hsv[2]
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -6457,7 +6457,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Color_1v_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":336
+/* "kivy/graphics/context_instructions.pyx":334
  *             Specifies the texture to bind to the given index.
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -6501,62 +6501,62 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture___init_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":337
+  /* "kivy/graphics/context_instructions.pyx":335
  *     '''
  *     def __init__(self, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         if 'source' in kwargs and 'texture' in kwargs:
  *             Logger.warn('BindTexture: both source and texture specified '
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":338
+  /* "kivy/graphics/context_instructions.pyx":336
  *     def __init__(self, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)
  *         if 'source' in kwargs and 'texture' in kwargs:             # <<<<<<<<<<<<<<
  *             Logger.warn('BindTexture: both source and texture specified '
  *                         'in kwargs! Settings source will overwrite'
  */
-  __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_n_s_source, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_n_s_source, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 336; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
   } else {
     __pyx_t_5 = __pyx_t_7;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_7 = (__Pyx_PyDict_Contains(__pyx_n_s_texture, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = (__Pyx_PyDict_Contains(__pyx_n_s_texture, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 336; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = (__pyx_t_7 != 0);
   __pyx_t_5 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_5) {
 
-    /* "kivy/graphics/context_instructions.pyx":339
+    /* "kivy/graphics/context_instructions.pyx":337
  *         ContextInstruction.__init__(self, **kwargs)
  *         if 'source' in kwargs and 'texture' in kwargs:
  *             Logger.warn('BindTexture: both source and texture specified '             # <<<<<<<<<<<<<<
  *                         'in kwargs! Settings source will overwrite'
  *                         'texture property')
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 339; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_warn); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 339; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_warn); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 339; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6564,26 +6564,26 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture___init_
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":343
+  /* "kivy/graphics/context_instructions.pyx":341
  *                         'texture property')
  * 
  *         self.source = kwargs.get('source', None)             # <<<<<<<<<<<<<<
  *         if self.source is None and 'texture' in kwargs:
  *             self.texture = kwargs['texture']
  */
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_source, Py_None); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_source, Py_None); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 341; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 341; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":344
+  /* "kivy/graphics/context_instructions.pyx":342
  * 
  *         self.source = kwargs.get('source', None)
  *         if self.source is None and 'texture' in kwargs:             # <<<<<<<<<<<<<<
  *             self.texture = kwargs['texture']
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 344; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 342; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = (__pyx_t_4 == Py_None);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6593,40 +6593,40 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture___init_
     __pyx_t_5 = __pyx_t_7;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_7 = (__Pyx_PyDict_Contains(__pyx_n_s_texture, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 344; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = (__Pyx_PyDict_Contains(__pyx_n_s_texture, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 342; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = (__pyx_t_7 != 0);
   __pyx_t_5 = __pyx_t_6;
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_5) {
 
-    /* "kivy/graphics/context_instructions.pyx":345
+    /* "kivy/graphics/context_instructions.pyx":343
  *         self.source = kwargs.get('source', None)
  *         if self.source is None and 'texture' in kwargs:
  *             self.texture = kwargs['texture']             # <<<<<<<<<<<<<<
  * 
  *         self.index = kwargs.get('index', 0)
  */
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_texture); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 345; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_texture); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_texture, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 345; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_texture, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     goto __pyx_L6;
   }
   __pyx_L6:;
 
-  /* "kivy/graphics/context_instructions.pyx":347
+  /* "kivy/graphics/context_instructions.pyx":345
  *             self.texture = kwargs['texture']
  * 
  *         self.index = kwargs.get('index', 0)             # <<<<<<<<<<<<<<
  * 
  *     cdef int apply(self) except -1:
  */
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_index, __pyx_int_0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_index, __pyx_int_0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 345; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_index, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_index, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 345; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":336
+  /* "kivy/graphics/context_instructions.pyx":334
  *             Specifies the texture to bind to the given index.
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -6649,7 +6649,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture___init_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":349
+/* "kivy/graphics/context_instructions.pyx":347
  *         self.index = kwargs.get('index', 0)
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -6667,19 +6667,19 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_11BindTexture_apply(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":350
+  /* "kivy/graphics/context_instructions.pyx":348
  * 
  *     cdef int apply(self) except -1:
  *         cdef RenderContext context = self.get_context()             # <<<<<<<<<<<<<<
  *         context.set_texture(self._index, self._texture)
  * 
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_BindTexture *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 350; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_BindTexture *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 348; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_context = ((struct __pyx_obj_4kivy_8graphics_12instructions_RenderContext *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":351
+  /* "kivy/graphics/context_instructions.pyx":349
  *     cdef int apply(self) except -1:
  *         cdef RenderContext context = self.get_context()
  *         context.set_texture(self._index, self._texture)             # <<<<<<<<<<<<<<
@@ -6691,7 +6691,7 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_11BindTexture_apply(st
   ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_texture(__pyx_v_context, __pyx_v_self->_index, ((struct __pyx_obj_4kivy_8graphics_7texture_Texture *)__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":349
+  /* "kivy/graphics/context_instructions.pyx":347
  *         self.index = kwargs.get('index', 0)
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -6712,7 +6712,7 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_11BindTexture_apply(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":354
+/* "kivy/graphics/context_instructions.pyx":352
  * 
  *     property texture:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6738,7 +6738,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":355
+  /* "kivy/graphics/context_instructions.pyx":353
  *     property texture:
  *         def __get__(self):
  *             return self._texture             # <<<<<<<<<<<<<<
@@ -6750,7 +6750,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7
   __pyx_r = ((PyObject *)__pyx_v_self->_texture);
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":354
+  /* "kivy/graphics/context_instructions.pyx":352
  * 
  *     property texture:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6765,7 +6765,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":356
+/* "kivy/graphics/context_instructions.pyx":354
  *         def __get__(self):
  *             return self._texture
  *         def __set__(self, object texture):             # <<<<<<<<<<<<<<
@@ -6798,7 +6798,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
   __Pyx_RefNannySetupContext("__set__", 0);
   __Pyx_INCREF(__pyx_v_texture);
 
-  /* "kivy/graphics/context_instructions.pyx":357
+  /* "kivy/graphics/context_instructions.pyx":355
  *             return self._texture
  *         def __set__(self, object texture):
  *             if texture is None:             # <<<<<<<<<<<<<<
@@ -6809,14 +6809,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":358
+    /* "kivy/graphics/context_instructions.pyx":356
  *         def __set__(self, object texture):
  *             if texture is None:
  *                 texture = get_default_texture()             # <<<<<<<<<<<<<<
  *             if self._texture is texture:
  *                 return
  */
-    __pyx_t_3 = __pyx_f_4kivy_8graphics_20context_instructions_get_default_texture(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 358; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __pyx_f_4kivy_8graphics_20context_instructions_get_default_texture(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 356; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_texture, __pyx_t_3);
     __pyx_t_3 = 0;
@@ -6824,7 +6824,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":359
+  /* "kivy/graphics/context_instructions.pyx":357
  *             if texture is None:
  *                 texture = get_default_texture()
  *             if self._texture is texture:             # <<<<<<<<<<<<<<
@@ -6835,7 +6835,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/context_instructions.pyx":360
+    /* "kivy/graphics/context_instructions.pyx":358
  *                 texture = get_default_texture()
  *             if self._texture is texture:
  *                 return             # <<<<<<<<<<<<<<
@@ -6846,14 +6846,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":361
+  /* "kivy/graphics/context_instructions.pyx":359
  *             if self._texture is texture:
  *                 return
  *             self._texture = texture             # <<<<<<<<<<<<<<
  *             self.flag_update()
  * 
  */
-  if (!(likely(((__pyx_v_texture) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_texture, __pyx_ptype_4kivy_8graphics_7texture_Texture))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 361; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_v_texture) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_texture, __pyx_ptype_4kivy_8graphics_7texture_Texture))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = __pyx_v_texture;
   __Pyx_INCREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_3);
@@ -6862,18 +6862,16 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
   __pyx_v_self->_texture = ((struct __pyx_obj_4kivy_8graphics_7texture_Texture *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":362
+  /* "kivy/graphics/context_instructions.pyx":360
  *                 return
  *             self._texture = texture
  *             self.flag_update()             # <<<<<<<<<<<<<<
  * 
  *     property index:
  */
-  __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_BindTexture *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), 0, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 362; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_BindTexture *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), NULL);
 
-  /* "kivy/graphics/context_instructions.pyx":356
+  /* "kivy/graphics/context_instructions.pyx":354
  *         def __get__(self):
  *             return self._texture
  *         def __set__(self, object texture):             # <<<<<<<<<<<<<<
@@ -6894,7 +6892,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_7textur
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":365
+/* "kivy/graphics/context_instructions.pyx":363
  * 
  *     property index:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6924,7 +6922,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":366
+  /* "kivy/graphics/context_instructions.pyx":364
  *     property index:
  *         def __get__(self):
  *             return self._index             # <<<<<<<<<<<<<<
@@ -6932,13 +6930,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5
  *             if self._index == index:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_index); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_index); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 364; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":365
+  /* "kivy/graphics/context_instructions.pyx":363
  * 
  *     property index:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -6957,7 +6955,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":367
+/* "kivy/graphics/context_instructions.pyx":365
  *         def __get__(self):
  *             return self._index
  *         def __set__(self, int index):             # <<<<<<<<<<<<<<
@@ -6976,7 +6974,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_11BindTexture_5index_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_index); {
-    __pyx_v_index = __Pyx_PyInt_As_int(__pyx_arg_index); if (unlikely((__pyx_v_index == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 367; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_index = __Pyx_PyInt_As_int(__pyx_arg_index); if (unlikely((__pyx_v_index == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6995,13 +6993,9 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5index_
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":368
+  /* "kivy/graphics/context_instructions.pyx":366
  *             return self._index
  *         def __set__(self, int index):
  *             if self._index == index:             # <<<<<<<<<<<<<<
@@ -7011,7 +7005,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5index_
   __pyx_t_1 = ((__pyx_v_self->_index == __pyx_v_index) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/context_instructions.pyx":369
+    /* "kivy/graphics/context_instructions.pyx":367
  *         def __set__(self, int index):
  *             if self._index == index:
  *                 return             # <<<<<<<<<<<<<<
@@ -7022,7 +7016,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5index_
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":370
+  /* "kivy/graphics/context_instructions.pyx":368
  *             if self._index == index:
  *                 return
  *             self._index = index             # <<<<<<<<<<<<<<
@@ -7031,18 +7025,16 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5index_
  */
   __pyx_v_self->_index = __pyx_v_index;
 
-  /* "kivy/graphics/context_instructions.pyx":371
+  /* "kivy/graphics/context_instructions.pyx":369
  *                 return
  *             self._index = index
  *             self.flag_update()             # <<<<<<<<<<<<<<
  * 
  *     property source:
  */
-  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_BindTexture *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), 0, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 371; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_BindTexture *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), NULL);
 
-  /* "kivy/graphics/context_instructions.pyx":367
+  /* "kivy/graphics/context_instructions.pyx":365
  *         def __get__(self):
  *             return self._index
  *         def __set__(self, int index):             # <<<<<<<<<<<<<<
@@ -7052,17 +7044,12 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_5index_
 
   /* function exit code */
   __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("kivy.graphics.context_instructions.BindTexture.index.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":376
+/* "kivy/graphics/context_instructions.pyx":374
  *         '''Set/get the source (filename) to load for the texture.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -7088,7 +7075,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":377
+  /* "kivy/graphics/context_instructions.pyx":375
  *         '''
  *         def __get__(self):
  *             return self._source             # <<<<<<<<<<<<<<
@@ -7100,7 +7087,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6
   __pyx_r = __pyx_v_self->_source;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":376
+  /* "kivy/graphics/context_instructions.pyx":374
  *         '''Set/get the source (filename) to load for the texture.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -7115,7 +7102,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":378
+/* "kivy/graphics/context_instructions.pyx":376
  *         def __get__(self):
  *             return self._source
  *         def __set__(self, filename):             # <<<<<<<<<<<<<<
@@ -7152,14 +7139,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":379
+  /* "kivy/graphics/context_instructions.pyx":377
  *             return self._source
  *         def __set__(self, filename):
  *             self._source = resource_find(filename)             # <<<<<<<<<<<<<<
  *             if self._source:
  *                 tex = Cache.get('kv.texture', filename)
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_resource_find); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_resource_find); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 377; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -7172,16 +7159,16 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_filename); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_filename); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 377; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 377; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
     __Pyx_INCREF(__pyx_v_filename);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_filename);
     __Pyx_GIVEREF(__pyx_v_filename);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 377; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -7192,26 +7179,26 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
   __pyx_v_self->_source = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":380
+  /* "kivy/graphics/context_instructions.pyx":378
  *         def __set__(self, filename):
  *             self._source = resource_find(filename)
  *             if self._source:             # <<<<<<<<<<<<<<
  *                 tex = Cache.get('kv.texture', filename)
  *                 if not tex:
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_self->_source); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 380; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_self->_source); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 378; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_5) {
 
-    /* "kivy/graphics/context_instructions.pyx":381
+    /* "kivy/graphics/context_instructions.pyx":379
  *             self._source = resource_find(filename)
  *             if self._source:
  *                 tex = Cache.get('kv.texture', filename)             # <<<<<<<<<<<<<<
  *                 if not tex:
  *                     tex = Image(self._source).texture
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -7226,7 +7213,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
         __pyx_t_6 = 1;
       }
     }
-    __pyx_t_3 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_2) {
       PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __Pyx_GIVEREF(__pyx_t_2); __pyx_t_2 = NULL;
@@ -7237,32 +7224,32 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
     __Pyx_INCREF(__pyx_v_filename);
     PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_6, __pyx_v_filename);
     __Pyx_GIVEREF(__pyx_v_filename);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 379; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_tex = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "kivy/graphics/context_instructions.pyx":382
+    /* "kivy/graphics/context_instructions.pyx":380
  *             if self._source:
  *                 tex = Cache.get('kv.texture', filename)
  *                 if not tex:             # <<<<<<<<<<<<<<
  *                     tex = Image(self._source).texture
  *                     Cache.append('kv.texture', filename, tex)
  */
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_tex); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_tex); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 380; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_7 = ((!__pyx_t_5) != 0);
     if (__pyx_t_7) {
 
-      /* "kivy/graphics/context_instructions.pyx":383
+      /* "kivy/graphics/context_instructions.pyx":381
  *                 tex = Cache.get('kv.texture', filename)
  *                 if not tex:
  *                     tex = Image(self._source).texture             # <<<<<<<<<<<<<<
  *                     Cache.append('kv.texture', filename, tex)
  *                 self.texture = tex
  */
-      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Image); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Image); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -7275,36 +7262,36 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
         }
       }
       if (!__pyx_t_3) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->_source); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->_source); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
       } else {
-        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_v_self->_source);
         PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_v_self->_source);
         __Pyx_GIVEREF(__pyx_v_self->_source);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_texture); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_texture); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 381; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_tex, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "kivy/graphics/context_instructions.pyx":384
+      /* "kivy/graphics/context_instructions.pyx":382
  *                 if not tex:
  *                     tex = Image(self._source).texture
  *                     Cache.append('kv.texture', filename, tex)             # <<<<<<<<<<<<<<
  *                 self.texture = tex
  *             else:
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_append); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_append); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -7319,7 +7306,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
           __pyx_t_6 = 1;
         }
       }
-      __pyx_t_3 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_1) {
         PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1); __Pyx_GIVEREF(__pyx_t_1); __pyx_t_1 = NULL;
@@ -7333,7 +7320,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
       __Pyx_INCREF(__pyx_v_tex);
       PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_6, __pyx_v_tex);
       __Pyx_GIVEREF(__pyx_v_tex);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7342,30 +7329,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
     }
     __pyx_L4:;
 
-    /* "kivy/graphics/context_instructions.pyx":385
+    /* "kivy/graphics/context_instructions.pyx":383
  *                     tex = Image(self._source).texture
  *                     Cache.append('kv.texture', filename, tex)
  *                 self.texture = tex             # <<<<<<<<<<<<<<
  *             else:
  *                 self.texture = None
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_texture, __pyx_v_tex) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 385; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_texture, __pyx_v_tex) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     goto __pyx_L3;
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":387
+    /* "kivy/graphics/context_instructions.pyx":385
  *                 self.texture = tex
  *             else:
  *                 self.texture = None             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_texture, Py_None) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 387; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_texture, Py_None) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 385; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":378
+  /* "kivy/graphics/context_instructions.pyx":376
  *         def __get__(self):
  *             return self._source
  *         def __set__(self, filename):             # <<<<<<<<<<<<<<
@@ -7389,7 +7376,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_11BindTexture_6source
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":390
+/* "kivy/graphics/context_instructions.pyx":388
  * 
  * 
  * cdef double radians(double degrees):             # <<<<<<<<<<<<<<
@@ -7402,7 +7389,7 @@ static double __pyx_f_4kivy_8graphics_20context_instructions_radians(double __py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("radians", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":391
+  /* "kivy/graphics/context_instructions.pyx":389
  * 
  * cdef double radians(double degrees):
  *     return degrees * (3.14159265 / 180.)             # <<<<<<<<<<<<<<
@@ -7412,7 +7399,7 @@ static double __pyx_f_4kivy_8graphics_20context_instructions_radians(double __py
   __pyx_r = (__pyx_v_degrees * (3.14159265 / 180.));
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":390
+  /* "kivy/graphics/context_instructions.pyx":388
  * 
  * 
  * cdef double radians(double degrees):             # <<<<<<<<<<<<<<
@@ -7426,7 +7413,7 @@ static double __pyx_f_4kivy_8graphics_20context_instructions_radians(double __py
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":400
+/* "kivy/graphics/context_instructions.pyx":398
  *     .. versionadded:: 1.6.0
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -7464,19 +7451,19 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity___init
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":401
+  /* "kivy/graphics/context_instructions.pyx":399
  *     '''
  *     def __init__(self, **kwargs):
  *         self.stack = kwargs.get('stack', 'modelview_mat')             # <<<<<<<<<<<<<<
  * 
  *     property stack:
  */
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 399; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 401; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 399; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":400
+  /* "kivy/graphics/context_instructions.pyx":398
  *     .. versionadded:: 1.6.0
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -7496,7 +7483,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity___init
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":407
+/* "kivy/graphics/context_instructions.pyx":405
  *         'projection_mat'.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -7527,7 +7514,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":408
+  /* "kivy/graphics/context_instructions.pyx":406
  *         '''
  *         def __get__(self):
  *             return self.context_state.keys()[0]             # <<<<<<<<<<<<<<
@@ -7537,18 +7524,18 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity_
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_self->__pyx_base.context_state == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "keys");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->__pyx_base.context_state); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_self->__pyx_base.context_state); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 406; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 406; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":407
+  /* "kivy/graphics/context_instructions.pyx":405
  *         'projection_mat'.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -7568,7 +7555,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":409
+/* "kivy/graphics/context_instructions.pyx":407
  *         def __get__(self):
  *             return self.context_state.keys()[0]
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -7599,18 +7586,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity_5stack
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":410
+  /* "kivy/graphics/context_instructions.pyx":408
  *             return self.context_state.keys()[0]
  *         def __set__(self, value):
  *             self.context_state = {value: Matrix()}             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_v_value, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_v_value, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base.context_state);
@@ -7618,7 +7605,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity_5stack
   __pyx_v_self->__pyx_base.context_state = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":409
+  /* "kivy/graphics/context_instructions.pyx":407
  *         def __get__(self):
  *             return self.context_state.keys()[0]
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -7639,7 +7626,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_12LoadIdentity_5stack
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":416
+/* "kivy/graphics/context_instructions.pyx":414
  *     '''Push the matrix onto the context's matrix stack.
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -7682,42 +7669,42 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix___init__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":417
+  /* "kivy/graphics/context_instructions.pyx":415
  *     '''
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         self.stack = kwargs.get('stack', 'modelview_mat')
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 417; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 417; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 417; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 415; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":418
+  /* "kivy/graphics/context_instructions.pyx":416
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)
  *         self.stack = kwargs.get('stack', 'modelview_mat')             # <<<<<<<<<<<<<<
  * 
  *     property stack:
  */
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":416
+  /* "kivy/graphics/context_instructions.pyx":414
  *     '''Push the matrix onto the context's matrix stack.
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -7740,7 +7727,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix___init__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":426
+/* "kivy/graphics/context_instructions.pyx":424
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -7770,7 +7757,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":427
+  /* "kivy/graphics/context_instructions.pyx":425
  *         '''
  *         def __get__(self):
  *             return self.context_push[0]             # <<<<<<<<<<<<<<
@@ -7780,15 +7767,15 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5s
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_self->__pyx_base.context_push == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 427; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.context_push, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 427; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.context_push, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":426
+  /* "kivy/graphics/context_instructions.pyx":424
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -7807,7 +7794,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5s
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":428
+/* "kivy/graphics/context_instructions.pyx":426
  *         def __get__(self):
  *             return self.context_push[0]
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -7839,14 +7826,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5stack_2
   __Pyx_RefNannySetupContext("__set__", 0);
   __Pyx_INCREF(__pyx_v_value);
 
-  /* "kivy/graphics/context_instructions.pyx":429
+  /* "kivy/graphics/context_instructions.pyx":427
  *             return self.context_push[0]
  *         def __set__(self, value):
  *             value = value or 'modelview_mat'             # <<<<<<<<<<<<<<
  *             self.context_push = [value]
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 429; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 427; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __Pyx_INCREF(__pyx_v_value);
@@ -7859,14 +7846,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5stack_2
   __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":430
+  /* "kivy/graphics/context_instructions.pyx":428
  *         def __set__(self, value):
  *             value = value or 'modelview_mat'
  *             self.context_push = [value]             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 430; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 428; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_value);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_v_value);
@@ -7877,7 +7864,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5stack_2
   __pyx_v_self->__pyx_base.context_push = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":428
+  /* "kivy/graphics/context_instructions.pyx":426
  *         def __get__(self):
  *             return self.context_push[0]
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -7898,7 +7885,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_10PushMatrix_5stack_2
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":436
+/* "kivy/graphics/context_instructions.pyx":434
  *     '''Pop the matrix from the context's matrix stack onto the model view.
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -7941,42 +7928,42 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix___init__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":437
+  /* "kivy/graphics/context_instructions.pyx":435
  *     '''
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         self.stack = kwargs.get('stack', 'modelview_mat')
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 435; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 435; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 435; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":438
+  /* "kivy/graphics/context_instructions.pyx":436
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)
  *         self.stack = kwargs.get('stack', 'modelview_mat')             # <<<<<<<<<<<<<<
  * 
  *     property stack:
  */
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 438; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 436; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 438; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 436; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":436
+  /* "kivy/graphics/context_instructions.pyx":434
  *     '''Pop the matrix from the context's matrix stack onto the model view.
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -7999,7 +7986,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix___init__(s
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":446
+/* "kivy/graphics/context_instructions.pyx":444
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8029,7 +8016,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5sta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":447
+  /* "kivy/graphics/context_instructions.pyx":445
  *         '''
  *         def __get__(self):
  *             return self.context_push[0]             # <<<<<<<<<<<<<<
@@ -8039,15 +8026,15 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5sta
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(__pyx_v_self->__pyx_base.context_push == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 445; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.context_push, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->__pyx_base.context_push, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 445; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":446
+  /* "kivy/graphics/context_instructions.pyx":444
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8066,7 +8053,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5sta
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":448
+/* "kivy/graphics/context_instructions.pyx":446
  *         def __get__(self):
  *             return self.context_push[0]
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -8098,14 +8085,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5stack_2__
   __Pyx_RefNannySetupContext("__set__", 0);
   __Pyx_INCREF(__pyx_v_value);
 
-  /* "kivy/graphics/context_instructions.pyx":449
+  /* "kivy/graphics/context_instructions.pyx":447
  *             return self.context_push[0]
  *         def __set__(self, value):
  *             value = value or 'modelview_mat'             # <<<<<<<<<<<<<<
  *             self.context_pop = [value]
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __Pyx_INCREF(__pyx_v_value);
@@ -8118,14 +8105,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5stack_2__
   __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":450
+  /* "kivy/graphics/context_instructions.pyx":448
  *         def __set__(self, value):
  *             value = value or 'modelview_mat'
  *             self.context_pop = [value]             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 450; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_value);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_v_value);
@@ -8136,7 +8123,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5stack_2__
   __pyx_v_self->__pyx_base.context_pop = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":448
+  /* "kivy/graphics/context_instructions.pyx":446
  *         def __get__(self):
  *             return self.context_push[0]
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -8157,7 +8144,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9PopMatrix_5stack_2__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":459
+/* "kivy/graphics/context_instructions.pyx":457
  *     .. versionadded:: 1.6.0
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -8195,31 +8182,31 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":460
+  /* "kivy/graphics/context_instructions.pyx":458
  *     '''
  *     def __init__(self, **kwargs):
  *         self.target_stack = kwargs.get('target_stack', 'modelview_mat')             # <<<<<<<<<<<<<<
  *         self.source_stack = kwargs.get('source_stack', 'modelview_mat')
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_target_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_target_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_target_stack, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 460; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_target_stack, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":461
+  /* "kivy/graphics/context_instructions.pyx":459
  *     def __init__(self, **kwargs):
  *         self.target_stack = kwargs.get('target_stack', 'modelview_mat')
  *         self.source_stack = kwargs.get('source_stack', 'modelview_mat')             # <<<<<<<<<<<<<<
  * 
  *     cdef int apply(self) except -1:
  */
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_source_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 461; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_source_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 459; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source_stack, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 461; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source_stack, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 459; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":459
+  /* "kivy/graphics/context_instructions.pyx":457
  *     .. versionadded:: 1.6.0
  *     '''
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -8239,7 +8226,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":463
+/* "kivy/graphics/context_instructions.pyx":461
  *         self.source_stack = kwargs.get('source_stack', 'modelview_mat')
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -8262,47 +8249,47 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_a
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":464
+  /* "kivy/graphics/context_instructions.pyx":462
  * 
  *     cdef int apply(self) except -1:
  *         cdef RenderContext context = self.get_context()             # <<<<<<<<<<<<<<
  *         m = context.get_state(self._target_stack)
  *         m = m.multiply(context.get_state(self._source_stack))
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_ApplyContextMatrix *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_ApplyContextMatrix *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_context = ((struct __pyx_obj_4kivy_8graphics_12instructions_RenderContext *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":465
+  /* "kivy/graphics/context_instructions.pyx":463
  *     cdef int apply(self) except -1:
  *         cdef RenderContext context = self.get_context()
  *         m = context.get_state(self._target_stack)             # <<<<<<<<<<<<<<
  *         m = m.multiply(context.get_state(self._source_stack))
  *         context.set_state(self._target_stack, m)
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_self->_target_stack))||((__pyx_v_self->_target_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_target_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 465; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->_target_stack))||((__pyx_v_self->_target_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_target_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = __pyx_v_self->_target_stack;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 465; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_m = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":466
+  /* "kivy/graphics/context_instructions.pyx":464
  *         cdef RenderContext context = self.get_context()
  *         m = context.get_state(self._target_stack)
  *         m = m.multiply(context.get_state(self._source_stack))             # <<<<<<<<<<<<<<
  *         context.set_state(self._target_stack, m)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_m, __pyx_n_s_multiply); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_m, __pyx_n_s_multiply); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(PyString_CheckExact(__pyx_v_self->_source_stack))||((__pyx_v_self->_source_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_source_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->_source_stack))||((__pyx_v_self->_source_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_source_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = __pyx_v_self->_source_stack;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, ((PyObject*)__pyx_t_3)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8316,17 +8303,17 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_a
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 464; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -8334,20 +8321,20 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_a
   __Pyx_DECREF_SET(__pyx_v_m, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":467
+  /* "kivy/graphics/context_instructions.pyx":465
  *         m = context.get_state(self._target_stack)
  *         m = m.multiply(context.get_state(self._source_stack))
  *         context.set_state(self._target_stack, m)             # <<<<<<<<<<<<<<
  * 
  *     property target_stack:
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_self->_target_stack))||((__pyx_v_self->_target_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_target_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 467; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->_target_stack))||((__pyx_v_self->_target_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_target_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 465; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = __pyx_v_self->_target_stack;
   __Pyx_INCREF(__pyx_t_2);
   ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_state(__pyx_v_context, ((PyObject*)__pyx_t_2), __pyx_v_m, NULL);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":463
+  /* "kivy/graphics/context_instructions.pyx":461
  *         self.source_stack = kwargs.get('source_stack', 'modelview_mat')
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -8373,7 +8360,7 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_a
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":475
+/* "kivy/graphics/context_instructions.pyx":473
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8399,7 +8386,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextM
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":476
+  /* "kivy/graphics/context_instructions.pyx":474
  *         '''
  *         def __get__(self):
  *             return self._target_stack             # <<<<<<<<<<<<<<
@@ -8411,7 +8398,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextM
   __pyx_r = __pyx_v_self->_target_stack;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":475
+  /* "kivy/graphics/context_instructions.pyx":473
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8426,7 +8413,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextM
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":477
+/* "kivy/graphics/context_instructions.pyx":475
  *         def __get__(self):
  *             return self._target_stack
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -8457,14 +8444,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":478
+  /* "kivy/graphics/context_instructions.pyx":476
  *             return self._target_stack
  *         def __set__(self, value):
  *             self._target_stack = value or 'modelview_mat'             # <<<<<<<<<<<<<<
  * 
  *     property source_stack:
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 476; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __Pyx_INCREF(__pyx_v_value);
@@ -8480,7 +8467,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   __pyx_v_self->_target_stack = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":477
+  /* "kivy/graphics/context_instructions.pyx":475
  *         def __get__(self):
  *             return self._target_stack
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -8500,7 +8487,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":486
+/* "kivy/graphics/context_instructions.pyx":484
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8526,7 +8513,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextM
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":487
+  /* "kivy/graphics/context_instructions.pyx":485
  *         '''
  *         def __get__(self):
  *             return self._source_stack             # <<<<<<<<<<<<<<
@@ -8538,7 +8525,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextM
   __pyx_r = __pyx_v_self->_source_stack;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":486
+  /* "kivy/graphics/context_instructions.pyx":484
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8553,7 +8540,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextM
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":488
+/* "kivy/graphics/context_instructions.pyx":486
  *         def __get__(self):
  *             return self._source_stack
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -8584,14 +8571,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":489
+  /* "kivy/graphics/context_instructions.pyx":487
  *             return self._source_stack
  *         def __set__(self, value):
  *             self._source_stack = value or 'modelview_mat'             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 489; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __Pyx_INCREF(__pyx_v_value);
@@ -8607,7 +8594,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   __pyx_v_self->_source_stack = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":488
+  /* "kivy/graphics/context_instructions.pyx":486
  *         def __get__(self):
  *             return self._source_stack
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -8627,7 +8614,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":499
+/* "kivy/graphics/context_instructions.pyx":497
  *     .. versionadded:: 1.6.0
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -8648,38 +8635,38 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18UpdateNormalMatrix_a
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":500
+  /* "kivy/graphics/context_instructions.pyx":498
  *     '''
  *     cdef int apply(self) except -1:
  *         cdef RenderContext context = self.get_context()             # <<<<<<<<<<<<<<
  *         mvm = context.get_state('modelview_mat')
  *         context.set_state('normal_mat', mvm.normal_matrix())
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_UpdateNormalMatrix *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_UpdateNormalMatrix *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_context = ((struct __pyx_obj_4kivy_8graphics_12instructions_RenderContext *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":501
+  /* "kivy/graphics/context_instructions.pyx":499
  *     cdef int apply(self) except -1:
  *         cdef RenderContext context = self.get_context()
  *         mvm = context.get_state('modelview_mat')             # <<<<<<<<<<<<<<
  *         context.set_state('normal_mat', mvm.normal_matrix())
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 501; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 499; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_mvm = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":502
+  /* "kivy/graphics/context_instructions.pyx":500
  *         cdef RenderContext context = self.get_context()
  *         mvm = context.get_state('modelview_mat')
  *         context.set_state('normal_mat', mvm.normal_matrix())             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_mvm, __pyx_n_s_normal_matrix); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_mvm, __pyx_n_s_normal_matrix); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -8692,17 +8679,17 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18UpdateNormalMatrix_a
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_state(__pyx_v_context, __pyx_n_s_normal_mat, __pyx_t_1, NULL);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":499
+  /* "kivy/graphics/context_instructions.pyx":497
  *     .. versionadded:: 1.6.0
  *     '''
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -8726,7 +8713,7 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_18UpdateNormalMatrix_a
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":509
+/* "kivy/graphics/context_instructions.pyx":507
  *     '''
  * 
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -8769,42 +8756,42 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":510
+  /* "kivy/graphics/context_instructions.pyx":508
  * 
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         self.stack = kwargs.get('stack', 'modelview_mat')
  *         self._matrix = None
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 508; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 508; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 510; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 508; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":511
+  /* "kivy/graphics/context_instructions.pyx":509
  *     def __init__(self, *args, **kwargs):
  *         ContextInstruction.__init__(self, **kwargs)
  *         self.stack = kwargs.get('stack', 'modelview_mat')             # <<<<<<<<<<<<<<
  *         self._matrix = None
  * 
  */
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 511; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_stack, __pyx_n_s_modelview_mat); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 509; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 511; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stack, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 509; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":512
+  /* "kivy/graphics/context_instructions.pyx":510
  *         ContextInstruction.__init__(self, **kwargs)
  *         self.stack = kwargs.get('stack', 'modelview_mat')
  *         self._matrix = None             # <<<<<<<<<<<<<<
@@ -8817,7 +8804,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction__
   __Pyx_DECREF(((PyObject *)__pyx_v_self->_matrix));
   __pyx_v_self->_matrix = ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)Py_None);
 
-  /* "kivy/graphics/context_instructions.pyx":509
+  /* "kivy/graphics/context_instructions.pyx":507
  *     '''
  * 
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -8840,7 +8827,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":514
+/* "kivy/graphics/context_instructions.pyx":512
  *         self._matrix = None
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -8861,56 +8848,56 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_17MatrixInstruction_ap
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":518
+  /* "kivy/graphics/context_instructions.pyx":516
  *         context model view matrix.
  *         '''
  *         cdef RenderContext context = self.get_context()             # <<<<<<<<<<<<<<
  *         cdef Matrix mvm
  *         mvm = context.get_state(self._stack)
  */
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_MatrixInstruction *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_MatrixInstruction *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.get_context(((struct __pyx_obj_4kivy_8graphics_12instructions_ContextInstruction *)__pyx_v_self))); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 516; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_context = ((struct __pyx_obj_4kivy_8graphics_12instructions_RenderContext *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":520
+  /* "kivy/graphics/context_instructions.pyx":518
  *         cdef RenderContext context = self.get_context()
  *         cdef Matrix mvm
  *         mvm = context.get_state(self._stack)             # <<<<<<<<<<<<<<
  *         context.set_state(self._stack, mvm.multiply(self.matrix))
  * 
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_self->_stack))||((__pyx_v_self->_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 520; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->_stack))||((__pyx_v_self->_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = __pyx_v_self->_stack;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 520; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->get_state(__pyx_v_context, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 520; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 518; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_mvm = ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":521
+  /* "kivy/graphics/context_instructions.pyx":519
  *         cdef Matrix mvm
  *         mvm = context.get_state(self._stack)
  *         context.set_state(self._stack, mvm.multiply(self.matrix))             # <<<<<<<<<<<<<<
  * 
  *     property matrix:
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_self->_stack))||((__pyx_v_self->_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->_stack))||((__pyx_v_self->_stack) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->_stack)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = __pyx_v_self->_stack;
   __Pyx_INCREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_mvm->__pyx_vtab)->multiply(__pyx_v_mvm, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 521; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_mvm->__pyx_vtab)->multiply(__pyx_v_mvm, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_context->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_state(__pyx_v_context, ((PyObject*)__pyx_t_2), __pyx_t_3, NULL);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":514
+  /* "kivy/graphics/context_instructions.pyx":512
  *         self._matrix = None
  * 
  *     cdef int apply(self) except -1:             # <<<<<<<<<<<<<<
@@ -8934,7 +8921,7 @@ static int __pyx_f_4kivy_8graphics_20context_instructions_17MatrixInstruction_ap
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":528
+/* "kivy/graphics/context_instructions.pyx":526
  *         is important because it will notify the context about the update.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -8965,26 +8952,26 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":529
+  /* "kivy/graphics/context_instructions.pyx":527
  *         '''
  *         def __get__(self):
  *             if self._matrix == None:             # <<<<<<<<<<<<<<
  *                 self._matrix = Matrix()
  *             return self._matrix
  */
-  __pyx_t_1 = PyObject_RichCompare(((PyObject *)__pyx_v_self->_matrix), Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 529; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 529; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_RichCompare(((PyObject *)__pyx_v_self->_matrix), Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":530
+    /* "kivy/graphics/context_instructions.pyx":528
  *         def __get__(self):
  *             if self._matrix == None:
  *                 self._matrix = Matrix()             # <<<<<<<<<<<<<<
  *             return self._matrix
  *         def __set__(self, x):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 530; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 528; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF(__pyx_v_self->_matrix);
@@ -8995,7 +8982,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":531
+  /* "kivy/graphics/context_instructions.pyx":529
  *             if self._matrix == None:
  *                 self._matrix = Matrix()
  *             return self._matrix             # <<<<<<<<<<<<<<
@@ -9007,7 +8994,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   __pyx_r = ((PyObject *)__pyx_v_self->_matrix);
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":528
+  /* "kivy/graphics/context_instructions.pyx":526
  *         is important because it will notify the context about the update.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9026,7 +9013,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":532
+/* "kivy/graphics/context_instructions.pyx":530
  *                 self._matrix = Matrix()
  *             return self._matrix
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -9056,14 +9043,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_6
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":533
+  /* "kivy/graphics/context_instructions.pyx":531
  *             return self._matrix
  *         def __set__(self, x):
  *             self._matrix = x             # <<<<<<<<<<<<<<
  *             self.flag_update()
  * 
  */
-  if (!(likely(((__pyx_v_x) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_x, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 533; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_v_x) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_x, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 531; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = __pyx_v_x;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -9072,18 +9059,16 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_6
   __pyx_v_self->_matrix = ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":534
+  /* "kivy/graphics/context_instructions.pyx":532
  *         def __set__(self, x):
  *             self._matrix = x
  *             self.flag_update()             # <<<<<<<<<<<<<<
  * 
  *     property stack:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_MatrixInstruction *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), 0, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 534; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_MatrixInstruction *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_self), NULL);
 
-  /* "kivy/graphics/context_instructions.pyx":532
+  /* "kivy/graphics/context_instructions.pyx":530
  *                 self._matrix = Matrix()
  *             return self._matrix
  *         def __set__(self, x):             # <<<<<<<<<<<<<<
@@ -9103,7 +9088,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_6
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":542
+/* "kivy/graphics/context_instructions.pyx":540
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9129,7 +9114,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":543
+  /* "kivy/graphics/context_instructions.pyx":541
  *         '''
  *         def __get__(self):
  *             return self._stack             # <<<<<<<<<<<<<<
@@ -9141,7 +9126,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   __pyx_r = __pyx_v_self->_stack;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":542
+  /* "kivy/graphics/context_instructions.pyx":540
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9156,7 +9141,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruc
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":544
+/* "kivy/graphics/context_instructions.pyx":542
  *         def __get__(self):
  *             return self._stack
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -9188,14 +9173,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_5
   __Pyx_RefNannySetupContext("__set__", 0);
   __Pyx_INCREF(__pyx_v_value);
 
-  /* "kivy/graphics/context_instructions.pyx":545
+  /* "kivy/graphics/context_instructions.pyx":543
  *             return self._stack
  *         def __set__(self, value):
  *             value = value or "modelview_mat"             # <<<<<<<<<<<<<<
  *             self._stack = value
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 545; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 543; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (!__pyx_t_2) {
   } else {
     __Pyx_INCREF(__pyx_v_value);
@@ -9208,7 +9193,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_5
   __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":546
+  /* "kivy/graphics/context_instructions.pyx":544
  *         def __set__(self, value):
  *             value = value or "modelview_mat"
  *             self._stack = value             # <<<<<<<<<<<<<<
@@ -9221,7 +9206,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_5
   __Pyx_DECREF(__pyx_v_self->_stack);
   __pyx_v_self->_stack = __pyx_v_value;
 
-  /* "kivy/graphics/context_instructions.pyx":544
+  /* "kivy/graphics/context_instructions.pyx":542
  *         def __get__(self):
  *             return self._stack
  *         def __set__(self, value):             # <<<<<<<<<<<<<<
@@ -9242,7 +9227,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_17MatrixInstruction_5
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":554
+/* "kivy/graphics/context_instructions.pyx":552
  *     '''
  * 
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -9285,30 +9270,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Transform___init__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":555
+  /* "kivy/graphics/context_instructions.pyx":553
  * 
  *     def __init__(self, *args, **kwargs):
  *         MatrixInstruction.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  * 
  *     cpdef transform(self, Matrix trans):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_MatrixInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_MatrixInstruction)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 553; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 553; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 553; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":554
+  /* "kivy/graphics/context_instructions.pyx":552
  *     '''
  * 
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -9331,7 +9316,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Transform___init__(s
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":557
+/* "kivy/graphics/context_instructions.pyx":555
  *         MatrixInstruction.__init__(self, **kwargs)
  * 
  *     cpdef transform(self, Matrix trans):             # <<<<<<<<<<<<<<
@@ -9356,7 +9341,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_transform); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_transform); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_3transform)) {
       __Pyx_XDECREF(__pyx_r);
@@ -9372,16 +9357,16 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_trans)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_trans)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
       } else {
-        __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __Pyx_GIVEREF(__pyx_t_4); __pyx_t_4 = NULL;
         __Pyx_INCREF(((PyObject *)__pyx_v_trans));
         PyTuple_SET_ITEM(__pyx_t_5, 0+1, ((PyObject *)__pyx_v_trans));
         __Pyx_GIVEREF(((PyObject *)__pyx_v_trans));
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
@@ -9394,16 +9379,16 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":560
+  /* "kivy/graphics/context_instructions.pyx":558
  *         '''Multiply the instructions matrix by trans.
  *         '''
  *         self.matrix = self.matrix.multiply(trans)             # <<<<<<<<<<<<<<
  * 
  *     cpdef translate(self, float tx, float ty, float tz):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 558; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_multiply); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_multiply); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 558; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -9417,24 +9402,24 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_trans)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_trans)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 558; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 558; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __Pyx_GIVEREF(__pyx_t_2); __pyx_t_2 = NULL;
     __Pyx_INCREF(((PyObject *)__pyx_v_trans));
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, ((PyObject *)__pyx_v_trans));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_trans));
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 558; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 558; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":557
+  /* "kivy/graphics/context_instructions.pyx":555
  *         MatrixInstruction.__init__(self, **kwargs)
  * 
  *     cpdef transform(self, Matrix trans):             # <<<<<<<<<<<<<<
@@ -9469,7 +9454,7 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_3tra
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("transform (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_trans), __pyx_ptype_4kivy_8graphics_14transformation_Matrix, 1, "trans", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_trans), __pyx_ptype_4kivy_8graphics_14transformation_Matrix, 1, "trans", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_4kivy_8graphics_20context_instructions_9Transform_2transform(((struct __pyx_obj_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self), ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_v_trans));
 
   /* function exit code */
@@ -9490,7 +9475,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_2tra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("transform", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_transform(__pyx_v_self, __pyx_v_trans, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_transform(__pyx_v_self, __pyx_v_trans, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 555; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9507,7 +9492,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_2tra
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":562
+/* "kivy/graphics/context_instructions.pyx":560
  *         self.matrix = self.matrix.multiply(trans)
  * 
  *     cpdef translate(self, float tx, float ty, float tz):             # <<<<<<<<<<<<<<
@@ -9536,15 +9521,15 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_translate); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_translate); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_5translate)) {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_tx); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_tx); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ty); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ty); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_tz); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_tz); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_6 = __pyx_t_1; __pyx_t_7 = NULL;
@@ -9559,7 +9544,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
           __pyx_t_8 = 1;
         }
       }
-      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_7) {
         PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __Pyx_GIVEREF(__pyx_t_7); __pyx_t_7 = NULL;
@@ -9573,7 +9558,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
       __pyx_t_3 = 0;
       __pyx_t_4 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -9585,24 +9570,24 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_trans
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":565
+  /* "kivy/graphics/context_instructions.pyx":563
  *         '''Translate the instructions transformation by tx, ty, tz.
  *         '''
  *         self.transform( Matrix().translate(tx, ty, tz) )             # <<<<<<<<<<<<<<
  * 
  *     cpdef rotate(self, float angle, float ax, float ay, float az):
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 563; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_tx, __pyx_v_ty, __pyx_v_tz, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_tx, __pyx_v_ty, __pyx_v_tz, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 563; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->transform(__pyx_v_self, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->transform(__pyx_v_self, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 563; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":562
+  /* "kivy/graphics/context_instructions.pyx":560
  *         self.matrix = self.matrix.multiply(trans)
  * 
  *     cpdef translate(self, float tx, float ty, float tz):             # <<<<<<<<<<<<<<
@@ -9664,16 +9649,16 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_5tra
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ty)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("translate", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("translate", 1, 3, 3, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_tz)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("translate", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("translate", 1, 3, 3, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "translate") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "translate") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -9682,13 +9667,13 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_5tra
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_tx = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_tx == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_ty = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_ty == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_tz = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_tz == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_tx = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_tx == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_ty = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_ty == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_tz = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_tz == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("translate", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("translate", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.context_instructions.Transform.translate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9710,7 +9695,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_4tra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("translate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_translate(__pyx_v_self, __pyx_v_tx, __pyx_v_ty, __pyx_v_tz, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_translate(__pyx_v_self, __pyx_v_tx, __pyx_v_ty, __pyx_v_tz, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9727,11 +9712,11 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_4tra
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":567
+/* "kivy/graphics/context_instructions.pyx":565
  *         self.transform( Matrix().translate(tx, ty, tz) )
  * 
  *     cpdef rotate(self, float angle, float ax, float ay, float az):             # <<<<<<<<<<<<<<
- *         '''Rotate the transformation by matrix by *angle* degrees around the
+ *         '''Rotate the transformation by matrix by *angle* degress around the
  *         axis defined by the vector ax, ay, az.
  */
 
@@ -9757,17 +9742,17 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotat
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rotate); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rotate); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_7rotate)) {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_angle); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_angle); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ax); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyFloat_FromDouble(__pyx_v_ax); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_ay); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_ay); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyFloat_FromDouble(__pyx_v_az); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyFloat_FromDouble(__pyx_v_az); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_7 = __pyx_t_1; __pyx_t_8 = NULL;
@@ -9782,7 +9767,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotat
           __pyx_t_9 = 1;
         }
       }
-      __pyx_t_10 = PyTuple_New(4+__pyx_t_9); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_10 = PyTuple_New(4+__pyx_t_9); if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_10);
       if (__pyx_t_8) {
         PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __Pyx_GIVEREF(__pyx_t_8); __pyx_t_8 = NULL;
@@ -9799,7 +9784,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotat
       __pyx_t_4 = 0;
       __pyx_t_5 = 0;
       __pyx_t_6 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -9811,28 +9796,28 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotat
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":571
+  /* "kivy/graphics/context_instructions.pyx":569
  *         axis defined by the vector ax, ay, az.
  *         '''
  *         self.transform( Matrix().rotate(angle, ax, ay, az) )             # <<<<<<<<<<<<<<
  * 
  *     cpdef scale(self, float s):
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 569; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->rotate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_angle, __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->rotate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_angle, __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 569; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->transform(__pyx_v_self, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->transform(__pyx_v_self, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 569; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":567
+  /* "kivy/graphics/context_instructions.pyx":565
  *         self.transform( Matrix().translate(tx, ty, tz) )
  * 
  *     cpdef rotate(self, float angle, float ax, float ay, float az):             # <<<<<<<<<<<<<<
- *         '''Rotate the transformation by matrix by *angle* degrees around the
+ *         '''Rotate the transformation by matrix by *angle* degress around the
  *         axis defined by the vector ax, ay, az.
  */
 
@@ -9859,7 +9844,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotat
 
 /* Python wrapper */
 static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_7rotate(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4kivy_8graphics_20context_instructions_9Transform_6rotate[] = "Rotate the transformation by matrix by *angle* degrees around the\n        axis defined by the vector ax, ay, az.\n        ";
+static char __pyx_doc_4kivy_8graphics_20context_instructions_9Transform_6rotate[] = "Rotate the transformation by matrix by *angle* degress around the\n        axis defined by the vector ax, ay, az.\n        ";
 static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_7rotate(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   float __pyx_v_angle;
   float __pyx_v_ax;
@@ -9893,21 +9878,21 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_7rot
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ax)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ay)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_az)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rotate") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rotate") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -9917,14 +9902,14 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_7rot
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
-    __pyx_v_angle = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_angle == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_ax = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_ax == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_ay = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_ay == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_az = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_az == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_angle = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_angle == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_ax = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_ax == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_ay = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_ay == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_az = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_az == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("rotate", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.context_instructions.Transform.rotate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9946,7 +9931,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_6rot
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("rotate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotate(__pyx_v_self, __pyx_v_angle, __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 567; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_rotate(__pyx_v_self, __pyx_v_angle, __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -9963,7 +9948,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_6rot
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":573
+/* "kivy/graphics/context_instructions.pyx":571
  *         self.transform( Matrix().rotate(angle, ax, ay, az) )
  * 
  *     cpdef scale(self, float s):             # <<<<<<<<<<<<<<
@@ -9989,11 +9974,11 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_scale
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_scale); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_scale); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_9scale)) {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_s); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyFloat_FromDouble(__pyx_v_s); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
@@ -10007,17 +9992,17 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_scale
         }
       }
       if (!__pyx_t_5) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -10030,24 +10015,24 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_scale
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":576
+  /* "kivy/graphics/context_instructions.pyx":574
  *         '''Applies a uniform scaling of s to the matrix transformation.
  *         '''
  *         self.transform( Matrix().scale(s, s, s) )             # <<<<<<<<<<<<<<
  * 
  *     cpdef identity(self):
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 574; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->scale(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_s, __pyx_v_s, __pyx_v_s, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->scale(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_s, __pyx_v_s, __pyx_v_s, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 574; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->transform(__pyx_v_self, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Transform *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->transform(__pyx_v_self, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 574; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":573
+  /* "kivy/graphics/context_instructions.pyx":571
  *         self.transform( Matrix().rotate(angle, ax, ay, az) )
  * 
  *     cpdef scale(self, float s):             # <<<<<<<<<<<<<<
@@ -10085,7 +10070,7 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_9sca
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("scale (wrapper)", 0);
   assert(__pyx_arg_s); {
-    __pyx_v_s = __pyx_PyFloat_AsFloat(__pyx_arg_s); if (unlikely((__pyx_v_s == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_s = __pyx_PyFloat_AsFloat(__pyx_arg_s); if (unlikely((__pyx_v_s == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -10109,7 +10094,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_8sca
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("scale", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_scale(__pyx_v_self, __pyx_v_s, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_scale(__pyx_v_self, __pyx_v_s, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 571; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10126,7 +10111,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_8sca
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":578
+/* "kivy/graphics/context_instructions.pyx":576
  *         self.transform( Matrix().scale(s, s, s) )
  * 
  *     cpdef identity(self):             # <<<<<<<<<<<<<<
@@ -10150,7 +10135,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_ident
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_identity); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 578; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_identity); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_4kivy_8graphics_20context_instructions_9Transform_11identity)) {
       __Pyx_XDECREF(__pyx_r);
@@ -10166,10 +10151,10 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_ident
         }
       }
       if (__pyx_t_4) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 578; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 578; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10181,19 +10166,19 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Transform_ident
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":581
+  /* "kivy/graphics/context_instructions.pyx":579
  *         '''Resets the transformation to the identity matrix.
  *         '''
  *         self.matrix = Matrix()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 581; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 579; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 581; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 579; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":578
+  /* "kivy/graphics/context_instructions.pyx":576
  *         self.transform( Matrix().scale(s, s, s) )
  * 
  *     cpdef identity(self):             # <<<<<<<<<<<<<<
@@ -10240,7 +10225,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_10id
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("identity", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_identity(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 578; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_f_4kivy_8graphics_20context_instructions_9Transform_identity(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -10257,7 +10242,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Transform_10id
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":593
+/* "kivy/graphics/context_instructions.pyx":591
  *     '''
  * 
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -10305,30 +10290,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":594
+  /* "kivy/graphics/context_instructions.pyx":592
  * 
  *     def __init__(self, *args, **kwargs):
  *         Transform.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         self._origin = (0, 0, 0)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_Transform)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 594; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_Transform)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 592; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 594; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 592; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 594; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 592; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":595
+  /* "kivy/graphics/context_instructions.pyx":593
  *     def __init__(self, *args, **kwargs):
  *         Transform.__init__(self, **kwargs)
  *         self._origin = (0, 0, 0)             # <<<<<<<<<<<<<<
@@ -10341,38 +10326,38 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
   __Pyx_DECREF(__pyx_v_self->_origin);
   __pyx_v_self->_origin = __pyx_tuple__10;
 
-  /* "kivy/graphics/context_instructions.pyx":598
+  /* "kivy/graphics/context_instructions.pyx":596
  * 
  *         # compatibility mode from version < 1.7
  *         if len(args) == 4:             # <<<<<<<<<<<<<<
  *             self._angle = args[0]
  *             self._axis = args[1:]
  */
-  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 598; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 596; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((__pyx_t_5 == 4) != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":599
+    /* "kivy/graphics/context_instructions.pyx":597
  *         # compatibility mode from version < 1.7
  *         if len(args) == 4:
  *             self._angle = args[0]             # <<<<<<<<<<<<<<
  *             self._axis = args[1:]
  *         else:
  */
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 597; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 597; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_self->_angle = __pyx_t_7;
 
-    /* "kivy/graphics/context_instructions.pyx":600
+    /* "kivy/graphics/context_instructions.pyx":598
  *         if len(args) == 4:
  *             self._angle = args[0]
  *             self._axis = args[1:]             # <<<<<<<<<<<<<<
  *         else:
  *             self._angle = 0
  */
-    __pyx_t_4 = __Pyx_PyTuple_GetSlice(__pyx_v_args, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 600; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyTuple_GetSlice(__pyx_v_args, 1, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 598; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->_axis);
@@ -10383,7 +10368,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":602
+    /* "kivy/graphics/context_instructions.pyx":600
  *             self._axis = args[1:]
  *         else:
  *             self._angle = 0             # <<<<<<<<<<<<<<
@@ -10392,7 +10377,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
  */
     __pyx_v_self->_angle = 0.0;
 
-    /* "kivy/graphics/context_instructions.pyx":603
+    /* "kivy/graphics/context_instructions.pyx":601
  *         else:
  *             self._angle = 0
  *             self._axis = (0, 0, 1)             # <<<<<<<<<<<<<<
@@ -10407,27 +10392,27 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":605
+  /* "kivy/graphics/context_instructions.pyx":603
  *             self._axis = (0, 0, 1)
  * 
  *         if 'axis' in kwargs:             # <<<<<<<<<<<<<<
  *             self._axis = kwargs['axis']
  *         if 'angle' in kwargs:
  */
-  __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_n_s_axis, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 605; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_n_s_axis, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_8 = (__pyx_t_6 != 0);
   if (__pyx_t_8) {
 
-    /* "kivy/graphics/context_instructions.pyx":606
+    /* "kivy/graphics/context_instructions.pyx":604
  * 
  *         if 'axis' in kwargs:
  *             self._axis = kwargs['axis']             # <<<<<<<<<<<<<<
  *         if 'angle' in kwargs:
  *             self._angle = kwargs['angle']
  */
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_axis); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_axis); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 604; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
-    if (!(likely(PyTuple_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_4)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyTuple_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_4)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 604; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GIVEREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_v_self->_axis);
     __Pyx_DECREF(__pyx_v_self->_axis);
@@ -10437,80 +10422,80 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/context_instructions.pyx":607
+  /* "kivy/graphics/context_instructions.pyx":605
  *         if 'axis' in kwargs:
  *             self._axis = kwargs['axis']
  *         if 'angle' in kwargs:             # <<<<<<<<<<<<<<
  *             self._angle = kwargs['angle']
  *         if 'origin' in kwargs:
  */
-  __pyx_t_8 = (__Pyx_PyDict_Contains(__pyx_n_s_angle, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = (__Pyx_PyDict_Contains(__pyx_n_s_angle, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 605; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = (__pyx_t_8 != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":608
+    /* "kivy/graphics/context_instructions.pyx":606
  *             self._axis = kwargs['axis']
  *         if 'angle' in kwargs:
  *             self._angle = kwargs['angle']             # <<<<<<<<<<<<<<
  *         if 'origin' in kwargs:
  *             origin = kwargs['origin']
  */
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_angle); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 608; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_angle); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 608; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_self->_angle = __pyx_t_7;
     goto __pyx_L5;
   }
   __pyx_L5:;
 
-  /* "kivy/graphics/context_instructions.pyx":609
+  /* "kivy/graphics/context_instructions.pyx":607
  *         if 'angle' in kwargs:
  *             self._angle = kwargs['angle']
  *         if 'origin' in kwargs:             # <<<<<<<<<<<<<<
  *             origin = kwargs['origin']
  *             if len(origin) == 3:
  */
-  __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_n_s_origin, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 609; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = (__Pyx_PyDict_Contains(__pyx_n_s_origin, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_8 = (__pyx_t_6 != 0);
   if (__pyx_t_8) {
 
-    /* "kivy/graphics/context_instructions.pyx":610
+    /* "kivy/graphics/context_instructions.pyx":608
  *             self._angle = kwargs['angle']
  *         if 'origin' in kwargs:
  *             origin = kwargs['origin']             # <<<<<<<<<<<<<<
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)
  */
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_origin); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 610; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_origin); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 608; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_origin = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "kivy/graphics/context_instructions.pyx":611
+    /* "kivy/graphics/context_instructions.pyx":609
  *         if 'origin' in kwargs:
  *             origin = kwargs['origin']
  *             if len(origin) == 3:             # <<<<<<<<<<<<<<
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  */
-    __pyx_t_5 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 611; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 609; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_8 = ((__pyx_t_5 == 3) != 0);
     if (__pyx_t_8) {
 
-      /* "kivy/graphics/context_instructions.pyx":612
+      /* "kivy/graphics/context_instructions.pyx":610
  *             origin = kwargs['origin']
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)             # <<<<<<<<<<<<<<
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)
  */
-      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_v_origin);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_origin);
       __Pyx_GIVEREF(__pyx_v_origin);
-      __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 610; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GIVEREF(__pyx_t_3);
@@ -10521,29 +10506,29 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
       goto __pyx_L7;
     }
 
-    /* "kivy/graphics/context_instructions.pyx":613
+    /* "kivy/graphics/context_instructions.pyx":611
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:             # <<<<<<<<<<<<<<
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  */
-    __pyx_t_5 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 613; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 611; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_8 = ((__pyx_t_5 == 2) != 0);
     if (__pyx_t_8) {
 
-      /* "kivy/graphics/context_instructions.pyx":614
+      /* "kivy/graphics/context_instructions.pyx":612
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)             # <<<<<<<<<<<<<<
  *             else:
  *                 raise Exception('invalid number of components in origin')
  */
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_3);
@@ -10563,25 +10548,25 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
     }
     /*else*/ {
 
-      /* "kivy/graphics/context_instructions.pyx":616
+      /* "kivy/graphics/context_instructions.pyx":614
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  * 
  *         self.compute()
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 616; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 616; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_L7:;
     goto __pyx_L6;
   }
   __pyx_L6:;
 
-  /* "kivy/graphics/context_instructions.pyx":618
+  /* "kivy/graphics/context_instructions.pyx":616
  *                 raise Exception('invalid number of components in origin')
  * 
  *         self.compute()             # <<<<<<<<<<<<<<
@@ -10590,7 +10575,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Rotate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->compute(__pyx_v_self);
 
-  /* "kivy/graphics/context_instructions.pyx":593
+  /* "kivy/graphics/context_instructions.pyx":591
  *     '''
  * 
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -10614,7 +10599,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate___init__(stru
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":621
+/* "kivy/graphics/context_instructions.pyx":619
  * 
  * 
  *     def set(self, float angle, float ax, float ay, float az):             # <<<<<<<<<<<<<<
@@ -10658,21 +10643,21 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_6Rotate_3set(Py
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ax)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ay)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_az)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -10682,14 +10667,14 @@ static PyObject *__pyx_pw_4kivy_8graphics_20context_instructions_6Rotate_3set(Py
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
     }
-    __pyx_v_angle = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_angle == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_ax = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_ax == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_ay = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_ay == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_az = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_az == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_angle = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_angle == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_ax = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_ax == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_ay = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_ay == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_az = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_az == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 621; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("set", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 619; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.context_instructions.Rotate.set", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -10714,7 +10699,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_2set(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":630
+  /* "kivy/graphics/context_instructions.pyx":628
  *             The set() method doesn't use the new :attr:`origin` property.
  *         '''
  *         self._angle = angle             # <<<<<<<<<<<<<<
@@ -10723,20 +10708,20 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_2set(st
  */
   __pyx_v_self->_angle = __pyx_v_angle;
 
-  /* "kivy/graphics/context_instructions.pyx":631
+  /* "kivy/graphics/context_instructions.pyx":629
  *         '''
  *         self._angle = angle
  *         self._axis = (ax, ay, az)             # <<<<<<<<<<<<<<
  *         self.matrix = Matrix().rotate(radians(self._angle), ax, ay, az)
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_ax); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_ax); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_ay); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_ay); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_az); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_az); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -10753,22 +10738,22 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_2set(st
   __pyx_v_self->_axis = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":632
+  /* "kivy/graphics/context_instructions.pyx":630
  *         self._angle = angle
  *         self._axis = (ax, ay, az)
  *         self.matrix = Matrix().rotate(radians(self._angle), ax, ay, az)             # <<<<<<<<<<<<<<
  * 
  *     cdef void compute(self):
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 632; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 630; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4)->__pyx_vtab)->rotate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4), __pyx_f_4kivy_8graphics_20context_instructions_radians(__pyx_v_self->_angle), __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 632; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4)->__pyx_vtab)->rotate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4), __pyx_f_4kivy_8graphics_20context_instructions_radians(__pyx_v_self->_angle), __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 630; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 632; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 630; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":621
+  /* "kivy/graphics/context_instructions.pyx":619
  * 
  * 
  *     def set(self, float angle, float ax, float ay, float az):             # <<<<<<<<<<<<<<
@@ -10792,7 +10777,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_2set(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":634
+/* "kivy/graphics/context_instructions.pyx":632
  *         self.matrix = Matrix().rotate(radians(self._angle), ax, ay, az)
  * 
  *     cdef void compute(self):             # <<<<<<<<<<<<<<
@@ -10822,7 +10807,7 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":635
+  /* "kivy/graphics/context_instructions.pyx":633
  * 
  *     cdef void compute(self):
  *         cdef float angle = self._angle             # <<<<<<<<<<<<<<
@@ -10832,7 +10817,7 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
   __pyx_t_1 = __pyx_v_self->_angle;
   __pyx_v_angle = __pyx_t_1;
 
-  /* "kivy/graphics/context_instructions.pyx":637
+  /* "kivy/graphics/context_instructions.pyx":635
  *         cdef float angle = self._angle
  *         cdef float ax, ay, az, ox, oy, oz
  *         ax, ay, az = self._axis             # <<<<<<<<<<<<<<
@@ -10851,7 +10836,7 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
@@ -10861,28 +10846,28 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_5);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 635; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_ax = __pyx_t_1;
   __pyx_v_ay = __pyx_t_6;
   __pyx_v_az = __pyx_t_7;
 
-  /* "kivy/graphics/context_instructions.pyx":638
+  /* "kivy/graphics/context_instructions.pyx":636
  *         cdef float ax, ay, az, ox, oy, oz
  *         ax, ay, az = self._axis
  *         ox, oy, oz = self._origin             # <<<<<<<<<<<<<<
@@ -10901,7 +10886,7 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     __pyx_t_5 = PyTuple_GET_ITEM(sequence, 0); 
@@ -10911,104 +10896,104 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
     __Pyx_INCREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 636; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_ox = __pyx_t_7;
   __pyx_v_oy = __pyx_t_6;
   __pyx_v_oz = __pyx_t_1;
 
-  /* "kivy/graphics/context_instructions.pyx":640
+  /* "kivy/graphics/context_instructions.pyx":638
  *         ox, oy, oz = self._origin
  *         cdef Matrix matrix
  *         matrix = Matrix().translate(ox, oy, oz)             # <<<<<<<<<<<<<<
  *         matrix = matrix.multiply(Matrix().rotate(
  *             radians(self._angle), ax, ay, az))
  */
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 640; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), __pyx_v_ox, __pyx_v_oy, __pyx_v_oz, 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 640; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), __pyx_v_ox, __pyx_v_oy, __pyx_v_oz, 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_matrix = ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":641
+  /* "kivy/graphics/context_instructions.pyx":639
  *         cdef Matrix matrix
  *         matrix = Matrix().translate(ox, oy, oz)
  *         matrix = matrix.multiply(Matrix().rotate(             # <<<<<<<<<<<<<<
  *             radians(self._angle), ax, ay, az))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "kivy/graphics/context_instructions.pyx":642
+  /* "kivy/graphics/context_instructions.pyx":640
  *         matrix = Matrix().translate(ox, oy, oz)
  *         matrix = matrix.multiply(Matrix().rotate(
  *             radians(self._angle), ax, ay, az))             # <<<<<<<<<<<<<<
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  *         self.matrix = matrix
  */
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3)->__pyx_vtab)->rotate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3), __pyx_f_4kivy_8graphics_20context_instructions_radians(__pyx_v_self->_angle), __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3)->__pyx_vtab)->rotate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3), __pyx_f_4kivy_8graphics_20context_instructions_radians(__pyx_v_self->_angle), __pyx_v_ax, __pyx_v_ay, __pyx_v_az, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":641
+  /* "kivy/graphics/context_instructions.pyx":639
  *         cdef Matrix matrix
  *         matrix = Matrix().translate(ox, oy, oz)
  *         matrix = matrix.multiply(Matrix().rotate(             # <<<<<<<<<<<<<<
  *             radians(self._angle), ax, ay, az))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  */
-  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3));
   __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":643
+  /* "kivy/graphics/context_instructions.pyx":641
  *         matrix = matrix.multiply(Matrix().rotate(
  *             radians(self._angle), ax, ay, az))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))             # <<<<<<<<<<<<<<
  *         self.matrix = matrix
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3), (-__pyx_v_ox), (-__pyx_v_oy), (-__pyx_v_oz), 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3), (-__pyx_v_ox), (-__pyx_v_oy), (-__pyx_v_oz), 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 643; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 641; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_3));
   __pyx_t_3 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":644
+  /* "kivy/graphics/context_instructions.pyx":642
  *             radians(self._angle), ax, ay, az))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  *         self.matrix = matrix             # <<<<<<<<<<<<<<
  * 
  *     property angle:
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, ((PyObject *)__pyx_v_matrix)) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 644; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, ((PyObject *)__pyx_v_matrix)) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 642; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/context_instructions.pyx":634
+  /* "kivy/graphics/context_instructions.pyx":632
  *         self.matrix = Matrix().rotate(radians(self._angle), ax, ay, az)
  * 
  *     cdef void compute(self):             # <<<<<<<<<<<<<<
@@ -11029,7 +11014,7 @@ static void __pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute(struc
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/context_instructions.pyx":649
+/* "kivy/graphics/context_instructions.pyx":647
  *         '''Property for getting/setting the angle of the rotation.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11059,7 +11044,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_5angle_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":650
+  /* "kivy/graphics/context_instructions.pyx":648
  *         '''
  *         def __get__(self):
  *             return self._angle             # <<<<<<<<<<<<<<
@@ -11067,13 +11052,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_5angle_
  *             self._angle = a
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_angle); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_angle); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 648; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":649
+  /* "kivy/graphics/context_instructions.pyx":647
  *         '''Property for getting/setting the angle of the rotation.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11092,7 +11077,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_5angle_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":651
+/* "kivy/graphics/context_instructions.pyx":649
  *         def __get__(self):
  *             return self._angle
  *         def __set__(self, a):             # <<<<<<<<<<<<<<
@@ -11122,17 +11107,17 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_5angle_2__set
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":652
+  /* "kivy/graphics/context_instructions.pyx":650
  *             return self._angle
  *         def __set__(self, a):
  *             self._angle = a             # <<<<<<<<<<<<<<
  *             self.compute()
  * 
  */
-  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_v_a); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 652; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_PyFloat_AsFloat(__pyx_v_a); if (unlikely((__pyx_t_1 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 650; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->_angle = __pyx_t_1;
 
-  /* "kivy/graphics/context_instructions.pyx":653
+  /* "kivy/graphics/context_instructions.pyx":651
  *         def __set__(self, a):
  *             self._angle = a
  *             self.compute()             # <<<<<<<<<<<<<<
@@ -11141,7 +11126,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_5angle_2__set
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Rotate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->compute(__pyx_v_self);
 
-  /* "kivy/graphics/context_instructions.pyx":651
+  /* "kivy/graphics/context_instructions.pyx":649
  *         def __get__(self):
  *             return self._angle
  *         def __set__(self, a):             # <<<<<<<<<<<<<<
@@ -11160,7 +11145,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_5angle_2__set
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":660
+/* "kivy/graphics/context_instructions.pyx":658
  *         The format of the axis is (x, y, z).
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11186,7 +11171,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":661
+  /* "kivy/graphics/context_instructions.pyx":659
  *         '''
  *         def __get__(self):
  *             return self._axis             # <<<<<<<<<<<<<<
@@ -11198,7 +11183,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis__
   __pyx_r = __pyx_v_self->_axis;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":660
+  /* "kivy/graphics/context_instructions.pyx":658
  *         The format of the axis is (x, y, z).
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11213,7 +11198,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":662
+/* "kivy/graphics/context_instructions.pyx":660
  *         def __get__(self):
  *             return self._axis
  *         def __set__(self, axis):             # <<<<<<<<<<<<<<
@@ -11243,14 +11228,14 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis_2__set_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":663
+  /* "kivy/graphics/context_instructions.pyx":661
  *             return self._axis
  *         def __set__(self, axis):
  *             self._axis = axis             # <<<<<<<<<<<<<<
  *             self.compute()
  * 
  */
-  if (!(likely(PyTuple_CheckExact(__pyx_v_axis))||((__pyx_v_axis) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_axis)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 663; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyTuple_CheckExact(__pyx_v_axis))||((__pyx_v_axis) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_axis)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = __pyx_v_axis;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -11259,7 +11244,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis_2__set_
   __pyx_v_self->_axis = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":664
+  /* "kivy/graphics/context_instructions.pyx":662
  *         def __set__(self, axis):
  *             self._axis = axis
  *             self.compute()             # <<<<<<<<<<<<<<
@@ -11268,7 +11253,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis_2__set_
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Rotate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->compute(__pyx_v_self);
 
-  /* "kivy/graphics/context_instructions.pyx":662
+  /* "kivy/graphics/context_instructions.pyx":660
  *         def __get__(self):
  *             return self._axis
  *         def __set__(self, axis):             # <<<<<<<<<<<<<<
@@ -11288,7 +11273,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_4axis_2__set_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":673
+/* "kivy/graphics/context_instructions.pyx":671
  *         The format of the origin can be either (x, y) or (x, y, z).
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11314,7 +11299,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":674
+  /* "kivy/graphics/context_instructions.pyx":672
  *         '''
  *         def __get__(self):
  *             return self._origin             # <<<<<<<<<<<<<<
@@ -11326,7 +11311,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin
   __pyx_r = __pyx_v_self->_origin;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":673
+  /* "kivy/graphics/context_instructions.pyx":671
  *         The format of the origin can be either (x, y) or (x, y, z).
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11341,7 +11326,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":675
+/* "kivy/graphics/context_instructions.pyx":673
  *         def __get__(self):
  *             return self._origin
  *         def __set__(self, origin):             # <<<<<<<<<<<<<<
@@ -11375,30 +11360,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin_2__se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":676
+  /* "kivy/graphics/context_instructions.pyx":674
  *             return self._origin
  *         def __set__(self, origin):
  *             if len(origin) == 3:             # <<<<<<<<<<<<<<
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 676; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 674; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = ((__pyx_t_1 == 3) != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":677
+    /* "kivy/graphics/context_instructions.pyx":675
  *         def __set__(self, origin):
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)             # <<<<<<<<<<<<<<
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)
  */
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_origin);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_origin);
     __Pyx_GIVEREF(__pyx_v_origin);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GIVEREF(__pyx_t_4);
@@ -11409,29 +11394,29 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin_2__se
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":678
+  /* "kivy/graphics/context_instructions.pyx":676
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:             # <<<<<<<<<<<<<<
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 678; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 676; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = ((__pyx_t_1 == 2) != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":679
+    /* "kivy/graphics/context_instructions.pyx":677
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)             # <<<<<<<<<<<<<<
  *             else:
  *                 raise Exception('invalid number of components in origin')
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
@@ -11451,22 +11436,22 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin_2__se
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":681
+    /* "kivy/graphics/context_instructions.pyx":679
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  *             self.compute()
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 681; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 681; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":682
+  /* "kivy/graphics/context_instructions.pyx":680
  *             else:
  *                 raise Exception('invalid number of components in origin')
  *             self.compute()             # <<<<<<<<<<<<<<
@@ -11475,7 +11460,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin_2__se
  */
   ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Rotate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->compute(__pyx_v_self);
 
-  /* "kivy/graphics/context_instructions.pyx":675
+  /* "kivy/graphics/context_instructions.pyx":673
  *         def __get__(self):
  *             return self._origin
  *         def __set__(self, origin):             # <<<<<<<<<<<<<<
@@ -11497,8 +11482,8 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_6Rotate_6origin_2__se
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":697
- *         independent scaled factors.
+/* "kivy/graphics/context_instructions.pyx":695
+ *         independant scaled factors.
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
  *         cdef double x, y, z
@@ -11551,30 +11536,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":699
+  /* "kivy/graphics/context_instructions.pyx":697
  *     def __init__(self, *args, **kwargs):
  *         cdef double x, y, z
  *         Transform.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         self._origin = (0, 0, 0)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_Transform)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 699; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_Transform)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 699; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 699; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 697; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":700
+  /* "kivy/graphics/context_instructions.pyx":698
  *         cdef double x, y, z
  *         Transform.__init__(self, **kwargs)
  *         self._origin = (0, 0, 0)             # <<<<<<<<<<<<<<
@@ -11587,53 +11572,53 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
   __Pyx_DECREF(__pyx_v_self->_origin);
   __pyx_v_self->_origin = __pyx_tuple__14;
 
-  /* "kivy/graphics/context_instructions.pyx":702
+  /* "kivy/graphics/context_instructions.pyx":700
  *         self._origin = (0, 0, 0)
  * 
  *         if 'origin' in kwargs:             # <<<<<<<<<<<<<<
  *             origin = kwargs['origin']
  *             if len(origin) == 3:
  */
-  __pyx_t_5 = (__Pyx_PyDict_Contains(__pyx_n_s_origin, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = (__Pyx_PyDict_Contains(__pyx_n_s_origin, __pyx_v_kwargs, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":703
+    /* "kivy/graphics/context_instructions.pyx":701
  * 
  *         if 'origin' in kwargs:
  *             origin = kwargs['origin']             # <<<<<<<<<<<<<<
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)
  */
-    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_origin); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 703; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_kwargs, __pyx_n_s_origin); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 701; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_origin = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "kivy/graphics/context_instructions.pyx":704
+    /* "kivy/graphics/context_instructions.pyx":702
  *         if 'origin' in kwargs:
  *             origin = kwargs['origin']
  *             if len(origin) == 3:             # <<<<<<<<<<<<<<
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  */
-    __pyx_t_7 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = ((__pyx_t_7 == 3) != 0);
     if (__pyx_t_6) {
 
-      /* "kivy/graphics/context_instructions.pyx":705
+      /* "kivy/graphics/context_instructions.pyx":703
  *             origin = kwargs['origin']
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)             # <<<<<<<<<<<<<<
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)
  */
-      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 705; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 703; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_v_origin);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_origin);
       __Pyx_GIVEREF(__pyx_v_origin);
-      __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 705; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 703; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GIVEREF(__pyx_t_3);
@@ -11644,29 +11629,29 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
       goto __pyx_L4;
     }
 
-    /* "kivy/graphics/context_instructions.pyx":706
+    /* "kivy/graphics/context_instructions.pyx":704
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:             # <<<<<<<<<<<<<<
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  */
-    __pyx_t_7 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 706; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 704; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = ((__pyx_t_7 == 2) != 0);
     if (__pyx_t_6) {
 
-      /* "kivy/graphics/context_instructions.pyx":707
+      /* "kivy/graphics/context_instructions.pyx":705
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)             # <<<<<<<<<<<<<<
  *             else:
  *                 raise Exception('invalid number of components in origin')
  */
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 707; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 705; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 707; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 705; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 707; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 705; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_3);
@@ -11686,75 +11671,75 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
     }
     /*else*/ {
 
-      /* "kivy/graphics/context_instructions.pyx":709
+      /* "kivy/graphics/context_instructions.pyx":707
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  * 
  *         if len(args) == 1:
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 709; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 707; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 709; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 707; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_L4:;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":711
+  /* "kivy/graphics/context_instructions.pyx":709
  *                 raise Exception('invalid number of components in origin')
  * 
  *         if len(args) == 1:             # <<<<<<<<<<<<<<
  *             s = args[0]
  *             self.set_scale(s, s, s)
  */
-  __pyx_t_7 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 709; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((__pyx_t_7 == 1) != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":712
+    /* "kivy/graphics/context_instructions.pyx":710
  * 
  *         if len(args) == 1:
  *             s = args[0]             # <<<<<<<<<<<<<<
  *             self.set_scale(s, s, s)
  *         elif len(args) == 3:
  */
-    __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_2 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 710; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_s = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "kivy/graphics/context_instructions.pyx":713
+    /* "kivy/graphics/context_instructions.pyx":711
  *         if len(args) == 1:
  *             s = args[0]
  *             self.set_scale(s, s, s)             # <<<<<<<<<<<<<<
  *         elif len(args) == 3:
  *             x, y, z = args
  */
-    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_t_8, __pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_t_8, __pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 711; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L5;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":714
+  /* "kivy/graphics/context_instructions.pyx":712
  *             s = args[0]
  *             self.set_scale(s, s, s)
  *         elif len(args) == 3:             # <<<<<<<<<<<<<<
  *             x, y, z = args
  *             self.set_scale(x, y, z)
  */
-  __pyx_t_7 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 714; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 712; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((__pyx_t_7 == 3) != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":715
+    /* "kivy/graphics/context_instructions.pyx":713
  *             self.set_scale(s, s, s)
  *         elif len(args) == 3:
  *             x, y, z = args             # <<<<<<<<<<<<<<
@@ -11771,7 +11756,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       #if CYTHON_COMPILING_IN_CPYTHON
       __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
@@ -11781,53 +11766,53 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_3);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       #endif
     }
-    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 715; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 713; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_x = __pyx_t_10;
     __pyx_v_y = __pyx_t_9;
     __pyx_v_z = __pyx_t_8;
 
-    /* "kivy/graphics/context_instructions.pyx":716
+    /* "kivy/graphics/context_instructions.pyx":714
  *         elif len(args) == 3:
  *             x, y, z = args
  *             self.set_scale(x, y, z)             # <<<<<<<<<<<<<<
  *         else:
  *             self.set_scale(1.0, 1.0, 1.0)
  */
-    __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_x, __pyx_v_y, __pyx_v_z); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 716; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_x, __pyx_v_y, __pyx_v_z); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 714; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L5;
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":718
+    /* "kivy/graphics/context_instructions.pyx":716
  *             self.set_scale(x, y, z)
  *         else:
  *             self.set_scale(1.0, 1.0, 1.0)             # <<<<<<<<<<<<<<
  * 
  *     cdef set_scale(self, double x, double y, double z):
  */
-    __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, 1.0, 1.0, 1.0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 718; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, 1.0, 1.0, 1.0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 716; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __pyx_L5:;
 
-  /* "kivy/graphics/context_instructions.pyx":697
- *         independent scaled factors.
+  /* "kivy/graphics/context_instructions.pyx":695
+ *         independant scaled factors.
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
  *         cdef double x, y, z
@@ -11851,7 +11836,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale___init__(struc
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":720
+/* "kivy/graphics/context_instructions.pyx":718
  *             self.set_scale(1.0, 1.0, 1.0)
  * 
  *     cdef set_scale(self, double x, double y, double z):             # <<<<<<<<<<<<<<
@@ -11878,7 +11863,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_scale", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":722
+  /* "kivy/graphics/context_instructions.pyx":720
  *     cdef set_scale(self, double x, double y, double z):
  *         cdef float ox, oy, oz
  *         self._x = x             # <<<<<<<<<<<<<<
@@ -11887,7 +11872,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
  */
   __pyx_v_self->_x = __pyx_v_x;
 
-  /* "kivy/graphics/context_instructions.pyx":723
+  /* "kivy/graphics/context_instructions.pyx":721
  *         cdef float ox, oy, oz
  *         self._x = x
  *         self._y = y             # <<<<<<<<<<<<<<
@@ -11896,7 +11881,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
  */
   __pyx_v_self->_y = __pyx_v_y;
 
-  /* "kivy/graphics/context_instructions.pyx":724
+  /* "kivy/graphics/context_instructions.pyx":722
  *         self._x = x
  *         self._y = y
  *         self._z = z             # <<<<<<<<<<<<<<
@@ -11905,7 +11890,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
  */
   __pyx_v_self->_z = __pyx_v_z;
 
-  /* "kivy/graphics/context_instructions.pyx":725
+  /* "kivy/graphics/context_instructions.pyx":723
  *         self._y = y
  *         self._z = z
  *         ox, oy, oz = self._origin             # <<<<<<<<<<<<<<
@@ -11924,7 +11909,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
@@ -11934,88 +11919,88 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_t_4);
     #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_5 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_5 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_5 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 723; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_ox = __pyx_t_5;
   __pyx_v_oy = __pyx_t_6;
   __pyx_v_oz = __pyx_t_7;
 
-  /* "kivy/graphics/context_instructions.pyx":727
+  /* "kivy/graphics/context_instructions.pyx":725
  *         ox, oy, oz = self._origin
  *         cdef Matrix matrix
  *         matrix = Matrix().translate(ox, oy, oz)             # <<<<<<<<<<<<<<
  *         matrix = matrix.multiply(Matrix().scale(x, y, z))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 727; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_ox, __pyx_v_oy, __pyx_v_oz, 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 727; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_ox, __pyx_v_oy, __pyx_v_oz, 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 725; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_matrix = ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":728
+  /* "kivy/graphics/context_instructions.pyx":726
  *         cdef Matrix matrix
  *         matrix = Matrix().translate(ox, oy, oz)
  *         matrix = matrix.multiply(Matrix().scale(x, y, z))             # <<<<<<<<<<<<<<
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  *         self.matrix = matrix
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 728; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 726; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4)->__pyx_vtab)->scale(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4), __pyx_v_x, __pyx_v_y, __pyx_v_z, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 728; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4)->__pyx_vtab)->scale(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4), __pyx_v_x, __pyx_v_y, __pyx_v_z, 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 726; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 728; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 726; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4));
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":729
+  /* "kivy/graphics/context_instructions.pyx":727
  *         matrix = Matrix().translate(ox, oy, oz)
  *         matrix = matrix.multiply(Matrix().scale(x, y, z))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))             # <<<<<<<<<<<<<<
  *         self.matrix = matrix
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 729; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 727; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4), (-__pyx_v_ox), (-__pyx_v_oy), (-__pyx_v_oz), 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 729; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4), (-__pyx_v_ox), (-__pyx_v_oy), (-__pyx_v_oz), 0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 727; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 729; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)__pyx_v_matrix->__pyx_vtab)->multiply(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 727; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF_SET(__pyx_v_matrix, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_4));
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":730
+  /* "kivy/graphics/context_instructions.pyx":728
  *         matrix = matrix.multiply(Matrix().scale(x, y, z))
  *         matrix = matrix.multiply(Matrix().translate(-ox, -oy, -oz))
  *         self.matrix = matrix             # <<<<<<<<<<<<<<
  * 
  *     property scale:
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, ((PyObject *)__pyx_v_matrix)) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 730; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, ((PyObject *)__pyx_v_matrix)) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 728; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/context_instructions.pyx":720
+  /* "kivy/graphics/context_instructions.pyx":718
  *             self.set_scale(1.0, 1.0, 1.0)
  * 
  *     cdef set_scale(self, double x, double y, double z):             # <<<<<<<<<<<<<<
@@ -12040,7 +12025,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":738
+/* "kivy/graphics/context_instructions.pyx":736
  *             Deprecated in favor of per axis scale properties x,y,z, xyz, etc.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12076,7 +12061,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":739
+  /* "kivy/graphics/context_instructions.pyx":737
  *         '''
  *         def __get__(self):
  *             if self._x == self._y == self._z:             # <<<<<<<<<<<<<<
@@ -12090,19 +12075,19 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale__
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":740
+    /* "kivy/graphics/context_instructions.pyx":738
  *         def __get__(self):
  *             if self._x == self._y == self._z:
  *                 Logger.warning("scale property is deprecated, use xyz, x, " +\             # <<<<<<<<<<<<<<
  *                     "y, z, etc properties to get scale factor based on axis.")
  *                 return self._x
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_warning); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_warning); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Add(__pyx_kp_s_scale_property_is_deprecated_use, __pyx_kp_s_y_z_etc_properties_to_get_scale); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_kp_s_scale_property_is_deprecated_use, __pyx_kp_s_y_z_etc_properties_to_get_scale); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_6 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -12115,32 +12100,32 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale__
       }
     }
     if (!__pyx_t_6) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 738; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "kivy/graphics/context_instructions.pyx":742
+    /* "kivy/graphics/context_instructions.pyx":740
  *                 Logger.warning("scale property is deprecated, use xyz, x, " +\
  *                     "y, z, etc properties to get scale factor based on axis.")
  *                 return self._x             # <<<<<<<<<<<<<<
  *             else:
- *                 raise Exception("trying to access deprecated property" +\
+ *                 raise Exception("trying to access deprectaed property" +\
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 740; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
@@ -12148,29 +12133,29 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale__
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":744
+    /* "kivy/graphics/context_instructions.pyx":742
  *                 return self._x
  *             else:
- *                 raise Exception("trying to access deprecated property" +\             # <<<<<<<<<<<<<<
- *                     " 'scale' on Scale instruction with non uniform scaling!")
+ *                 raise Exception("trying to access deprectaed property" +\             # <<<<<<<<<<<<<<
+ *                     " 'scale' on Scale instruction with non unifrom scaling!")
  * 
  */
-    __pyx_t_3 = PyNumber_Add(__pyx_kp_s_trying_to_access_deprecated_prop, __pyx_kp_s_scale_on_Scale_instruction_with); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 744; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyNumber_Add(__pyx_kp_s_trying_to_access_deprectaed_prop, __pyx_kp_s_scale_on_Scale_instruction_with); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 744; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 744; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 744; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 742; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/graphics/context_instructions.pyx":738
+  /* "kivy/graphics/context_instructions.pyx":736
  *             Deprecated in favor of per axis scale properties x,y,z, xyz, etc.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12193,8 +12178,8 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":747
- *                     " 'scale' on Scale instruction with non uniform scaling!")
+/* "kivy/graphics/context_instructions.pyx":745
+ *                     " 'scale' on Scale instruction with non unifrom scaling!")
  * 
  *         def __set__(self, s):             # <<<<<<<<<<<<<<
  *             Logger.warning("scale property is deprecated, use xyz, x, " +\
@@ -12230,19 +12215,19 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale_2__set_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":748
+  /* "kivy/graphics/context_instructions.pyx":746
  * 
  *         def __set__(self, s):
  *             Logger.warning("scale property is deprecated, use xyz, x, " +\             # <<<<<<<<<<<<<<
  *                 "y, z, etc properties to get scale factor based on axis.")
  *             self.set_scale(s,s,s)
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_warning); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_warning); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_kp_s_scale_property_is_deprecated_use, __pyx_kp_s_y_z_etc_properties_to_get_scale); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyNumber_Add(__pyx_kp_s_scale_property_is_deprecated_use, __pyx_kp_s_y_z_etc_properties_to_get_scale); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -12255,39 +12240,39 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale_2__set_
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __Pyx_GIVEREF(__pyx_t_4); __pyx_t_4 = NULL;
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 746; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":750
+  /* "kivy/graphics/context_instructions.pyx":748
  *             Logger.warning("scale property is deprecated, use xyz, x, " +\
  *                 "y, z, etc properties to get scale factor based on axis.")
  *             self.set_scale(s,s,s)             # <<<<<<<<<<<<<<
  * 
  *     property x:
  */
-  __pyx_t_6 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 750; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 750; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 750; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_t_6, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 750; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_6 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_v_s); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_t_6, __pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 748; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":747
- *                     " 'scale' on Scale instruction with non uniform scaling!")
+  /* "kivy/graphics/context_instructions.pyx":745
+ *                     " 'scale' on Scale instruction with non unifrom scaling!")
  * 
  *         def __set__(self, s):             # <<<<<<<<<<<<<<
  *             Logger.warning("scale property is deprecated, use xyz, x, " +\
@@ -12310,7 +12295,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_5scale_2__set_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":757
+/* "kivy/graphics/context_instructions.pyx":755
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12340,7 +12325,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1x___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":758
+  /* "kivy/graphics/context_instructions.pyx":756
  *         '''
  *         def __get__(self):
  *             return self._x             # <<<<<<<<<<<<<<
@@ -12348,13 +12333,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1x___get
  *             self.set_scale(x, self._y, self._z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 756; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":757
+  /* "kivy/graphics/context_instructions.pyx":755
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12373,7 +12358,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1x___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":759
+/* "kivy/graphics/context_instructions.pyx":757
  *         def __get__(self):
  *             return self._x
  *         def __set__(self, double x):             # <<<<<<<<<<<<<<
@@ -12392,7 +12377,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_5Scale_1x_3__set__(Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_x); {
-    __pyx_v_x = __pyx_PyFloat_AsDouble(__pyx_arg_x); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 759; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_x = __pyx_PyFloat_AsDouble(__pyx_arg_x); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 757; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12416,18 +12401,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1x_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":760
+  /* "kivy/graphics/context_instructions.pyx":758
  *             return self._x
  *         def __set__(self, double x):
  *             self.set_scale(x, self._y, self._z)             # <<<<<<<<<<<<<<
  * 
  *     property y:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_x, __pyx_v_self->_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 760; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_x, __pyx_v_self->_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 758; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":759
+  /* "kivy/graphics/context_instructions.pyx":757
  *         def __get__(self):
  *             return self._x
  *         def __set__(self, double x):             # <<<<<<<<<<<<<<
@@ -12447,7 +12432,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1x_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":767
+/* "kivy/graphics/context_instructions.pyx":765
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12477,7 +12462,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1y___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":768
+  /* "kivy/graphics/context_instructions.pyx":766
  *         '''
  *         def __get__(self):
  *             return self._y             # <<<<<<<<<<<<<<
@@ -12485,13 +12470,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1y___get
  *             self.set_scale(self._x, y, self._z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 768; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 766; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":767
+  /* "kivy/graphics/context_instructions.pyx":765
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12510,7 +12495,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1y___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":769
+/* "kivy/graphics/context_instructions.pyx":767
  *         def __get__(self):
  *             return self._y
  *         def __set__(self, double y):             # <<<<<<<<<<<<<<
@@ -12529,7 +12514,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_5Scale_1y_3__set__(Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_y); {
-    __pyx_v_y = __pyx_PyFloat_AsDouble(__pyx_arg_y); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 769; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_y = __pyx_PyFloat_AsDouble(__pyx_arg_y); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 767; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12553,18 +12538,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1y_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":770
+  /* "kivy/graphics/context_instructions.pyx":768
  *             return self._y
  *         def __set__(self, double y):
  *             self.set_scale(self._x, y, self._z)             # <<<<<<<<<<<<<<
  * 
  *     property z:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_self->_x, __pyx_v_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 770; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_self->_x, __pyx_v_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 768; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":769
+  /* "kivy/graphics/context_instructions.pyx":767
  *         def __get__(self):
  *             return self._y
  *         def __set__(self, double y):             # <<<<<<<<<<<<<<
@@ -12584,7 +12569,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1y_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":777
+/* "kivy/graphics/context_instructions.pyx":775
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12614,7 +12599,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1z___get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":778
+  /* "kivy/graphics/context_instructions.pyx":776
  *         '''
  *         def __get__(self):
  *             return self._z             # <<<<<<<<<<<<<<
@@ -12622,13 +12607,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1z___get
  *             self.set_scale(self._x, self._y, z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 778; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 776; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":777
+  /* "kivy/graphics/context_instructions.pyx":775
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12647,7 +12632,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1z___get
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":779
+/* "kivy/graphics/context_instructions.pyx":777
  *         def __get__(self):
  *             return self._z
  *         def __set__(self, double z):             # <<<<<<<<<<<<<<
@@ -12666,7 +12651,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_5Scale_1z_3__set__(Py
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_z); {
-    __pyx_v_z = __pyx_PyFloat_AsDouble(__pyx_arg_z); if (unlikely((__pyx_v_z == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 779; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_z = __pyx_PyFloat_AsDouble(__pyx_arg_z); if (unlikely((__pyx_v_z == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 777; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -12690,18 +12675,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1z_2__set__(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":780
+  /* "kivy/graphics/context_instructions.pyx":778
  *             return self._z
  *         def __set__(self, double z):
  *             self.set_scale(self._x, self._y, z)             # <<<<<<<<<<<<<<
  * 
  *     property xyz:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_self->_x, __pyx_v_self->_y, __pyx_v_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 780; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_self->_x, __pyx_v_self->_y, __pyx_v_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 778; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":779
+  /* "kivy/graphics/context_instructions.pyx":777
  *         def __get__(self):
  *             return self._z
  *         def __set__(self, double z):             # <<<<<<<<<<<<<<
@@ -12721,7 +12706,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_1z_2__set__(st
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":787
+/* "kivy/graphics/context_instructions.pyx":785
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12754,7 +12739,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_3xyz___g
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":788
+  /* "kivy/graphics/context_instructions.pyx":786
  *         '''
  *         def __get__(self):
  *             return self._x, self._y, self._z             # <<<<<<<<<<<<<<
@@ -12762,13 +12747,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_3xyz___g
  *             self.set_scale(c[0], c[1], c[2])
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 786; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 786; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 786; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 786; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -12783,7 +12768,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_3xyz___g
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":787
+  /* "kivy/graphics/context_instructions.pyx":785
  *         .. versionchanged:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12805,7 +12790,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_3xyz___g
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":789
+/* "kivy/graphics/context_instructions.pyx":787
  *         def __get__(self):
  *             return self._x, self._y, self._z
  *         def __set__(self, c):             # <<<<<<<<<<<<<<
@@ -12838,30 +12823,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_3xyz_2__set__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":790
+  /* "kivy/graphics/context_instructions.pyx":788
  *             return self._x, self._y, self._z
  *         def __set__(self, c):
  *             self.set_scale(c[0], c[1], c[2])             # <<<<<<<<<<<<<<
  * 
  *     property origin:
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 790; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 788; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":789
+  /* "kivy/graphics/context_instructions.pyx":787
  *         def __get__(self):
  *             return self._x, self._y, self._z
  *         def __set__(self, c):             # <<<<<<<<<<<<<<
@@ -12881,7 +12866,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_3xyz_2__set__(
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":799
+/* "kivy/graphics/context_instructions.pyx":797
  *         The format of the origin can be either (x, y) or (x, y, z).
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12907,7 +12892,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":800
+  /* "kivy/graphics/context_instructions.pyx":798
  *         '''
  *         def __get__(self):
  *             return self._origin             # <<<<<<<<<<<<<<
@@ -12919,7 +12904,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_
   __pyx_r = __pyx_v_self->_origin;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":799
+  /* "kivy/graphics/context_instructions.pyx":797
  *         The format of the origin can be either (x, y) or (x, y, z).
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12934,7 +12919,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":801
+/* "kivy/graphics/context_instructions.pyx":799
  *         def __get__(self):
  *             return self._origin
  *         def __set__(self, origin):             # <<<<<<<<<<<<<<
@@ -12968,30 +12953,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_2__set
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":802
+  /* "kivy/graphics/context_instructions.pyx":800
  *             return self._origin
  *         def __set__(self, origin):
  *             if len(origin) == 3:             # <<<<<<<<<<<<<<
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 802; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 800; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = ((__pyx_t_1 == 3) != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":803
+    /* "kivy/graphics/context_instructions.pyx":801
  *         def __set__(self, origin):
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)             # <<<<<<<<<<<<<<
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)
  */
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 803; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 801; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_origin);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_origin);
     __Pyx_GIVEREF(__pyx_v_origin);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 803; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)(&PyTuple_Type))), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 801; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GIVEREF(__pyx_t_4);
@@ -13002,29 +12987,29 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_2__set
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":804
+  /* "kivy/graphics/context_instructions.pyx":802
  *             if len(origin) == 3:
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:             # <<<<<<<<<<<<<<
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 804; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyObject_Length(__pyx_v_origin); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 802; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_2 = ((__pyx_t_1 == 2) != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/context_instructions.pyx":805
+    /* "kivy/graphics/context_instructions.pyx":803
  *                 self._origin = tuple(origin)
  *             elif len(origin) == 2:
  *                 self._origin = (origin[0], origin[1], 0.)             # <<<<<<<<<<<<<<
  *             else:
  *                 raise Exception('invalid number of components in origin')
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 805; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_origin, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 803; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 805; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_origin, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 803; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 805; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 803; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
@@ -13044,33 +13029,33 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_2__set
   }
   /*else*/ {
 
-    /* "kivy/graphics/context_instructions.pyx":807
+    /* "kivy/graphics/context_instructions.pyx":805
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  *             self.set_scale(self._x, self._y, self._z)
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 807; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 805; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 807; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 805; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":808
+  /* "kivy/graphics/context_instructions.pyx":806
  *             else:
  *                 raise Exception('invalid number of components in origin')
  *             self.set_scale(self._x, self._y, self._z)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_self->_x, __pyx_v_self->_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 808; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Scale *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_scale(__pyx_v_self, __pyx_v_self->_x, __pyx_v_self->_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 806; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":801
+  /* "kivy/graphics/context_instructions.pyx":799
  *         def __get__(self):
  *             return self._origin
  *         def __set__(self, origin):             # <<<<<<<<<<<<<<
@@ -13092,7 +13077,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_5Scale_6origin_2__set
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":819
+/* "kivy/graphics/context_instructions.pyx":817
  *         Translate(x, y, z)      # translate in all three axes
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13143,41 +13128,41 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate___init__(s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":821
+  /* "kivy/graphics/context_instructions.pyx":819
  *     def __init__(self, *args, **kwargs):
  *         cdef double x, y, z
  *         Transform.__init__(self, **kwargs)             # <<<<<<<<<<<<<<
  *         if len(args) == 3:
  *             x, y, z = args
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_Transform)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_20context_instructions_Transform)), __pyx_n_s_init); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   __pyx_t_3 = __pyx_v_kwargs;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 819; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":822
+  /* "kivy/graphics/context_instructions.pyx":820
  *         cdef double x, y, z
  *         Transform.__init__(self, **kwargs)
  *         if len(args) == 3:             # <<<<<<<<<<<<<<
  *             x, y, z = args
  *             self.set_translate(x, y, z)
  */
-  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 822; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 820; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((__pyx_t_5 == 3) != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":823
+    /* "kivy/graphics/context_instructions.pyx":821
  *         Transform.__init__(self, **kwargs)
  *         if len(args) == 3:
  *             x, y, z = args             # <<<<<<<<<<<<<<
@@ -13194,7 +13179,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate___init__(s
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       #if CYTHON_COMPILING_IN_CPYTHON
       __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
@@ -13204,49 +13189,49 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate___init__(s
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_2);
       #else
-      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       #endif
     }
-    __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_7 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 821; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_x = __pyx_t_7;
     __pyx_v_y = __pyx_t_8;
     __pyx_v_z = __pyx_t_9;
 
-    /* "kivy/graphics/context_instructions.pyx":824
+    /* "kivy/graphics/context_instructions.pyx":822
  *         if len(args) == 3:
  *             x, y, z = args
  *             self.set_translate(x, y, z)             # <<<<<<<<<<<<<<
  *         elif len(args) == 2:
  *             x, y = args
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_x, __pyx_v_y, __pyx_v_z); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_x, __pyx_v_y, __pyx_v_z); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 822; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L3;
   }
 
-  /* "kivy/graphics/context_instructions.pyx":825
+  /* "kivy/graphics/context_instructions.pyx":823
  *             x, y, z = args
  *             self.set_translate(x, y, z)
  *         elif len(args) == 2:             # <<<<<<<<<<<<<<
  *             x, y = args
  *             self.set_translate(x, y, 0)
  */
-  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 825; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 823; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((__pyx_t_5 == 2) != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/graphics/context_instructions.pyx":826
+    /* "kivy/graphics/context_instructions.pyx":824
  *             self.set_translate(x, y, z)
  *         elif len(args) == 2:
  *             x, y = args             # <<<<<<<<<<<<<<
@@ -13263,7 +13248,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate___init__(s
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 826; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       #if CYTHON_COMPILING_IN_CPYTHON
       __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
@@ -13271,34 +13256,34 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate___init__(s
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_3);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 826; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 826; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       #endif
     }
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 826; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 826; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_8 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 824; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_x = __pyx_t_9;
     __pyx_v_y = __pyx_t_8;
 
-    /* "kivy/graphics/context_instructions.pyx":827
+    /* "kivy/graphics/context_instructions.pyx":825
  *         elif len(args) == 2:
  *             x, y = args
  *             self.set_translate(x, y, 0)             # <<<<<<<<<<<<<<
  * 
  *     cdef set_translate(self, double x, double y, double z):
  */
-    __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_x, __pyx_v_y, 0.0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 827; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_x, __pyx_v_y, 0.0); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 825; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/context_instructions.pyx":819
+  /* "kivy/graphics/context_instructions.pyx":817
  *         Translate(x, y, z)      # translate in all three axes
  *     '''
  *     def __init__(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -13321,7 +13306,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate___init__(s
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":829
+/* "kivy/graphics/context_instructions.pyx":827
  *             self.set_translate(x, y, 0)
  * 
  *     cdef set_translate(self, double x, double y, double z):             # <<<<<<<<<<<<<<
@@ -13339,22 +13324,22 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Translate_set_t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_translate", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":830
+  /* "kivy/graphics/context_instructions.pyx":828
  * 
  *     cdef set_translate(self, double x, double y, double z):
  *         self.matrix = Matrix().translate(x, y, z)             # <<<<<<<<<<<<<<
  *         self._x = x
  *         self._y = y
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_14transformation_Matrix)), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_x, __pyx_v_y, __pyx_v_z, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_14transformation_Matrix *)((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1)->__pyx_vtab)->translate(((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_t_1), __pyx_v_x, __pyx_v_y, __pyx_v_z, 0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 830; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 828; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":831
+  /* "kivy/graphics/context_instructions.pyx":829
  *     cdef set_translate(self, double x, double y, double z):
  *         self.matrix = Matrix().translate(x, y, z)
  *         self._x = x             # <<<<<<<<<<<<<<
@@ -13363,7 +13348,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Translate_set_t
  */
   __pyx_v_self->_x = __pyx_v_x;
 
-  /* "kivy/graphics/context_instructions.pyx":832
+  /* "kivy/graphics/context_instructions.pyx":830
  *         self.matrix = Matrix().translate(x, y, z)
  *         self._x = x
  *         self._y = y             # <<<<<<<<<<<<<<
@@ -13372,7 +13357,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Translate_set_t
  */
   __pyx_v_self->_y = __pyx_v_y;
 
-  /* "kivy/graphics/context_instructions.pyx":833
+  /* "kivy/graphics/context_instructions.pyx":831
  *         self._x = x
  *         self._y = y
  *         self._z = z             # <<<<<<<<<<<<<<
@@ -13381,7 +13366,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Translate_set_t
  */
   __pyx_v_self->_z = __pyx_v_z;
 
-  /* "kivy/graphics/context_instructions.pyx":829
+  /* "kivy/graphics/context_instructions.pyx":827
  *             self.set_translate(x, y, 0)
  * 
  *     cdef set_translate(self, double x, double y, double z):             # <<<<<<<<<<<<<<
@@ -13403,7 +13388,7 @@ static PyObject *__pyx_f_4kivy_8graphics_20context_instructions_9Translate_set_t
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":838
+/* "kivy/graphics/context_instructions.pyx":836
  *         '''Property for getting/setting the translation on the X axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13433,7 +13418,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1x__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":839
+  /* "kivy/graphics/context_instructions.pyx":837
  *         '''
  *         def __get__(self):
  *             return self._x             # <<<<<<<<<<<<<<
@@ -13441,13 +13426,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1x__
  *             self.set_translate(x, self._y, self._z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 839; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 837; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":838
+  /* "kivy/graphics/context_instructions.pyx":836
  *         '''Property for getting/setting the translation on the X axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13466,7 +13451,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1x__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":840
+/* "kivy/graphics/context_instructions.pyx":838
  *         def __get__(self):
  *             return self._x
  *         def __set__(self, double x):             # <<<<<<<<<<<<<<
@@ -13485,7 +13470,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_9Translate_1x_3__set_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_x); {
-    __pyx_v_x = __pyx_PyFloat_AsDouble(__pyx_arg_x); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 840; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_x = __pyx_PyFloat_AsDouble(__pyx_arg_x); if (unlikely((__pyx_v_x == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 838; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13509,18 +13494,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1x_2__set_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":841
+  /* "kivy/graphics/context_instructions.pyx":839
  *             return self._x
  *         def __set__(self, double x):
  *             self.set_translate(x, self._y, self._z)             # <<<<<<<<<<<<<<
  * 
  *     property y:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_x, __pyx_v_self->_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 841; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_x, __pyx_v_self->_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 839; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":840
+  /* "kivy/graphics/context_instructions.pyx":838
  *         def __get__(self):
  *             return self._x
  *         def __set__(self, double x):             # <<<<<<<<<<<<<<
@@ -13540,7 +13525,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1x_2__set_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":846
+/* "kivy/graphics/context_instructions.pyx":844
  *         '''Property for getting/setting the translation on the Y axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13570,7 +13555,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1y__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":847
+  /* "kivy/graphics/context_instructions.pyx":845
  *         '''
  *         def __get__(self):
  *             return self._y             # <<<<<<<<<<<<<<
@@ -13578,13 +13563,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1y__
  *             self.set_translate(self._x, y, self._z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 847; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 845; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":846
+  /* "kivy/graphics/context_instructions.pyx":844
  *         '''Property for getting/setting the translation on the Y axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13603,7 +13588,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1y__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":848
+/* "kivy/graphics/context_instructions.pyx":846
  *         def __get__(self):
  *             return self._y
  *         def __set__(self, double y):             # <<<<<<<<<<<<<<
@@ -13622,7 +13607,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_9Translate_1y_3__set_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_y); {
-    __pyx_v_y = __pyx_PyFloat_AsDouble(__pyx_arg_y); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 848; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_y = __pyx_PyFloat_AsDouble(__pyx_arg_y); if (unlikely((__pyx_v_y == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 846; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13646,18 +13631,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1y_2__set_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":849
+  /* "kivy/graphics/context_instructions.pyx":847
  *             return self._y
  *         def __set__(self, double y):
  *             self.set_translate(self._x, y, self._z)             # <<<<<<<<<<<<<<
  * 
  *     property z:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_self->_x, __pyx_v_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 849; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_self->_x, __pyx_v_y, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 847; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":848
+  /* "kivy/graphics/context_instructions.pyx":846
  *         def __get__(self):
  *             return self._y
  *         def __set__(self, double y):             # <<<<<<<<<<<<<<
@@ -13677,7 +13662,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1y_2__set_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":854
+/* "kivy/graphics/context_instructions.pyx":852
  *         '''Property for getting/setting the translation on the Z axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13707,7 +13692,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1z__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":855
+  /* "kivy/graphics/context_instructions.pyx":853
  *         '''
  *         def __get__(self):
  *             return self._z             # <<<<<<<<<<<<<<
@@ -13715,13 +13700,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1z__
  *             self.set_translate(self._x, self._y, z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 853; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":854
+  /* "kivy/graphics/context_instructions.pyx":852
  *         '''Property for getting/setting the translation on the Z axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13740,7 +13725,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1z__
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":856
+/* "kivy/graphics/context_instructions.pyx":854
  *         def __get__(self):
  *             return self._z
  *         def __set__(self, double z):             # <<<<<<<<<<<<<<
@@ -13759,7 +13744,7 @@ static int __pyx_pw_4kivy_8graphics_20context_instructions_9Translate_1z_3__set_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_z); {
-    __pyx_v_z = __pyx_PyFloat_AsDouble(__pyx_arg_z); if (unlikely((__pyx_v_z == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 856; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_z = __pyx_PyFloat_AsDouble(__pyx_arg_z); if (unlikely((__pyx_v_z == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 854; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -13783,18 +13768,18 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1z_2__set_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":857
+  /* "kivy/graphics/context_instructions.pyx":855
  *             return self._z
  *         def __set__(self, double z):
  *             self.set_translate(self._x, self._y, z)             # <<<<<<<<<<<<<<
  * 
  *     property xy:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_self->_x, __pyx_v_self->_y, __pyx_v_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_v_self->_x, __pyx_v_self->_y, __pyx_v_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":856
+  /* "kivy/graphics/context_instructions.pyx":854
  *         def __get__(self):
  *             return self._z
  *         def __set__(self, double z):             # <<<<<<<<<<<<<<
@@ -13814,7 +13799,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_1z_2__set_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":862
+/* "kivy/graphics/context_instructions.pyx":860
  *         '''2 tuple with translation vector in 2D for x and y axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13846,7 +13831,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_2xy_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":863
+  /* "kivy/graphics/context_instructions.pyx":861
  *         '''
  *         def __get__(self):
  *             return self._x, self._y             # <<<<<<<<<<<<<<
@@ -13854,11 +13839,11 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_2xy_
  *             self.set_translate(c[0], c[1], self._z)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -13870,7 +13855,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_2xy_
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":862
+  /* "kivy/graphics/context_instructions.pyx":860
  *         '''2 tuple with translation vector in 2D for x and y axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13891,7 +13876,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_2xy_
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":864
+/* "kivy/graphics/context_instructions.pyx":862
  *         def __get__(self):
  *             return self._x, self._y
  *         def __set__(self, c):             # <<<<<<<<<<<<<<
@@ -13923,26 +13908,26 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_2xy_2__set
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":865
+  /* "kivy/graphics/context_instructions.pyx":863
  *             return self._x, self._y
  *         def __set__(self, c):
  *             self.set_translate(c[0], c[1], self._z)             # <<<<<<<<<<<<<<
  * 
  *     property xyz:
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_t_2, __pyx_t_3, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_t_2, __pyx_t_3, __pyx_v_self->_z); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":864
+  /* "kivy/graphics/context_instructions.pyx":862
  *         def __get__(self):
  *             return self._x, self._y
  *         def __set__(self, c):             # <<<<<<<<<<<<<<
@@ -13962,7 +13947,7 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_2xy_2__set
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":870
+/* "kivy/graphics/context_instructions.pyx":868
  *         '''3 tuple translation vector in 3D in x, y, and z axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -13995,7 +13980,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_3xyz
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":871
+  /* "kivy/graphics/context_instructions.pyx":869
  *         '''
  *         def __get__(self):
  *             return self._x, self._y, self._z             # <<<<<<<<<<<<<<
@@ -14003,13 +13988,13 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_3xyz
  *             self.set_translate(c[0], c[1], c[2])
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->_x); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->_y); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->_z); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -14024,7 +14009,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_3xyz
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/context_instructions.pyx":870
+  /* "kivy/graphics/context_instructions.pyx":868
  *         '''3 tuple translation vector in 3D in x, y, and z axis.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -14046,7 +14031,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_20context_instructions_9Translate_3xyz
   return __pyx_r;
 }
 
-/* "kivy/graphics/context_instructions.pyx":872
+/* "kivy/graphics/context_instructions.pyx":870
  *         def __get__(self):
  *             return self._x, self._y, self._z
  *         def __set__(self, c):             # <<<<<<<<<<<<<<
@@ -14079,30 +14064,30 @@ static int __pyx_pf_4kivy_8graphics_20context_instructions_9Translate_3xyz_2__se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/context_instructions.pyx":873
+  /* "kivy/graphics/context_instructions.pyx":871
  *             return self._x, self._y, self._z
  *         def __set__(self, c):
  *             self.set_translate(c[0], c[1], c[2])             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_2 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 873; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_20context_instructions_Translate *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->set_translate(__pyx_v_self, __pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/context_instructions.pyx":872
+  /* "kivy/graphics/context_instructions.pyx":870
  *         def __get__(self):
  *             return self._x, self._y, self._z
  *         def __set__(self, c):             # <<<<<<<<<<<<<<
@@ -14426,7 +14411,7 @@ static PyTypeObject __pyx_type_4kivy_8graphics_20context_instructions_Color = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "\n    Instruction to set the color state for any vertices being\n    drawn after it.\n\n    This represents a color between 0 and 1, but is applied as a\n    *multiplier* to the texture of any vertex instructions following\n    it in a canvas. If no texture is set, the vertex instruction\n    takes the precise color of the Color instruction.\n\n    For instance, if a Rectangle has a texture with uniform color\n    ``(0.5, 0.5, 0.5, 1.0)`` and the preceding Color has\n    ``rgba=(1, 0.5, 2, 1)``, the actual visible color will be\n    ``(0.5, 0.25, 1.0, 1.0)`` since the Color instruction is applied as\n    a multiplier to every rgba component. In this case, a Color\n    component outside the 0-1 range gives a visible result as the\n    intensity of the blue component is doubled.\n\n    To declare a Color in Python, you can do::\n\n        from kivy.graphics import Color\n\n        # create red v\n        c = Color(1, 0, 0)\n        # create blue color\n        c = Color(0, 1, 0)\n        # create blue color with 50% alpha\n        c = Color(0, 1, 0, .5)\n\n        # using hsv mode\n        c = Color(0, 1, 1, mode='hsv')\n        # using hsv mode + alpha\n        c = Color(0, 1, 1, .2, mode='hsv')\n\n    You can also set color components that are available as properties\n    by passing them as keyword arguments::\n\n        c = Color(b=0.5)  # sets the blue component only\n\n    In kv lang you can set the color properties directly:\n\n    .. code-block:: kv\n\n        <Rule>:\n            canvas:\n                # red color\n                Color:\n                    rgb: 1, 0, 0\n                # blue color\n                Color:\n                    rgb: 0, 1, 0\n                # blue color with 50% alpha\n                Color:\n                    rgba: 0, 1, 0, .5\n\n                # using hsv mode\n                Color:\n                    hsv: 0, 1, 1\n                # using hsv mode + alpha\n                Color:\n                    hsv: 0, 1, 1\n                    a: .5\n\n    ", /*tp_doc*/
+  "\n    Instruction to set the color state for any vertices being\n    drawn after it.\n\n    This represents a color between 0 and 1, but is applied as a\n    *multiplier* to the texture of any vertex instructions following\n    it in a canvas. If no texture is set, the vertex instruction\n    takes the precise color of the Color instruction.\n\n    For instance, if a Rectangle has a texture with uniform color\n    ``(0.5, 0.5, 0.5, 1.0)`` and the preceding Color has\n    ``rgba=(1, 0.5, 2, 1)``, the actual visible color will be\n    ``(0.5, 0.25, 1.0, 1.0)`` since the Color instruction is applied as\n    a multiplier to every rgba component. In this case, a Color\n    component outside the 0-1 range gives a visible result as the\n    intensity of the blue component is doubled.\n\n    To declare a Color in Python, you can do::\n\n        from kivy.graphics import Color\n\n        # create red v\n        c = Color(1, 0, 0)\n        # create blue color\n        c = Color(0, 1, 0)\n        # create blue color with 50% alpha\n        c = Color(0, 1, 0, .5)\n\n        # using hsv mode\n        c = Color(0, 1, 1, mode='hsv')\n        # using hsv mode + alpha\n        c = Color(0, 1, 1, .2, mode='hsv')\n\n    You can also set color components that are available as properties\n    by passing them as keyword arguments::\n\n        c = Color(b=0.5)  # sets the blue component only\n\n    In kv lang you can set the color properties directly::\n\n        <Rule>:\n            canvas:\n                # red color\n                Color:\n                    rgb: 1, 0, 0\n                # blue color\n                Color:\n                    rgb: 0, 1, 0\n                # blue color with 50% alpha\n                Color:\n                    rgba: 0, 1, 0, .5\n\n                # using hsv mode\n                Color:\n                    hsv: 0, 1, 1\n                # using hsv mode + alpha\n                Color:\n                    hsv: 0, 1, 1\n                    a: .5\n\n    ", /*tp_doc*/
   __pyx_tp_traverse_4kivy_8graphics_20context_instructions_Color, /*tp_traverse*/
   __pyx_tp_clear_4kivy_8graphics_20context_instructions_Color, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -15912,7 +15897,7 @@ static PyTypeObject __pyx_type_4kivy_8graphics_20context_instructions_Rotate = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Rotate the coordinate space by applying a rotation transformation\n    on the modelview matrix. You can set the properties of the instructions\n    afterwards with e.g. ::\n\n        rot.angle = 90\n        rot.axis = (0, 0, 1)\n    ", /*tp_doc*/
+  "Rotate the coordinate space by applying a rotation transformation\n    on the modelview matrix. You can set the properties of the instructions\n    afterwards with e.g.::\n\n        rot.angle = 90\n        rot.axis = (0, 0, 1)\n    ", /*tp_doc*/
   __pyx_tp_traverse_4kivy_8graphics_20context_instructions_Rotate, /*tp_traverse*/
   __pyx_tp_clear_4kivy_8graphics_20context_instructions_Rotate, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -16111,7 +16096,7 @@ static PyTypeObject __pyx_type_4kivy_8graphics_20context_instructions_Scale = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  "Instruction to create a non uniform scale transformation.\n\n    Create using one or three arguments::\n\n       Scale(s)         # scale all three axes the same\n       Scale(x, y, z)   # scale the axes independently\n\n    .. deprecated:: 1.6.0\n        Deprecated single scale property in favor of x, y, z, xyz axis\n        independent scaled factors.\n    ", /*tp_doc*/
+  "Instruction to create a non uniform scale transformation.\n\n    Create using one or three arguments::\n\n       Scale(s)         # scale all three axes the same\n       Scale(x, y, z)   # scale the axes independently\n\n    .. deprecated:: 1.6.0\n        Deprecated single scale property in favor of x, y, z, xyz axis\n        independant scaled factors.\n    ", /*tp_doc*/
   __pyx_tp_traverse_4kivy_8graphics_20context_instructions_Scale, /*tp_traverse*/
   __pyx_tp_clear_4kivy_8graphics_20context_instructions_Scale, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -16327,7 +16312,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_PopMatrix, __pyx_k_PopMatrix, sizeof(__pyx_k_PopMatrix), 0, 0, 1, 1},
   {&__pyx_n_s_PushMatrix, __pyx_k_PushMatrix, sizeof(__pyx_k_PushMatrix), 0, 0, 1, 1},
   {&__pyx_n_s_Rotate, __pyx_k_Rotate, sizeof(__pyx_k_Rotate), 0, 0, 1, 1},
-  {&__pyx_kp_u_Rotate_set_line_621, __pyx_k_Rotate_set_line_621, sizeof(__pyx_k_Rotate_set_line_621), 0, 1, 0, 0},
+  {&__pyx_kp_u_Rotate_set_line_619, __pyx_k_Rotate_set_line_619, sizeof(__pyx_k_Rotate_set_line_619), 0, 1, 0, 0},
   {&__pyx_n_s_Scale, __pyx_k_Scale, sizeof(__pyx_k_Scale), 0, 0, 1, 1},
   {&__pyx_kp_u_Set_the_angle_and_axis_of_rotati, __pyx_k_Set_the_angle_and_axis_of_rotati, sizeof(__pyx_k_Set_the_angle_and_axis_of_rotati), 0, 1, 0, 0},
   {&__pyx_n_s_Translate, __pyx_k_Translate, sizeof(__pyx_k_Translate), 0, 0, 1, 1},
@@ -16398,7 +16383,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_timeout, __pyx_k_timeout, sizeof(__pyx_k_timeout), 0, 0, 1, 1},
   {&__pyx_n_s_transform, __pyx_k_transform, sizeof(__pyx_k_transform), 0, 0, 1, 1},
   {&__pyx_n_s_translate, __pyx_k_translate, sizeof(__pyx_k_translate), 0, 0, 1, 1},
-  {&__pyx_kp_s_trying_to_access_deprecated_prop, __pyx_k_trying_to_access_deprecated_prop, sizeof(__pyx_k_trying_to_access_deprecated_prop), 0, 0, 1, 0},
+  {&__pyx_kp_s_trying_to_access_deprectaed_prop, __pyx_k_trying_to_access_deprectaed_prop, sizeof(__pyx_k_trying_to_access_deprectaed_prop), 0, 0, 1, 0},
   {&__pyx_n_s_tx, __pyx_k_tx, sizeof(__pyx_k_tx), 0, 0, 1, 1},
   {&__pyx_n_s_ty, __pyx_k_ty, sizeof(__pyx_k_ty), 0, 0, 1, 1},
   {&__pyx_n_s_tz, __pyx_k_tz, sizeof(__pyx_k_tz), 0, 0, 1, 1},
@@ -16410,7 +16395,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 616; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -16464,113 +16449,113 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "kivy/graphics/context_instructions.pyx":249
+  /* "kivy/graphics/context_instructions.pyx":247
  *                 self.set_state('color', [1.0, 1.0, 1.0, 1.0])
  * 
  *         for property_name in ['r', 'g', 'b', 'a',             # <<<<<<<<<<<<<<
  *                               'rgb', 'rgba', 'hsv',
  *                               'h', 's', 'v']:
  */
-  __pyx_tuple__7 = PyTuple_Pack(10, __pyx_n_s_r, __pyx_n_s_g, __pyx_n_s_b, __pyx_n_s_a, __pyx_n_s_rgb, __pyx_n_s_rgba, __pyx_n_s_hsv, __pyx_n_s_h, __pyx_n_s_s, __pyx_n_s_v); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__7 = PyTuple_Pack(10, __pyx_n_s_r, __pyx_n_s_g, __pyx_n_s_b, __pyx_n_s_a, __pyx_n_s_rgb, __pyx_n_s_rgba, __pyx_n_s_hsv, __pyx_n_s_h, __pyx_n_s_s, __pyx_n_s_v); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "kivy/graphics/context_instructions.pyx":266
+  /* "kivy/graphics/context_instructions.pyx":264
  *         '''
  *         def __get__(self):
  *             return self.rgba[:-1]             # <<<<<<<<<<<<<<
  *         def __set__(self, rgb):
  *             self.rgba = (rgb[0], rgb[1], rgb[2], 1.0)
  */
-  __pyx_slice__8 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_slice__8 = PySlice_New(Py_None, __pyx_int_neg_1, Py_None); if (unlikely(!__pyx_slice__8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_slice__8);
   __Pyx_GIVEREF(__pyx_slice__8);
 
-  /* "kivy/graphics/context_instructions.pyx":339
+  /* "kivy/graphics/context_instructions.pyx":337
  *         ContextInstruction.__init__(self, **kwargs)
  *         if 'source' in kwargs and 'texture' in kwargs:
  *             Logger.warn('BindTexture: both source and texture specified '             # <<<<<<<<<<<<<<
  *                         'in kwargs! Settings source will overwrite'
  *                         'texture property')
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_BindTexture_both_source_and_text); if (unlikely(!__pyx_tuple__9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 339; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_BindTexture_both_source_and_text); if (unlikely(!__pyx_tuple__9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 337; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "kivy/graphics/context_instructions.pyx":595
+  /* "kivy/graphics/context_instructions.pyx":593
  *     def __init__(self, *args, **kwargs):
  *         Transform.__init__(self, **kwargs)
  *         self._origin = (0, 0, 0)             # <<<<<<<<<<<<<<
  * 
  *         # compatibility mode from version < 1.7
  */
-  __pyx_tuple__10 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 595; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__10 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 593; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "kivy/graphics/context_instructions.pyx":603
+  /* "kivy/graphics/context_instructions.pyx":601
  *         else:
  *             self._angle = 0
  *             self._axis = (0, 0, 1)             # <<<<<<<<<<<<<<
  * 
  *         if 'axis' in kwargs:
  */
-  __pyx_tuple__11 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_1); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__11 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_1); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 601; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "kivy/graphics/context_instructions.pyx":616
+  /* "kivy/graphics/context_instructions.pyx":614
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  * 
  *         self.compute()
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 616; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 614; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "kivy/graphics/context_instructions.pyx":681
+  /* "kivy/graphics/context_instructions.pyx":679
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  *             self.compute()
  * 
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 681; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "kivy/graphics/context_instructions.pyx":700
+  /* "kivy/graphics/context_instructions.pyx":698
  *         cdef double x, y, z
  *         Transform.__init__(self, **kwargs)
  *         self._origin = (0, 0, 0)             # <<<<<<<<<<<<<<
  * 
  *         if 'origin' in kwargs:
  */
-  __pyx_tuple__14 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__14 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 698; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 
-  /* "kivy/graphics/context_instructions.pyx":709
+  /* "kivy/graphics/context_instructions.pyx":707
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  * 
  *         if len(args) == 1:
  */
-  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 709; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 707; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "kivy/graphics/context_instructions.pyx":807
+  /* "kivy/graphics/context_instructions.pyx":805
  *                 self._origin = (origin[0], origin[1], 0.)
  *             else:
  *                 raise Exception('invalid number of components in origin')             # <<<<<<<<<<<<<<
  *             self.set_scale(self._x, self._y, self._z)
  * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 807; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_invalid_number_of_components_in); if (unlikely(!__pyx_tuple__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 805; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 
@@ -16747,10 +16732,10 @@ PyMODINIT_FUNC PyInit_context_instructions(void)
   __pyx_vtable_4kivy_8graphics_20context_instructions_BindTexture.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_vtable_4kivy_8graphics_20context_instructions_BindTexture.__pyx_base.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20context_instructions_11BindTexture_apply;
   __pyx_type_4kivy_8graphics_20context_instructions_BindTexture.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_BindTexture) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 327; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_BindTexture) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_BindTexture.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_BindTexture.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_BindTexture) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 327; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "BindTexture", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_BindTexture) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 327; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_BindTexture.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_BindTexture) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "BindTexture", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_BindTexture) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_BindTexture.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_BindTexture.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_BindTexture, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_BindTexture = &__pyx_type_4kivy_8graphics_20context_instructions_BindTexture;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_PushState = &__pyx_vtable_4kivy_8graphics_20context_instructions_PushState;
@@ -16783,58 +16768,58 @@ PyMODINIT_FUNC PyInit_context_instructions(void)
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_LoadIdentity = &__pyx_vtable_4kivy_8graphics_20context_instructions_LoadIdentity;
   __pyx_vtable_4kivy_8graphics_20context_instructions_LoadIdentity.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_LoadIdentity) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "LoadIdentity", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 394; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_LoadIdentity) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "LoadIdentity", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_LoadIdentity, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_LoadIdentity = &__pyx_type_4kivy_8graphics_20context_instructions_LoadIdentity;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_PushMatrix = &__pyx_vtable_4kivy_8graphics_20context_instructions_PushMatrix;
   __pyx_vtable_4kivy_8graphics_20context_instructions_PushMatrix.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_type_4kivy_8graphics_20context_instructions_PushMatrix.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_PushMatrix.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_PushMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "PushMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_PushMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "PushMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_PushMatrix.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_PushMatrix, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_PushMatrix = &__pyx_type_4kivy_8graphics_20context_instructions_PushMatrix;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_PopMatrix = &__pyx_vtable_4kivy_8graphics_20context_instructions_PopMatrix;
   __pyx_vtable_4kivy_8graphics_20context_instructions_PopMatrix.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_type_4kivy_8graphics_20context_instructions_PopMatrix.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_PopMatrix.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_PopMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "PopMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_PopMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "PopMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_PopMatrix.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_PopMatrix, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_PopMatrix = &__pyx_type_4kivy_8graphics_20context_instructions_PopMatrix;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_ApplyContextMatrix = &__pyx_vtable_4kivy_8graphics_20context_instructions_ApplyContextMatrix;
   __pyx_vtable_4kivy_8graphics_20context_instructions_ApplyContextMatrix.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_vtable_4kivy_8graphics_20context_instructions_ApplyContextMatrix.__pyx_base.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20context_instructions_18ApplyContextMatrix_apply;
   __pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_ApplyContextMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "ApplyContextMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_ApplyContextMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "ApplyContextMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_ApplyContextMatrix, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_ApplyContextMatrix = &__pyx_type_4kivy_8graphics_20context_instructions_ApplyContextMatrix;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_UpdateNormalMatrix = &__pyx_vtable_4kivy_8graphics_20context_instructions_UpdateNormalMatrix;
   __pyx_vtable_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_vtable_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.__pyx_base.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20context_instructions_18UpdateNormalMatrix_apply;
   __pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_UpdateNormalMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "UpdateNormalMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_UpdateNormalMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "UpdateNormalMatrix", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_UpdateNormalMatrix, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_UpdateNormalMatrix = &__pyx_type_4kivy_8graphics_20context_instructions_UpdateNormalMatrix;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_MatrixInstruction = &__pyx_vtable_4kivy_8graphics_20context_instructions_MatrixInstruction;
   __pyx_vtable_4kivy_8graphics_20context_instructions_MatrixInstruction.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_12instructions_ContextInstruction;
   __pyx_vtable_4kivy_8graphics_20context_instructions_MatrixInstruction.__pyx_base.__pyx_base.apply = (int (*)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *))__pyx_f_4kivy_8graphics_20context_instructions_17MatrixInstruction_apply;
   __pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction.tp_base = __pyx_ptype_4kivy_8graphics_12instructions_ContextInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 505; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_MatrixInstruction) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 505; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "MatrixInstruction", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 505; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_MatrixInstruction) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "MatrixInstruction", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 503; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_MatrixInstruction, __pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_MatrixInstruction = &__pyx_type_4kivy_8graphics_20context_instructions_MatrixInstruction;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform = &__pyx_vtable_4kivy_8graphics_20context_instructions_Transform;
@@ -16845,40 +16830,40 @@ PyMODINIT_FUNC PyInit_context_instructions(void)
   __pyx_vtable_4kivy_8graphics_20context_instructions_Transform.scale = (PyObject *(*)(struct __pyx_obj_4kivy_8graphics_20context_instructions_Transform *, float, int __pyx_skip_dispatch))__pyx_f_4kivy_8graphics_20context_instructions_9Transform_scale;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Transform.identity = (PyObject *(*)(struct __pyx_obj_4kivy_8graphics_20context_instructions_Transform *, int __pyx_skip_dispatch))__pyx_f_4kivy_8graphics_20context_instructions_9Transform_identity;
   __pyx_type_4kivy_8graphics_20context_instructions_Transform.tp_base = __pyx_ptype_4kivy_8graphics_20context_instructions_MatrixInstruction;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Transform) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 549; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Transform) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 547; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_Transform.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Transform.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 549; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Transform", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Transform) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 549; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Transform.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 547; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Transform", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Transform) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 547; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_Transform.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_Transform.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_Transform, __pyx_base.__pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_Transform = &__pyx_type_4kivy_8graphics_20context_instructions_Transform;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_Rotate = &__pyx_vtable_4kivy_8graphics_20context_instructions_Rotate;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Rotate.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Rotate.compute = (void (*)(struct __pyx_obj_4kivy_8graphics_20context_instructions_Rotate *))__pyx_f_4kivy_8graphics_20context_instructions_6Rotate_compute;
   __pyx_type_4kivy_8graphics_20context_instructions_Rotate.tp_base = __pyx_ptype_4kivy_8graphics_20context_instructions_Transform;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Rotate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Rotate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 582; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_Rotate.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Rotate.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Rotate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Rotate", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Rotate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Rotate.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Rotate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 582; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Rotate", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Rotate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 582; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_Rotate.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_Rotate.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_Rotate, __pyx_base.__pyx_base.__pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_Rotate = &__pyx_type_4kivy_8graphics_20context_instructions_Rotate;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_Scale = &__pyx_vtable_4kivy_8graphics_20context_instructions_Scale;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Scale.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Scale.set_scale = (PyObject *(*)(struct __pyx_obj_4kivy_8graphics_20context_instructions_Scale *, double, double, double))__pyx_f_4kivy_8graphics_20context_instructions_5Scale_set_scale;
   __pyx_type_4kivy_8graphics_20context_instructions_Scale.tp_base = __pyx_ptype_4kivy_8graphics_20context_instructions_Transform;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Scale) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 685; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Scale) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 683; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_Scale.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Scale.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Scale) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 685; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Scale", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Scale) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 685; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Scale.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Scale) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 683; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Scale", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Scale) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 683; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_Scale.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_Scale.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_Scale, __pyx_base.__pyx_base.__pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_Scale = &__pyx_type_4kivy_8graphics_20context_instructions_Scale;
   __pyx_vtabptr_4kivy_8graphics_20context_instructions_Translate = &__pyx_vtable_4kivy_8graphics_20context_instructions_Translate;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Translate.__pyx_base = *__pyx_vtabptr_4kivy_8graphics_20context_instructions_Transform;
   __pyx_vtable_4kivy_8graphics_20context_instructions_Translate.set_translate = (PyObject *(*)(struct __pyx_obj_4kivy_8graphics_20context_instructions_Translate *, double, double, double))__pyx_f_4kivy_8graphics_20context_instructions_9Translate_set_translate;
   __pyx_type_4kivy_8graphics_20context_instructions_Translate.tp_base = __pyx_ptype_4kivy_8graphics_20context_instructions_Transform;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Translate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_20context_instructions_Translate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_20context_instructions_Translate.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Translate.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Translate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Translate", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Translate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 811; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_20context_instructions_Translate.tp_dict, __pyx_vtabptr_4kivy_8graphics_20context_instructions_Translate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Translate", (PyObject *)&__pyx_type_4kivy_8graphics_20context_instructions_Translate) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_20context_instructions_Translate.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_20context_instructions_Translate.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_20context_instructions_Translate, __pyx_base.__pyx_base.__pyx_base.__pyx_base.__weakref__);
   __pyx_ptype_4kivy_8graphics_20context_instructions_Translate = &__pyx_type_4kivy_8graphics_20context_instructions_Translate;
   /*--- Type import code ---*/
@@ -17142,7 +17127,7 @@ PyMODINIT_FUNC PyInit_context_instructions(void)
  */
   __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_kp_u_Rotate_set_line_621, __pyx_kp_u_Set_the_angle_and_axis_of_rotati) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_4, __pyx_kp_u_Rotate_set_line_619, __pyx_kp_u_Set_the_angle_and_axis_of_rotati) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 

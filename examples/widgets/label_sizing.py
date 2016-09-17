@@ -152,7 +152,6 @@ class LabelTextureSizeExample(App):
     max_lines = NumericProperty(0)
 
     def build(self):
-        self._add_word_ev = None
         return Builder.load_string(_kv_code)
 
     def on_start(self):
@@ -163,9 +162,7 @@ class LabelTextureSizeExample(App):
         self.reset_words()
 
     def reset_words(self):
-        if self._add_word_ev is not None:
-            self._add_word_ev.cancel()
-            self._add_word_ev = None
+        Clock.unschedule(self.add_word)
         for content_widget in self.text_content_widgets:
             content_widget.text = _example_title_text
         # initialize words generator
@@ -185,7 +182,7 @@ class LabelTextureSizeExample(App):
         if word.endswith(','):
             pause_time += 0.6
 
-        self._add_word_ev = Clock.schedule_once(self.add_word, pause_time)
+        Clock.schedule_once(self.add_word, pause_time)
 
 if __name__ == '__main__':
     LabelTextureSizeExample().run()

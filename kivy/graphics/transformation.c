@@ -1182,7 +1182,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_14transformation_6Matrix_4get(struct _
 
 /* Python wrapper */
 static PyObject *__pyx_pw_4kivy_8graphics_14transformation_6Matrix_7tolist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_4kivy_8graphics_14transformation_6Matrix_6tolist[] = "Retrieve the value of the current matrix in numpy format.\n        for example m.tolist() will return \n\n                [[1.000000, 0.000000, 0.000000, 0.000000],\n                [0.000000, 1.000000, 0.000000, 0.000000],\n                [0.000000, 0.000000, 1.000000, 0.000000],\n                [0.000000, 0.000000, 0.000000, 1.000000]]\n\n        you can use this format to plug the result straight into numpy \n        in this way numpy.array(m.tolist()) \n\n        .. versionadded:: 1.9.0\n        ";
+static char __pyx_doc_4kivy_8graphics_14transformation_6Matrix_6tolist[] = "Retrieve the value of the current matrix in numpy format.\n        for example m.tolist() will return \n\n                [[1.000000, 0.000000, 0.000000, 0.000000],\n                [0.000000, 1.000000, 0.000000, 0.000000],\n                [0.000000, 0.000000, 1.000000, 0.000000],\n                [0.000000, 0.000000, 0.000000, 1.000000]]\n\n        you can use this format to plug the result straight into numpy \n        in this way numpy.array(m.get()) \n\n        .. versionadded:: 1.9.0\n        ";
 static PyObject *__pyx_pw_4kivy_8graphics_14transformation_6Matrix_7tolist(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations

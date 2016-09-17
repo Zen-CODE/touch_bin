@@ -501,7 +501,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y
@@ -559,9 +559,9 @@ struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update;
 struct __pyx_opt_args_4kivy_8graphics_12instructions_13RenderContext_set_state;
 
 /* "kivy/graphics/instructions.pxd":33
- *         cpdef flag_update(self, int do_parent=?, list _instrs=?)
+ *         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
  *     ELSE:
- *         cpdef flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
+ *         cdef void flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
  *     cdef void flag_update_done(self)
  *     cdef void set_parent(self, Instruction parent)
  */
@@ -1466,7 +1466,7 @@ static struct __pyx_vtabstruct_4kivy_6_event_EventObservers *__pyx_vtabptr_4kivy
 
 struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Instruction {
   int (*apply)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
-  PyObject *(*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, int __pyx_skip_dispatch, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
+  void (*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
   void (*flag_update_done)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*set_parent)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*reload)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
@@ -1873,7 +1873,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_7context_Context {
 static struct __pyx_vtabstruct_4kivy_8graphics_7context_Context *__pyx_vtabptr_4kivy_8graphics_7context_Context;
 
 
-/* "kivy/graphics/shader.pyx":93
+/* "kivy/graphics/shader.pyx":91
  * 
  * 
  * cdef class ShaderSource:             # <<<<<<<<<<<<<<
@@ -1890,7 +1890,7 @@ struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource {
 static struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *__pyx_vtabptr_4kivy_8graphics_6shader_ShaderSource;
 
 
-/* "kivy/graphics/shader.pyx":162
+/* "kivy/graphics/shader.pyx":160
  * 
  * 
  * cdef class Shader:             # <<<<<<<<<<<<<<
@@ -2432,9 +2432,8 @@ static char __pyx_k_Shader_stop_glUseProgram[] = "Shader.stop-glUseProgram";
 static char __pyx_k_for_s_type_not_handled_s[] = "for <%s>, type not handled <%s>";
 static char __pyx_k_Shader_s_compiled_successfully[] = "Shader: %s compiled successfully";
 static char __pyx_k_Shader_unsupported_x_int_array[] = "Shader: unsupported {}x{} int array";
-static char __pyx_k_Shader_The_class_Shader_class_h[] = "\nShader\n======\n\nThe :class:`Shader` class handles the compilation of the vertex and fragment\nshader as well as the creation of the program in OpenGL.\n\n.. todo::\n\n    Include more complete documentation about the shader.\n\nHeader inclusion\n----------------\n\n.. versionadded:: 1.0.7\n\nWhen you are creating a Shader, Kivy will always include default parameters. If\nyou don't want to rewrite this each time you want to customize / write a new\nshader, you can add the \"$HEADER$\" token and it will be replaced by the\ncorresponding shader header.\n\nHere is the header for the fragment Shader:\n\n.. include:: ../../kivy/data/glsl/header.fs\n    :literal:\n\nAnd the header for vertex Shader:\n\n.. include:: ../../kivy/data/glsl/header.vs\n    :literal:\n\n\nSingle file glsl shader programs\n--------------------------------\n\n.. versionadded:: 1.6.0\n\nTo simplify shader management, the vertex and fragment shaders can be loaded\nautomatically from a single glsl source file (plain text). The file should\ncontain sections identified by a line starting with '---vertex' and\n'---fragment' respectively (case insensitive), e.g. ::\n\n    // anything before a meaningful section such as this comment are ignored\n\n    ---VERTEX SHADER--- // vertex shader starts here\n    void main(){\n        ...\n    }\n\n    ---FRAGMENT SHADER--- // fragment shader starts here\n    void main(){\n        ...\n    }\n\nThe source property of the Shader should be set to the filename of a glsl\nshader file (of the above format), e.g. `phong.glsl`\n";
+static char __pyx_k_Shader_The_class_Shader_class_h[] = "\nShader\n======\n\nThe :class:`Shader` class handles the compilation of the vertex and fragment\nshader as well as the creation of the program in OpenGL.\n\n.. todo::\n\n    Include more complete documentation about the shader.\n\nHeader inclusion\n----------------\n\n.. versionadded:: 1.0.7\n\nWhen you are creating a Shader, Kivy will always include default parameters. If\nyou don't want to rewrite this each time you want to customize / write a new\nshader, you can add the \"$HEADER$\" token and it will be replaced by the\ncorresponding shader header.\n\nHere is the header for the fragment Shader:\n\n.. include:: ../../kivy/data/glsl/header.fs\n    :literal:\n\nAnd the header for vertex Shader:\n\n.. include:: ../../kivy/data/glsl/header.vs\n    :literal:\n\n\nSingle file glsl shader programs\n--------------------------------\n\n.. versionadded:: 1.6.0\n\nTo simplify shader management, the vertex and fragment shaders can be loaded\nautomatically from a single glsl source file (plain text). The file should\ncontain sections identified by a line starting with '---vertex' and\n'---fragment' respectively (case insensitive), e.g.::\n\n    // anything before a meaningful section such as this comment are ignored\n\n    ---VERTEX SHADER--- // vertex shader starts here\n    void main(){\n        ...\n    }\n\n    ---FRAGMENT SHADER--- // fragment shader starts here\n    void main(){\n        ...\n    }\n\nThe source property of the Shader should be set to the filename of a glsl\nshader file (of the above format), e.g. `phong.glsl`\n";
 static char __pyx_k_Shader_s_failed_to_compile_gl_d[] = "Shader: <%s> failed to compile (gl:%d)";
-static char __pyx_k_Shader_set_uniform_glUseProgram[] = "Shader.set_uniform-glUseProgram";
 static char __pyx_k_Fragment_shader_source_code_If_y[] = "Fragment shader source code.\n\n        If you set a new fragment shader code source, it will be automatically\n        compiled and will replace the current fragment shader.\n        ";
 static char __pyx_k_Indicate_whether_the_shader_load[] = "Indicate whether the shader loaded successfully and is ready for\n        usage or not.\n        ";
 static char __pyx_k_Shader_bind_vertex_format_glDisa[] = "Shader.bind_vertex_format-glDisableVertexAttribArray";
@@ -2445,7 +2444,6 @@ static char __pyx_k_Shader_build_vertex_glAttachShad[] = "Shader.build_vertex-gl
 static char __pyx_k_Shader_build_vertex_glDetachShad[] = "Shader.build_vertex-glDetachShader";
 static char __pyx_k_Shader_didnt_link_check_info_log[] = "Shader didnt link, check info log.";
 static char __pyx_k_Shader_get_uniform_loc_glGetUnif[] = "Shader.get_uniform_loc-glGetUniformLocation ({name})";
-static char __pyx_k_Shader_set_uniform_glGetIntegerv[] = "Shader.set_uniform-glGetIntegerv";
 static char __pyx_k_Shader_unsupported_x_float_array[] = "Shader: unsupported {}x{} float array";
 static char __pyx_k_Shader_upload_uniform_glUniform1[] = "Shader.upload_uniform-glUniform1i {name}";
 static char __pyx_k_Shader_upload_uniform_glUniform2[] = "Shader.upload_uniform-glUniform2f {name}";
@@ -2486,8 +2484,6 @@ static PyObject *__pyx_kp_s_Shader_get_uniform_loc_glGetUnif;
 static PyObject *__pyx_kp_s_Shader_s_compiled_successfully;
 static PyObject *__pyx_kp_s_Shader_s_failed_to_compile_gl_d;
 static PyObject *__pyx_kp_s_Shader_s_s;
-static PyObject *__pyx_kp_s_Shader_set_uniform_glGetIntegerv;
-static PyObject *__pyx_kp_s_Shader_set_uniform_glUseProgram;
 static PyObject *__pyx_kp_s_Shader_stop_glUseProgram;
 static PyObject *__pyx_kp_s_Shader_unsupported_x_float_array;
 static PyObject *__pyx_kp_s_Shader_unsupported_x_int_array;
@@ -2582,12 +2578,12 @@ static PyObject *__pyx_tuple__19;
 static PyObject *__pyx_tuple__20;
 static PyObject *__pyx_tuple__21;
 
-/* "kivy/graphics/gl_debug_logger.pxi":11
- *     cimport kivy.graphics.c_opengl as c_opengl
+/* "kivy/graphics/gl_debug_logger.pxi":5
+ * include "config.pxi"
  * 
  * cdef inline void log_gl_error(str note):             # <<<<<<<<<<<<<<
  *     IF DEBUG_GL:
- *         ret = c_opengl.glGetError()
+ *         ret = glGetError()
  */
 
 static CYTHON_INLINE void __pyx_f_4kivy_8graphics_6shader_log_gl_error(CYTHON_UNUSED PyObject *__pyx_v_note) {
@@ -2598,7 +2594,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_8graphics_6shader_log_gl_error(CYTHON_UN
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":95
+/* "kivy/graphics/shader.pyx":93
  * cdef class ShaderSource:
  * 
  *     def __cinit__(self, shadertype):             # <<<<<<<<<<<<<<
@@ -2634,7 +2630,7 @@ static int __pyx_pw_4kivy_8graphics_6shader_12ShaderSource_1__cinit__(PyObject *
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 95; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -2645,7 +2641,7 @@ static int __pyx_pw_4kivy_8graphics_6shader_12ShaderSource_1__cinit__(PyObject *
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 95; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.shader.ShaderSource.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2667,7 +2663,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_12ShaderSource___cinit__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "kivy/graphics/shader.pyx":96
+  /* "kivy/graphics/shader.pyx":94
  * 
  *     def __cinit__(self, shadertype):
  *         self.shader = -1             # <<<<<<<<<<<<<<
@@ -2676,17 +2672,17 @@ static int __pyx_pf_4kivy_8graphics_6shader_12ShaderSource___cinit__(struct __py
  */
   __pyx_v_self->shader = -1;
 
-  /* "kivy/graphics/shader.pyx":97
+  /* "kivy/graphics/shader.pyx":95
  *     def __cinit__(self, shadertype):
  *         self.shader = -1
  *         self.shadertype = shadertype             # <<<<<<<<<<<<<<
  * 
  *     cdef set_source(self, char *source):
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_shadertype); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_shadertype); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 95; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->shadertype = __pyx_t_1;
 
-  /* "kivy/graphics/shader.pyx":95
+  /* "kivy/graphics/shader.pyx":93
  * cdef class ShaderSource:
  * 
  *     def __cinit__(self, shadertype):             # <<<<<<<<<<<<<<
@@ -2705,7 +2701,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_12ShaderSource___cinit__(struct __py
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":99
+/* "kivy/graphics/shader.pyx":97
  *         self.shadertype = shadertype
  * 
  *     cdef set_source(self, char *source):             # <<<<<<<<<<<<<<
@@ -2731,7 +2727,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_source", 0);
 
-  /* "kivy/graphics/shader.pyx":100
+  /* "kivy/graphics/shader.pyx":98
  * 
  *     cdef set_source(self, char *source):
  *         cdef GLint success = 0             # <<<<<<<<<<<<<<
@@ -2740,7 +2736,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   __pyx_v_success = 0;
 
-  /* "kivy/graphics/shader.pyx":105
+  /* "kivy/graphics/shader.pyx":103
  * 
  *         # XXX to ensure that shader is ok, read error state right now.
  *         glGetError()             # <<<<<<<<<<<<<<
@@ -2749,7 +2745,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   glGetError();
 
-  /* "kivy/graphics/shader.pyx":108
+  /* "kivy/graphics/shader.pyx":106
  * 
  *         # create and compile
  *         shader = glCreateShader(self.shadertype)             # <<<<<<<<<<<<<<
@@ -2758,7 +2754,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   __pyx_v_shader = glCreateShader(__pyx_v_self->shadertype);
 
-  /* "kivy/graphics/shader.pyx":109
+  /* "kivy/graphics/shader.pyx":107
  *         # create and compile
  *         shader = glCreateShader(self.shadertype)
  *         glShaderSource(shader, 1, <const_char_ptr*> &source, NULL)             # <<<<<<<<<<<<<<
@@ -2767,7 +2763,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   glShaderSource(__pyx_v_shader, 1, ((const char* *)(&__pyx_v_source)), NULL);
 
-  /* "kivy/graphics/shader.pyx":110
+  /* "kivy/graphics/shader.pyx":108
  *         shader = glCreateShader(self.shadertype)
  *         glShaderSource(shader, 1, <const_char_ptr*> &source, NULL)
  *         glCompileShader(shader)             # <<<<<<<<<<<<<<
@@ -2776,7 +2772,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   glCompileShader(__pyx_v_shader);
 
-  /* "kivy/graphics/shader.pyx":113
+  /* "kivy/graphics/shader.pyx":111
  * 
  *         # show any messages
  *         ctype = 'vertex' if self.shadertype == GL_VERTEX_SHADER else 'fragment'             # <<<<<<<<<<<<<<
@@ -2793,22 +2789,22 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
   __pyx_v_ctype = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":114
+  /* "kivy/graphics/shader.pyx":112
  *         # show any messages
  *         ctype = 'vertex' if self.shadertype == GL_VERTEX_SHADER else 'fragment'
  *         self.process_message('%s shader' % ctype, self.get_shader_log(shader))             # <<<<<<<<<<<<<<
  * 
  *         # ensure compilation is ok
  */
-  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_s_shader, __pyx_v_ctype); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_s_shader, __pyx_v_ctype); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *)__pyx_v_self->__pyx_vtab)->get_shader_log(__pyx_v_self, __pyx_v_shader); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *)__pyx_v_self->__pyx_vtab)->get_shader_log(__pyx_v_self, __pyx_v_shader); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *)__pyx_v_self->__pyx_vtab)->process_message(__pyx_v_self, ((PyObject*)__pyx_t_1), __pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":117
+  /* "kivy/graphics/shader.pyx":115
  * 
  *         # ensure compilation is ok
  *         glGetShaderiv(shader, GL_COMPILE_STATUS, &success)             # <<<<<<<<<<<<<<
@@ -2817,7 +2813,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   glGetShaderiv(__pyx_v_shader, GL_COMPILE_STATUS, (&__pyx_v_success));
 
-  /* "kivy/graphics/shader.pyx":119
+  /* "kivy/graphics/shader.pyx":117
  *         glGetShaderiv(shader, GL_COMPILE_STATUS, &success)
  * 
  *         if success == GL_FALSE:             # <<<<<<<<<<<<<<
@@ -2827,7 +2823,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
   __pyx_t_3 = ((__pyx_v_success == GL_FALSE) != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/shader.pyx":120
+    /* "kivy/graphics/shader.pyx":118
  * 
  *         if success == GL_FALSE:
  *             error = glGetError()             # <<<<<<<<<<<<<<
@@ -2836,29 +2832,29 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
     __pyx_v_error = glGetError();
 
-    /* "kivy/graphics/shader.pyx":121
+    /* "kivy/graphics/shader.pyx":119
  *         if success == GL_FALSE:
  *             error = glGetError()
  *             Logger.error('Shader: <%s> failed to compile (gl:%d)' % (             # <<<<<<<<<<<<<<
  *                 ctype, error))
  *             glDeleteShader(shader)
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_error); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "kivy/graphics/shader.pyx":122
+    /* "kivy/graphics/shader.pyx":120
  *             error = glGetError()
  *             Logger.error('Shader: <%s> failed to compile (gl:%d)' % (
  *                 ctype, error))             # <<<<<<<<<<<<<<
  *             glDeleteShader(shader)
  *             return
  */
-    __pyx_t_1 = __Pyx_PyInt_From_GLuint(__pyx_v_error); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyInt_From_GLuint(__pyx_v_error); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_ctype);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_ctype);
@@ -2867,14 +2863,14 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "kivy/graphics/shader.pyx":121
+    /* "kivy/graphics/shader.pyx":119
  *         if success == GL_FALSE:
  *             error = glGetError()
  *             Logger.error('Shader: <%s> failed to compile (gl:%d)' % (             # <<<<<<<<<<<<<<
  *                 ctype, error))
  *             glDeleteShader(shader)
  */
-    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_failed_to_compile_gl_d, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_failed_to_compile_gl_d, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -2888,24 +2884,24 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "kivy/graphics/shader.pyx":123
+    /* "kivy/graphics/shader.pyx":121
  *             Logger.error('Shader: <%s> failed to compile (gl:%d)' % (
  *                 ctype, error))
  *             glDeleteShader(shader)             # <<<<<<<<<<<<<<
@@ -2914,7 +2910,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
     glDeleteShader(__pyx_v_shader);
 
-    /* "kivy/graphics/shader.pyx":124
+    /* "kivy/graphics/shader.pyx":122
  *                 ctype, error))
  *             glDeleteShader(shader)
  *             return             # <<<<<<<<<<<<<<
@@ -2926,19 +2922,19 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":126
+  /* "kivy/graphics/shader.pyx":124
  *             return
  * 
  *         Logger.debug('Shader: %s compiled successfully' % ctype.capitalize())             # <<<<<<<<<<<<<<
  *         self.shader = shader
  * 
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_debug); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_debug); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ctype, __pyx_n_s_capitalize); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ctype, __pyx_n_s_capitalize); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_1))) {
@@ -2951,14 +2947,14 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_compiled_successfully, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_compiled_successfully, __pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -2972,24 +2968,24 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __Pyx_GIVEREF(__pyx_t_4); __pyx_t_4 = NULL;
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":127
+  /* "kivy/graphics/shader.pyx":125
  * 
  *         Logger.debug('Shader: %s compiled successfully' % ctype.capitalize())
  *         self.shader = shader             # <<<<<<<<<<<<<<
@@ -2998,7 +2994,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
  */
   __pyx_v_self->shader = __pyx_v_shader;
 
-  /* "kivy/graphics/shader.pyx":99
+  /* "kivy/graphics/shader.pyx":97
  *         self.shadertype = shadertype
  * 
  *     cdef set_source(self, char *source):             # <<<<<<<<<<<<<<
@@ -3024,7 +3020,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_set_source(struc
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":129
+/* "kivy/graphics/shader.pyx":127
  *         self.shader = shader
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3052,7 +3048,7 @@ static void __pyx_pf_4kivy_8graphics_6shader_12ShaderSource_2__dealloc__(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "kivy/graphics/shader.pyx":130
+  /* "kivy/graphics/shader.pyx":128
  * 
  *     def __dealloc__(self):
  *         if self.shader != -1:             # <<<<<<<<<<<<<<
@@ -3062,14 +3058,14 @@ static void __pyx_pf_4kivy_8graphics_6shader_12ShaderSource_2__dealloc__(struct 
   __pyx_t_1 = ((__pyx_v_self->shader != -1) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":131
+    /* "kivy/graphics/shader.pyx":129
  *     def __dealloc__(self):
  *         if self.shader != -1:
  *             get_context().dealloc_shader_source(self.shader)             # <<<<<<<<<<<<<<
  * 
  *     cdef int is_compiled(self):
  */
-    __pyx_t_2 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     ((struct __pyx_vtabstruct_4kivy_8graphics_7context_Context *)((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_2)->__pyx_vtab)->dealloc_shader_source(((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_2), __pyx_v_self->shader);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3077,7 +3073,7 @@ static void __pyx_pf_4kivy_8graphics_6shader_12ShaderSource_2__dealloc__(struct 
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":129
+  /* "kivy/graphics/shader.pyx":127
  *         self.shader = shader
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3094,7 +3090,7 @@ static void __pyx_pf_4kivy_8graphics_6shader_12ShaderSource_2__dealloc__(struct 
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":133
+/* "kivy/graphics/shader.pyx":131
  *             get_context().dealloc_shader_source(self.shader)
  * 
  *     cdef int is_compiled(self):             # <<<<<<<<<<<<<<
@@ -3108,7 +3104,7 @@ static int __pyx_f_4kivy_8graphics_6shader_12ShaderSource_is_compiled(struct __p
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("is_compiled", 0);
 
-  /* "kivy/graphics/shader.pyx":134
+  /* "kivy/graphics/shader.pyx":132
  * 
  *     cdef int is_compiled(self):
  *         if self.shader != -1:             # <<<<<<<<<<<<<<
@@ -3118,7 +3114,7 @@ static int __pyx_f_4kivy_8graphics_6shader_12ShaderSource_is_compiled(struct __p
   __pyx_t_1 = ((__pyx_v_self->shader != -1) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":135
+    /* "kivy/graphics/shader.pyx":133
  *     cdef int is_compiled(self):
  *         if self.shader != -1:
  *             return 1             # <<<<<<<<<<<<<<
@@ -3129,7 +3125,7 @@ static int __pyx_f_4kivy_8graphics_6shader_12ShaderSource_is_compiled(struct __p
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":136
+  /* "kivy/graphics/shader.pyx":134
  *         if self.shader != -1:
  *             return 1
  *         return 0             # <<<<<<<<<<<<<<
@@ -3139,7 +3135,7 @@ static int __pyx_f_4kivy_8graphics_6shader_12ShaderSource_is_compiled(struct __p
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":133
+  /* "kivy/graphics/shader.pyx":131
  *             get_context().dealloc_shader_source(self.shader)
  * 
  *     cdef int is_compiled(self):             # <<<<<<<<<<<<<<
@@ -3153,7 +3149,7 @@ static int __pyx_f_4kivy_8graphics_6shader_12ShaderSource_is_compiled(struct __p
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":138
+/* "kivy/graphics/shader.pyx":136
  *         return 0
  * 
  *     cdef void process_message(self, str ctype, message):             # <<<<<<<<<<<<<<
@@ -3175,14 +3171,14 @@ static void __pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message(CYTHO
   __Pyx_RefNannySetupContext("process_message", 0);
   __Pyx_INCREF(__pyx_v_message);
 
-  /* "kivy/graphics/shader.pyx":139
+  /* "kivy/graphics/shader.pyx":137
  * 
  *     cdef void process_message(self, str ctype, message):
  *         message = message.strip()             # <<<<<<<<<<<<<<
  *         if message:
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_message, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_message, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3195,39 +3191,39 @@ static void __pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message(CYTHO
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_message, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":140
+  /* "kivy/graphics/shader.pyx":138
  *     cdef void process_message(self, str ctype, message):
  *         message = message.strip()
  *         if message:             # <<<<<<<<<<<<<<
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_message); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_message); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/shader.pyx":141
+    /* "kivy/graphics/shader.pyx":139
  *         message = message.strip()
  *         if message:
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))             # <<<<<<<<<<<<<<
  * 
  *     cdef get_shader_log(self, int shader):
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_info); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_info); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_ctype);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_ctype);
@@ -3235,7 +3231,7 @@ static void __pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message(CYTHO
     __Pyx_INCREF(__pyx_v_message);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_message);
     __Pyx_GIVEREF(__pyx_v_message);
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_s, __pyx_t_2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_s, __pyx_t_2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -3249,17 +3245,17 @@ static void __pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message(CYTHO
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __Pyx_GIVEREF(__pyx_t_2); __pyx_t_2 = NULL;
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -3269,7 +3265,7 @@ static void __pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message(CYTHO
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":138
+  /* "kivy/graphics/shader.pyx":136
  *         return 0
  * 
  *     cdef void process_message(self, str ctype, message):             # <<<<<<<<<<<<<<
@@ -3291,7 +3287,7 @@ static void __pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message(CYTHO
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":143
+/* "kivy/graphics/shader.pyx":141
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))
  * 
  *     cdef get_shader_log(self, int shader):             # <<<<<<<<<<<<<<
@@ -3312,7 +3308,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_shader_log", 0);
 
-  /* "kivy/graphics/shader.pyx":149
+  /* "kivy/graphics/shader.pyx":147
  *         cdef bytes py_msg
  *         cdef int info_length
  *         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &info_length)             # <<<<<<<<<<<<<<
@@ -3321,7 +3317,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
  */
   glGetShaderiv(__pyx_v_shader, GL_INFO_LOG_LENGTH, (&__pyx_v_info_length));
 
-  /* "kivy/graphics/shader.pyx":150
+  /* "kivy/graphics/shader.pyx":148
  *         cdef int info_length
  *         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &info_length)
  *         if info_length <= 0:             # <<<<<<<<<<<<<<
@@ -3331,7 +3327,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
   __pyx_t_1 = ((__pyx_v_info_length <= 0) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":151
+    /* "kivy/graphics/shader.pyx":149
  *         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &info_length)
  *         if info_length <= 0:
  *             return ""             # <<<<<<<<<<<<<<
@@ -3344,7 +3340,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":152
+  /* "kivy/graphics/shader.pyx":150
  *         if info_length <= 0:
  *             return ""
  *         msg = <char *>malloc(info_length * sizeof(char))             # <<<<<<<<<<<<<<
@@ -3353,7 +3349,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
  */
   __pyx_v_msg = ((char *)malloc((__pyx_v_info_length * (sizeof(char)))));
 
-  /* "kivy/graphics/shader.pyx":153
+  /* "kivy/graphics/shader.pyx":151
  *             return ""
  *         msg = <char *>malloc(info_length * sizeof(char))
  *         if msg == NULL:             # <<<<<<<<<<<<<<
@@ -3363,7 +3359,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
   __pyx_t_1 = ((__pyx_v_msg == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":154
+    /* "kivy/graphics/shader.pyx":152
  *         msg = <char *>malloc(info_length * sizeof(char))
  *         if msg == NULL:
  *             return ""             # <<<<<<<<<<<<<<
@@ -3376,7 +3372,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":155
+  /* "kivy/graphics/shader.pyx":153
  *         if msg == NULL:
  *             return ""
  *         msg[0] = "\0"             # <<<<<<<<<<<<<<
@@ -3385,7 +3381,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
  */
   (__pyx_v_msg[0]) = '\x00';
 
-  /* "kivy/graphics/shader.pyx":156
+  /* "kivy/graphics/shader.pyx":154
  *             return ""
  *         msg[0] = "\0"
  *         glGetShaderInfoLog(shader, info_length, NULL, msg)             # <<<<<<<<<<<<<<
@@ -3394,19 +3390,19 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
  */
   glGetShaderInfoLog(__pyx_v_shader, __pyx_v_info_length, NULL, __pyx_v_msg);
 
-  /* "kivy/graphics/shader.pyx":157
+  /* "kivy/graphics/shader.pyx":155
  *         msg[0] = "\0"
  *         glGetShaderInfoLog(shader, info_length, NULL, msg)
  *         py_msg = msg             # <<<<<<<<<<<<<<
  *         free(msg)
  *         return py_msg
  */
-  __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_msg); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 157; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyBytes_FromString(__pyx_v_msg); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 155; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_py_msg = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":158
+  /* "kivy/graphics/shader.pyx":156
  *         glGetShaderInfoLog(shader, info_length, NULL, msg)
  *         py_msg = msg
  *         free(msg)             # <<<<<<<<<<<<<<
@@ -3415,7 +3411,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
  */
   free(__pyx_v_msg);
 
-  /* "kivy/graphics/shader.pyx":159
+  /* "kivy/graphics/shader.pyx":157
  *         py_msg = msg
  *         free(msg)
  *         return py_msg             # <<<<<<<<<<<<<<
@@ -3427,7 +3423,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
   __pyx_r = __pyx_v_py_msg;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":143
+  /* "kivy/graphics/shader.pyx":141
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))
  * 
  *     cdef get_shader_log(self, int shader):             # <<<<<<<<<<<<<<
@@ -3447,7 +3443,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log(C
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":171
+/* "kivy/graphics/shader.pyx":169
  *             Source code for fragment shader
  *     '''
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -3480,7 +3476,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "kivy/graphics/shader.pyx":172
+  /* "kivy/graphics/shader.pyx":170
  *     '''
  *     def __cinit__(self):
  *         self._success = 0             # <<<<<<<<<<<<<<
@@ -3489,7 +3485,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
  */
   __pyx_v_self->_success = 0;
 
-  /* "kivy/graphics/shader.pyx":173
+  /* "kivy/graphics/shader.pyx":171
  *     def __cinit__(self):
  *         self._success = 0
  *         self.program = 0             # <<<<<<<<<<<<<<
@@ -3498,7 +3494,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
  */
   __pyx_v_self->program = 0;
 
-  /* "kivy/graphics/shader.pyx":174
+  /* "kivy/graphics/shader.pyx":172
  *         self._success = 0
  *         self.program = 0
  *         self.vertex_shader = None             # <<<<<<<<<<<<<<
@@ -3511,7 +3507,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
   __Pyx_DECREF(((PyObject *)__pyx_v_self->vertex_shader));
   __pyx_v_self->vertex_shader = ((struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *)Py_None);
 
-  /* "kivy/graphics/shader.pyx":175
+  /* "kivy/graphics/shader.pyx":173
  *         self.program = 0
  *         self.vertex_shader = None
  *         self.fragment_shader = None             # <<<<<<<<<<<<<<
@@ -3524,14 +3520,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
   __Pyx_DECREF(((PyObject *)__pyx_v_self->fragment_shader));
   __pyx_v_self->fragment_shader = ((struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *)Py_None);
 
-  /* "kivy/graphics/shader.pyx":176
+  /* "kivy/graphics/shader.pyx":174
  *         self.vertex_shader = None
  *         self.fragment_shader = None
  *         self.uniform_locations = dict()             # <<<<<<<<<<<<<<
  *         self.uniform_values = dict()
  * 
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 174; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->uniform_locations);
@@ -3539,14 +3535,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
   __pyx_v_self->uniform_locations = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":177
+  /* "kivy/graphics/shader.pyx":175
  *         self.fragment_shader = None
  *         self.uniform_locations = dict()
  *         self.uniform_values = dict()             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, str vs=None, str fs=None, str source=None):
  */
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 177; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 175; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->uniform_values);
@@ -3554,7 +3550,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
   __pyx_v_self->uniform_values = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":171
+  /* "kivy/graphics/shader.pyx":169
  *             Source code for fragment shader
  *     '''
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -3574,7 +3570,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader___cinit__(struct __pyx_obj_4
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":179
+/* "kivy/graphics/shader.pyx":177
  *         self.uniform_values = dict()
  * 
  *     def __init__(self, str vs=None, str fs=None, str source=None):             # <<<<<<<<<<<<<<
@@ -3629,7 +3625,7 @@ static int __pyx_pw_4kivy_8graphics_6shader_6Shader_3__init__(PyObject *__pyx_v_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 177; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3646,15 +3642,15 @@ static int __pyx_pw_4kivy_8graphics_6shader_6Shader_3__init__(PyObject *__pyx_v_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 177; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy.graphics.shader.Shader.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_vs), (&PyString_Type), 1, "vs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fs), (&PyString_Type), 1, "fs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_source), (&PyString_Type), 1, "source", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_vs), (&PyString_Type), 1, "vs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 177; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_fs), (&PyString_Type), 1, "fs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 177; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_source), (&PyString_Type), 1, "source", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 177; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_4kivy_8graphics_6shader_6Shader_2__init__(((struct __pyx_obj_4kivy_8graphics_6shader_Shader *)__pyx_v_self), __pyx_v_vs, __pyx_v_fs, __pyx_v_source);
 
   /* function exit code */
@@ -3675,7 +3671,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2__init__(struct __pyx_obj_4
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "kivy/graphics/shader.pyx":180
+  /* "kivy/graphics/shader.pyx":178
  * 
  *     def __init__(self, str vs=None, str fs=None, str source=None):
  *         self.program = glCreateProgram()             # <<<<<<<<<<<<<<
@@ -3684,29 +3680,29 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2__init__(struct __pyx_obj_4
  */
   __pyx_v_self->program = glCreateProgram();
 
-  /* "kivy/graphics/shader.pyx":181
+  /* "kivy/graphics/shader.pyx":179
  *     def __init__(self, str vs=None, str fs=None, str source=None):
  *         self.program = glCreateProgram()
  *         if source:             # <<<<<<<<<<<<<<
  *             self.source = source
  *         else:
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_source); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 181; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_source); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 179; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":182
+    /* "kivy/graphics/shader.pyx":180
  *         self.program = glCreateProgram()
  *         if source:
  *             self.source = source             # <<<<<<<<<<<<<<
  *         else:
  *             self._source = None
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source, __pyx_v_source) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_source, __pyx_v_source) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     goto __pyx_L3;
   }
   /*else*/ {
 
-    /* "kivy/graphics/shader.pyx":184
+    /* "kivy/graphics/shader.pyx":182
  *             self.source = source
  *         else:
  *             self._source = None             # <<<<<<<<<<<<<<
@@ -3719,27 +3715,27 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2__init__(struct __pyx_obj_4
     __Pyx_DECREF(__pyx_v_self->_source);
     __pyx_v_self->_source = Py_None;
 
-    /* "kivy/graphics/shader.pyx":185
+    /* "kivy/graphics/shader.pyx":183
  *         else:
  *             self._source = None
  *             self.fs = fs             # <<<<<<<<<<<<<<
  *             self.vs = vs
  * 
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs, __pyx_v_fs) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 185; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs, __pyx_v_fs) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 183; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/graphics/shader.pyx":186
+    /* "kivy/graphics/shader.pyx":184
  *             self._source = None
  *             self.fs = fs
  *             self.vs = vs             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs, __pyx_v_vs) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 186; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs, __pyx_v_vs) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 184; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":179
+  /* "kivy/graphics/shader.pyx":177
  *         self.uniform_values = dict()
  * 
  *     def __init__(self, str vs=None, str fs=None, str source=None):             # <<<<<<<<<<<<<<
@@ -3758,7 +3754,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2__init__(struct __pyx_obj_4
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":188
+/* "kivy/graphics/shader.pyx":186
  *             self.vs = vs
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3785,19 +3781,19 @@ static void __pyx_pf_4kivy_8graphics_6shader_6Shader_4__dealloc__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "kivy/graphics/shader.pyx":189
+  /* "kivy/graphics/shader.pyx":187
  * 
  *     def __dealloc__(self):
  *         get_context().dealloc_shader(self)             # <<<<<<<<<<<<<<
  * 
  *     cdef void reload(self):
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 189; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((PyObject *)__pyx_f_4kivy_8graphics_7context_get_context(0)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 187; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   ((struct __pyx_vtabstruct_4kivy_8graphics_7context_Context *)((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_1)->__pyx_vtab)->dealloc_shader(((struct __pyx_obj_4kivy_8graphics_7context_Context *)__pyx_t_1), __pyx_v_self);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":188
+  /* "kivy/graphics/shader.pyx":186
  *             self.vs = vs
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3814,7 +3810,7 @@ static void __pyx_pf_4kivy_8graphics_6shader_6Shader_4__dealloc__(struct __pyx_o
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":191
+/* "kivy/graphics/shader.pyx":189
  *         get_context().dealloc_shader(self)
  * 
  *     cdef void reload(self):             # <<<<<<<<<<<<<<
@@ -3831,7 +3827,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reload", 0);
 
-  /* "kivy/graphics/shader.pyx":195
+  /* "kivy/graphics/shader.pyx":193
  *         # is called only when the gl context is reseted. If we do it, we might
  *         # free newly created shaders (id collision)
  *         glUseProgram(0)             # <<<<<<<<<<<<<<
@@ -3840,17 +3836,17 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
  */
   glUseProgram(0);
 
-  /* "kivy/graphics/shader.pyx":198
+  /* "kivy/graphics/shader.pyx":196
  * 
  *         # avoid shaders to be collected
  *         if self.vertex_shader:             # <<<<<<<<<<<<<<
  *             self.vertex_shader.shader = -1
  *             self.vertex_shader = None
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->vertex_shader)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->vertex_shader)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 196; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":199
+    /* "kivy/graphics/shader.pyx":197
  *         # avoid shaders to be collected
  *         if self.vertex_shader:
  *             self.vertex_shader.shader = -1             # <<<<<<<<<<<<<<
@@ -3859,7 +3855,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
  */
     __pyx_v_self->vertex_shader->shader = -1;
 
-    /* "kivy/graphics/shader.pyx":200
+    /* "kivy/graphics/shader.pyx":198
  *         if self.vertex_shader:
  *             self.vertex_shader.shader = -1
  *             self.vertex_shader = None             # <<<<<<<<<<<<<<
@@ -3875,17 +3871,17 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":201
+  /* "kivy/graphics/shader.pyx":199
  *             self.vertex_shader.shader = -1
  *             self.vertex_shader = None
  *         if self.fragment_shader:             # <<<<<<<<<<<<<<
  *             self.fragment_shader.shader = -1
  *             self.fragment_shader = None
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->fragment_shader)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->fragment_shader)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 199; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":202
+    /* "kivy/graphics/shader.pyx":200
  *             self.vertex_shader = None
  *         if self.fragment_shader:
  *             self.fragment_shader.shader = -1             # <<<<<<<<<<<<<<
@@ -3894,7 +3890,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
  */
     __pyx_v_self->fragment_shader->shader = -1;
 
-    /* "kivy/graphics/shader.pyx":203
+    /* "kivy/graphics/shader.pyx":201
  *         if self.fragment_shader:
  *             self.fragment_shader.shader = -1
  *             self.fragment_shader = None             # <<<<<<<<<<<<<<
@@ -3910,14 +3906,14 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/shader.pyx":206
+  /* "kivy/graphics/shader.pyx":204
  * 
  *         #self.uniform_values = dict()
  *         self.uniform_locations = dict()             # <<<<<<<<<<<<<<
  *         self._success = 0
  *         self._current_vertex_format = None
  */
-  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->uniform_locations);
@@ -3925,7 +3921,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
   __pyx_v_self->uniform_locations = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":207
+  /* "kivy/graphics/shader.pyx":205
  *         #self.uniform_values = dict()
  *         self.uniform_locations = dict()
  *         self._success = 0             # <<<<<<<<<<<<<<
@@ -3934,7 +3930,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
  */
   __pyx_v_self->_success = 0;
 
-  /* "kivy/graphics/shader.pyx":208
+  /* "kivy/graphics/shader.pyx":206
  *         self.uniform_locations = dict()
  *         self._success = 0
  *         self._current_vertex_format = None             # <<<<<<<<<<<<<<
@@ -3947,7 +3943,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
   __Pyx_DECREF(((PyObject *)__pyx_v_self->_current_vertex_format));
   __pyx_v_self->_current_vertex_format = ((struct __pyx_obj_4kivy_8graphics_6vertex_VertexFormat *)Py_None);
 
-  /* "kivy/graphics/shader.pyx":209
+  /* "kivy/graphics/shader.pyx":207
  *         self._success = 0
  *         self._current_vertex_format = None
  *         self.program = glCreateProgram()             # <<<<<<<<<<<<<<
@@ -3956,31 +3952,31 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
  */
   __pyx_v_self->program = glCreateProgram();
 
-  /* "kivy/graphics/shader.pyx":210
+  /* "kivy/graphics/shader.pyx":208
  *         self._current_vertex_format = None
  *         self.program = glCreateProgram()
  *         self.fs = self.fs             # <<<<<<<<<<<<<<
  *         self.vs = self.vs
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 210; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":211
+  /* "kivy/graphics/shader.pyx":209
  *         self.program = glCreateProgram()
  *         self.fs = self.fs
  *         self.vs = self.vs             # <<<<<<<<<<<<<<
  * 
  *     cdef void use(self):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":191
+  /* "kivy/graphics/shader.pyx":189
  *         get_context().dealloc_shader(self)
  * 
  *     cdef void reload(self):             # <<<<<<<<<<<<<<
@@ -3997,7 +3993,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_reload(struct __pyx_obj_4kiv
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":213
+/* "kivy/graphics/shader.pyx":211
  *         self.vs = self.vs
  * 
  *     cdef void use(self):             # <<<<<<<<<<<<<<
@@ -4021,7 +4017,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("use", 0);
 
-  /* "kivy/graphics/shader.pyx":216
+  /* "kivy/graphics/shader.pyx":214
  *         '''Use the shader.
  *         '''
  *         glUseProgram(self.program)             # <<<<<<<<<<<<<<
@@ -4030,7 +4026,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
  */
   glUseProgram(__pyx_v_self->program);
 
-  /* "kivy/graphics/shader.pyx":217
+  /* "kivy/graphics/shader.pyx":215
  *         '''
  *         glUseProgram(self.program)
  *         log_gl_error('Shader.use-glUseProgram')             # <<<<<<<<<<<<<<
@@ -4039,7 +4035,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
  */
   __pyx_f_4kivy_8graphics_6shader_log_gl_error(__pyx_kp_s_Shader_use_glUseProgram);
 
-  /* "kivy/graphics/shader.pyx":218
+  /* "kivy/graphics/shader.pyx":216
  *         glUseProgram(self.program)
  *         log_gl_error('Shader.use-glUseProgram')
  *         for k, v in self.uniform_values.iteritems():             # <<<<<<<<<<<<<<
@@ -4049,9 +4045,9 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
   __pyx_t_2 = 0;
   if (unlikely(__pyx_v_self->uniform_values == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "iteritems");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_5 = __Pyx_dict_iterator(__pyx_v_self->uniform_values, 1, __pyx_n_s_iteritems, (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_dict_iterator(__pyx_v_self->uniform_values, 1, __pyx_n_s_iteritems, (&__pyx_t_3), (&__pyx_t_4)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_1);
   __pyx_t_1 = __pyx_t_5;
@@ -4059,7 +4055,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
   while (1) {
     __pyx_t_7 = __Pyx_dict_iter_next(__pyx_t_1, __pyx_t_3, &__pyx_t_2, &__pyx_t_5, &__pyx_t_6, NULL, __pyx_t_4);
     if (unlikely(__pyx_t_7 == 0)) break;
-    if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_5);
@@ -4067,19 +4063,19 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
     __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "kivy/graphics/shader.pyx":219
+    /* "kivy/graphics/shader.pyx":217
  *         log_gl_error('Shader.use-glUseProgram')
  *         for k, v in self.uniform_values.iteritems():
  *             self.upload_uniform(k, v)             # <<<<<<<<<<<<<<
  *         IF USE_GLEW == 1:
  *             # XXX Very very weird bug. On virtualbox / win7 / glew, if we don't call
  */
-    if (!(likely(PyString_CheckExact(__pyx_v_k))||((__pyx_v_k) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_k)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->upload_uniform(__pyx_v_self, ((PyObject*)__pyx_v_k), __pyx_v_v); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyString_CheckExact(__pyx_v_k))||((__pyx_v_k) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_k)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->upload_uniform(__pyx_v_self, ((PyObject*)__pyx_v_k), __pyx_v_v); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":213
+  /* "kivy/graphics/shader.pyx":211
  *         self.vs = self.vs
  * 
  *     cdef void use(self):             # <<<<<<<<<<<<<<
@@ -4100,7 +4096,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_use(struct __pyx_obj_4kivy_8
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":231
+/* "kivy/graphics/shader.pyx":229
  *             glFlush()
  * 
  *     cdef void stop(self):             # <<<<<<<<<<<<<<
@@ -4112,7 +4108,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_stop(CYTHON_UNUSED struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("stop", 0);
 
-  /* "kivy/graphics/shader.pyx":234
+  /* "kivy/graphics/shader.pyx":232
  *         '''Stop using the shader.
  *         '''
  *         glUseProgram(0)             # <<<<<<<<<<<<<<
@@ -4121,7 +4117,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_stop(CYTHON_UNUSED struct __
  */
   glUseProgram(0);
 
-  /* "kivy/graphics/shader.pyx":235
+  /* "kivy/graphics/shader.pyx":233
  *         '''
  *         glUseProgram(0)
  *         log_gl_error('Shader.stop-glUseProgram')             # <<<<<<<<<<<<<<
@@ -4130,7 +4126,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_stop(CYTHON_UNUSED struct __
  */
   __pyx_f_4kivy_8graphics_6shader_log_gl_error(__pyx_kp_s_Shader_stop_glUseProgram);
 
-  /* "kivy/graphics/shader.pyx":231
+  /* "kivy/graphics/shader.pyx":229
  *             glFlush()
  * 
  *     cdef void stop(self):             # <<<<<<<<<<<<<<
@@ -4142,7 +4138,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_stop(CYTHON_UNUSED struct __
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":237
+/* "kivy/graphics/shader.pyx":235
  *         log_gl_error('Shader.stop-glUseProgram')
  * 
  *     cdef int set_uniform(self, str name, value) except -1:             # <<<<<<<<<<<<<<
@@ -4151,7 +4147,6 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_stop(CYTHON_UNUSED struct __
  */
 
 static int __pyx_f_4kivy_8graphics_6shader_6Shader_set_uniform(struct __pyx_obj_4kivy_8graphics_6shader_Shader *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v_value) {
-  GLint __pyx_v_data;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4165,18 +4160,18 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_set_uniform(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_uniform", 0);
 
-  /* "kivy/graphics/shader.pyx":238
+  /* "kivy/graphics/shader.pyx":236
  * 
  *     cdef int set_uniform(self, str name, value) except -1:
  *         if name in self.uniform_values and self.uniform_values[name] == value:             # <<<<<<<<<<<<<<
  *             return 0
- *         cdef GLint data
+ *         self.uniform_values[name] = value
  */
   if (unlikely(__pyx_v_self->uniform_values == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_2 = (__Pyx_PyDict_Contains(__pyx_v_name, __pyx_v_self->uniform_values, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = (__Pyx_PyDict_Contains(__pyx_v_name, __pyx_v_self->uniform_values, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
   } else {
@@ -4185,101 +4180,52 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_set_uniform(struct __pyx_obj_
   }
   if (unlikely(__pyx_v_self->uniform_values == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_self->uniform_values, __pyx_v_name); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_self->uniform_values, __pyx_v_name); if (unlikely(__pyx_t_4 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v_value, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_4, __pyx_v_value, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":239
+    /* "kivy/graphics/shader.pyx":237
  *     cdef int set_uniform(self, str name, value) except -1:
  *         if name in self.uniform_values and self.uniform_values[name] == value:
  *             return 0             # <<<<<<<<<<<<<<
- *         cdef GLint data
- *         glGetIntegerv(GL_CURRENT_PROGRAM, &data)
+ *         self.uniform_values[name] = value
+ *         self.upload_uniform(name, value)
  */
     __pyx_r = 0;
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":241
+  /* "kivy/graphics/shader.pyx":238
+ *         if name in self.uniform_values and self.uniform_values[name] == value:
  *             return 0
- *         cdef GLint data
- *         glGetIntegerv(GL_CURRENT_PROGRAM, &data)             # <<<<<<<<<<<<<<
- *         log_gl_error('Shader.set_uniform-glGetIntegerv')
- *         if data != self.program:
- */
-  glGetIntegerv(GL_CURRENT_PROGRAM, (&__pyx_v_data));
-
-  /* "kivy/graphics/shader.pyx":242
- *         cdef GLint data
- *         glGetIntegerv(GL_CURRENT_PROGRAM, &data)
- *         log_gl_error('Shader.set_uniform-glGetIntegerv')             # <<<<<<<<<<<<<<
- *         if data != self.program:
- *             glUseProgram(self.program)
- */
-  __pyx_f_4kivy_8graphics_6shader_log_gl_error(__pyx_kp_s_Shader_set_uniform_glGetIntegerv);
-
-  /* "kivy/graphics/shader.pyx":243
- *         glGetIntegerv(GL_CURRENT_PROGRAM, &data)
- *         log_gl_error('Shader.set_uniform-glGetIntegerv')
- *         if data != self.program:             # <<<<<<<<<<<<<<
- *             glUseProgram(self.program)
- *             log_gl_error('Shader.set_uniform-glUseProgram')
- */
-  __pyx_t_1 = ((__pyx_v_data != __pyx_v_self->program) != 0);
-  if (__pyx_t_1) {
-
-    /* "kivy/graphics/shader.pyx":244
- *         log_gl_error('Shader.set_uniform-glGetIntegerv')
- *         if data != self.program:
- *             glUseProgram(self.program)             # <<<<<<<<<<<<<<
- *             log_gl_error('Shader.set_uniform-glUseProgram')
- *         self.uniform_values[name] = value
- */
-    glUseProgram(__pyx_v_self->program);
-
-    /* "kivy/graphics/shader.pyx":245
- *         if data != self.program:
- *             glUseProgram(self.program)
- *             log_gl_error('Shader.set_uniform-glUseProgram')             # <<<<<<<<<<<<<<
- *         self.uniform_values[name] = value
- *         self.upload_uniform(name, value)
- */
-    __pyx_f_4kivy_8graphics_6shader_log_gl_error(__pyx_kp_s_Shader_set_uniform_glUseProgram);
-    goto __pyx_L6;
-  }
-  __pyx_L6:;
-
-  /* "kivy/graphics/shader.pyx":246
- *             glUseProgram(self.program)
- *             log_gl_error('Shader.set_uniform-glUseProgram')
  *         self.uniform_values[name] = value             # <<<<<<<<<<<<<<
  *         self.upload_uniform(name, value)
  *         return 0
  */
   if (unlikely(__pyx_v_self->uniform_values == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_self->uniform_values, __pyx_v_name, __pyx_v_value) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(PyDict_SetItem(__pyx_v_self->uniform_values, __pyx_v_name, __pyx_v_value) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":247
- *             log_gl_error('Shader.set_uniform-glUseProgram')
+  /* "kivy/graphics/shader.pyx":239
+ *             return 0
  *         self.uniform_values[name] = value
  *         self.upload_uniform(name, value)             # <<<<<<<<<<<<<<
  *         return 0
  * 
  */
-  __pyx_t_6 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->upload_uniform(__pyx_v_self, __pyx_v_name, __pyx_v_value); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 247; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->upload_uniform(__pyx_v_self, __pyx_v_name, __pyx_v_value); if (unlikely(__pyx_t_6 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 239; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":248
+  /* "kivy/graphics/shader.pyx":240
  *         self.uniform_values[name] = value
  *         self.upload_uniform(name, value)
  *         return 0             # <<<<<<<<<<<<<<
@@ -4289,7 +4235,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_set_uniform(struct __pyx_obj_
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":237
+  /* "kivy/graphics/shader.pyx":235
  *         log_gl_error('Shader.stop-glUseProgram')
  * 
  *     cdef int set_uniform(self, str name, value) except -1:             # <<<<<<<<<<<<<<
@@ -4308,7 +4254,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_set_uniform(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":250
+/* "kivy/graphics/shader.pyx":242
  *         return 0
  * 
  *     cdef int upload_uniform(self, str name, value) except -1:             # <<<<<<<<<<<<<<
@@ -4367,7 +4313,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("upload_uniform", 0);
 
-  /* "kivy/graphics/shader.pyx":261
+  /* "kivy/graphics/shader.pyx":253
  *         cdef GLfloat *float_list
  *         cdef GLint *int_list
  *         val_type = type(value)             # <<<<<<<<<<<<<<
@@ -4377,7 +4323,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_v_value)));
   __pyx_v_val_type = ((PyObject*)((PyObject *)Py_TYPE(__pyx_v_value)));
 
-  /* "kivy/graphics/shader.pyx":262
+  /* "kivy/graphics/shader.pyx":254
  *         cdef GLint *int_list
  *         val_type = type(value)
  *         loc = self.uniform_locations.get(name, -1)             # <<<<<<<<<<<<<<
@@ -4386,15 +4332,15 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
   if (unlikely(__pyx_v_self->uniform_locations == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "get");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_self->uniform_locations, __pyx_v_name, __pyx_int_neg_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_self->uniform_locations, __pyx_v_name, __pyx_int_neg_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_loc = __pyx_t_2;
 
-  /* "kivy/graphics/shader.pyx":263
+  /* "kivy/graphics/shader.pyx":255
  *         val_type = type(value)
  *         loc = self.uniform_locations.get(name, -1)
  *         if loc == -1:             # <<<<<<<<<<<<<<
@@ -4404,20 +4350,20 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_3 = ((__pyx_v_loc == -1) != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/shader.pyx":264
+    /* "kivy/graphics/shader.pyx":256
  *         loc = self.uniform_locations.get(name, -1)
  *         if loc == -1:
  *             loc = self.get_uniform_loc(name)             # <<<<<<<<<<<<<<
  * 
  *         #Logger.debug('Shader: uploading uniform %s (loc=%d, value=%r)' % (name, loc, value))
  */
-    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->get_uniform_loc(__pyx_v_self, __pyx_v_name); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->get_uniform_loc(__pyx_v_self, __pyx_v_name); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 256; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_loc = __pyx_t_2;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":267
+  /* "kivy/graphics/shader.pyx":259
  * 
  *         #Logger.debug('Shader: uploading uniform %s (loc=%d, value=%r)' % (name, loc, value))
  *         if loc == -1:             # <<<<<<<<<<<<<<
@@ -4427,7 +4373,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_3 = ((__pyx_v_loc == -1) != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/shader.pyx":269
+    /* "kivy/graphics/shader.pyx":261
  *         if loc == -1:
  *             #Logger.debug('Shader: -> ignored')
  *             return 0             # <<<<<<<<<<<<<<
@@ -4438,7 +4384,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":272
+  /* "kivy/graphics/shader.pyx":264
  *         #Logger.debug('Shader: -> (gl:%d) %s' % (glGetError(), str(value)))
  * 
  *         if val_type is Matrix:             # <<<<<<<<<<<<<<
@@ -4449,35 +4395,35 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/shader.pyx":273
+    /* "kivy/graphics/shader.pyx":265
  * 
  *         if val_type is Matrix:
  *             self.upload_uniform_matrix(loc, value)             # <<<<<<<<<<<<<<
  *             log_gl_error('Shader.upload_uniform-glUniformMatrix4fv'
  *                 ' {name}'.format(name=name))
  */
-    if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_4kivy_8graphics_14transformation_Matrix))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->upload_uniform_matrix(__pyx_v_self, __pyx_v_loc, ((struct __pyx_obj_4kivy_8graphics_14transformation_Matrix *)__pyx_v_value));
 
-    /* "kivy/graphics/shader.pyx":275
+    /* "kivy/graphics/shader.pyx":267
  *             self.upload_uniform_matrix(loc, value)
  *             log_gl_error('Shader.upload_uniform-glUniformMatrix4fv'
  *                 ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *         elif val_type is int:
  *             glUniform1i(loc, value)
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniformM, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniformM, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/graphics/shader.pyx":274
+    /* "kivy/graphics/shader.pyx":266
  *         if val_type is Matrix:
  *             self.upload_uniform_matrix(loc, value)
  *             log_gl_error('Shader.upload_uniform-glUniformMatrix4fv'             # <<<<<<<<<<<<<<
@@ -4489,7 +4435,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     goto __pyx_L5;
   }
 
-  /* "kivy/graphics/shader.pyx":276
+  /* "kivy/graphics/shader.pyx":268
  *             log_gl_error('Shader.upload_uniform-glUniformMatrix4fv'
  *                 ' {name}'.format(name=name))
  *         elif val_type is int:             # <<<<<<<<<<<<<<
@@ -4500,35 +4446,35 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/shader.pyx":277
+    /* "kivy/graphics/shader.pyx":269
  *                 ' {name}'.format(name=name))
  *         elif val_type is int:
  *             glUniform1i(loc, value)             # <<<<<<<<<<<<<<
  *             log_gl_error('Shader.upload_uniform-glUniform1i'
  *                 ' {name}'.format(name=name))
  */
-    __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_v_value); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_v_value); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 269; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     glUniform1i(__pyx_v_loc, __pyx_t_7);
 
-    /* "kivy/graphics/shader.pyx":279
+    /* "kivy/graphics/shader.pyx":271
  *             glUniform1i(loc, value)
  *             log_gl_error('Shader.upload_uniform-glUniform1i'
  *                 ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *         elif val_type is float:
  *             glUniform1f(loc, value)
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/graphics/shader.pyx":278
+    /* "kivy/graphics/shader.pyx":270
  *         elif val_type is int:
  *             glUniform1i(loc, value)
  *             log_gl_error('Shader.upload_uniform-glUniform1i'             # <<<<<<<<<<<<<<
@@ -4540,7 +4486,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     goto __pyx_L5;
   }
 
-  /* "kivy/graphics/shader.pyx":280
+  /* "kivy/graphics/shader.pyx":272
  *             log_gl_error('Shader.upload_uniform-glUniform1i'
  *                 ' {name}'.format(name=name))
  *         elif val_type is float:             # <<<<<<<<<<<<<<
@@ -4551,35 +4497,35 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/shader.pyx":281
+    /* "kivy/graphics/shader.pyx":273
  *                 ' {name}'.format(name=name))
  *         elif val_type is float:
  *             glUniform1f(loc, value)             # <<<<<<<<<<<<<<
  *             log_gl_error('Shader.upload_uniform-glUniform1f'
  *                 ' {name}'.format(name=name))
  */
-    __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_v_value); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 281; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_v_value); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     glUniform1f(__pyx_v_loc, __pyx_t_8);
 
-    /* "kivy/graphics/shader.pyx":283
+    /* "kivy/graphics/shader.pyx":275
  *             glUniform1f(loc, value)
  *             log_gl_error('Shader.upload_uniform-glUniform1f'
  *                 ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *         elif val_type is list:
  *             list_value = value
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/graphics/shader.pyx":282
+    /* "kivy/graphics/shader.pyx":274
  *         elif val_type is float:
  *             glUniform1f(loc, value)
  *             log_gl_error('Shader.upload_uniform-glUniform1f'             # <<<<<<<<<<<<<<
@@ -4591,7 +4537,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     goto __pyx_L5;
   }
 
-  /* "kivy/graphics/shader.pyx":284
+  /* "kivy/graphics/shader.pyx":276
  *             log_gl_error('Shader.upload_uniform-glUniform1f'
  *                 ' {name}'.format(name=name))
  *         elif val_type is list:             # <<<<<<<<<<<<<<
@@ -4602,20 +4548,20 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/shader.pyx":285
+    /* "kivy/graphics/shader.pyx":277
  *                 ' {name}'.format(name=name))
  *         elif val_type is list:
  *             list_value = value             # <<<<<<<<<<<<<<
  *             val_type = type(list_value[0])
  *             vec_size = len(list_value)
  */
-    if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_6 = __pyx_v_value;
     __Pyx_INCREF(__pyx_t_6);
     __pyx_v_list_value = ((PyObject*)__pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "kivy/graphics/shader.pyx":286
+    /* "kivy/graphics/shader.pyx":278
  *         elif val_type is list:
  *             list_value = value
  *             val_type = type(list_value[0])             # <<<<<<<<<<<<<<
@@ -4624,15 +4570,15 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
     if (unlikely(__pyx_v_list_value == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_list_value, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(__pyx_t_6 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 286; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_list_value, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(__pyx_t_6 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_6)));
     __Pyx_DECREF_SET(__pyx_v_val_type, ((PyObject*)((PyObject *)Py_TYPE(__pyx_t_6))));
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "kivy/graphics/shader.pyx":287
+    /* "kivy/graphics/shader.pyx":279
  *             list_value = value
  *             val_type = type(list_value[0])
  *             vec_size = len(list_value)             # <<<<<<<<<<<<<<
@@ -4641,12 +4587,12 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
     if (unlikely(__pyx_v_list_value == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_9 = PyList_GET_SIZE(__pyx_v_list_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyList_GET_SIZE(__pyx_v_list_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_vec_size = __pyx_t_9;
 
-    /* "kivy/graphics/shader.pyx":288
+    /* "kivy/graphics/shader.pyx":280
  *             val_type = type(list_value[0])
  *             vec_size = len(list_value)
  *             if val_type is float:             # <<<<<<<<<<<<<<
@@ -4657,7 +4603,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/shader.pyx":299
+      /* "kivy/graphics/shader.pyx":291
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -4666,7 +4612,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
       switch (__pyx_v_vec_size) {
 
-        /* "kivy/graphics/shader.pyx":289
+        /* "kivy/graphics/shader.pyx":281
  *             vec_size = len(list_value)
  *             if val_type is float:
  *                 if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -4675,7 +4621,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 2:
 
-        /* "kivy/graphics/shader.pyx":290
+        /* "kivy/graphics/shader.pyx":282
  *             if val_type is float:
  *                 if vec_size == 2:
  *                     f1, f2 = list_value             # <<<<<<<<<<<<<<
@@ -4692,7 +4638,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_6 = PyList_GET_ITEM(sequence, 0); 
@@ -4700,22 +4646,22 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_6);
           __Pyx_INCREF(__pyx_t_5);
           #else
-          __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_f1 = __pyx_t_10;
         __pyx_v_f2 = __pyx_t_11;
 
-        /* "kivy/graphics/shader.pyx":291
+        /* "kivy/graphics/shader.pyx":283
  *                 if vec_size == 2:
  *                     f1, f2 = list_value
  *                     glUniform2f(loc, f1, f2)             # <<<<<<<<<<<<<<
@@ -4724,25 +4670,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform2f(__pyx_v_loc, __pyx_v_f1, __pyx_v_f2);
 
-        /* "kivy/graphics/shader.pyx":293
+        /* "kivy/graphics/shader.pyx":285
  *                     glUniform2f(loc, f1, f2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2f'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 3:
  *                     f1, f2, f3 = list_value
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
-        if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":292
+        /* "kivy/graphics/shader.pyx":284
  *                     f1, f2 = list_value
  *                     glUniform2f(loc, f1, f2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2f'             # <<<<<<<<<<<<<<
@@ -4753,7 +4699,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":294
+        /* "kivy/graphics/shader.pyx":286
  *                     log_gl_error('Shader.upload_uniform-glUniform2f'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -4762,7 +4708,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 3:
 
-        /* "kivy/graphics/shader.pyx":295
+        /* "kivy/graphics/shader.pyx":287
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:
  *                     f1, f2, f3 = list_value             # <<<<<<<<<<<<<<
@@ -4779,7 +4725,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 3)) {
             if (size > 3) __Pyx_RaiseTooManyValuesError(3);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_1 = PyList_GET_ITEM(sequence, 0); 
@@ -4789,27 +4735,27 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_6);
           __Pyx_INCREF(__pyx_t_5);
           #else
-          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_f1 = __pyx_t_11;
         __pyx_v_f2 = __pyx_t_10;
         __pyx_v_f3 = __pyx_t_12;
 
-        /* "kivy/graphics/shader.pyx":296
+        /* "kivy/graphics/shader.pyx":288
  *                 elif vec_size == 3:
  *                     f1, f2, f3 = list_value
  *                     glUniform3f(loc, f1, f2, f3)             # <<<<<<<<<<<<<<
@@ -4818,25 +4764,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform3f(__pyx_v_loc, __pyx_v_f1, __pyx_v_f2, __pyx_v_f3);
 
-        /* "kivy/graphics/shader.pyx":298
+        /* "kivy/graphics/shader.pyx":290
  *                     glUniform3f(loc, f1, f2, f3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 4:
  *                     f1, f2, f3, f4 = list_value
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 298; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 298; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
-        if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 298; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 298; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 298; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":297
+        /* "kivy/graphics/shader.pyx":289
  *                     f1, f2, f3 = list_value
  *                     glUniform3f(loc, f1, f2, f3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'             # <<<<<<<<<<<<<<
@@ -4847,7 +4793,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":299
+        /* "kivy/graphics/shader.pyx":291
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -4856,7 +4802,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 4:
 
-        /* "kivy/graphics/shader.pyx":300
+        /* "kivy/graphics/shader.pyx":292
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:
  *                     f1, f2, f3, f4 = list_value             # <<<<<<<<<<<<<<
@@ -4873,7 +4819,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 4)) {
             if (size > 4) __Pyx_RaiseTooManyValuesError(4);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_1 = PyList_GET_ITEM(sequence, 0); 
@@ -4889,29 +4835,29 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             Py_ssize_t i;
             PyObject** temps[4] = {&__pyx_t_1,&__pyx_t_6,&__pyx_t_5,&__pyx_t_13};
             for (i=0; i < 4; i++) {
-              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(item);
               *(temps[i]) = item;
             }
           }
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_13); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_13); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __pyx_v_f1 = __pyx_t_12;
         __pyx_v_f2 = __pyx_t_10;
         __pyx_v_f3 = __pyx_t_11;
         __pyx_v_f4 = __pyx_t_14;
 
-        /* "kivy/graphics/shader.pyx":301
+        /* "kivy/graphics/shader.pyx":293
  *                 elif vec_size == 4:
  *                     f1, f2, f3, f4 = list_value
  *                     glUniform4f(loc, f1, f2, f3, f4)             # <<<<<<<<<<<<<<
@@ -4920,25 +4866,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform4f(__pyx_v_loc, __pyx_v_f1, __pyx_v_f2, __pyx_v_f3, __pyx_v_f4);
 
-        /* "kivy/graphics/shader.pyx":303
+        /* "kivy/graphics/shader.pyx":295
  *                     glUniform4f(loc, f1, f2, f3, f4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4f'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 else:
  *                     float_list = <GLfloat *>malloc(vec_size * sizeof(GLfloat))
  */
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 303; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 295; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":302
+        /* "kivy/graphics/shader.pyx":294
  *                     f1, f2, f3, f4 = list_value
  *                     glUniform4f(loc, f1, f2, f3, f4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4f'             # <<<<<<<<<<<<<<
@@ -4950,7 +4896,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         break;
         default:
 
-        /* "kivy/graphics/shader.pyx":305
+        /* "kivy/graphics/shader.pyx":297
  *                         ' {name}'.format(name=name))
  *                 else:
  *                     float_list = <GLfloat *>malloc(vec_size * sizeof(GLfloat))             # <<<<<<<<<<<<<<
@@ -4959,7 +4905,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         __pyx_v_float_list = ((GLfloat *)malloc((__pyx_v_vec_size * (sizeof(GLfloat)))));
 
-        /* "kivy/graphics/shader.pyx":306
+        /* "kivy/graphics/shader.pyx":298
  *                 else:
  *                     float_list = <GLfloat *>malloc(vec_size * sizeof(GLfloat))
  *                     if float_list is NULL:             # <<<<<<<<<<<<<<
@@ -4969,17 +4915,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_t_4 = ((__pyx_v_float_list == NULL) != 0);
         if (__pyx_t_4) {
 
-          /* "kivy/graphics/shader.pyx":307
+          /* "kivy/graphics/shader.pyx":299
  *                     float_list = <GLfloat *>malloc(vec_size * sizeof(GLfloat))
  *                     if float_list is NULL:
  *                         raise MemoryError()             # <<<<<<<<<<<<<<
  *                     for index in xrange(vec_size):
  *                         float_list[index] = <GLfloat>list_value[index]
  */
-          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
 
-        /* "kivy/graphics/shader.pyx":308
+        /* "kivy/graphics/shader.pyx":300
  *                     if float_list is NULL:
  *                         raise MemoryError()
  *                     for index in xrange(vec_size):             # <<<<<<<<<<<<<<
@@ -4990,7 +4936,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
           __pyx_v_index = __pyx_t_16;
 
-          /* "kivy/graphics/shader.pyx":309
+          /* "kivy/graphics/shader.pyx":301
  *                         raise MemoryError()
  *                     for index in xrange(vec_size):
  *                         float_list[index] = <GLfloat>list_value[index]             # <<<<<<<<<<<<<<
@@ -4999,16 +4945,16 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           if (unlikely(__pyx_v_list_value == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 309; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
-          __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_list_value, __pyx_v_index, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(__pyx_t_6 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 309; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+          __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_list_value, __pyx_v_index, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(__pyx_t_6 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 309; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_6); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           (__pyx_v_float_list[__pyx_v_index]) = ((GLfloat)__pyx_t_8);
         }
 
-        /* "kivy/graphics/shader.pyx":310
+        /* "kivy/graphics/shader.pyx":302
  *                     for index in xrange(vec_size):
  *                         float_list[index] = <GLfloat>list_value[index]
  *                     glUniform1fv(loc, <GLint>vec_size, float_list)             # <<<<<<<<<<<<<<
@@ -5017,25 +4963,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform1fv(__pyx_v_loc, ((GLint)__pyx_v_vec_size), __pyx_v_float_list);
 
-        /* "kivy/graphics/shader.pyx":312
+        /* "kivy/graphics/shader.pyx":304
  *                     glUniform1fv(loc, <GLint>vec_size, float_list)
  *                     log_gl_error('Shader.upload_uniform-glUniform1fv'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                     free(float_list)
  *             elif val_type is int:
  */
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1_3, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1_3, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 312; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 304; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":311
+        /* "kivy/graphics/shader.pyx":303
  *                         float_list[index] = <GLfloat>list_value[index]
  *                     glUniform1fv(loc, <GLint>vec_size, float_list)
  *                     log_gl_error('Shader.upload_uniform-glUniform1fv'             # <<<<<<<<<<<<<<
@@ -5045,7 +4991,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_13));
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-        /* "kivy/graphics/shader.pyx":313
+        /* "kivy/graphics/shader.pyx":305
  *                     log_gl_error('Shader.upload_uniform-glUniform1fv'
  *                         ' {name}'.format(name=name))
  *                     free(float_list)             # <<<<<<<<<<<<<<
@@ -5058,7 +5004,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       goto __pyx_L6;
     }
 
-    /* "kivy/graphics/shader.pyx":314
+    /* "kivy/graphics/shader.pyx":306
  *                         ' {name}'.format(name=name))
  *                     free(float_list)
  *             elif val_type is int:             # <<<<<<<<<<<<<<
@@ -5069,7 +5015,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/graphics/shader.pyx":325
+      /* "kivy/graphics/shader.pyx":317
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -5078,7 +5024,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
       switch (__pyx_v_vec_size) {
 
-        /* "kivy/graphics/shader.pyx":315
+        /* "kivy/graphics/shader.pyx":307
  *                     free(float_list)
  *             elif val_type is int:
  *                 if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -5087,7 +5033,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 2:
 
-        /* "kivy/graphics/shader.pyx":316
+        /* "kivy/graphics/shader.pyx":308
  *             elif val_type is int:
  *                 if vec_size == 2:
  *                     i1, i2 = list_value             # <<<<<<<<<<<<<<
@@ -5104,7 +5050,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_13 = PyList_GET_ITEM(sequence, 0); 
@@ -5112,22 +5058,22 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_13);
           __Pyx_INCREF(__pyx_t_5);
           #else
-          __pyx_t_13 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_i1 = __pyx_t_2;
         __pyx_v_i2 = __pyx_t_17;
 
-        /* "kivy/graphics/shader.pyx":317
+        /* "kivy/graphics/shader.pyx":309
  *                 if vec_size == 2:
  *                     i1, i2 = list_value
  *                     glUniform2i(loc, i1, i2)             # <<<<<<<<<<<<<<
@@ -5136,25 +5082,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform2i(__pyx_v_loc, __pyx_v_i1, __pyx_v_i2);
 
-        /* "kivy/graphics/shader.pyx":319
+        /* "kivy/graphics/shader.pyx":311
  *                     glUniform2i(loc, i1, i2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2i'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 3:
  *                     i1, i2, i3 = list_value
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_2, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_2, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 311; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 311; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
-        if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 311; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 311; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 319; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 311; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":318
+        /* "kivy/graphics/shader.pyx":310
  *                     i1, i2 = list_value
  *                     glUniform2i(loc, i1, i2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2i'             # <<<<<<<<<<<<<<
@@ -5165,7 +5111,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":320
+        /* "kivy/graphics/shader.pyx":312
  *                     log_gl_error('Shader.upload_uniform-glUniform2i'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -5174,7 +5120,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 3:
 
-        /* "kivy/graphics/shader.pyx":321
+        /* "kivy/graphics/shader.pyx":313
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:
  *                     i1, i2, i3 = list_value             # <<<<<<<<<<<<<<
@@ -5191,7 +5137,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 3)) {
             if (size > 3) __Pyx_RaiseTooManyValuesError(3);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_6 = PyList_GET_ITEM(sequence, 0); 
@@ -5201,27 +5147,27 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_13);
           __Pyx_INCREF(__pyx_t_5);
           #else
-          __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 313; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_i1 = __pyx_t_17;
         __pyx_v_i2 = __pyx_t_2;
         __pyx_v_i3 = __pyx_t_18;
 
-        /* "kivy/graphics/shader.pyx":322
+        /* "kivy/graphics/shader.pyx":314
  *                 elif vec_size == 3:
  *                     i1, i2, i3 = list_value
  *                     glUniform3i(loc, i1, i2, i3)             # <<<<<<<<<<<<<<
@@ -5230,25 +5176,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform3i(__pyx_v_loc, __pyx_v_i1, __pyx_v_i2, __pyx_v_i3);
 
-        /* "kivy/graphics/shader.pyx":324
+        /* "kivy/graphics/shader.pyx":316
  *                     glUniform3i(loc, i1, i2, i3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 4:
  *                     i1, i2, i3, i4 = list_value
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_2, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_2, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
-        if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 324; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 316; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":323
+        /* "kivy/graphics/shader.pyx":315
  *                     i1, i2, i3 = list_value
  *                     glUniform3i(loc, i1, i2, i3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'             # <<<<<<<<<<<<<<
@@ -5259,7 +5205,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":325
+        /* "kivy/graphics/shader.pyx":317
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -5268,7 +5214,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 4:
 
-        /* "kivy/graphics/shader.pyx":326
+        /* "kivy/graphics/shader.pyx":318
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:
  *                     i1, i2, i3, i4 = list_value             # <<<<<<<<<<<<<<
@@ -5285,7 +5231,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 4)) {
             if (size > 4) __Pyx_RaiseTooManyValuesError(4);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_6 = PyList_GET_ITEM(sequence, 0); 
@@ -5301,29 +5247,29 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             Py_ssize_t i;
             PyObject** temps[4] = {&__pyx_t_6,&__pyx_t_13,&__pyx_t_5,&__pyx_t_1};
             for (i=0; i < 4; i++) {
-              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(item);
               *(temps[i]) = item;
             }
           }
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_6); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 326; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 318; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_i1 = __pyx_t_18;
         __pyx_v_i2 = __pyx_t_2;
         __pyx_v_i3 = __pyx_t_17;
         __pyx_v_i4 = __pyx_t_19;
 
-        /* "kivy/graphics/shader.pyx":327
+        /* "kivy/graphics/shader.pyx":319
  *                 elif vec_size == 4:
  *                     i1, i2, i3, i4 = list_value
  *                     glUniform4i(loc, i1, i2, i3, i4)             # <<<<<<<<<<<<<<
@@ -5332,25 +5278,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform4i(__pyx_v_loc, __pyx_v_i1, __pyx_v_i2, __pyx_v_i3, __pyx_v_i4);
 
-        /* "kivy/graphics/shader.pyx":329
+        /* "kivy/graphics/shader.pyx":321
  *                     glUniform4i(loc, i1, i2, i3, i4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4i'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 else:
  *                     int_list = <int *>malloc(vec_size * sizeof(GLint))
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 329; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 321; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":328
+        /* "kivy/graphics/shader.pyx":320
  *                     i1, i2, i3, i4 = list_value
  *                     glUniform4i(loc, i1, i2, i3, i4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4i'             # <<<<<<<<<<<<<<
@@ -5362,7 +5308,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         break;
         default:
 
-        /* "kivy/graphics/shader.pyx":331
+        /* "kivy/graphics/shader.pyx":323
  *                         ' {name}'.format(name=name))
  *                 else:
  *                     int_list = <int *>malloc(vec_size * sizeof(GLint))             # <<<<<<<<<<<<<<
@@ -5371,7 +5317,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         __pyx_v_int_list = ((int *)malloc((__pyx_v_vec_size * (sizeof(GLint)))));
 
-        /* "kivy/graphics/shader.pyx":332
+        /* "kivy/graphics/shader.pyx":324
  *                 else:
  *                     int_list = <int *>malloc(vec_size * sizeof(GLint))
  *                     if int_list is NULL:             # <<<<<<<<<<<<<<
@@ -5381,17 +5327,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_t_3 = ((__pyx_v_int_list == NULL) != 0);
         if (__pyx_t_3) {
 
-          /* "kivy/graphics/shader.pyx":333
+          /* "kivy/graphics/shader.pyx":325
  *                     int_list = <int *>malloc(vec_size * sizeof(GLint))
  *                     if int_list is NULL:
  *                         raise MemoryError()             # <<<<<<<<<<<<<<
  *                     for index in xrange(vec_size):
  *                         int_list[index] = <GLint>list_value[index]
  */
-          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 333; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 325; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
 
-        /* "kivy/graphics/shader.pyx":334
+        /* "kivy/graphics/shader.pyx":326
  *                     if int_list is NULL:
  *                         raise MemoryError()
  *                     for index in xrange(vec_size):             # <<<<<<<<<<<<<<
@@ -5402,7 +5348,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
           __pyx_v_index = __pyx_t_16;
 
-          /* "kivy/graphics/shader.pyx":335
+          /* "kivy/graphics/shader.pyx":327
  *                         raise MemoryError()
  *                     for index in xrange(vec_size):
  *                         int_list[index] = <GLint>list_value[index]             # <<<<<<<<<<<<<<
@@ -5411,16 +5357,16 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           if (unlikely(__pyx_v_list_value == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 327; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
-          __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_list_value, __pyx_v_index, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(__pyx_t_13 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+          __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_list_value, __pyx_v_index, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(__pyx_t_13 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 327; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_t_13); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_t_13); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 327; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           (__pyx_v_int_list[__pyx_v_index]) = ((GLint)__pyx_t_7);
         }
 
-        /* "kivy/graphics/shader.pyx":336
+        /* "kivy/graphics/shader.pyx":328
  *                     for index in xrange(vec_size):
  *                         int_list[index] = <GLint>list_value[index]
  *                     glUniform1iv(loc, <GLint>vec_size, int_list)             # <<<<<<<<<<<<<<
@@ -5429,25 +5375,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform1iv(__pyx_v_loc, ((GLint)__pyx_v_vec_size), __pyx_v_int_list);
 
-        /* "kivy/graphics/shader.pyx":338
+        /* "kivy/graphics/shader.pyx":330
  *                     glUniform1iv(loc, <GLint>vec_size, int_list)
  *                     log_gl_error('Shader.upload_uniform-glUniform1iv'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                     free(int_list)
  *             elif val_type is list:
  */
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1_4, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform1_4, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 330; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 330; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_5);
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 330; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 330; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 338; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 330; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":337
+        /* "kivy/graphics/shader.pyx":329
  *                         int_list[index] = <GLint>list_value[index]
  *                     glUniform1iv(loc, <GLint>vec_size, int_list)
  *                     log_gl_error('Shader.upload_uniform-glUniform1iv'             # <<<<<<<<<<<<<<
@@ -5457,7 +5403,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_1));
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "kivy/graphics/shader.pyx":339
+        /* "kivy/graphics/shader.pyx":331
  *                     log_gl_error('Shader.upload_uniform-glUniform1iv'
  *                         ' {name}'.format(name=name))
  *                     free(int_list)             # <<<<<<<<<<<<<<
@@ -5470,7 +5416,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       goto __pyx_L6;
     }
 
-    /* "kivy/graphics/shader.pyx":340
+    /* "kivy/graphics/shader.pyx":332
  *                         ' {name}'.format(name=name))
  *                     free(int_list)
  *             elif val_type is list:             # <<<<<<<<<<<<<<
@@ -5481,46 +5427,46 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/shader.pyx":341
+      /* "kivy/graphics/shader.pyx":333
  *                     free(int_list)
  *             elif val_type is list:
  *                 list_size = <int>len(value)             # <<<<<<<<<<<<<<
  *                 vec_size = len(value[0])
  *                 val_type = type(value[0][0])
  */
-      __pyx_t_9 = PyObject_Length(__pyx_v_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 341; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyObject_Length(__pyx_v_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 333; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_v_list_size = ((int)__pyx_t_9);
 
-      /* "kivy/graphics/shader.pyx":342
+      /* "kivy/graphics/shader.pyx":334
  *             elif val_type is list:
  *                 list_size = <int>len(value)
  *                 vec_size = len(value[0])             # <<<<<<<<<<<<<<
  *                 val_type = type(value[0][0])
  *                 if val_type is float:
  */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 342; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 342; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 334; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_vec_size = __pyx_t_9;
 
-      /* "kivy/graphics/shader.pyx":343
+      /* "kivy/graphics/shader.pyx":335
  *                 list_size = <int>len(value)
  *                 vec_size = len(value[0])
  *                 val_type = type(value[0][0])             # <<<<<<<<<<<<<<
  *                 if val_type is float:
  *                     float_list = <GLfloat *>malloc(
  */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 335; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_5)));
       __Pyx_DECREF_SET(__pyx_v_val_type, ((PyObject*)((PyObject *)Py_TYPE(__pyx_t_5))));
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "kivy/graphics/shader.pyx":344
+      /* "kivy/graphics/shader.pyx":336
  *                 vec_size = len(value[0])
  *                 val_type = type(value[0][0])
  *                 if val_type is float:             # <<<<<<<<<<<<<<
@@ -5531,7 +5477,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       __pyx_t_3 = (__pyx_t_4 != 0);
       if (__pyx_t_3) {
 
-        /* "kivy/graphics/shader.pyx":345
+        /* "kivy/graphics/shader.pyx":337
  *                 val_type = type(value[0][0])
  *                 if val_type is float:
  *                     float_list = <GLfloat *>malloc(             # <<<<<<<<<<<<<<
@@ -5540,7 +5486,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         __pyx_v_float_list = ((GLfloat *)malloc(((__pyx_v_list_size * __pyx_v_vec_size) * (sizeof(GLfloat)))));
 
-        /* "kivy/graphics/shader.pyx":347
+        /* "kivy/graphics/shader.pyx":339
  *                     float_list = <GLfloat *>malloc(
  *                             list_size * vec_size * sizeof(GLfloat))
  *                     if float_list is NULL:             # <<<<<<<<<<<<<<
@@ -5550,17 +5496,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_t_3 = ((__pyx_v_float_list == NULL) != 0);
         if (__pyx_t_3) {
 
-          /* "kivy/graphics/shader.pyx":348
+          /* "kivy/graphics/shader.pyx":340
  *                             list_size * vec_size * sizeof(GLfloat))
  *                     if float_list is NULL:
  *                         raise MemoryError()             # <<<<<<<<<<<<<<
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  */
-          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 348; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 340; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
 
-        /* "kivy/graphics/shader.pyx":349
+        /* "kivy/graphics/shader.pyx":341
  *                     if float_list is NULL:
  *                         raise MemoryError()
  *                     for x in xrange(list_size):             # <<<<<<<<<<<<<<
@@ -5571,7 +5517,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_19; __pyx_t_15+=1) {
           __pyx_v_x = __pyx_t_15;
 
-          /* "kivy/graphics/shader.pyx":350
+          /* "kivy/graphics/shader.pyx":342
  *                         raise MemoryError()
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):             # <<<<<<<<<<<<<<
@@ -5582,25 +5528,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_16; __pyx_t_20+=1) {
             __pyx_v_y = __pyx_t_20;
 
-            /* "kivy/graphics/shader.pyx":351
+            /* "kivy/graphics/shader.pyx":343
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  *                             float_list[vec_size * x + y] = <GLfloat>value[x][y]             # <<<<<<<<<<<<<<
  *                     if vec_size == 2:
  *                         glUniform2fv(loc, list_size, float_list)
  */
-            __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_5);
-            __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-            __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 343; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             (__pyx_v_float_list[((__pyx_v_vec_size * __pyx_v_x) + __pyx_v_y)]) = ((GLfloat)__pyx_t_8);
           }
         }
 
-        /* "kivy/graphics/shader.pyx":360
+        /* "kivy/graphics/shader.pyx":352
  *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
  *                             ' {name}'.format(name=name))
  *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -5609,7 +5555,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         switch (__pyx_v_vec_size) {
 
-          /* "kivy/graphics/shader.pyx":352
+          /* "kivy/graphics/shader.pyx":344
  *                         for y in xrange(vec_size):
  *                             float_list[vec_size * x + y] = <GLfloat>value[x][y]
  *                     if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -5618,7 +5564,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           case 2:
 
-          /* "kivy/graphics/shader.pyx":353
+          /* "kivy/graphics/shader.pyx":345
  *                             float_list[vec_size * x + y] = <GLfloat>value[x][y]
  *                     if vec_size == 2:
  *                         glUniform2fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
@@ -5627,14 +5573,108 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           glUniform2fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
 
-          /* "kivy/graphics/shader.pyx":355
+          /* "kivy/graphics/shader.pyx":347
  *                         glUniform2fv(loc, list_size, float_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform2fv'
  *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                     elif vec_size == 3:
  *                         glUniform3fv(loc, list_size, float_list)
  */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_3, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 355; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_3, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_5);
+          if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_13);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 347; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":346
+ *                     if vec_size == 2:
+ *                         glUniform2fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform2fv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_13));
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":348
+ *                         log_gl_error('Shader.upload_uniform-glUniform2fv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
+ *                         glUniform3fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ */
+          case 3:
+
+          /* "kivy/graphics/shader.pyx":349
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ *                         glUniform3fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform3fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
+
+          /* "kivy/graphics/shader.pyx":351
+ *                         glUniform3fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     elif vec_size == 4:
+ *                         glUniform4fv(loc, list_size, float_list)
+ */
+          __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_3, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_13);
+          __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_5);
+          if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 351; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":350
+ *                     elif vec_size == 3:
+ *                         glUniform3fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_1));
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":352
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
+ *                         glUniform4fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
+ */
+          case 4:
+
+          /* "kivy/graphics/shader.pyx":353
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ *                         glUniform4fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform4fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
+
+          /* "kivy/graphics/shader.pyx":355
+ *                         glUniform4fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     else:
+ *                         Logger.debug(
+ */
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_3, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 355; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 355; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
@@ -5646,100 +5686,6 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 355; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
           /* "kivy/graphics/shader.pyx":354
- *                     if vec_size == 2:
- *                         glUniform2fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform2fv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_13));
-          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":356
- *                         log_gl_error('Shader.upload_uniform-glUniform2fv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
- *                         glUniform3fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- */
-          case 3:
-
-          /* "kivy/graphics/shader.pyx":357
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- *                         glUniform3fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform3fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
-
-          /* "kivy/graphics/shader.pyx":359
- *                         glUniform3fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     elif vec_size == 4:
- *                         glUniform4fv(loc, list_size, float_list)
- */
-          __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_3, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_5);
-          if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":358
- *                     elif vec_size == 3:
- *                         glUniform3fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_1));
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":360
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
- *                         glUniform4fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
- */
-          case 4:
-
-          /* "kivy/graphics/shader.pyx":361
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- *                         glUniform4fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform4fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
-
-          /* "kivy/graphics/shader.pyx":363
- *                         glUniform4fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     else:
- *                         Logger.debug(
- */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_3, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 363; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 363; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_5);
-          if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 363; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 363; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_13);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 363; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":362
  *                     elif vec_size == 4:
  *                         glUniform4fv(loc, list_size, float_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform4fv'             # <<<<<<<<<<<<<<
@@ -5751,39 +5697,39 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
           default:
 
-          /* "kivy/graphics/shader.pyx":365
+          /* "kivy/graphics/shader.pyx":357
  *                             ' {name}'.format(name=name))
  *                     else:
  *                         Logger.debug(             # <<<<<<<<<<<<<<
  *                             'Shader: unsupported {}x{} float array'.format(
  *                             list_size, vec_size))
  */
-          __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_debug); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_debug); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "kivy/graphics/shader.pyx":366
+          /* "kivy/graphics/shader.pyx":358
  *                     else:
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} float array'.format(             # <<<<<<<<<<<<<<
  *                             list_size, vec_size))
  *                     free(float_list)
  */
-          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_float_array, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_float_array, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 358; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
 
-          /* "kivy/graphics/shader.pyx":367
+          /* "kivy/graphics/shader.pyx":359
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} float array'.format(
  *                             list_size, vec_size))             # <<<<<<<<<<<<<<
  *                     free(float_list)
  *                 elif val_type is int:
  */
-          __pyx_t_21 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 367; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_21 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_21);
-          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 367; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 359; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_22);
           __pyx_t_23 = NULL;
           __pyx_t_9 = 0;
@@ -5797,7 +5743,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
               __pyx_t_9 = 1;
             }
           }
-          __pyx_t_24 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 358; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
           if (__pyx_t_23) {
             PyTuple_SET_ITEM(__pyx_t_24, 0, __pyx_t_23); __Pyx_GIVEREF(__pyx_t_23); __pyx_t_23 = NULL;
@@ -5808,7 +5754,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_GIVEREF(__pyx_t_22);
           __pyx_t_21 = 0;
           __pyx_t_22 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_24, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 366; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_24, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 358; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5823,17 +5769,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             }
           }
           if (!__pyx_t_6) {
-            __pyx_t_13 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_13 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
             __Pyx_GOTREF(__pyx_t_13);
           } else {
-            __pyx_t_24 = PyTuple_New(1+1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_24 = PyTuple_New(1+1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_24);
             PyTuple_SET_ITEM(__pyx_t_24, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
             PyTuple_SET_ITEM(__pyx_t_24, 0+1, __pyx_t_5);
             __Pyx_GIVEREF(__pyx_t_5);
             __pyx_t_5 = 0;
-            __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_24, NULL); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_24, NULL); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 357; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
           }
@@ -5842,7 +5788,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
         }
 
-        /* "kivy/graphics/shader.pyx":368
+        /* "kivy/graphics/shader.pyx":360
  *                             'Shader: unsupported {}x{} float array'.format(
  *                             list_size, vec_size))
  *                     free(float_list)             # <<<<<<<<<<<<<<
@@ -5853,7 +5799,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         goto __pyx_L13;
       }
 
-      /* "kivy/graphics/shader.pyx":369
+      /* "kivy/graphics/shader.pyx":361
  *                             list_size, vec_size))
  *                     free(float_list)
  *                 elif val_type is int:             # <<<<<<<<<<<<<<
@@ -5864,7 +5810,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       __pyx_t_4 = (__pyx_t_3 != 0);
       if (__pyx_t_4) {
 
-        /* "kivy/graphics/shader.pyx":370
+        /* "kivy/graphics/shader.pyx":362
  *                     free(float_list)
  *                 elif val_type is int:
  *                     int_list = <GLint *>malloc(             # <<<<<<<<<<<<<<
@@ -5873,7 +5819,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         __pyx_v_int_list = ((GLint *)malloc(((__pyx_v_list_size * __pyx_v_vec_size) * (sizeof(GLint)))));
 
-        /* "kivy/graphics/shader.pyx":372
+        /* "kivy/graphics/shader.pyx":364
  *                     int_list = <GLint *>malloc(
  *                             list_size * vec_size * sizeof(GLint))
  *                     if int_list is NULL:             # <<<<<<<<<<<<<<
@@ -5883,17 +5829,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_t_4 = ((__pyx_v_int_list == NULL) != 0);
         if (__pyx_t_4) {
 
-          /* "kivy/graphics/shader.pyx":373
+          /* "kivy/graphics/shader.pyx":365
  *                             list_size * vec_size * sizeof(GLint))
  *                     if int_list is NULL:
  *                         raise MemoryError()             # <<<<<<<<<<<<<<
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  */
-          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 373; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 365; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
 
-        /* "kivy/graphics/shader.pyx":374
+        /* "kivy/graphics/shader.pyx":366
  *                     if int_list is NULL:
  *                         raise MemoryError()
  *                     for x in xrange(list_size):             # <<<<<<<<<<<<<<
@@ -5904,7 +5850,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_19; __pyx_t_15+=1) {
           __pyx_v_x = __pyx_t_15;
 
-          /* "kivy/graphics/shader.pyx":375
+          /* "kivy/graphics/shader.pyx":367
  *                         raise MemoryError()
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):             # <<<<<<<<<<<<<<
@@ -5915,25 +5861,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_16; __pyx_t_20+=1) {
             __pyx_v_y = __pyx_t_20;
 
-            /* "kivy/graphics/shader.pyx":376
+            /* "kivy/graphics/shader.pyx":368
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  *                             int_list[vec_size * x + y] = <GLint>value[x][y]             # <<<<<<<<<<<<<<
  *                     if vec_size == 2:
  *                         glUniform2iv(loc, list_size, int_list)
  */
-            __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_13 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_13 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 368; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_13, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_13, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 368; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_t_1); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_t_1); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 368; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             (__pyx_v_int_list[((__pyx_v_vec_size * __pyx_v_x) + __pyx_v_y)]) = ((GLint)__pyx_t_7);
           }
         }
 
-        /* "kivy/graphics/shader.pyx":385
+        /* "kivy/graphics/shader.pyx":377
  *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
  *                             ' {name}'.format(name=name))
  *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -5942,7 +5888,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         switch (__pyx_v_vec_size) {
 
-          /* "kivy/graphics/shader.pyx":377
+          /* "kivy/graphics/shader.pyx":369
  *                         for y in xrange(vec_size):
  *                             int_list[vec_size * x + y] = <GLint>value[x][y]
  *                     if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -5951,7 +5897,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           case 2:
 
-          /* "kivy/graphics/shader.pyx":378
+          /* "kivy/graphics/shader.pyx":370
  *                             int_list[vec_size * x + y] = <GLint>value[x][y]
  *                     if vec_size == 2:
  *                         glUniform2iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
@@ -5960,14 +5906,108 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           glUniform2iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
 
-          /* "kivy/graphics/shader.pyx":380
+          /* "kivy/graphics/shader.pyx":372
  *                         glUniform2iv(loc, list_size, int_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform2iv'
  *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                     elif vec_size == 3:
  *                         glUniform3iv(loc, list_size, int_list)
  */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_4, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 380; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_4, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_1);
+          __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_13);
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_24);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 372; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":371
+ *                     if vec_size == 2:
+ *                         glUniform2iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform2iv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_24));
+          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":373
+ *                         log_gl_error('Shader.upload_uniform-glUniform2iv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
+ *                         glUniform3iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ */
+          case 3:
+
+          /* "kivy/graphics/shader.pyx":374
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ *                         glUniform3iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform3iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
+
+          /* "kivy/graphics/shader.pyx":376
+ *                         glUniform3iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     elif vec_size == 4:
+ *                         glUniform4iv(loc, list_size, int_list)
+ */
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_4, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_24);
+          __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_13);
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 376; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":375
+ *                     elif vec_size == 3:
+ *                         glUniform3iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_1));
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":377
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
+ *                         glUniform4iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
+ */
+          case 4:
+
+          /* "kivy/graphics/shader.pyx":378
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ *                         glUniform4iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform4iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
+
+          /* "kivy/graphics/shader.pyx":380
+ *                         glUniform4iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     else:
+ *                         Logger.debug(
+ */
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_4, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 380; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 380; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
@@ -5979,100 +6019,6 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 380; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
           /* "kivy/graphics/shader.pyx":379
- *                     if vec_size == 2:
- *                         glUniform2iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform2iv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_24));
-          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":381
- *                         log_gl_error('Shader.upload_uniform-glUniform2iv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
- *                         glUniform3iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- */
-          case 3:
-
-          /* "kivy/graphics/shader.pyx":382
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- *                         glUniform3iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform3iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
-
-          /* "kivy/graphics/shader.pyx":384
- *                         glUniform3iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     elif vec_size == 4:
- *                         glUniform4iv(loc, list_size, int_list)
- */
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_4, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_13);
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":383
- *                     elif vec_size == 3:
- *                         glUniform3iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_1));
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":385
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
- *                         glUniform4iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
- */
-          case 4:
-
-          /* "kivy/graphics/shader.pyx":386
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- *                         glUniform4iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform4iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
-
-          /* "kivy/graphics/shader.pyx":388
- *                         glUniform4iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     else:
- *                         Logger.debug(
- */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_4, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_13 = PyDict_New(); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_13);
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_13); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_24);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":387
  *                     elif vec_size == 4:
  *                         glUniform4iv(loc, list_size, int_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform4iv'             # <<<<<<<<<<<<<<
@@ -6084,39 +6030,39 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
           default:
 
-          /* "kivy/graphics/shader.pyx":390
+          /* "kivy/graphics/shader.pyx":382
  *                             ' {name}'.format(name=name))
  *                     else:
  *                         Logger.debug(             # <<<<<<<<<<<<<<
  *                             'Shader: unsupported {}x{} int array'.format(
  *                             list_size, vec_size))
  */
-          __pyx_t_13 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_debug); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_debug); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-          /* "kivy/graphics/shader.pyx":391
+          /* "kivy/graphics/shader.pyx":383
  *                     else:
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} int array'.format(             # <<<<<<<<<<<<<<
  *                             list_size, vec_size))
  *                     free(int_list)
  */
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_int_array, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 391; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_int_array, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
 
-          /* "kivy/graphics/shader.pyx":392
+          /* "kivy/graphics/shader.pyx":384
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} int array'.format(
  *                             list_size, vec_size))             # <<<<<<<<<<<<<<
  *                     free(int_list)
  *         elif val_type is tuple:
  */
-          __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 384; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_22);
           __pyx_t_21 = NULL;
           __pyx_t_9 = 0;
@@ -6130,7 +6076,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
               __pyx_t_9 = 1;
             }
           }
-          __pyx_t_23 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 391; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_23 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_23);
           if (__pyx_t_21) {
             PyTuple_SET_ITEM(__pyx_t_23, 0, __pyx_t_21); __Pyx_GIVEREF(__pyx_t_21); __pyx_t_21 = NULL;
@@ -6141,7 +6087,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_GIVEREF(__pyx_t_22);
           __pyx_t_6 = 0;
           __pyx_t_22 = 0;
-          __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_23, NULL); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 391; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_23, NULL); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 383; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6156,17 +6102,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             }
           }
           if (!__pyx_t_5) {
-            __pyx_t_24 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_13); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_24 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_13); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __Pyx_GOTREF(__pyx_t_24);
           } else {
-            __pyx_t_23 = PyTuple_New(1+1); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_23 = PyTuple_New(1+1); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_23);
             PyTuple_SET_ITEM(__pyx_t_23, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
             PyTuple_SET_ITEM(__pyx_t_23, 0+1, __pyx_t_13);
             __Pyx_GIVEREF(__pyx_t_13);
             __pyx_t_13 = 0;
-            __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_23, NULL); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_23, NULL); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 382; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_24);
             __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
           }
@@ -6175,7 +6121,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
         }
 
-        /* "kivy/graphics/shader.pyx":393
+        /* "kivy/graphics/shader.pyx":385
  *                             'Shader: unsupported {}x{} int array'.format(
  *                             list_size, vec_size))
  *                     free(int_list)             # <<<<<<<<<<<<<<
@@ -6192,7 +6138,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     goto __pyx_L5;
   }
 
-  /* "kivy/graphics/shader.pyx":394
+  /* "kivy/graphics/shader.pyx":386
  *                             list_size, vec_size))
  *                     free(int_list)
  *         elif val_type is tuple:             # <<<<<<<<<<<<<<
@@ -6203,20 +6149,20 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/graphics/shader.pyx":395
+    /* "kivy/graphics/shader.pyx":387
  *                     free(int_list)
  *         elif val_type is tuple:
  *             tuple_value = value             # <<<<<<<<<<<<<<
  *             val_type = type(tuple_value[0])
  *             vec_size = len(tuple_value)
  */
-    if (!(likely(PyTuple_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_value)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyTuple_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_value)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 387; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_t_24 = __pyx_v_value;
     __Pyx_INCREF(__pyx_t_24);
     __pyx_v_tuple_value = ((PyObject*)__pyx_t_24);
     __pyx_t_24 = 0;
 
-    /* "kivy/graphics/shader.pyx":396
+    /* "kivy/graphics/shader.pyx":388
  *         elif val_type is tuple:
  *             tuple_value = value
  *             val_type = type(tuple_value[0])             # <<<<<<<<<<<<<<
@@ -6225,15 +6171,15 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
     if (unlikely(__pyx_v_tuple_value == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 396; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_24 = __Pyx_GetItemInt_Tuple(__pyx_v_tuple_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 396; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_24 = __Pyx_GetItemInt_Tuple(__pyx_v_tuple_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 388; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_24);
     __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_24)));
     __Pyx_DECREF_SET(__pyx_v_val_type, ((PyObject*)((PyObject *)Py_TYPE(__pyx_t_24))));
     __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
 
-    /* "kivy/graphics/shader.pyx":397
+    /* "kivy/graphics/shader.pyx":389
  *             tuple_value = value
  *             val_type = type(tuple_value[0])
  *             vec_size = len(tuple_value)             # <<<<<<<<<<<<<<
@@ -6242,12 +6188,12 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
     if (unlikely(__pyx_v_tuple_value == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 389; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    __pyx_t_9 = PyTuple_GET_SIZE(__pyx_v_tuple_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyTuple_GET_SIZE(__pyx_v_tuple_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 389; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __pyx_v_vec_size = __pyx_t_9;
 
-    /* "kivy/graphics/shader.pyx":398
+    /* "kivy/graphics/shader.pyx":390
  *             val_type = type(tuple_value[0])
  *             vec_size = len(tuple_value)
  *             if val_type is float:             # <<<<<<<<<<<<<<
@@ -6258,7 +6204,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/shader.pyx":409
+      /* "kivy/graphics/shader.pyx":401
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -6267,7 +6213,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
       switch (__pyx_v_vec_size) {
 
-        /* "kivy/graphics/shader.pyx":399
+        /* "kivy/graphics/shader.pyx":391
  *             vec_size = len(tuple_value)
  *             if val_type is float:
  *                 if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -6276,7 +6222,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 2:
 
-        /* "kivy/graphics/shader.pyx":400
+        /* "kivy/graphics/shader.pyx":392
  *             if val_type is float:
  *                 if vec_size == 2:
  *                     f1, f2 = tuple_value             # <<<<<<<<<<<<<<
@@ -6293,7 +6239,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_24 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6301,22 +6247,22 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_24);
           __Pyx_INCREF(__pyx_t_1);
           #else
-          __pyx_t_24 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 392; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_f1 = __pyx_t_14;
         __pyx_v_f2 = __pyx_t_11;
 
-        /* "kivy/graphics/shader.pyx":401
+        /* "kivy/graphics/shader.pyx":393
  *                 if vec_size == 2:
  *                     f1, f2 = tuple_value
  *                     glUniform2f(loc, f1, f2)             # <<<<<<<<<<<<<<
@@ -6325,25 +6271,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform2f(__pyx_v_loc, __pyx_v_f1, __pyx_v_f2);
 
-        /* "kivy/graphics/shader.pyx":403
+        /* "kivy/graphics/shader.pyx":395
  *                     glUniform2f(loc, f1, f2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2f'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 3:
  *                     f1, f2, f3 = tuple_value
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 403; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 403; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_24);
-        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 403; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 403; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_23);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 403; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 395; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":402
+        /* "kivy/graphics/shader.pyx":394
  *                     f1, f2 = tuple_value
  *                     glUniform2f(loc, f1, f2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2f'             # <<<<<<<<<<<<<<
@@ -6354,7 +6300,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":404
+        /* "kivy/graphics/shader.pyx":396
  *                     log_gl_error('Shader.upload_uniform-glUniform2f'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -6363,7 +6309,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 3:
 
-        /* "kivy/graphics/shader.pyx":405
+        /* "kivy/graphics/shader.pyx":397
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:
  *                     f1, f2, f3 = tuple_value             # <<<<<<<<<<<<<<
@@ -6380,7 +6326,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 3)) {
             if (size > 3) __Pyx_RaiseTooManyValuesError(3);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_23 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6390,27 +6336,27 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_24);
           __Pyx_INCREF(__pyx_t_1);
           #else
-          __pyx_t_23 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_23 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_23);
-          __pyx_t_24 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_23); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_23); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 397; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_f1 = __pyx_t_11;
         __pyx_v_f2 = __pyx_t_14;
         __pyx_v_f3 = __pyx_t_10;
 
-        /* "kivy/graphics/shader.pyx":406
+        /* "kivy/graphics/shader.pyx":398
  *                 elif vec_size == 3:
  *                     f1, f2, f3 = tuple_value
  *                     glUniform3f(loc, f1, f2, f3)             # <<<<<<<<<<<<<<
@@ -6419,25 +6365,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform3f(__pyx_v_loc, __pyx_v_f1, __pyx_v_f2, __pyx_v_f3);
 
-        /* "kivy/graphics/shader.pyx":408
+        /* "kivy/graphics/shader.pyx":400
  *                     glUniform3f(loc, f1, f2, f3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 4:
  *                     f1, f2, f3, f4 = tuple_value
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_24);
-        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_23);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":407
+        /* "kivy/graphics/shader.pyx":399
  *                     f1, f2, f3 = tuple_value
  *                     glUniform3f(loc, f1, f2, f3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'             # <<<<<<<<<<<<<<
@@ -6448,7 +6394,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":409
+        /* "kivy/graphics/shader.pyx":401
  *                     log_gl_error('Shader.upload_uniform-glUniform3f'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -6457,7 +6403,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 4:
 
-        /* "kivy/graphics/shader.pyx":410
+        /* "kivy/graphics/shader.pyx":402
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:
  *                     f1, f2, f3, f4 = tuple_value             # <<<<<<<<<<<<<<
@@ -6474,7 +6420,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 4)) {
             if (size > 4) __Pyx_RaiseTooManyValuesError(4);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_23 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6490,29 +6436,29 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             Py_ssize_t i;
             PyObject** temps[4] = {&__pyx_t_23,&__pyx_t_24,&__pyx_t_1,&__pyx_t_13};
             for (i=0; i < 4; i++) {
-              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(item);
               *(temps[i]) = item;
             }
           }
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_23); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_10 = __pyx_PyFloat_AsFloat(__pyx_t_23); if (unlikely((__pyx_t_10 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_14 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_14 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_13); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 410; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_13); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 402; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __pyx_v_f1 = __pyx_t_10;
         __pyx_v_f2 = __pyx_t_14;
         __pyx_v_f3 = __pyx_t_11;
         __pyx_v_f4 = __pyx_t_12;
 
-        /* "kivy/graphics/shader.pyx":411
+        /* "kivy/graphics/shader.pyx":403
  *                 elif vec_size == 4:
  *                     f1, f2, f3, f4 = tuple_value
  *                     glUniform4f(loc, f1, f2, f3, f4)             # <<<<<<<<<<<<<<
@@ -6521,25 +6467,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform4f(__pyx_v_loc, __pyx_v_f1, __pyx_v_f2, __pyx_v_f3, __pyx_v_f4);
 
-        /* "kivy/graphics/shader.pyx":413
+        /* "kivy/graphics/shader.pyx":405
  *                     glUniform4f(loc, f1, f2, f3, f4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4f'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *             elif val_type is int:
  *                 if vec_size == 2:
  */
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_24);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 405; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":412
+        /* "kivy/graphics/shader.pyx":404
  *                     f1, f2, f3, f4 = tuple_value
  *                     glUniform4f(loc, f1, f2, f3, f4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4f'             # <<<<<<<<<<<<<<
@@ -6554,7 +6500,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       goto __pyx_L24;
     }
 
-    /* "kivy/graphics/shader.pyx":414
+    /* "kivy/graphics/shader.pyx":406
  *                     log_gl_error('Shader.upload_uniform-glUniform4f'
  *                         ' {name}'.format(name=name))
  *             elif val_type is int:             # <<<<<<<<<<<<<<
@@ -6565,7 +6511,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/graphics/shader.pyx":425
+      /* "kivy/graphics/shader.pyx":417
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -6574,7 +6520,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
       switch (__pyx_v_vec_size) {
 
-        /* "kivy/graphics/shader.pyx":415
+        /* "kivy/graphics/shader.pyx":407
  *                         ' {name}'.format(name=name))
  *             elif val_type is int:
  *                 if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -6583,7 +6529,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 2:
 
-        /* "kivy/graphics/shader.pyx":416
+        /* "kivy/graphics/shader.pyx":408
  *             elif val_type is int:
  *                 if vec_size == 2:
  *                     i1, i2 = tuple_value             # <<<<<<<<<<<<<<
@@ -6600,7 +6546,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_24 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6608,22 +6554,22 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_24);
           __Pyx_INCREF(__pyx_t_1);
           #else
-          __pyx_t_24 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_24); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_24); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 408; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_i1 = __pyx_t_19;
         __pyx_v_i2 = __pyx_t_17;
 
-        /* "kivy/graphics/shader.pyx":417
+        /* "kivy/graphics/shader.pyx":409
  *                 if vec_size == 2:
  *                     i1, i2 = tuple_value
  *                     glUniform2i(loc, i1, i2)             # <<<<<<<<<<<<<<
@@ -6632,25 +6578,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform2i(__pyx_v_loc, __pyx_v_i1, __pyx_v_i2);
 
-        /* "kivy/graphics/shader.pyx":419
+        /* "kivy/graphics/shader.pyx":411
  *                     glUniform2i(loc, i1, i2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2i'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 3:
  *                     i1, i2, i3 = tuple_value
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 419; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 419; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_24);
-        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 419; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 419; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 419; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 411; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":418
+        /* "kivy/graphics/shader.pyx":410
  *                     i1, i2 = tuple_value
  *                     glUniform2i(loc, i1, i2)
  *                     log_gl_error('Shader.upload_uniform-glUniform2i'             # <<<<<<<<<<<<<<
@@ -6661,7 +6607,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":420
+        /* "kivy/graphics/shader.pyx":412
  *                     log_gl_error('Shader.upload_uniform-glUniform2i'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:             # <<<<<<<<<<<<<<
@@ -6670,7 +6616,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 3:
 
-        /* "kivy/graphics/shader.pyx":421
+        /* "kivy/graphics/shader.pyx":413
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 3:
  *                     i1, i2, i3 = tuple_value             # <<<<<<<<<<<<<<
@@ -6687,7 +6633,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 3)) {
             if (size > 3) __Pyx_RaiseTooManyValuesError(3);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_13 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6697,27 +6643,27 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_INCREF(__pyx_t_24);
           __Pyx_INCREF(__pyx_t_1);
           #else
-          __pyx_t_13 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_24 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_24); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_24); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 413; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_v_i1 = __pyx_t_17;
         __pyx_v_i2 = __pyx_t_19;
         __pyx_v_i3 = __pyx_t_2;
 
-        /* "kivy/graphics/shader.pyx":422
+        /* "kivy/graphics/shader.pyx":414
  *                 elif vec_size == 3:
  *                     i1, i2, i3 = tuple_value
  *                     glUniform3i(loc, i1, i2, i3)             # <<<<<<<<<<<<<<
@@ -6726,25 +6672,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform3i(__pyx_v_loc, __pyx_v_i1, __pyx_v_i2, __pyx_v_i3);
 
-        /* "kivy/graphics/shader.pyx":424
+        /* "kivy/graphics/shader.pyx":416
  *                     glUniform3i(loc, i1, i2, i3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                 elif vec_size == 4:
  *                     i1, i2, i3, i4 = tuple_value
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_2, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_24 = PyDict_New(); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_24);
-        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_24, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_24); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_13)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 416; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":423
+        /* "kivy/graphics/shader.pyx":415
  *                     i1, i2, i3 = tuple_value
  *                     glUniform3i(loc, i1, i2, i3)
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'             # <<<<<<<<<<<<<<
@@ -6755,7 +6701,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         break;
 
-        /* "kivy/graphics/shader.pyx":425
+        /* "kivy/graphics/shader.pyx":417
  *                     log_gl_error('Shader.upload_uniform-glUniform3i'
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -6764,7 +6710,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         case 4:
 
-        /* "kivy/graphics/shader.pyx":426
+        /* "kivy/graphics/shader.pyx":418
  *                         ' {name}'.format(name=name))
  *                 elif vec_size == 4:
  *                     i1, i2, i3, i4 = tuple_value             # <<<<<<<<<<<<<<
@@ -6781,7 +6727,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (unlikely(size != 4)) {
             if (size > 4) __Pyx_RaiseTooManyValuesError(4);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           __pyx_t_13 = PyTuple_GET_ITEM(sequence, 0); 
@@ -6797,29 +6743,29 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             Py_ssize_t i;
             PyObject** temps[4] = {&__pyx_t_13,&__pyx_t_24,&__pyx_t_1,&__pyx_t_23};
             for (i=0; i < 4; i++) {
-              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+              PyObject* item = PySequence_ITEM(sequence, i); if (unlikely(!item)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
               __Pyx_GOTREF(item);
               *(temps[i]) = item;
             }
           }
           #endif
         } else {
-          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_RaiseNoneNotIterableError(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
-        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_13); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_24); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_19 = __Pyx_PyInt_As_int(__pyx_t_24); if (unlikely((__pyx_t_19 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_23); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 426; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_23); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 418; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
         __pyx_v_i1 = __pyx_t_2;
         __pyx_v_i2 = __pyx_t_19;
         __pyx_v_i3 = __pyx_t_17;
         __pyx_v_i4 = __pyx_t_18;
 
-        /* "kivy/graphics/shader.pyx":427
+        /* "kivy/graphics/shader.pyx":419
  *                 elif vec_size == 4:
  *                     i1, i2, i3, i4 = tuple_value
  *                     glUniform4i(loc, i1, i2, i3, i4)             # <<<<<<<<<<<<<<
@@ -6828,25 +6774,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         glUniform4i(__pyx_v_loc, __pyx_v_i1, __pyx_v_i2, __pyx_v_i3, __pyx_v_i4);
 
-        /* "kivy/graphics/shader.pyx":429
+        /* "kivy/graphics/shader.pyx":421
  *                     glUniform4i(loc, i1, i2, i3, i4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4i'
  *                         ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *             elif val_type is list:
  *                 list_size = <int>len(value)
  */
-        __pyx_t_23 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_2, __pyx_n_s_format); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 429; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_23 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_2, __pyx_n_s_format); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_23);
-        __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 429; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 429; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_23, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 429; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_23, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_24);
         __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 429; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 421; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/graphics/shader.pyx":428
+        /* "kivy/graphics/shader.pyx":420
  *                     i1, i2, i3, i4 = tuple_value
  *                     glUniform4i(loc, i1, i2, i3, i4)
  *                     log_gl_error('Shader.upload_uniform-glUniform4i'             # <<<<<<<<<<<<<<
@@ -6861,7 +6807,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       goto __pyx_L24;
     }
 
-    /* "kivy/graphics/shader.pyx":430
+    /* "kivy/graphics/shader.pyx":422
  *                     log_gl_error('Shader.upload_uniform-glUniform4i'
  *                         ' {name}'.format(name=name))
  *             elif val_type is list:             # <<<<<<<<<<<<<<
@@ -6872,46 +6818,46 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/graphics/shader.pyx":431
+      /* "kivy/graphics/shader.pyx":423
  *                         ' {name}'.format(name=name))
  *             elif val_type is list:
  *                 list_size = <int>len(value)             # <<<<<<<<<<<<<<
  *                 vec_size = len(value[0])
  *                 val_type = type(value[0][0])
  */
-      __pyx_t_9 = PyObject_Length(__pyx_v_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 431; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyObject_Length(__pyx_v_value); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 423; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_v_list_size = ((int)__pyx_t_9);
 
-      /* "kivy/graphics/shader.pyx":432
+      /* "kivy/graphics/shader.pyx":424
  *             elif val_type is list:
  *                 list_size = <int>len(value)
  *                 vec_size = len(value[0])             # <<<<<<<<<<<<<<
  *                 val_type = type(value[0][0])
  *                 if val_type is float:
  */
-      __pyx_t_24 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 432; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_24 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_24);
-      __pyx_t_9 = PyObject_Length(__pyx_t_24); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 432; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_9 = PyObject_Length(__pyx_t_24); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 424; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
       __pyx_v_vec_size = __pyx_t_9;
 
-      /* "kivy/graphics/shader.pyx":433
+      /* "kivy/graphics/shader.pyx":425
  *                 list_size = <int>len(value)
  *                 vec_size = len(value[0])
  *                 val_type = type(value[0][0])             # <<<<<<<<<<<<<<
  *                 if val_type is float:
  *                     float_list = <GLfloat *>malloc(
  */
-      __pyx_t_24 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_24 = __Pyx_GetItemInt(__pyx_v_value, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_24);
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_24, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_24, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 425; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
       __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_1)));
       __Pyx_DECREF_SET(__pyx_v_val_type, ((PyObject*)((PyObject *)Py_TYPE(__pyx_t_1))));
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "kivy/graphics/shader.pyx":434
+      /* "kivy/graphics/shader.pyx":426
  *                 vec_size = len(value[0])
  *                 val_type = type(value[0][0])
  *                 if val_type is float:             # <<<<<<<<<<<<<<
@@ -6922,7 +6868,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       __pyx_t_3 = (__pyx_t_4 != 0);
       if (__pyx_t_3) {
 
-        /* "kivy/graphics/shader.pyx":435
+        /* "kivy/graphics/shader.pyx":427
  *                 val_type = type(value[0][0])
  *                 if val_type is float:
  *                     float_list = <GLfloat *>malloc(             # <<<<<<<<<<<<<<
@@ -6931,7 +6877,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         __pyx_v_float_list = ((GLfloat *)malloc(((__pyx_v_list_size * __pyx_v_vec_size) * (sizeof(GLfloat)))));
 
-        /* "kivy/graphics/shader.pyx":437
+        /* "kivy/graphics/shader.pyx":429
  *                     float_list = <GLfloat *>malloc(
  *                             list_size * vec_size * sizeof(GLfloat))
  *                     if float_list is NULL:             # <<<<<<<<<<<<<<
@@ -6941,17 +6887,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_t_3 = ((__pyx_v_float_list == NULL) != 0);
         if (__pyx_t_3) {
 
-          /* "kivy/graphics/shader.pyx":438
+          /* "kivy/graphics/shader.pyx":430
  *                             list_size * vec_size * sizeof(GLfloat))
  *                     if float_list is NULL:
  *                         raise MemoryError()             # <<<<<<<<<<<<<<
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  */
-          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 438; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 430; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
 
-        /* "kivy/graphics/shader.pyx":439
+        /* "kivy/graphics/shader.pyx":431
  *                     if float_list is NULL:
  *                         raise MemoryError()
  *                     for x in xrange(list_size):             # <<<<<<<<<<<<<<
@@ -6962,7 +6908,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_18; __pyx_t_15+=1) {
           __pyx_v_x = __pyx_t_15;
 
-          /* "kivy/graphics/shader.pyx":440
+          /* "kivy/graphics/shader.pyx":432
  *                         raise MemoryError()
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):             # <<<<<<<<<<<<<<
@@ -6973,25 +6919,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_16; __pyx_t_20+=1) {
             __pyx_v_y = __pyx_t_20;
 
-            /* "kivy/graphics/shader.pyx":441
+            /* "kivy/graphics/shader.pyx":433
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  *                             float_list[vec_size * x + y] = <GLfloat>value[x][y]             # <<<<<<<<<<<<<<
  *                     if vec_size == 2:
  *                         glUniform2fv(loc, list_size, float_list)
  */
-            __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_1 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_24 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_24 = __Pyx_GetItemInt(__pyx_t_1, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_24);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_8 = __pyx_PyFloat_AsFloat(__pyx_t_24); if (unlikely((__pyx_t_8 == (GLfloat)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 433; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
             (__pyx_v_float_list[((__pyx_v_vec_size * __pyx_v_x) + __pyx_v_y)]) = ((GLfloat)__pyx_t_8);
           }
         }
 
-        /* "kivy/graphics/shader.pyx":450
+        /* "kivy/graphics/shader.pyx":442
  *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
  *                             ' {name}'.format(name=name))
  *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -7000,7 +6946,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         switch (__pyx_v_vec_size) {
 
-          /* "kivy/graphics/shader.pyx":442
+          /* "kivy/graphics/shader.pyx":434
  *                         for y in xrange(vec_size):
  *                             float_list[vec_size * x + y] = <GLfloat>value[x][y]
  *                     if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -7009,7 +6955,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           case 2:
 
-          /* "kivy/graphics/shader.pyx":443
+          /* "kivy/graphics/shader.pyx":435
  *                             float_list[vec_size * x + y] = <GLfloat>value[x][y]
  *                     if vec_size == 2:
  *                         glUniform2fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
@@ -7018,14 +6964,108 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           glUniform2fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
 
-          /* "kivy/graphics/shader.pyx":445
+          /* "kivy/graphics/shader.pyx":437
  *                         glUniform2fv(loc, list_size, float_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform2fv'
  *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                     elif vec_size == 3:
  *                         glUniform3fv(loc, list_size, float_list)
  */
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_3, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 445; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_3, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_24);
+          __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_1);
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_23);
+          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 437; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":436
+ *                     if vec_size == 2:
+ *                         glUniform2fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform2fv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_23));
+          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":438
+ *                         log_gl_error('Shader.upload_uniform-glUniform2fv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
+ *                         glUniform3fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ */
+          case 3:
+
+          /* "kivy/graphics/shader.pyx":439
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ *                         glUniform3fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform3fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
+
+          /* "kivy/graphics/shader.pyx":441
+ *                         glUniform3fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     elif vec_size == 4:
+ *                         glUniform4fv(loc, list_size, float_list)
+ */
+          __pyx_t_23 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_3, __pyx_n_s_format); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_23);
+          __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_1);
+          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_23, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_24);
+          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 441; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":440
+ *                     elif vec_size == 3:
+ *                         glUniform3fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_24));
+          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":442
+ *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
+ *                         glUniform4fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
+ */
+          case 4:
+
+          /* "kivy/graphics/shader.pyx":443
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ *                         glUniform4fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform4fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
+
+          /* "kivy/graphics/shader.pyx":445
+ *                         glUniform4fv(loc, list_size, float_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     else:
+ *                         Logger.debug(
+ */
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_3, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 445; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
           __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 445; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
@@ -7037,100 +7077,6 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 445; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
           /* "kivy/graphics/shader.pyx":444
- *                     if vec_size == 2:
- *                         glUniform2fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform2fv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_23));
-          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":446
- *                         log_gl_error('Shader.upload_uniform-glUniform2fv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
- *                         glUniform3fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- */
-          case 3:
-
-          /* "kivy/graphics/shader.pyx":447
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- *                         glUniform3fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform3fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
-
-          /* "kivy/graphics/shader.pyx":449
- *                         glUniform3fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     elif vec_size == 4:
- *                         glUniform4fv(loc, list_size, float_list)
- */
-          __pyx_t_23 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_3, __pyx_n_s_format); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_23);
-          __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_23, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_24);
-          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":448
- *                     elif vec_size == 3:
- *                         glUniform3fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_24));
-          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":450
- *                         log_gl_error('Shader.upload_uniform-glUniform3fv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
- *                         glUniform4fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
- */
-          case 4:
-
-          /* "kivy/graphics/shader.pyx":451
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- *                         glUniform4fv(loc, list_size, float_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform4fv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_float_list);
-
-          /* "kivy/graphics/shader.pyx":453
- *                         glUniform4fv(loc, list_size, float_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4fv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     else:
- *                         Logger.debug(
- */
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_3, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_1);
-          if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_23);
-          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_23))||((__pyx_t_23) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_23)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 453; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":452
  *                     elif vec_size == 4:
  *                         glUniform4fv(loc, list_size, float_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform4fv'             # <<<<<<<<<<<<<<
@@ -7142,39 +7088,39 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
           default:
 
-          /* "kivy/graphics/shader.pyx":455
+          /* "kivy/graphics/shader.pyx":447
  *                             ' {name}'.format(name=name))
  *                     else:
  *                         Logger.debug(             # <<<<<<<<<<<<<<
  *                             'Shader: unsupported {}x{} float array'.format(
  *                             list_size, vec_size))
  */
-          __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_debug); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_debug); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "kivy/graphics/shader.pyx":456
+          /* "kivy/graphics/shader.pyx":448
  *                     else:
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} float array'.format(             # <<<<<<<<<<<<<<
  *                             list_size, vec_size))
  *                     free(float_list)
  */
-          __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_float_array, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 456; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_float_array, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
 
-          /* "kivy/graphics/shader.pyx":457
+          /* "kivy/graphics/shader.pyx":449
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} float array'.format(
  *                             list_size, vec_size))             # <<<<<<<<<<<<<<
  *                     free(float_list)
  *                 elif val_type is int:
  */
-          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 457; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 457; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 449; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_22);
           __pyx_t_6 = NULL;
           __pyx_t_9 = 0;
@@ -7188,7 +7134,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
               __pyx_t_9 = 1;
             }
           }
-          __pyx_t_21 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 456; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_21 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_21);
           if (__pyx_t_6) {
             PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
@@ -7199,7 +7145,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_GIVEREF(__pyx_t_22);
           __pyx_t_5 = 0;
           __pyx_t_22 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_21, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 456; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_21, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 448; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -7214,17 +7160,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             }
           }
           if (!__pyx_t_13) {
-            __pyx_t_23 = __Pyx_PyObject_CallOneArg(__pyx_t_24, __pyx_t_1); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_23 = __Pyx_PyObject_CallOneArg(__pyx_t_24, __pyx_t_1); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_GOTREF(__pyx_t_23);
           } else {
-            __pyx_t_21 = PyTuple_New(1+1); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_21 = PyTuple_New(1+1); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_21);
             PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_13); __Pyx_GIVEREF(__pyx_t_13); __pyx_t_13 = NULL;
             PyTuple_SET_ITEM(__pyx_t_21, 0+1, __pyx_t_1);
             __Pyx_GIVEREF(__pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_t_21, NULL); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_t_21, NULL); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 447; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_23);
             __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
           }
@@ -7233,7 +7179,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
         }
 
-        /* "kivy/graphics/shader.pyx":458
+        /* "kivy/graphics/shader.pyx":450
  *                             'Shader: unsupported {}x{} float array'.format(
  *                             list_size, vec_size))
  *                     free(float_list)             # <<<<<<<<<<<<<<
@@ -7244,7 +7190,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         goto __pyx_L25;
       }
 
-      /* "kivy/graphics/shader.pyx":459
+      /* "kivy/graphics/shader.pyx":451
  *                             list_size, vec_size))
  *                     free(float_list)
  *                 elif val_type is int:             # <<<<<<<<<<<<<<
@@ -7255,7 +7201,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
       __pyx_t_4 = (__pyx_t_3 != 0);
       if (__pyx_t_4) {
 
-        /* "kivy/graphics/shader.pyx":460
+        /* "kivy/graphics/shader.pyx":452
  *                     free(float_list)
  *                 elif val_type is int:
  *                     int_list = <GLint *>malloc(             # <<<<<<<<<<<<<<
@@ -7264,7 +7210,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         __pyx_v_int_list = ((GLint *)malloc(((__pyx_v_list_size * __pyx_v_vec_size) * (sizeof(GLint)))));
 
-        /* "kivy/graphics/shader.pyx":462
+        /* "kivy/graphics/shader.pyx":454
  *                     int_list = <GLint *>malloc(
  *                             list_size * vec_size * sizeof(GLint))
  *                     if int_list is NULL:             # <<<<<<<<<<<<<<
@@ -7274,17 +7220,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         __pyx_t_4 = ((__pyx_v_int_list == NULL) != 0);
         if (__pyx_t_4) {
 
-          /* "kivy/graphics/shader.pyx":463
+          /* "kivy/graphics/shader.pyx":455
  *                             list_size * vec_size * sizeof(GLint))
  *                     if int_list is NULL:
  *                         raise MemoryError()             # <<<<<<<<<<<<<<
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  */
-          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 463; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          PyErr_NoMemory(); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 455; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
 
-        /* "kivy/graphics/shader.pyx":464
+        /* "kivy/graphics/shader.pyx":456
  *                     if int_list is NULL:
  *                         raise MemoryError()
  *                     for x in xrange(list_size):             # <<<<<<<<<<<<<<
@@ -7295,7 +7241,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_18; __pyx_t_15+=1) {
           __pyx_v_x = __pyx_t_15;
 
-          /* "kivy/graphics/shader.pyx":465
+          /* "kivy/graphics/shader.pyx":457
  *                         raise MemoryError()
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):             # <<<<<<<<<<<<<<
@@ -7306,25 +7252,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           for (__pyx_t_20 = 0; __pyx_t_20 < __pyx_t_16; __pyx_t_20+=1) {
             __pyx_v_y = __pyx_t_20;
 
-            /* "kivy/graphics/shader.pyx":466
+            /* "kivy/graphics/shader.pyx":458
  *                     for x in xrange(list_size):
  *                         for y in xrange(vec_size):
  *                             int_list[vec_size * x + y] = <GLint>value[x][y]             # <<<<<<<<<<<<<<
  *                     if vec_size == 2:
  *                         glUniform2iv(loc, list_size, int_list)
  */
-            __pyx_t_23 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_23 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_23 = __Pyx_GetItemInt(__pyx_v_value, __pyx_v_x, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_23 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_23);
-            __pyx_t_24 = __Pyx_GetItemInt(__pyx_t_23, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+            __pyx_t_24 = __Pyx_GetItemInt(__pyx_t_23, __pyx_v_y, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(__pyx_t_24 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
             __Pyx_GOTREF(__pyx_t_24);
             __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-            __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_t_24); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_7 = __Pyx_PyInt_As_GLint(__pyx_t_24); if (unlikely((__pyx_t_7 == (GLint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 458; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
             (__pyx_v_int_list[((__pyx_v_vec_size * __pyx_v_x) + __pyx_v_y)]) = ((GLint)__pyx_t_7);
           }
         }
 
-        /* "kivy/graphics/shader.pyx":475
+        /* "kivy/graphics/shader.pyx":467
  *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
  *                             ' {name}'.format(name=name))
  *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
@@ -7333,7 +7279,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
         switch (__pyx_v_vec_size) {
 
-          /* "kivy/graphics/shader.pyx":467
+          /* "kivy/graphics/shader.pyx":459
  *                         for y in xrange(vec_size):
  *                             int_list[vec_size * x + y] = <GLint>value[x][y]
  *                     if vec_size == 2:             # <<<<<<<<<<<<<<
@@ -7342,7 +7288,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           case 2:
 
-          /* "kivy/graphics/shader.pyx":468
+          /* "kivy/graphics/shader.pyx":460
  *                             int_list[vec_size * x + y] = <GLint>value[x][y]
  *                     if vec_size == 2:
  *                         glUniform2iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
@@ -7351,14 +7297,108 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
  */
           glUniform2iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
 
-          /* "kivy/graphics/shader.pyx":470
+          /* "kivy/graphics/shader.pyx":462
  *                         glUniform2iv(loc, list_size, int_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform2iv'
  *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
  *                     elif vec_size == 3:
  *                         glUniform3iv(loc, list_size, int_list)
  */
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_4, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 470; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform2_4, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_24);
+          __pyx_t_23 = PyDict_New(); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_23);
+          if (PyDict_SetItem(__pyx_t_23, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_21 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_empty_tuple, __pyx_t_23); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_21);
+          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
+          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_21))||((__pyx_t_21) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_21)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 462; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":461
+ *                     if vec_size == 2:
+ *                         glUniform2iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform2iv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_21));
+          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":463
+ *                         log_gl_error('Shader.upload_uniform-glUniform2iv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
+ *                         glUniform3iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ */
+          case 3:
+
+          /* "kivy/graphics/shader.pyx":464
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 3:
+ *                         glUniform3iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform3iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
+
+          /* "kivy/graphics/shader.pyx":466
+ *                         glUniform3iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     elif vec_size == 4:
+ *                         glUniform4iv(loc, list_size, int_list)
+ */
+          __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_4, __pyx_n_s_format); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_21);
+          __pyx_t_23 = PyDict_New(); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_23);
+          if (PyDict_SetItem(__pyx_t_23, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_21, __pyx_empty_tuple, __pyx_t_23); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __Pyx_GOTREF(__pyx_t_24);
+          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+          if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 466; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+          /* "kivy/graphics/shader.pyx":465
+ *                     elif vec_size == 3:
+ *                         glUniform3iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'             # <<<<<<<<<<<<<<
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ */
+          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_24));
+          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
+          break;
+
+          /* "kivy/graphics/shader.pyx":467
+ *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
+ *                         glUniform4iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
+ */
+          case 4:
+
+          /* "kivy/graphics/shader.pyx":468
+ *                             ' {name}'.format(name=name))
+ *                     elif vec_size == 4:
+ *                         glUniform4iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
+ *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
+ *                             ' {name}'.format(name=name))
+ */
+          glUniform4iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
+
+          /* "kivy/graphics/shader.pyx":470
+ *                         glUniform4iv(loc, list_size, int_list)
+ *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
+ *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
+ *                     else:
+ *                         Logger.debug(
+ */
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_4, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 470; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
           __pyx_t_23 = PyDict_New(); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 470; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_23);
@@ -7370,100 +7410,6 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           if (!(likely(PyString_CheckExact(__pyx_t_21))||((__pyx_t_21) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_21)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 470; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
           /* "kivy/graphics/shader.pyx":469
- *                     if vec_size == 2:
- *                         glUniform2iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform2iv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_21));
-          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":471
- *                         log_gl_error('Shader.upload_uniform-glUniform2iv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:             # <<<<<<<<<<<<<<
- *                         glUniform3iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- */
-          case 3:
-
-          /* "kivy/graphics/shader.pyx":472
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 3:
- *                         glUniform3iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform3iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
-
-          /* "kivy/graphics/shader.pyx":474
- *                         glUniform3iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     elif vec_size == 4:
- *                         glUniform4iv(loc, list_size, int_list)
- */
-          __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform3_4, __pyx_n_s_format); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_21);
-          __pyx_t_23 = PyDict_New(); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_23);
-          if (PyDict_SetItem(__pyx_t_23, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_24 = __Pyx_PyObject_Call(__pyx_t_21, __pyx_empty_tuple, __pyx_t_23); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_24);
-          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_24))||((__pyx_t_24) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_24)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":473
- *                     elif vec_size == 3:
- *                         glUniform3iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'             # <<<<<<<<<<<<<<
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- */
-          __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_24));
-          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-          break;
-
-          /* "kivy/graphics/shader.pyx":475
- *                         log_gl_error('Shader.upload_uniform-glUniform3iv'
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:             # <<<<<<<<<<<<<<
- *                         glUniform4iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
- */
-          case 4:
-
-          /* "kivy/graphics/shader.pyx":476
- *                             ' {name}'.format(name=name))
- *                     elif vec_size == 4:
- *                         glUniform4iv(loc, list_size, int_list)             # <<<<<<<<<<<<<<
- *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
- *                             ' {name}'.format(name=name))
- */
-          glUniform4iv(__pyx_v_loc, __pyx_v_list_size, __pyx_v_int_list);
-
-          /* "kivy/graphics/shader.pyx":478
- *                         glUniform4iv(loc, list_size, int_list)
- *                         log_gl_error('Shader.upload_uniform-glUniform4iv'
- *                             ' {name}'.format(name=name))             # <<<<<<<<<<<<<<
- *                     else:
- *                         Logger.debug(
- */
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_upload_uniform_glUniform4_4, __pyx_n_s_format); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_24);
-          __pyx_t_23 = PyDict_New(); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_23);
-          if (PyDict_SetItem(__pyx_t_23, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __pyx_t_21 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_empty_tuple, __pyx_t_23); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-          __Pyx_GOTREF(__pyx_t_21);
-          __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_21))||((__pyx_t_21) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_21)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 478; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-          /* "kivy/graphics/shader.pyx":477
  *                     elif vec_size == 4:
  *                         glUniform4iv(loc, list_size, int_list)
  *                         log_gl_error('Shader.upload_uniform-glUniform4iv'             # <<<<<<<<<<<<<<
@@ -7475,39 +7421,39 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
           default:
 
-          /* "kivy/graphics/shader.pyx":480
+          /* "kivy/graphics/shader.pyx":472
  *                             ' {name}'.format(name=name))
  *                     else:
  *                         Logger.debug(             # <<<<<<<<<<<<<<
  *                             'Shader: unsupported {}x{} int array'.format(
  *                             list_size, vec_size))
  */
-          __pyx_t_23 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_23 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_23);
-          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_t_23, __pyx_n_s_debug); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_24 = __Pyx_PyObject_GetAttrStr(__pyx_t_23, __pyx_n_s_debug); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_24);
           __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
 
-          /* "kivy/graphics/shader.pyx":481
+          /* "kivy/graphics/shader.pyx":473
  *                     else:
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} int array'.format(             # <<<<<<<<<<<<<<
  *                             list_size, vec_size))
  *                     free(int_list)
  */
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_int_array, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_unsupported_x_int_array, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 473; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
 
-          /* "kivy/graphics/shader.pyx":482
+          /* "kivy/graphics/shader.pyx":474
  *                         Logger.debug(
  *                             'Shader: unsupported {}x{} int array'.format(
  *                             list_size, vec_size))             # <<<<<<<<<<<<<<
  *                     free(int_list)
  *         else:
  */
-          __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 482; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_list_size); if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 482; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_22 = __Pyx_PyInt_From_long(__pyx_v_vec_size); if (unlikely(!__pyx_t_22)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 474; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_22);
           __pyx_t_5 = NULL;
           __pyx_t_9 = 0;
@@ -7521,7 +7467,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
               __pyx_t_9 = 1;
             }
           }
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 473; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_5) {
             PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -7532,7 +7478,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           __Pyx_GIVEREF(__pyx_t_22);
           __pyx_t_13 = 0;
           __pyx_t_22 = 0;
-          __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 481; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_23 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_23)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 473; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_23);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7547,17 +7493,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
             }
           }
           if (!__pyx_t_1) {
-            __pyx_t_21 = __Pyx_PyObject_CallOneArg(__pyx_t_24, __pyx_t_23); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_21 = __Pyx_PyObject_CallOneArg(__pyx_t_24, __pyx_t_23); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
             __Pyx_GOTREF(__pyx_t_21);
           } else {
-            __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_6);
             PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1); __Pyx_GIVEREF(__pyx_t_1); __pyx_t_1 = NULL;
             PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_23);
             __Pyx_GIVEREF(__pyx_t_23);
             __pyx_t_23 = 0;
-            __pyx_t_21 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_t_6, NULL); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 480; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_21 = __Pyx_PyObject_Call(__pyx_t_24, __pyx_t_6, NULL); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 472; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_21);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
@@ -7566,7 +7512,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
           break;
         }
 
-        /* "kivy/graphics/shader.pyx":483
+        /* "kivy/graphics/shader.pyx":475
  *                             'Shader: unsupported {}x{} int array'.format(
  *                             list_size, vec_size))
  *                     free(int_list)             # <<<<<<<<<<<<<<
@@ -7584,14 +7530,14 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   }
   /*else*/ {
 
-    /* "kivy/graphics/shader.pyx":485
+    /* "kivy/graphics/shader.pyx":477
  *                     free(int_list)
  *         else:
  *             raise Exception('for <%s>, type not handled <%s>' % (name, val_type))             # <<<<<<<<<<<<<<
  *         return 0
  * 
  */
-    __pyx_t_21 = PyTuple_New(2); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 485; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_21 = PyTuple_New(2); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_21);
     __Pyx_INCREF(__pyx_v_name);
     PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_v_name);
@@ -7599,24 +7545,24 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
     __Pyx_INCREF(((PyObject *)__pyx_v_val_type));
     PyTuple_SET_ITEM(__pyx_t_21, 1, ((PyObject *)__pyx_v_val_type));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_val_type));
-    __pyx_t_24 = __Pyx_PyString_Format(__pyx_kp_s_for_s_type_not_handled_s, __pyx_t_21); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 485; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_24 = __Pyx_PyString_Format(__pyx_kp_s_for_s_type_not_handled_s, __pyx_t_21); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_24);
     __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-    __pyx_t_21 = PyTuple_New(1); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 485; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_21 = PyTuple_New(1); if (unlikely(!__pyx_t_21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_21);
     PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_t_24);
     __Pyx_GIVEREF(__pyx_t_24);
     __pyx_t_24 = 0;
-    __pyx_t_24 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_21, NULL); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 485; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_24 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_21, NULL); if (unlikely(!__pyx_t_24)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_24);
     __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     __Pyx_Raise(__pyx_t_24, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_24); __pyx_t_24 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 485; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_L5:;
 
-  /* "kivy/graphics/shader.pyx":486
+  /* "kivy/graphics/shader.pyx":478
  *         else:
  *             raise Exception('for <%s>, type not handled <%s>' % (name, val_type))
  *         return 0             # <<<<<<<<<<<<<<
@@ -7626,7 +7572,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":250
+  /* "kivy/graphics/shader.pyx":242
  *         return 0
  * 
  *     cdef int upload_uniform(self, str name, value) except -1:             # <<<<<<<<<<<<<<
@@ -7654,7 +7600,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform(struct __pyx_o
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":488
+/* "kivy/graphics/shader.pyx":480
  *         return 0
  * 
  *     cdef void upload_uniform_matrix(self, int loc, Matrix value):             # <<<<<<<<<<<<<<
@@ -7669,7 +7615,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform_matrix(CYTHON
   long __pyx_t_1;
   __Pyx_RefNannySetupContext("upload_uniform_matrix", 0);
 
-  /* "kivy/graphics/shader.pyx":490
+  /* "kivy/graphics/shader.pyx":482
  *     cdef void upload_uniform_matrix(self, int loc, Matrix value):
  *         cdef GLfloat mat[16]
  *         for x in xrange(16):             # <<<<<<<<<<<<<<
@@ -7679,7 +7625,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform_matrix(CYTHON
   for (__pyx_t_1 = 0; __pyx_t_1 < 16; __pyx_t_1+=1) {
     __pyx_v_x = __pyx_t_1;
 
-    /* "kivy/graphics/shader.pyx":491
+    /* "kivy/graphics/shader.pyx":483
  *         cdef GLfloat mat[16]
  *         for x in xrange(16):
  *             mat[x] = <GLfloat>value.mat[x]             # <<<<<<<<<<<<<<
@@ -7689,7 +7635,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform_matrix(CYTHON
     (__pyx_v_mat[__pyx_v_x]) = ((GLfloat)(__pyx_v_value->mat[__pyx_v_x]));
   }
 
-  /* "kivy/graphics/shader.pyx":492
+  /* "kivy/graphics/shader.pyx":484
  *         for x in xrange(16):
  *             mat[x] = <GLfloat>value.mat[x]
  *         glUniformMatrix4fv(loc, 1, False, mat)             # <<<<<<<<<<<<<<
@@ -7698,7 +7644,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform_matrix(CYTHON
  */
   glUniformMatrix4fv(__pyx_v_loc, 1, 0, __pyx_v_mat);
 
-  /* "kivy/graphics/shader.pyx":488
+  /* "kivy/graphics/shader.pyx":480
  *         return 0
  * 
  *     cdef void upload_uniform_matrix(self, int loc, Matrix value):             # <<<<<<<<<<<<<<
@@ -7710,7 +7656,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_upload_uniform_matrix(CYTHON
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":494
+/* "kivy/graphics/shader.pyx":486
  *         glUniformMatrix4fv(loc, 1, False, mat)
  * 
  *     cdef int get_uniform_loc(self, str name) except *:             # <<<<<<<<<<<<<<
@@ -7732,67 +7678,67 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_get_uniform_loc(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_uniform_loc", 0);
 
-  /* "kivy/graphics/shader.pyx":495
+  /* "kivy/graphics/shader.pyx":487
  * 
  *     cdef int get_uniform_loc(self, str name) except *:
  *         cdef bytes c_name = name.encode('utf-8')             # <<<<<<<<<<<<<<
  *         cdef int loc = glGetUniformLocation(self.program, c_name)
  *         log_gl_error(
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 495; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 495; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 495; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_c_name = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":496
+  /* "kivy/graphics/shader.pyx":488
  *     cdef int get_uniform_loc(self, str name) except *:
  *         cdef bytes c_name = name.encode('utf-8')
  *         cdef int loc = glGetUniformLocation(self.program, c_name)             # <<<<<<<<<<<<<<
  *         log_gl_error(
  *             'Shader.get_uniform_loc-glGetUniformLocation ({name})'.format(
  */
-  __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_c_name); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 496; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_c_name); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 488; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_loc = glGetUniformLocation(__pyx_v_self->program, __pyx_t_3);
 
-  /* "kivy/graphics/shader.pyx":498
+  /* "kivy/graphics/shader.pyx":490
  *         cdef int loc = glGetUniformLocation(self.program, c_name)
  *         log_gl_error(
  *             'Shader.get_uniform_loc-glGetUniformLocation ({name})'.format(             # <<<<<<<<<<<<<<
  *             name=name))
  *         self.uniform_locations[name] = loc
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_get_uniform_loc_glGetUnif, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_get_uniform_loc_glGetUnif, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "kivy/graphics/shader.pyx":499
+  /* "kivy/graphics/shader.pyx":491
  *         log_gl_error(
  *             'Shader.get_uniform_loc-glGetUniformLocation ({name})'.format(
  *             name=name))             # <<<<<<<<<<<<<<
  *         self.uniform_locations[name] = loc
  *         return loc
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_name, __pyx_v_name) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":498
+  /* "kivy/graphics/shader.pyx":490
  *         cdef int loc = glGetUniformLocation(self.program, c_name)
  *         log_gl_error(
  *             'Shader.get_uniform_loc-glGetUniformLocation ({name})'.format(             # <<<<<<<<<<<<<<
  *             name=name))
  *         self.uniform_locations[name] = loc
  */
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 498; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_4)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 490; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":497
+  /* "kivy/graphics/shader.pyx":489
  *         cdef bytes c_name = name.encode('utf-8')
  *         cdef int loc = glGetUniformLocation(self.program, c_name)
  *         log_gl_error(             # <<<<<<<<<<<<<<
@@ -7802,23 +7748,23 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_get_uniform_loc(struct __pyx_
   __pyx_f_4kivy_8graphics_6shader_log_gl_error(((PyObject*)__pyx_t_4));
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/shader.pyx":500
+  /* "kivy/graphics/shader.pyx":492
  *             'Shader.get_uniform_loc-glGetUniformLocation ({name})'.format(
  *             name=name))
  *         self.uniform_locations[name] = loc             # <<<<<<<<<<<<<<
  *         return loc
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_loc); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_loc); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   if (unlikely(__pyx_v_self->uniform_locations == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_self->uniform_locations, __pyx_v_name, __pyx_t_4) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 500; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(PyDict_SetItem(__pyx_v_self->uniform_locations, __pyx_v_name, __pyx_t_4) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 492; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/shader.pyx":501
+  /* "kivy/graphics/shader.pyx":493
  *             name=name))
  *         self.uniform_locations[name] = loc
  *         return loc             # <<<<<<<<<<<<<<
@@ -7828,7 +7774,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_get_uniform_loc(struct __pyx_
   __pyx_r = __pyx_v_loc;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":494
+  /* "kivy/graphics/shader.pyx":486
  *         glUniformMatrix4fv(loc, 1, False, mat)
  * 
  *     cdef int get_uniform_loc(self, str name) except *:             # <<<<<<<<<<<<<<
@@ -7849,7 +7795,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_get_uniform_loc(struct __pyx_
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":503
+/* "kivy/graphics/shader.pyx":495
  *         return loc
  * 
  *     cdef void bind_vertex_format(self, VertexFormat vertex_format):             # <<<<<<<<<<<<<<
@@ -7875,14 +7821,14 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("bind_vertex_format", 0);
 
-  /* "kivy/graphics/shader.pyx":512
+  /* "kivy/graphics/shader.pyx":504
  *         # the same vertex format might be used by others shaders, so the
  *         # attr.index would not be accurate. we need to update it as well.
  *         if vertex_format and self._current_vertex_format is vertex_format and \             # <<<<<<<<<<<<<<
  *                 vertex_format.last_shader is self:
  *             return
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_vertex_format)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 512; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_vertex_format)); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 504; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
@@ -7896,7 +7842,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "kivy/graphics/shader.pyx":513
+  /* "kivy/graphics/shader.pyx":505
  *         # attr.index would not be accurate. we need to update it as well.
  *         if vertex_format and self._current_vertex_format is vertex_format and \
  *                 vertex_format.last_shader is self:             # <<<<<<<<<<<<<<
@@ -7909,7 +7855,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":514
+    /* "kivy/graphics/shader.pyx":506
  *         if vertex_format and self._current_vertex_format is vertex_format and \
  *                 vertex_format.last_shader is self:
  *             return             # <<<<<<<<<<<<<<
@@ -7919,17 +7865,17 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":517
+  /* "kivy/graphics/shader.pyx":509
  * 
  *         # unbind the previous vertex format
  *         if self._current_vertex_format:             # <<<<<<<<<<<<<<
  *             for i in xrange(self._current_vertex_format.vattr_count):
  *                 attr = &self._current_vertex_format.vattr[i]
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->_current_vertex_format)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 517; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->_current_vertex_format)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 509; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":518
+    /* "kivy/graphics/shader.pyx":510
  *         # unbind the previous vertex format
  *         if self._current_vertex_format:
  *             for i in xrange(self._current_vertex_format.vattr_count):             # <<<<<<<<<<<<<<
@@ -7940,7 +7886,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "kivy/graphics/shader.pyx":519
+      /* "kivy/graphics/shader.pyx":511
  *         if self._current_vertex_format:
  *             for i in xrange(self._current_vertex_format.vattr_count):
  *                 attr = &self._current_vertex_format.vattr[i]             # <<<<<<<<<<<<<<
@@ -7949,7 +7895,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
  */
       __pyx_v_attr = (&(__pyx_v_self->_current_vertex_format->vattr[__pyx_v_i]));
 
-      /* "kivy/graphics/shader.pyx":520
+      /* "kivy/graphics/shader.pyx":512
  *             for i in xrange(self._current_vertex_format.vattr_count):
  *                 attr = &self._current_vertex_format.vattr[i]
  *                 if attr.per_vertex == 0:             # <<<<<<<<<<<<<<
@@ -7959,7 +7905,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
       __pyx_t_1 = ((__pyx_v_attr->per_vertex == 0) != 0);
       if (__pyx_t_1) {
 
-        /* "kivy/graphics/shader.pyx":521
+        /* "kivy/graphics/shader.pyx":513
  *                 attr = &self._current_vertex_format.vattr[i]
  *                 if attr.per_vertex == 0:
  *                     continue             # <<<<<<<<<<<<<<
@@ -7969,7 +7915,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
         goto __pyx_L8_continue;
       }
 
-      /* "kivy/graphics/shader.pyx":522
+      /* "kivy/graphics/shader.pyx":514
  *                 if attr.per_vertex == 0:
  *                     continue
  *                 glDisableVertexAttribArray(attr.index)             # <<<<<<<<<<<<<<
@@ -7978,7 +7924,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
  */
       glDisableVertexAttribArray(__pyx_v_attr->index);
 
-      /* "kivy/graphics/shader.pyx":523
+      /* "kivy/graphics/shader.pyx":515
  *                     continue
  *                 glDisableVertexAttribArray(attr.index)
  *                 log_gl_error(             # <<<<<<<<<<<<<<
@@ -7992,17 +7938,17 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
   }
   __pyx_L7:;
 
-  /* "kivy/graphics/shader.pyx":527
+  /* "kivy/graphics/shader.pyx":519
  * 
  *         # bind the new vertex format
  *         if vertex_format:             # <<<<<<<<<<<<<<
  *             vertex_format.last_shader = self
  *             for i in xrange(vertex_format.vattr_count):
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_vertex_format)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 527; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_vertex_format)); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 519; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":528
+    /* "kivy/graphics/shader.pyx":520
  *         # bind the new vertex format
  *         if vertex_format:
  *             vertex_format.last_shader = self             # <<<<<<<<<<<<<<
@@ -8015,7 +7961,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
     __Pyx_DECREF(__pyx_v_vertex_format->last_shader);
     __pyx_v_vertex_format->last_shader = ((PyObject *)__pyx_v_self);
 
-    /* "kivy/graphics/shader.pyx":529
+    /* "kivy/graphics/shader.pyx":521
  *         if vertex_format:
  *             vertex_format.last_shader = self
  *             for i in xrange(vertex_format.vattr_count):             # <<<<<<<<<<<<<<
@@ -8026,7 +7972,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "kivy/graphics/shader.pyx":530
+      /* "kivy/graphics/shader.pyx":522
  *             vertex_format.last_shader = self
  *             for i in xrange(vertex_format.vattr_count):
  *                 attr = &vertex_format.vattr[i]             # <<<<<<<<<<<<<<
@@ -8035,7 +7981,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
  */
       __pyx_v_attr = (&(__pyx_v_vertex_format->vattr[__pyx_v_i]));
 
-      /* "kivy/graphics/shader.pyx":531
+      /* "kivy/graphics/shader.pyx":523
  *             for i in xrange(vertex_format.vattr_count):
  *                 attr = &vertex_format.vattr[i]
  *                 if attr.per_vertex == 0:             # <<<<<<<<<<<<<<
@@ -8045,7 +7991,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
       __pyx_t_1 = ((__pyx_v_attr->per_vertex == 0) != 0);
       if (__pyx_t_1) {
 
-        /* "kivy/graphics/shader.pyx":532
+        /* "kivy/graphics/shader.pyx":524
  *                 attr = &vertex_format.vattr[i]
  *                 if attr.per_vertex == 0:
  *                     continue             # <<<<<<<<<<<<<<
@@ -8055,14 +8001,14 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
         goto __pyx_L12_continue;
       }
 
-      /* "kivy/graphics/shader.pyx":533
+      /* "kivy/graphics/shader.pyx":525
  *                 if attr.per_vertex == 0:
  *                     continue
  *                 name = <bytes>attr.name             # <<<<<<<<<<<<<<
  *                 attr.index = glGetAttribLocation(self.program, <char *>name)
  *                 glEnableVertexAttribArray(attr.index)
  */
-      __pyx_t_6 = __Pyx_PyBytes_FromString(__pyx_v_attr->name); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 533; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyBytes_FromString(__pyx_v_attr->name); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 525; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = __pyx_t_6;
       __Pyx_INCREF(__pyx_t_7);
@@ -8070,17 +8016,17 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
       __Pyx_XDECREF_SET(__pyx_v_name, ((PyObject*)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "kivy/graphics/shader.pyx":534
+      /* "kivy/graphics/shader.pyx":526
  *                     continue
  *                 name = <bytes>attr.name
  *                 attr.index = glGetAttribLocation(self.program, <char *>name)             # <<<<<<<<<<<<<<
  *                 glEnableVertexAttribArray(attr.index)
  *                 log_gl_error(
  */
-      __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_name); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 534; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_name); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 526; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_v_attr->index = glGetAttribLocation(__pyx_v_self->program, ((char *)__pyx_t_8));
 
-      /* "kivy/graphics/shader.pyx":535
+      /* "kivy/graphics/shader.pyx":527
  *                 name = <bytes>attr.name
  *                 attr.index = glGetAttribLocation(self.program, <char *>name)
  *                 glEnableVertexAttribArray(attr.index)             # <<<<<<<<<<<<<<
@@ -8089,7 +8035,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
  */
       glEnableVertexAttribArray(__pyx_v_attr->index);
 
-      /* "kivy/graphics/shader.pyx":536
+      /* "kivy/graphics/shader.pyx":528
  *                 attr.index = glGetAttribLocation(self.program, <char *>name)
  *                 glEnableVertexAttribArray(attr.index)
  *                 log_gl_error(             # <<<<<<<<<<<<<<
@@ -8103,7 +8049,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
   }
   __pyx_L11:;
 
-  /* "kivy/graphics/shader.pyx":540
+  /* "kivy/graphics/shader.pyx":532
  * 
  *         # save for the next run.
  *         self._current_vertex_format = vertex_format             # <<<<<<<<<<<<<<
@@ -8116,7 +8062,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
   __Pyx_DECREF(((PyObject *)__pyx_v_self->_current_vertex_format));
   __pyx_v_self->_current_vertex_format = __pyx_v_vertex_format;
 
-  /* "kivy/graphics/shader.pyx":503
+  /* "kivy/graphics/shader.pyx":495
  *         return loc
  * 
  *     cdef void bind_vertex_format(self, VertexFormat vertex_format):             # <<<<<<<<<<<<<<
@@ -8135,7 +8081,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format(struct __
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":542
+/* "kivy/graphics/shader.pyx":534
  *         self._current_vertex_format = vertex_format
  * 
  *     cdef int build(self) except -1:             # <<<<<<<<<<<<<<
@@ -8152,25 +8098,25 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build(struct __pyx_obj_4kivy_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("build", 0);
 
-  /* "kivy/graphics/shader.pyx":543
+  /* "kivy/graphics/shader.pyx":535
  * 
  *     cdef int build(self) except -1:
  *         self.build_vertex()             # <<<<<<<<<<<<<<
  *         self.build_fragment()
  *         return 0
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_vertex(__pyx_v_self, NULL); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 543; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_vertex(__pyx_v_self, NULL); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 535; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":544
+  /* "kivy/graphics/shader.pyx":536
  *     cdef int build(self) except -1:
  *         self.build_vertex()
  *         self.build_fragment()             # <<<<<<<<<<<<<<
  *         return 0
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_fragment(__pyx_v_self, NULL); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 544; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_fragment(__pyx_v_self, NULL); if (unlikely(__pyx_t_1 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 536; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":545
+  /* "kivy/graphics/shader.pyx":537
  *         self.build_vertex()
  *         self.build_fragment()
  *         return 0             # <<<<<<<<<<<<<<
@@ -8180,7 +8126,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build(struct __pyx_obj_4kivy_
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":542
+  /* "kivy/graphics/shader.pyx":534
  *         self._current_vertex_format = vertex_format
  * 
  *     cdef int build(self) except -1:             # <<<<<<<<<<<<<<
@@ -8197,7 +8143,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build(struct __pyx_obj_4kivy_
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":547
+/* "kivy/graphics/shader.pyx":539
  *         return 0
  * 
  *     cdef int build_vertex(self, int link=1) except -1:             # <<<<<<<<<<<<<<
@@ -8224,7 +8170,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
     }
   }
 
-  /* "kivy/graphics/shader.pyx":548
+  /* "kivy/graphics/shader.pyx":540
  * 
  *     cdef int build_vertex(self, int link=1) except -1:
  *         if self.vertex_shader is not None:             # <<<<<<<<<<<<<<
@@ -8235,7 +8181,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/shader.pyx":549
+    /* "kivy/graphics/shader.pyx":541
  *     cdef int build_vertex(self, int link=1) except -1:
  *         if self.vertex_shader is not None:
  *             glDetachShader(self.program, self.vertex_shader.shader)             # <<<<<<<<<<<<<<
@@ -8244,7 +8190,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
  */
     glDetachShader(__pyx_v_self->program, __pyx_v_self->vertex_shader->shader);
 
-    /* "kivy/graphics/shader.pyx":550
+    /* "kivy/graphics/shader.pyx":542
  *         if self.vertex_shader is not None:
  *             glDetachShader(self.program, self.vertex_shader.shader)
  *             log_gl_error('Shader.build_vertex-glDetachShader')             # <<<<<<<<<<<<<<
@@ -8253,7 +8199,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
  */
     __pyx_f_4kivy_8graphics_6shader_log_gl_error(__pyx_kp_s_Shader_build_vertex_glDetachShad);
 
-    /* "kivy/graphics/shader.pyx":551
+    /* "kivy/graphics/shader.pyx":543
  *             glDetachShader(self.program, self.vertex_shader.shader)
  *             log_gl_error('Shader.build_vertex-glDetachShader')
  *             self.vertex_shader = None             # <<<<<<<<<<<<<<
@@ -8269,17 +8215,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":552
+  /* "kivy/graphics/shader.pyx":544
  *             log_gl_error('Shader.build_vertex-glDetachShader')
  *             self.vertex_shader = None
  *         self.vertex_shader = self.compile_shader(self.vert_src, GL_VERTEX_SHADER)             # <<<<<<<<<<<<<<
  *         if self.vertex_shader is not None:
  *             glAttachShader(self.program, self.vertex_shader.shader)
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_self->vert_src))||((__pyx_v_self->vert_src) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->vert_src)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 552; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->vert_src))||((__pyx_v_self->vert_src) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->vert_src)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 544; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = __pyx_v_self->vert_src;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->compile_shader(__pyx_v_self, ((PyObject*)__pyx_t_3), GL_VERTEX_SHADER)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 552; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->compile_shader(__pyx_v_self, ((PyObject*)__pyx_t_3), GL_VERTEX_SHADER)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 544; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_GIVEREF(__pyx_t_4);
@@ -8288,7 +8234,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   __pyx_v_self->vertex_shader = ((struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/shader.pyx":553
+  /* "kivy/graphics/shader.pyx":545
  *             self.vertex_shader = None
  *         self.vertex_shader = self.compile_shader(self.vert_src, GL_VERTEX_SHADER)
  *         if self.vertex_shader is not None:             # <<<<<<<<<<<<<<
@@ -8299,7 +8245,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":554
+    /* "kivy/graphics/shader.pyx":546
  *         self.vertex_shader = self.compile_shader(self.vert_src, GL_VERTEX_SHADER)
  *         if self.vertex_shader is not None:
  *             glAttachShader(self.program, self.vertex_shader.shader)             # <<<<<<<<<<<<<<
@@ -8308,7 +8254,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
  */
     glAttachShader(__pyx_v_self->program, __pyx_v_self->vertex_shader->shader);
 
-    /* "kivy/graphics/shader.pyx":555
+    /* "kivy/graphics/shader.pyx":547
  *         if self.vertex_shader is not None:
  *             glAttachShader(self.program, self.vertex_shader.shader)
  *             log_gl_error('Shader.build_vertex-glAttachShader')             # <<<<<<<<<<<<<<
@@ -8320,7 +8266,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/shader.pyx":556
+  /* "kivy/graphics/shader.pyx":548
  *             glAttachShader(self.program, self.vertex_shader.shader)
  *             log_gl_error('Shader.build_vertex-glAttachShader')
  *         if link:             # <<<<<<<<<<<<<<
@@ -8330,19 +8276,19 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   __pyx_t_1 = (__pyx_v_link != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":557
+    /* "kivy/graphics/shader.pyx":549
  *             log_gl_error('Shader.build_vertex-glAttachShader')
  *         if link:
  *             self.link_program()             # <<<<<<<<<<<<<<
  *         return 0
  * 
  */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->link_program(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->link_program(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 549; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     goto __pyx_L5;
   }
   __pyx_L5:;
 
-  /* "kivy/graphics/shader.pyx":558
+  /* "kivy/graphics/shader.pyx":550
  *         if link:
  *             self.link_program()
  *         return 0             # <<<<<<<<<<<<<<
@@ -8352,7 +8298,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":547
+  /* "kivy/graphics/shader.pyx":539
  *         return 0
  * 
  *     cdef int build_vertex(self, int link=1) except -1:             # <<<<<<<<<<<<<<
@@ -8371,7 +8317,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_vertex(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":560
+/* "kivy/graphics/shader.pyx":552
  *         return 0
  * 
  *     cdef int build_fragment(self, int link=1) except -1:             # <<<<<<<<<<<<<<
@@ -8398,7 +8344,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
     }
   }
 
-  /* "kivy/graphics/shader.pyx":561
+  /* "kivy/graphics/shader.pyx":553
  * 
  *     cdef int build_fragment(self, int link=1) except -1:
  *         if self.fragment_shader is not None:             # <<<<<<<<<<<<<<
@@ -8409,7 +8355,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/shader.pyx":562
+    /* "kivy/graphics/shader.pyx":554
  *     cdef int build_fragment(self, int link=1) except -1:
  *         if self.fragment_shader is not None:
  *             glDetachShader(self.program, self.fragment_shader.shader)             # <<<<<<<<<<<<<<
@@ -8418,7 +8364,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
  */
     glDetachShader(__pyx_v_self->program, __pyx_v_self->fragment_shader->shader);
 
-    /* "kivy/graphics/shader.pyx":563
+    /* "kivy/graphics/shader.pyx":555
  *         if self.fragment_shader is not None:
  *             glDetachShader(self.program, self.fragment_shader.shader)
  *             log_gl_error('Shader.build_fragment-glDetachShader')             # <<<<<<<<<<<<<<
@@ -8427,7 +8373,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
  */
     __pyx_f_4kivy_8graphics_6shader_log_gl_error(__pyx_kp_s_Shader_build_fragment_glDetachSh);
 
-    /* "kivy/graphics/shader.pyx":564
+    /* "kivy/graphics/shader.pyx":556
  *             glDetachShader(self.program, self.fragment_shader.shader)
  *             log_gl_error('Shader.build_fragment-glDetachShader')
  *             self.fragment_shader = None             # <<<<<<<<<<<<<<
@@ -8443,17 +8389,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":565
+  /* "kivy/graphics/shader.pyx":557
  *             log_gl_error('Shader.build_fragment-glDetachShader')
  *             self.fragment_shader = None
  *         self.fragment_shader = self.compile_shader(self.frag_src, GL_FRAGMENT_SHADER)             # <<<<<<<<<<<<<<
  *         if self.fragment_shader is not None:
  *             glAttachShader(self.program, self.fragment_shader.shader)
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_self->frag_src))||((__pyx_v_self->frag_src) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->frag_src)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_self->frag_src))||((__pyx_v_self->frag_src) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_self->frag_src)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = __pyx_v_self->frag_src;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->compile_shader(__pyx_v_self, ((PyObject*)__pyx_t_3), GL_FRAGMENT_SHADER)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 565; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = ((PyObject *)((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->compile_shader(__pyx_v_self, ((PyObject*)__pyx_t_3), GL_FRAGMENT_SHADER)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 557; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_GIVEREF(__pyx_t_4);
@@ -8462,7 +8408,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   __pyx_v_self->fragment_shader = ((struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/graphics/shader.pyx":566
+  /* "kivy/graphics/shader.pyx":558
  *             self.fragment_shader = None
  *         self.fragment_shader = self.compile_shader(self.frag_src, GL_FRAGMENT_SHADER)
  *         if self.fragment_shader is not None:             # <<<<<<<<<<<<<<
@@ -8473,7 +8419,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":567
+    /* "kivy/graphics/shader.pyx":559
  *         self.fragment_shader = self.compile_shader(self.frag_src, GL_FRAGMENT_SHADER)
  *         if self.fragment_shader is not None:
  *             glAttachShader(self.program, self.fragment_shader.shader)             # <<<<<<<<<<<<<<
@@ -8482,7 +8428,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
  */
     glAttachShader(__pyx_v_self->program, __pyx_v_self->fragment_shader->shader);
 
-    /* "kivy/graphics/shader.pyx":568
+    /* "kivy/graphics/shader.pyx":560
  *         if self.fragment_shader is not None:
  *             glAttachShader(self.program, self.fragment_shader.shader)
  *             log_gl_error('Shader.build_fragment-glAttachShader')             # <<<<<<<<<<<<<<
@@ -8494,7 +8440,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   }
   __pyx_L4:;
 
-  /* "kivy/graphics/shader.pyx":569
+  /* "kivy/graphics/shader.pyx":561
  *             glAttachShader(self.program, self.fragment_shader.shader)
  *             log_gl_error('Shader.build_fragment-glAttachShader')
  *         if link:             # <<<<<<<<<<<<<<
@@ -8504,19 +8450,19 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   __pyx_t_1 = (__pyx_v_link != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":570
+    /* "kivy/graphics/shader.pyx":562
  *             log_gl_error('Shader.build_fragment-glAttachShader')
  *         if link:
  *             self.link_program()             # <<<<<<<<<<<<<<
  * 
  *     cdef int link_program(self) except -1:
  */
-    __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->link_program(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 570; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->link_program(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 562; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     goto __pyx_L5;
   }
   __pyx_L5:;
 
-  /* "kivy/graphics/shader.pyx":560
+  /* "kivy/graphics/shader.pyx":552
  *         return 0
  * 
  *     cdef int build_fragment(self, int link=1) except -1:             # <<<<<<<<<<<<<<
@@ -8537,7 +8483,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_build_fragment(struct __pyx_o
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":572
+/* "kivy/graphics/shader.pyx":564
  *             self.link_program()
  * 
  *     cdef int link_program(self) except -1:             # <<<<<<<<<<<<<<
@@ -8562,7 +8508,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("link_program", 0);
 
-  /* "kivy/graphics/shader.pyx":573
+  /* "kivy/graphics/shader.pyx":565
  * 
  *     cdef int link_program(self) except -1:
  *         if self.vertex_shader is None or self.fragment_shader is None:             # <<<<<<<<<<<<<<
@@ -8582,7 +8528,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":574
+    /* "kivy/graphics/shader.pyx":566
  *     cdef int link_program(self) except -1:
  *         if self.vertex_shader is None or self.fragment_shader is None:
  *             return 0             # <<<<<<<<<<<<<<
@@ -8593,7 +8539,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":577
+  /* "kivy/graphics/shader.pyx":569
  * 
  *         # XXX to ensure that shader is ok, read error state right now.
  *         glGetError()             # <<<<<<<<<<<<<<
@@ -8602,7 +8548,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
  */
   glGetError();
 
-  /* "kivy/graphics/shader.pyx":579
+  /* "kivy/graphics/shader.pyx":571
  *         glGetError()
  * 
  *         glLinkProgram(self.program)             # <<<<<<<<<<<<<<
@@ -8611,29 +8557,29 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
  */
   glLinkProgram(__pyx_v_self->program);
 
-  /* "kivy/graphics/shader.pyx":580
+  /* "kivy/graphics/shader.pyx":572
  * 
  *         glLinkProgram(self.program)
  *         self.process_message('program', self.get_program_log(self.program))             # <<<<<<<<<<<<<<
  *         self.uniform_locations = dict()
  *         error = glGetError()
  */
-  __pyx_t_4 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->program); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_unsigned_int(__pyx_v_self->program); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 572; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->get_program_log(__pyx_v_self, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 580; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->get_program_log(__pyx_v_self, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 572; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->process_message(__pyx_v_self, __pyx_n_s_program, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "kivy/graphics/shader.pyx":581
+  /* "kivy/graphics/shader.pyx":573
  *         glLinkProgram(self.program)
  *         self.process_message('program', self.get_program_log(self.program))
  *         self.uniform_locations = dict()             # <<<<<<<<<<<<<<
  *         error = glGetError()
  *         if error:
  */
-  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 581; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 573; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
   __Pyx_GOTREF(__pyx_v_self->uniform_locations);
@@ -8641,41 +8587,41 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   __pyx_v_self->uniform_locations = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "kivy/graphics/shader.pyx":582
+  /* "kivy/graphics/shader.pyx":574
  *         self.process_message('program', self.get_program_log(self.program))
  *         self.uniform_locations = dict()
  *         error = glGetError()             # <<<<<<<<<<<<<<
  *         if error:
  *             Logger.error('Shader: GL error %d' % error)
  */
-  __pyx_t_5 = __Pyx_PyInt_From_GLenum(glGetError()); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 582; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_From_GLenum(glGetError()); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 574; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_v_error = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "kivy/graphics/shader.pyx":583
+  /* "kivy/graphics/shader.pyx":575
  *         self.uniform_locations = dict()
  *         error = glGetError()
  *         if error:             # <<<<<<<<<<<<<<
  *             Logger.error('Shader: GL error %d' % error)
  *         if not self.is_linked():
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_error); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 583; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_error); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 575; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":584
+    /* "kivy/graphics/shader.pyx":576
  *         error = glGetError()
  *         if error:
  *             Logger.error('Shader: GL error %d' % error)             # <<<<<<<<<<<<<<
  *         if not self.is_linked():
  *             self._success = 0
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_error); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Shader_GL_error_d, __pyx_v_error); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_Shader_GL_error_d, __pyx_v_error); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -8688,17 +8634,17 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_8);
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __Pyx_GIVEREF(__pyx_t_7); __pyx_t_7 = NULL;
       PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 584; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 576; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -8708,7 +8654,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   }
   __pyx_L6:;
 
-  /* "kivy/graphics/shader.pyx":585
+  /* "kivy/graphics/shader.pyx":577
  *         if error:
  *             Logger.error('Shader: GL error %d' % error)
  *         if not self.is_linked():             # <<<<<<<<<<<<<<
@@ -8718,7 +8664,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   __pyx_t_1 = ((!(((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->is_linked(__pyx_v_self) != 0)) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":586
+    /* "kivy/graphics/shader.pyx":578
  *             Logger.error('Shader: GL error %d' % error)
  *         if not self.is_linked():
  *             self._success = 0             # <<<<<<<<<<<<<<
@@ -8727,21 +8673,21 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
  */
     __pyx_v_self->_success = 0;
 
-    /* "kivy/graphics/shader.pyx":587
+    /* "kivy/graphics/shader.pyx":579
  *         if not self.is_linked():
  *             self._success = 0
  *             raise Exception('Shader didnt link, check info log.')             # <<<<<<<<<<<<<<
  *         self._success = 1
  *         return 0
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 587; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 579; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 587; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 579; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/graphics/shader.pyx":588
+  /* "kivy/graphics/shader.pyx":580
  *             self._success = 0
  *             raise Exception('Shader didnt link, check info log.')
  *         self._success = 1             # <<<<<<<<<<<<<<
@@ -8750,7 +8696,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
  */
   __pyx_v_self->_success = 1;
 
-  /* "kivy/graphics/shader.pyx":589
+  /* "kivy/graphics/shader.pyx":581
  *             raise Exception('Shader didnt link, check info log.')
  *         self._success = 1
  *         return 0             # <<<<<<<<<<<<<<
@@ -8760,7 +8706,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":572
+  /* "kivy/graphics/shader.pyx":564
  *             self.link_program()
  * 
  *     cdef int link_program(self) except -1:             # <<<<<<<<<<<<<<
@@ -8783,7 +8729,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_link_program(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":591
+/* "kivy/graphics/shader.pyx":583
  *         return 0
  * 
  *     cdef int is_linked(self):             # <<<<<<<<<<<<<<
@@ -8798,7 +8744,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("is_linked", 0);
 
-  /* "kivy/graphics/shader.pyx":592
+  /* "kivy/graphics/shader.pyx":584
  * 
  *     cdef int is_linked(self):
  *         cdef GLint result = 0             # <<<<<<<<<<<<<<
@@ -8807,7 +8753,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
  */
   __pyx_v_result = 0;
 
-  /* "kivy/graphics/shader.pyx":593
+  /* "kivy/graphics/shader.pyx":585
  *     cdef int is_linked(self):
  *         cdef GLint result = 0
  *         glGetProgramiv(self.program, GL_LINK_STATUS, &result)             # <<<<<<<<<<<<<<
@@ -8816,7 +8762,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
  */
   glGetProgramiv(__pyx_v_self->program, GL_LINK_STATUS, (&__pyx_v_result));
 
-  /* "kivy/graphics/shader.pyx":594
+  /* "kivy/graphics/shader.pyx":586
  *         cdef GLint result = 0
  *         glGetProgramiv(self.program, GL_LINK_STATUS, &result)
  *         if result == GL_TRUE:             # <<<<<<<<<<<<<<
@@ -8826,7 +8772,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
   __pyx_t_1 = ((__pyx_v_result == GL_TRUE) != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/graphics/shader.pyx":595
+    /* "kivy/graphics/shader.pyx":587
  *         glGetProgramiv(self.program, GL_LINK_STATUS, &result)
  *         if result == GL_TRUE:
  *             return 1             # <<<<<<<<<<<<<<
@@ -8837,7 +8783,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":596
+  /* "kivy/graphics/shader.pyx":588
  *         if result == GL_TRUE:
  *             return 1
  *         return 0             # <<<<<<<<<<<<<<
@@ -8847,7 +8793,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":591
+  /* "kivy/graphics/shader.pyx":583
  *         return 0
  * 
  *     cdef int is_linked(self):             # <<<<<<<<<<<<<<
@@ -8861,7 +8807,7 @@ static int __pyx_f_4kivy_8graphics_6shader_6Shader_is_linked(struct __pyx_obj_4k
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":598
+/* "kivy/graphics/shader.pyx":590
  *         return 0
  * 
  *     cdef ShaderSource compile_shader(self, str source, int shadertype):             # <<<<<<<<<<<<<<
@@ -8889,23 +8835,23 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compile_shader", 0);
 
-  /* "kivy/graphics/shader.pyx":601
+  /* "kivy/graphics/shader.pyx":593
  *         cdef ShaderSource shader
  *         cdef str ctype, cacheid
  *         cdef bytes b_source = source.encode('utf-8')             # <<<<<<<<<<<<<<
  * 
  *         ctype = 'vertex' if shadertype == GL_VERTEX_SHADER else 'fragment'
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 601; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_encode); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 593; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 601; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 593; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 601; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_2)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 593; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_b_source = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":603
+  /* "kivy/graphics/shader.pyx":595
  *         cdef bytes b_source = source.encode('utf-8')
  * 
  *         ctype = 'vertex' if shadertype == GL_VERTEX_SHADER else 'fragment'             # <<<<<<<<<<<<<<
@@ -8922,14 +8868,14 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __pyx_v_ctype = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":606
+  /* "kivy/graphics/shader.pyx":598
  * 
  *         # try to check if the shader exist in the Cache first
  *         cacheid = '%s|%s' % (ctype, source)             # <<<<<<<<<<<<<<
  *         shader = Cache.get('kv.shader', cacheid)
  *         if shader is not None:
  */
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 598; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_ctype);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_ctype);
@@ -8937,23 +8883,23 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __Pyx_INCREF(__pyx_v_source);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_source);
   __Pyx_GIVEREF(__pyx_v_source);
-  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_s_s, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_s_s, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 598; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyString_CheckExact(__pyx_t_1))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 606; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_t_1))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 598; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_cacheid = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":607
+  /* "kivy/graphics/shader.pyx":599
  *         # try to check if the shader exist in the Cache first
  *         cacheid = '%s|%s' % (ctype, source)
  *         shader = Cache.get('kv.shader', cacheid)             # <<<<<<<<<<<<<<
  *         if shader is not None:
  *             return shader
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -8968,7 +8914,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
       __pyx_t_4 = 1;
     }
   }
-  __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   if (__pyx_t_2) {
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __Pyx_GIVEREF(__pyx_t_2); __pyx_t_2 = NULL;
@@ -8979,15 +8925,15 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __Pyx_INCREF(__pyx_v_cacheid);
   PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_cacheid);
   __Pyx_GIVEREF(__pyx_v_cacheid);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_8graphics_6shader_ShaderSource))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 607; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_4kivy_8graphics_6shader_ShaderSource))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 599; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_shader = ((struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":608
+  /* "kivy/graphics/shader.pyx":600
  *         cacheid = '%s|%s' % (ctype, source)
  *         shader = Cache.get('kv.shader', cacheid)
  *         if shader is not None:             # <<<<<<<<<<<<<<
@@ -8998,7 +8944,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __pyx_t_7 = (__pyx_t_6 != 0);
   if (__pyx_t_7) {
 
-    /* "kivy/graphics/shader.pyx":609
+    /* "kivy/graphics/shader.pyx":601
  *         shader = Cache.get('kv.shader', cacheid)
  *         if shader is not None:
  *             return shader             # <<<<<<<<<<<<<<
@@ -9011,39 +8957,39 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":611
+  /* "kivy/graphics/shader.pyx":603
  *             return shader
  * 
  *         shader = ShaderSource(shadertype)             # <<<<<<<<<<<<<<
  *         shader.set_source(b_source)
  *         if shader.is_compiled() == 0:
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_shadertype); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 611; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_shadertype); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 611; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6shader_ShaderSource)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 611; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_8graphics_6shader_ShaderSource)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 603; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_shader, ((struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":612
+  /* "kivy/graphics/shader.pyx":604
  * 
  *         shader = ShaderSource(shadertype)
  *         shader.set_source(b_source)             # <<<<<<<<<<<<<<
  *         if shader.is_compiled() == 0:
  *             self._success = 0
  */
-  __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_b_source); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *)__pyx_v_shader->__pyx_vtab)->set_source(__pyx_v_shader, __pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 612; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_b_source); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 604; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *)__pyx_v_shader->__pyx_vtab)->set_source(__pyx_v_shader, __pyx_t_8); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 604; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":613
+  /* "kivy/graphics/shader.pyx":605
  *         shader = ShaderSource(shadertype)
  *         shader.set_source(b_source)
  *         if shader.is_compiled() == 0:             # <<<<<<<<<<<<<<
@@ -9053,7 +8999,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __pyx_t_7 = ((((struct __pyx_vtabstruct_4kivy_8graphics_6shader_ShaderSource *)__pyx_v_shader->__pyx_vtab)->is_compiled(__pyx_v_shader) == 0) != 0);
   if (__pyx_t_7) {
 
-    /* "kivy/graphics/shader.pyx":614
+    /* "kivy/graphics/shader.pyx":606
  *         shader.set_source(b_source)
  *         if shader.is_compiled() == 0:
  *             self._success = 0             # <<<<<<<<<<<<<<
@@ -9062,7 +9008,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
  */
     __pyx_v_self->_success = 0;
 
-    /* "kivy/graphics/shader.pyx":615
+    /* "kivy/graphics/shader.pyx":607
  *         if shader.is_compiled() == 0:
  *             self._success = 0
  *             return None             # <<<<<<<<<<<<<<
@@ -9075,16 +9021,16 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":617
+  /* "kivy/graphics/shader.pyx":609
  *             return None
  * 
  *         Cache.append('kv.shader', cacheid, shader)             # <<<<<<<<<<<<<<
  *         return shader
  * 
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 617; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_Cache); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 609; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_append); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 617; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_append); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 609; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -9099,7 +9045,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
       __pyx_t_4 = 1;
     }
   }
-  __pyx_t_2 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 617; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 609; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   if (__pyx_t_3) {
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
@@ -9113,13 +9059,13 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __Pyx_INCREF(((PyObject *)__pyx_v_shader));
   PyTuple_SET_ITEM(__pyx_t_2, 2+__pyx_t_4, ((PyObject *)__pyx_v_shader));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_shader));
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 617; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 609; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":618
+  /* "kivy/graphics/shader.pyx":610
  * 
  *         Cache.append('kv.shader', cacheid, shader)
  *         return shader             # <<<<<<<<<<<<<<
@@ -9131,7 +9077,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   __pyx_r = __pyx_v_shader;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":598
+  /* "kivy/graphics/shader.pyx":590
  *         return 0
  * 
  *     cdef ShaderSource compile_shader(self, str source, int shadertype):             # <<<<<<<<<<<<<<
@@ -9157,7 +9103,7 @@ static struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *__pyx_f_4kivy_8gra
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":620
+/* "kivy/graphics/shader.pyx":612
  *         return shader
  * 
  *     cdef get_program_log(self, shader):             # <<<<<<<<<<<<<<
@@ -9179,7 +9125,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_6Shader_get_program_log(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_program_log", 0);
 
-  /* "kivy/graphics/shader.pyx":624
+  /* "kivy/graphics/shader.pyx":616
  *         cdef char msg[2048]
  *         cdef GLsizei length
  *         msg[0] = '\0'             # <<<<<<<<<<<<<<
@@ -9188,29 +9134,29 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_6Shader_get_program_log(CYTHON_
  */
   (__pyx_v_msg[0]) = '\x00';
 
-  /* "kivy/graphics/shader.pyx":625
+  /* "kivy/graphics/shader.pyx":617
  *         cdef GLsizei length
  *         msg[0] = '\0'
  *         glGetProgramInfoLog(shader, 2048, &length, msg)             # <<<<<<<<<<<<<<
  *         # XXX don't use the msg[:length] as a string directly, or the unicode
  *         # will fail on shitty driver. Ie, some Intel drivers return a static
  */
-  __pyx_t_1 = __Pyx_PyInt_As_GLuint(__pyx_v_shader); if (unlikely((__pyx_t_1 == (GLuint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_GLuint(__pyx_v_shader); if (unlikely((__pyx_t_1 == (GLuint)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 617; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   glGetProgramInfoLog(__pyx_t_1, 2048, (&__pyx_v_length), __pyx_v_msg);
 
-  /* "kivy/graphics/shader.pyx":633
+  /* "kivy/graphics/shader.pyx":625
  *         # XXX Also, we cannot use directly msg as a python string, as some
  *         # others drivers doesn't include a \0 (which is great.)
  *         cdef bytes ret = msg[:length]             # <<<<<<<<<<<<<<
  *         return ret.split(b'\0')[0].decode('utf-8')
  * 
  */
-  __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(((const char*)__pyx_v_msg) + 0, __pyx_v_length - 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 633; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyBytes_FromStringAndSize(((const char*)__pyx_v_msg) + 0, __pyx_v_length - 0); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 625; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_ret = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "kivy/graphics/shader.pyx":634
+  /* "kivy/graphics/shader.pyx":626
  *         # others drivers doesn't include a \0 (which is great.)
  *         cdef bytes ret = msg[:length]
  *         return ret.split(b'\0')[0].decode('utf-8')             # <<<<<<<<<<<<<<
@@ -9218,25 +9164,25 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_6Shader_get_program_log(CYTHON_
  *     cdef void process_message(self, str ctype, message):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_ret, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_ret, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_2 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_decode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_decode); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":620
+  /* "kivy/graphics/shader.pyx":612
  *         return shader
  * 
  *     cdef get_program_log(self, shader):             # <<<<<<<<<<<<<<
@@ -9257,7 +9203,7 @@ static PyObject *__pyx_f_4kivy_8graphics_6shader_6Shader_get_program_log(CYTHON_
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":636
+/* "kivy/graphics/shader.pyx":628
  *         return ret.split(b'\0')[0].decode('utf-8')
  * 
  *     cdef void process_message(self, str ctype, message):             # <<<<<<<<<<<<<<
@@ -9279,14 +9225,14 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_process_message(CYTHON_UNUSE
   __Pyx_RefNannySetupContext("process_message", 0);
   __Pyx_INCREF(__pyx_v_message);
 
-  /* "kivy/graphics/shader.pyx":637
+  /* "kivy/graphics/shader.pyx":629
  * 
  *     cdef void process_message(self, str ctype, message):
  *         message = message.strip()             # <<<<<<<<<<<<<<
  *         if message:
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_message, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_message, __pyx_n_s_strip); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -9299,39 +9245,39 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_process_message(CYTHON_UNUSE
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 637; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 629; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_message, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/graphics/shader.pyx":638
+  /* "kivy/graphics/shader.pyx":630
  *     cdef void process_message(self, str ctype, message):
  *         message = message.strip()
  *         if message:             # <<<<<<<<<<<<<<
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))
  * 
  */
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_message); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 638; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_message); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 630; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_4) {
 
-    /* "kivy/graphics/shader.pyx":639
+    /* "kivy/graphics/shader.pyx":631
  *         message = message.strip()
  *         if message:
  *             Logger.info('Shader: %s: <%s>' % (ctype, message))             # <<<<<<<<<<<<<<
  * 
  *     #
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_info); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_info); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_ctype);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_ctype);
@@ -9339,7 +9285,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_process_message(CYTHON_UNUSE
     __Pyx_INCREF(__pyx_v_message);
     PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_message);
     __Pyx_GIVEREF(__pyx_v_message);
-    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_s, __pyx_t_2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyString_Format(__pyx_kp_s_Shader_s_s, __pyx_t_2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -9353,17 +9299,17 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_process_message(CYTHON_UNUSE
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __Pyx_GIVEREF(__pyx_t_2); __pyx_t_2 = NULL;
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 639; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 631; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -9373,7 +9319,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_process_message(CYTHON_UNUSE
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":636
+  /* "kivy/graphics/shader.pyx":628
  *         return ret.split(b'\0')[0].decode('utf-8')
  * 
  *     cdef void process_message(self, str ctype, message):             # <<<<<<<<<<<<<<
@@ -9395,7 +9341,7 @@ static void __pyx_f_4kivy_8graphics_6shader_6Shader_process_message(CYTHON_UNUSE
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/graphics/shader.pyx":655
+/* "kivy/graphics/shader.pyx":647
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9421,7 +9367,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_6source___get__(struct
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/shader.pyx":656
+  /* "kivy/graphics/shader.pyx":648
  *         '''
  *         def __get__(self):
  *             return self._source             # <<<<<<<<<<<<<<
@@ -9433,7 +9379,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_6source___get__(struct
   __pyx_r = __pyx_v_self->_source;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":655
+  /* "kivy/graphics/shader.pyx":647
  *         .. versionadded:: 1.6.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9448,7 +9394,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_6source___get__(struct
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":657
+/* "kivy/graphics/shader.pyx":649
  *         def __get__(self):
  *             return self._source
  *         def __set__(self, object source):             # <<<<<<<<<<<<<<
@@ -9503,7 +9449,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "kivy/graphics/shader.pyx":658
+  /* "kivy/graphics/shader.pyx":650
  *             return self._source
  *         def __set__(self, object source):
  *             self._source = source             # <<<<<<<<<<<<<<
@@ -9516,7 +9462,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   __Pyx_DECREF(__pyx_v_self->_source);
   __pyx_v_self->_source = __pyx_v_source;
 
-  /* "kivy/graphics/shader.pyx":659
+  /* "kivy/graphics/shader.pyx":651
  *         def __set__(self, object source):
  *             self._source = source
  *             if source is None:             # <<<<<<<<<<<<<<
@@ -9527,25 +9473,25 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/shader.pyx":660
+    /* "kivy/graphics/shader.pyx":652
  *             self._source = source
  *             if source is None:
  *                 self.vs = None             # <<<<<<<<<<<<<<
  *                 self.fs = None
  *                 return
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs, Py_None) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_vs, Py_None) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 652; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/graphics/shader.pyx":661
+    /* "kivy/graphics/shader.pyx":653
  *             if source is None:
  *                 self.vs = None
  *                 self.fs = None             # <<<<<<<<<<<<<<
  *                 return
  *             self.vert_src = ""
  */
-    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs, Py_None) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_fs, Py_None) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 653; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/graphics/shader.pyx":662
+    /* "kivy/graphics/shader.pyx":654
  *                 self.vs = None
  *                 self.fs = None
  *                 return             # <<<<<<<<<<<<<<
@@ -9556,7 +9502,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     goto __pyx_L0;
   }
 
-  /* "kivy/graphics/shader.pyx":663
+  /* "kivy/graphics/shader.pyx":655
  *                 self.fs = None
  *                 return
  *             self.vert_src = ""             # <<<<<<<<<<<<<<
@@ -9569,7 +9515,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   __Pyx_DECREF(__pyx_v_self->vert_src);
   __pyx_v_self->vert_src = __pyx_kp_s_;
 
-  /* "kivy/graphics/shader.pyx":664
+  /* "kivy/graphics/shader.pyx":656
  *                 return
  *             self.vert_src = ""
  *             self.frag_src = ""             # <<<<<<<<<<<<<<
@@ -9582,7 +9528,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   __Pyx_DECREF(__pyx_v_self->frag_src);
   __pyx_v_self->frag_src = __pyx_kp_s_;
 
-  /* "kivy/graphics/shader.pyx":665
+  /* "kivy/graphics/shader.pyx":657
  *             self.vert_src = ""
  *             self.frag_src = ""
  *             glsl_source = "\n"             # <<<<<<<<<<<<<<
@@ -9592,19 +9538,19 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   __Pyx_INCREF(__pyx_kp_s__8);
   __pyx_v_glsl_source = __pyx_kp_s__8;
 
-  /* "kivy/graphics/shader.pyx":666
+  /* "kivy/graphics/shader.pyx":658
  *             self.frag_src = ""
  *             glsl_source = "\n"
  *             Logger.info('Shader: Read <{}>'.format(self._source))             # <<<<<<<<<<<<<<
  *             with open(self._source) as fin:
  *                 glsl_source += fin.read()
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_Logger); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_info); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_info); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_Read, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Shader_Read, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_6))) {
@@ -9617,16 +9563,16 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     }
   }
   if (!__pyx_t_7) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_self->_source); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_self->_source); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
   } else {
-    __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __Pyx_GIVEREF(__pyx_t_7); __pyx_t_7 = NULL;
     __Pyx_INCREF(__pyx_v_self->_source);
     PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_self->_source);
     __Pyx_GIVEREF(__pyx_v_self->_source);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
@@ -9642,24 +9588,24 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     }
   }
   if (!__pyx_t_6) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
-    __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
     PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 658; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/shader.pyx":667
+  /* "kivy/graphics/shader.pyx":659
  *             glsl_source = "\n"
  *             Logger.info('Shader: Read <{}>'.format(self._source))
  *             with open(self._source) as fin:             # <<<<<<<<<<<<<<
@@ -9667,17 +9613,17 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
  *             sections = glsl_source.split('\n---')
  */
   /*with:*/ {
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_self->_source);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_self->_source);
     __Pyx_GIVEREF(__pyx_v_self->_source);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_5, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_5, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_5, __pyx_n_s_enter); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_5, __pyx_n_s_enter); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_4 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_8))) {
@@ -9690,10 +9636,10 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
       }
     }
     if (__pyx_t_4) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_4); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L4_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -9710,14 +9656,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
           __pyx_v_fin = __pyx_t_8;
           __pyx_t_8 = 0;
 
-          /* "kivy/graphics/shader.pyx":668
+          /* "kivy/graphics/shader.pyx":660
  *             Logger.info('Shader: Read <{}>'.format(self._source))
  *             with open(self._source) as fin:
  *                 glsl_source += fin.read()             # <<<<<<<<<<<<<<
  *             sections = glsl_source.split('\n---')
  *             for section in sections:
  */
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fin, __pyx_n_s_read); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_fin, __pyx_n_s_read); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_3 = NULL;
           if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -9730,14 +9676,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
             }
           }
           if (__pyx_t_3) {
-            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           } else {
-            __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+            __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           }
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_glsl_source, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
+          __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_glsl_source, __pyx_t_8); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 660; __pyx_clineno = __LINE__; goto __pyx_L8_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF_SET(__pyx_v_glsl_source, __pyx_t_5);
@@ -9755,7 +9701,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "kivy/graphics/shader.pyx":667
+        /* "kivy/graphics/shader.pyx":659
  *             glsl_source = "\n"
  *             Logger.info('Shader: Read <{}>'.format(self._source))
  *             with open(self._source) as fin:             # <<<<<<<<<<<<<<
@@ -9764,20 +9710,20 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
  */
         /*except:*/ {
           __Pyx_AddTraceback("kivy.graphics.shader.Shader.source.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_8, &__pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
+          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_8, &__pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_4 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
+          __pyx_t_4 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_8, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
           __Pyx_GOTREF(__pyx_t_4);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_4, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
+          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
           __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_2 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
+          if (__pyx_t_2 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
           __pyx_t_1 = ((!(__pyx_t_2 != 0)) != 0);
           if (__pyx_t_1) {
             __Pyx_GIVEREF(__pyx_t_5);
@@ -9785,7 +9731,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
             __Pyx_XGIVEREF(__pyx_t_3);
             __Pyx_ErrRestore(__pyx_t_5, __pyx_t_8, __pyx_t_3);
             __pyx_t_5 = 0; __pyx_t_8 = 0; __pyx_t_3 = 0; 
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L10_except_error;}
           }
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -9811,7 +9757,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
         if (__pyx_t_9) {
           __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__9, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         }
@@ -9826,22 +9772,22 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     __pyx_L19:;
   }
 
-  /* "kivy/graphics/shader.pyx":669
+  /* "kivy/graphics/shader.pyx":661
  *             with open(self._source) as fin:
  *                 glsl_source += fin.read()
  *             sections = glsl_source.split('\n---')             # <<<<<<<<<<<<<<
  *             for section in sections:
  *                 lines = section.split('\n')
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_glsl_source, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_glsl_source, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_sections = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "kivy/graphics/shader.pyx":670
+  /* "kivy/graphics/shader.pyx":662
  *                 glsl_source += fin.read()
  *             sections = glsl_source.split('\n---')
  *             for section in sections:             # <<<<<<<<<<<<<<
@@ -9852,25 +9798,25 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     __pyx_t_8 = __pyx_v_sections; __Pyx_INCREF(__pyx_t_8); __pyx_t_14 = 0;
     __pyx_t_15 = NULL;
   } else {
-    __pyx_t_14 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_v_sections); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_14 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_v_sections); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_15 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_15 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   for (;;) {
     if (likely(!__pyx_t_15)) {
       if (likely(PyList_CheckExact(__pyx_t_8))) {
         if (__pyx_t_14 >= PyList_GET_SIZE(__pyx_t_8)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_14); __Pyx_INCREF(__pyx_t_3); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_14); __Pyx_INCREF(__pyx_t_3); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_8, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_8, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       } else {
         if (__pyx_t_14 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_14); __Pyx_INCREF(__pyx_t_3); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_14); __Pyx_INCREF(__pyx_t_3); __pyx_t_14++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_8, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_8, __pyx_t_14); __pyx_t_14++; if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       }
     } else {
@@ -9879,7 +9825,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 662; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         break;
       }
@@ -9888,31 +9834,31 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     __Pyx_XDECREF_SET(__pyx_v_section, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "kivy/graphics/shader.pyx":671
+    /* "kivy/graphics/shader.pyx":663
  *             sections = glsl_source.split('\n---')
  *             for section in sections:
  *                 lines = section.split('\n')             # <<<<<<<<<<<<<<
  *                 if lines[0].lower().startswith("vertex"):
  *                     _vs = '\n'.join(lines[1:])
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_section, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_section, __pyx_n_s_split); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 663; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 663; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lines, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "kivy/graphics/shader.pyx":672
+    /* "kivy/graphics/shader.pyx":664
  *             for section in sections:
  *                 lines = section.split('\n')
  *                 if lines[0].lower().startswith("vertex"):             # <<<<<<<<<<<<<<
  *                     _vs = '\n'.join(lines[1:])
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  */
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_lines, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_lines, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_3 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_lower); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_lower); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -9926,46 +9872,46 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
       }
     }
     if (__pyx_t_3) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
-      __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_startswith); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_1) {
 
-      /* "kivy/graphics/shader.pyx":673
+      /* "kivy/graphics/shader.pyx":665
  *                 lines = section.split('\n')
  *                 if lines[0].lower().startswith("vertex"):
  *                     _vs = '\n'.join(lines[1:])             # <<<<<<<<<<<<<<
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  *                 if lines[0].lower().startswith("fragment"):
  */
-      __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_lines, 1, 0, NULL, NULL, &__pyx_slice__14, 1, 0, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 673; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_v_lines, 1, 0, NULL, NULL, &__pyx_slice__14, 1, 0, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_PyString_Join(__pyx_kp_s__8, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 673; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyString_Join(__pyx_kp_s__8, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF_SET(__pyx_v__vs, ((PyObject*)__pyx_t_4));
       __pyx_t_4 = 0;
 
-      /* "kivy/graphics/shader.pyx":674
+      /* "kivy/graphics/shader.pyx":666
  *                 if lines[0].lower().startswith("vertex"):
  *                     _vs = '\n'.join(lines[1:])
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)             # <<<<<<<<<<<<<<
  *                 if lines[0].lower().startswith("fragment"):
  *                     _fs = '\n'.join(lines[1:])
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__vs, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 674; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v__vs, __pyx_n_s_replace); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_3 = NULL;
       __pyx_t_16 = 0;
@@ -9979,7 +9925,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
           __pyx_t_16 = 1;
         }
       }
-      __pyx_t_6 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 674; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       if (__pyx_t_3) {
         PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
@@ -9990,7 +9936,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
       __Pyx_INCREF(__pyx_v_4kivy_8graphics_6shader_header_vs);
       PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_16, __pyx_v_4kivy_8graphics_6shader_header_vs);
       __Pyx_GIVEREF(__pyx_v_4kivy_8graphics_6shader_header_vs);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 674; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 666; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -10003,16 +9949,16 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     }
     __pyx_L22:;
 
-    /* "kivy/graphics/shader.pyx":675
+    /* "kivy/graphics/shader.pyx":667
  *                     _vs = '\n'.join(lines[1:])
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  *                 if lines[0].lower().startswith("fragment"):             # <<<<<<<<<<<<<<
  *                     _fs = '\n'.join(lines[1:])
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)
  */
-    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_lines, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
+    __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_lines, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(__pyx_t_5 == NULL)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_lower); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_lower); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -10026,46 +9972,46 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_startswith); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_startswith); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_1) {
 
-      /* "kivy/graphics/shader.pyx":676
+      /* "kivy/graphics/shader.pyx":668
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  *                 if lines[0].lower().startswith("fragment"):
  *                     _fs = '\n'.join(lines[1:])             # <<<<<<<<<<<<<<
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)
  *             self.build_vertex(0)
  */
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_lines, 1, 0, NULL, NULL, &__pyx_slice__16, 1, 0, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 676; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_lines, 1, 0, NULL, NULL, &__pyx_slice__16, 1, 0, 1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyString_Join(__pyx_kp_s__8, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 676; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyString_Join(__pyx_kp_s__8, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF_SET(__pyx_v__fs, ((PyObject*)__pyx_t_6));
       __pyx_t_6 = 0;
 
-      /* "kivy/graphics/shader.pyx":677
+      /* "kivy/graphics/shader.pyx":669
  *                 if lines[0].lower().startswith("fragment"):
  *                     _fs = '\n'.join(lines[1:])
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)             # <<<<<<<<<<<<<<
  *             self.build_vertex(0)
  *             self.build_fragment(0)
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__fs, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v__fs, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = NULL;
       __pyx_t_16 = 0;
@@ -10079,7 +10025,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
           __pyx_t_16 = 1;
         }
       }
-      __pyx_t_3 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_5) {
         PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -10090,7 +10036,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
       __Pyx_INCREF(__pyx_v_4kivy_8graphics_6shader_header_fs);
       PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_16, __pyx_v_4kivy_8graphics_6shader_header_fs);
       __Pyx_GIVEREF(__pyx_v_4kivy_8graphics_6shader_header_fs);
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 677; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10103,7 +10049,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
     }
     __pyx_L23:;
 
-    /* "kivy/graphics/shader.pyx":670
+    /* "kivy/graphics/shader.pyx":662
  *                 glsl_source += fin.read()
  *             sections = glsl_source.split('\n---')
  *             for section in sections:             # <<<<<<<<<<<<<<
@@ -10113,7 +10059,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "kivy/graphics/shader.pyx":678
+  /* "kivy/graphics/shader.pyx":670
  *                     _fs = '\n'.join(lines[1:])
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)
  *             self.build_vertex(0)             # <<<<<<<<<<<<<<
@@ -10122,9 +10068,9 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
  */
   __pyx_t_18.__pyx_n = 1;
   __pyx_t_18.link = 0;
-  __pyx_t_17 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_vertex(__pyx_v_self, &__pyx_t_18); if (unlikely(__pyx_t_17 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 678; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_17 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_vertex(__pyx_v_self, &__pyx_t_18); if (unlikely(__pyx_t_17 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 670; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":679
+  /* "kivy/graphics/shader.pyx":671
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)
  *             self.build_vertex(0)
  *             self.build_fragment(0)             # <<<<<<<<<<<<<<
@@ -10133,18 +10079,18 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
  */
   __pyx_t_19.__pyx_n = 1;
   __pyx_t_19.link = 0;
-  __pyx_t_17 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_fragment(__pyx_v_self, &__pyx_t_19); if (unlikely(__pyx_t_17 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 679; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_17 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_fragment(__pyx_v_self, &__pyx_t_19); if (unlikely(__pyx_t_17 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":680
+  /* "kivy/graphics/shader.pyx":672
  *             self.build_vertex(0)
  *             self.build_fragment(0)
  *             self.link_program()             # <<<<<<<<<<<<<<
  * 
  *     property vs:
  */
-  __pyx_t_17 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->link_program(__pyx_v_self); if (unlikely(__pyx_t_17 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 680; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_17 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->link_program(__pyx_v_self); if (unlikely(__pyx_t_17 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":657
+  /* "kivy/graphics/shader.pyx":649
  *         def __get__(self):
  *             return self._source
  *         def __set__(self, object source):             # <<<<<<<<<<<<<<
@@ -10176,7 +10122,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_6source_2__set__(struct __py
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":688
+/* "kivy/graphics/shader.pyx":680
  *         compiled and will replace the current vertex shader.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -10202,7 +10148,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_2vs___get__(struct __p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/shader.pyx":689
+  /* "kivy/graphics/shader.pyx":681
  *         '''
  *         def __get__(self):
  *             return self.vert_src             # <<<<<<<<<<<<<<
@@ -10214,7 +10160,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_2vs___get__(struct __p
   __pyx_r = __pyx_v_self->vert_src;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":688
+  /* "kivy/graphics/shader.pyx":680
  *         compiled and will replace the current vertex shader.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -10229,7 +10175,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_2vs___get__(struct __p
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":690
+/* "kivy/graphics/shader.pyx":682
  *         def __get__(self):
  *             return self.vert_src
  *         def __set__(self, object source):             # <<<<<<<<<<<<<<
@@ -10267,7 +10213,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
   __Pyx_RefNannySetupContext("__set__", 0);
   __Pyx_INCREF(__pyx_v_source);
 
-  /* "kivy/graphics/shader.pyx":691
+  /* "kivy/graphics/shader.pyx":683
  *             return self.vert_src
  *         def __set__(self, object source):
  *             if source is None:             # <<<<<<<<<<<<<<
@@ -10278,7 +10224,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/shader.pyx":692
+    /* "kivy/graphics/shader.pyx":684
  *         def __set__(self, object source):
  *             if source is None:
  *                 source = default_vs             # <<<<<<<<<<<<<<
@@ -10291,14 +10237,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":693
+  /* "kivy/graphics/shader.pyx":685
  *             if source is None:
  *                 source = default_vs
  *             source = source.replace('$HEADER$', header_vs)             # <<<<<<<<<<<<<<
  *             self.vert_src = source
  *             self.build_vertex()
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 693; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 685; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -10312,7 +10258,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
       __pyx_t_6 = 1;
     }
   }
-  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 693; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 685; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   if (__pyx_t_5) {
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -10323,14 +10269,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
   __Pyx_INCREF(__pyx_v_4kivy_8graphics_6shader_header_vs);
   PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_4kivy_8graphics_6shader_header_vs);
   __Pyx_GIVEREF(__pyx_v_4kivy_8graphics_6shader_header_vs);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 693; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 685; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF_SET(__pyx_v_source, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "kivy/graphics/shader.pyx":694
+  /* "kivy/graphics/shader.pyx":686
  *                 source = default_vs
  *             source = source.replace('$HEADER$', header_vs)
  *             self.vert_src = source             # <<<<<<<<<<<<<<
@@ -10343,16 +10289,16 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
   __Pyx_DECREF(__pyx_v_self->vert_src);
   __pyx_v_self->vert_src = __pyx_v_source;
 
-  /* "kivy/graphics/shader.pyx":695
+  /* "kivy/graphics/shader.pyx":687
  *             source = source.replace('$HEADER$', header_vs)
  *             self.vert_src = source
  *             self.build_vertex()             # <<<<<<<<<<<<<<
  * 
  *     property fs:
  */
-  __pyx_t_8 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_vertex(__pyx_v_self, NULL); if (unlikely(__pyx_t_8 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 695; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_vertex(__pyx_v_self, NULL); if (unlikely(__pyx_t_8 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 687; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":690
+  /* "kivy/graphics/shader.pyx":682
  *         def __get__(self):
  *             return self.vert_src
  *         def __set__(self, object source):             # <<<<<<<<<<<<<<
@@ -10376,7 +10322,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2vs_2__set__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":703
+/* "kivy/graphics/shader.pyx":695
  *         compiled and will replace the current fragment shader.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -10402,7 +10348,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_2fs___get__(struct __p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/shader.pyx":704
+  /* "kivy/graphics/shader.pyx":696
  *         '''
  *         def __get__(self):
  *             return self.frag_src             # <<<<<<<<<<<<<<
@@ -10414,7 +10360,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_2fs___get__(struct __p
   __pyx_r = __pyx_v_self->frag_src;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":703
+  /* "kivy/graphics/shader.pyx":695
  *         compiled and will replace the current fragment shader.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -10429,7 +10375,7 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_2fs___get__(struct __p
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":705
+/* "kivy/graphics/shader.pyx":697
  *         def __get__(self):
  *             return self.frag_src
  *         def __set__(self, object source):             # <<<<<<<<<<<<<<
@@ -10467,7 +10413,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
   __Pyx_RefNannySetupContext("__set__", 0);
   __Pyx_INCREF(__pyx_v_source);
 
-  /* "kivy/graphics/shader.pyx":706
+  /* "kivy/graphics/shader.pyx":698
  *             return self.frag_src
  *         def __set__(self, object source):
  *             if source is None:             # <<<<<<<<<<<<<<
@@ -10478,7 +10424,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/graphics/shader.pyx":707
+    /* "kivy/graphics/shader.pyx":699
  *         def __set__(self, object source):
  *             if source is None:
  *                 source = default_fs             # <<<<<<<<<<<<<<
@@ -10491,14 +10437,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
   }
   __pyx_L3:;
 
-  /* "kivy/graphics/shader.pyx":708
+  /* "kivy/graphics/shader.pyx":700
  *             if source is None:
  *                 source = default_fs
  *             source = source.replace('$HEADER$', header_fs)             # <<<<<<<<<<<<<<
  *             self.frag_src = source
  *             self.build_fragment()
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 708; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_source, __pyx_n_s_replace); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -10512,7 +10458,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
       __pyx_t_6 = 1;
     }
   }
-  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 708; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   if (__pyx_t_5) {
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -10523,14 +10469,14 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
   __Pyx_INCREF(__pyx_v_4kivy_8graphics_6shader_header_fs);
   PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_4kivy_8graphics_6shader_header_fs);
   __Pyx_GIVEREF(__pyx_v_4kivy_8graphics_6shader_header_fs);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 708; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 700; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF_SET(__pyx_v_source, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "kivy/graphics/shader.pyx":709
+  /* "kivy/graphics/shader.pyx":701
  *                 source = default_fs
  *             source = source.replace('$HEADER$', header_fs)
  *             self.frag_src = source             # <<<<<<<<<<<<<<
@@ -10543,16 +10489,16 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
   __Pyx_DECREF(__pyx_v_self->frag_src);
   __pyx_v_self->frag_src = __pyx_v_source;
 
-  /* "kivy/graphics/shader.pyx":710
+  /* "kivy/graphics/shader.pyx":702
  *             source = source.replace('$HEADER$', header_fs)
  *             self.frag_src = source
  *             self.build_fragment()             # <<<<<<<<<<<<<<
  * 
  *     property success:
  */
-  __pyx_t_8 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_fragment(__pyx_v_self, NULL); if (unlikely(__pyx_t_8 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 710; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_8 = ((struct __pyx_vtabstruct_4kivy_8graphics_6shader_Shader *)__pyx_v_self->__pyx_vtab)->build_fragment(__pyx_v_self, NULL); if (unlikely(__pyx_t_8 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 702; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/graphics/shader.pyx":705
+  /* "kivy/graphics/shader.pyx":697
  *         def __get__(self):
  *             return self.frag_src
  *         def __set__(self, object source):             # <<<<<<<<<<<<<<
@@ -10576,7 +10522,7 @@ static int __pyx_pf_4kivy_8graphics_6shader_6Shader_2fs_2__set__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "kivy/graphics/shader.pyx":716
+/* "kivy/graphics/shader.pyx":708
  *         usage or not.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -10605,19 +10551,19 @@ static PyObject *__pyx_pf_4kivy_8graphics_6shader_6Shader_7success___get__(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/graphics/shader.pyx":717
+  /* "kivy/graphics/shader.pyx":709
  *         '''
  *         def __get__(self):
  *             return self._success             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_success); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 717; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->_success); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 709; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "kivy/graphics/shader.pyx":716
+  /* "kivy/graphics/shader.pyx":708
  *         usage or not.
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -11003,8 +10949,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Shader_s_compiled_successfully, __pyx_k_Shader_s_compiled_successfully, sizeof(__pyx_k_Shader_s_compiled_successfully), 0, 0, 1, 0},
   {&__pyx_kp_s_Shader_s_failed_to_compile_gl_d, __pyx_k_Shader_s_failed_to_compile_gl_d, sizeof(__pyx_k_Shader_s_failed_to_compile_gl_d), 0, 0, 1, 0},
   {&__pyx_kp_s_Shader_s_s, __pyx_k_Shader_s_s, sizeof(__pyx_k_Shader_s_s), 0, 0, 1, 0},
-  {&__pyx_kp_s_Shader_set_uniform_glGetIntegerv, __pyx_k_Shader_set_uniform_glGetIntegerv, sizeof(__pyx_k_Shader_set_uniform_glGetIntegerv), 0, 0, 1, 0},
-  {&__pyx_kp_s_Shader_set_uniform_glUseProgram, __pyx_k_Shader_set_uniform_glUseProgram, sizeof(__pyx_k_Shader_set_uniform_glUseProgram), 0, 0, 1, 0},
   {&__pyx_kp_s_Shader_stop_glUseProgram, __pyx_k_Shader_stop_glUseProgram, sizeof(__pyx_k_Shader_stop_glUseProgram), 0, 0, 1, 0},
   {&__pyx_kp_s_Shader_unsupported_x_float_array, __pyx_k_Shader_unsupported_x_float_array, sizeof(__pyx_k_Shader_unsupported_x_float_array), 0, 0, 1, 0},
   {&__pyx_kp_s_Shader_unsupported_x_int_array, __pyx_k_Shader_unsupported_x_int_array, sizeof(__pyx_k_Shader_unsupported_x_int_array), 0, 0, 1, 0},
@@ -11082,14 +11026,14 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 299; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #if PY_MAJOR_VERSION >= 3
-  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #else
-  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_xrange); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 308; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_xrange = __Pyx_GetBuiltinName(__pyx_n_s_xrange); if (!__pyx_builtin_xrange) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 300; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 485; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 477; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -11099,127 +11043,127 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "kivy/graphics/shader.pyx":495
+  /* "kivy/graphics/shader.pyx":487
  * 
  *     cdef int get_uniform_loc(self, str name) except *:
  *         cdef bytes c_name = name.encode('utf-8')             # <<<<<<<<<<<<<<
  *         cdef int loc = glGetUniformLocation(self.program, c_name)
  *         log_gl_error(
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 495; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 487; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "kivy/graphics/shader.pyx":587
+  /* "kivy/graphics/shader.pyx":579
  *         if not self.is_linked():
  *             self._success = 0
  *             raise Exception('Shader didnt link, check info log.')             # <<<<<<<<<<<<<<
  *         self._success = 1
  *         return 0
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Shader_didnt_link_check_info_log); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 587; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Shader_didnt_link_check_info_log); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 579; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "kivy/graphics/shader.pyx":601
+  /* "kivy/graphics/shader.pyx":593
  *         cdef ShaderSource shader
  *         cdef str ctype, cacheid
  *         cdef bytes b_source = source.encode('utf-8')             # <<<<<<<<<<<<<<
  * 
  *         ctype = 'vertex' if shadertype == GL_VERTEX_SHADER else 'fragment'
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 601; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 593; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "kivy/graphics/shader.pyx":634
+  /* "kivy/graphics/shader.pyx":626
  *         # others drivers doesn't include a \0 (which is great.)
  *         cdef bytes ret = msg[:length]
  *         return ret.split(b'\0')[0].decode('utf-8')             # <<<<<<<<<<<<<<
  * 
  *     cdef void process_message(self, str ctype, message):
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_b__5); if (unlikely(!__pyx_tuple__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_b__5); if (unlikely(!__pyx_tuple__6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 634; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_s_utf_8); if (unlikely(!__pyx_tuple__7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 626; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "kivy/graphics/shader.pyx":667
+  /* "kivy/graphics/shader.pyx":659
  *             glsl_source = "\n"
  *             Logger.info('Shader: Read <{}>'.format(self._source))
  *             with open(self._source) as fin:             # <<<<<<<<<<<<<<
  *                 glsl_source += fin.read()
  *             sections = glsl_source.split('\n---')
  */
-  __pyx_tuple__9 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__9 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 659; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "kivy/graphics/shader.pyx":669
+  /* "kivy/graphics/shader.pyx":661
  *             with open(self._source) as fin:
  *                 glsl_source += fin.read()
  *             sections = glsl_source.split('\n---')             # <<<<<<<<<<<<<<
  *             for section in sections:
  *                 lines = section.split('\n')
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s__10); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 669; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s__10); if (unlikely(!__pyx_tuple__11)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 661; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "kivy/graphics/shader.pyx":671
+  /* "kivy/graphics/shader.pyx":663
  *             sections = glsl_source.split('\n---')
  *             for section in sections:
  *                 lines = section.split('\n')             # <<<<<<<<<<<<<<
  *                 if lines[0].lower().startswith("vertex"):
  *                     _vs = '\n'.join(lines[1:])
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__8); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 671; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_s__8); if (unlikely(!__pyx_tuple__12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 663; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 
-  /* "kivy/graphics/shader.pyx":672
+  /* "kivy/graphics/shader.pyx":664
  *             for section in sections:
  *                 lines = section.split('\n')
  *                 if lines[0].lower().startswith("vertex"):             # <<<<<<<<<<<<<<
  *                     _vs = '\n'.join(lines[1:])
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_vertex); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 672; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_n_s_vertex); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 664; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "kivy/graphics/shader.pyx":673
+  /* "kivy/graphics/shader.pyx":665
  *                 lines = section.split('\n')
  *                 if lines[0].lower().startswith("vertex"):
  *                     _vs = '\n'.join(lines[1:])             # <<<<<<<<<<<<<<
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  *                 if lines[0].lower().startswith("fragment"):
  */
-  __pyx_slice__14 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 673; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_slice__14 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__14)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 665; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_slice__14);
   __Pyx_GIVEREF(__pyx_slice__14);
 
-  /* "kivy/graphics/shader.pyx":675
+  /* "kivy/graphics/shader.pyx":667
  *                     _vs = '\n'.join(lines[1:])
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  *                 if lines[0].lower().startswith("fragment"):             # <<<<<<<<<<<<<<
  *                     _fs = '\n'.join(lines[1:])
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)
  */
-  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_n_s_fragment); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 675; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_n_s_fragment); if (unlikely(!__pyx_tuple__15)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 667; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 
-  /* "kivy/graphics/shader.pyx":676
+  /* "kivy/graphics/shader.pyx":668
  *                     self.vert_src = _vs.replace('$HEADER$', header_vs)
  *                 if lines[0].lower().startswith("fragment"):
  *                     _fs = '\n'.join(lines[1:])             # <<<<<<<<<<<<<<
  *                     self.frag_src = _fs.replace('$HEADER$', header_fs)
  *             self.build_vertex(0)
  */
-  __pyx_slice__16 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 676; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_slice__16 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__16)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 668; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_slice__16);
   __Pyx_GIVEREF(__pyx_slice__16);
 
@@ -11234,47 +11178,47 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "kivy/graphics/shader.pyx":83
+  /* "kivy/graphics/shader.pyx":81
  * cdef str default_vs = ''
  * cdef str default_fs = ''
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:             # <<<<<<<<<<<<<<
  *     header_vs = fin.read()
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  */
-  __pyx_tuple__18 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__18 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__18)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "kivy/graphics/shader.pyx":85
+  /* "kivy/graphics/shader.pyx":83
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:
  *     header_vs = fin.read()
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:             # <<<<<<<<<<<<<<
  *     header_fs = fin.read()
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  */
-  __pyx_tuple__19 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__19)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__19 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__19)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "kivy/graphics/shader.pyx":87
+  /* "kivy/graphics/shader.pyx":85
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  *     header_fs = fin.read()
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:             # <<<<<<<<<<<<<<
  *     default_vs = fin.read()
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:
  */
-  __pyx_tuple__20 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__20)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__20 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__20)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "kivy/graphics/shader.pyx":89
+  /* "kivy/graphics/shader.pyx":87
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  *     default_vs = fin.read()
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:             # <<<<<<<<<<<<<<
  *     default_fs = fin.read()
  * 
  */
-  __pyx_tuple__21 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__21 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__21)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
   __Pyx_RefNannyFinishContext();
@@ -11396,10 +11340,10 @@ PyMODINIT_FUNC PyInit_shader(void)
   __pyx_vtable_4kivy_8graphics_6shader_ShaderSource.get_shader_log = (PyObject *(*)(struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *, int))__pyx_f_4kivy_8graphics_6shader_12ShaderSource_get_shader_log;
   __pyx_vtable_4kivy_8graphics_6shader_ShaderSource.process_message = (void (*)(struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *, PyObject *, PyObject *))__pyx_f_4kivy_8graphics_6shader_12ShaderSource_process_message;
   __pyx_vtable_4kivy_8graphics_6shader_ShaderSource.is_compiled = (int (*)(struct __pyx_obj_4kivy_8graphics_6shader_ShaderSource *))__pyx_f_4kivy_8graphics_6shader_12ShaderSource_is_compiled;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_6shader_ShaderSource) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_6shader_ShaderSource) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_6shader_ShaderSource.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_6shader_ShaderSource.tp_dict, __pyx_vtabptr_4kivy_8graphics_6shader_ShaderSource) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "ShaderSource", (PyObject *)&__pyx_type_4kivy_8graphics_6shader_ShaderSource) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_6shader_ShaderSource.tp_dict, __pyx_vtabptr_4kivy_8graphics_6shader_ShaderSource) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "ShaderSource", (PyObject *)&__pyx_type_4kivy_8graphics_6shader_ShaderSource) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_4kivy_8graphics_6shader_ShaderSource = &__pyx_type_4kivy_8graphics_6shader_ShaderSource;
   __pyx_vtabptr_4kivy_8graphics_6shader_Shader = &__pyx_vtable_4kivy_8graphics_6shader_Shader;
   __pyx_vtable_4kivy_8graphics_6shader_Shader.use = (void (*)(struct __pyx_obj_4kivy_8graphics_6shader_Shader *))__pyx_f_4kivy_8graphics_6shader_6Shader_use;
@@ -11418,10 +11362,10 @@ PyMODINIT_FUNC PyInit_shader(void)
   __pyx_vtable_4kivy_8graphics_6shader_Shader.process_message = (void (*)(struct __pyx_obj_4kivy_8graphics_6shader_Shader *, PyObject *, PyObject *))__pyx_f_4kivy_8graphics_6shader_6Shader_process_message;
   __pyx_vtable_4kivy_8graphics_6shader_Shader.reload = (void (*)(struct __pyx_obj_4kivy_8graphics_6shader_Shader *))__pyx_f_4kivy_8graphics_6shader_6Shader_reload;
   __pyx_vtable_4kivy_8graphics_6shader_Shader.bind_vertex_format = (void (*)(struct __pyx_obj_4kivy_8graphics_6shader_Shader *, struct __pyx_obj_4kivy_8graphics_6vertex_VertexFormat *))__pyx_f_4kivy_8graphics_6shader_6Shader_bind_vertex_format;
-  if (PyType_Ready(&__pyx_type_4kivy_8graphics_6shader_Shader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_8graphics_6shader_Shader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_8graphics_6shader_Shader.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_6shader_Shader.tp_dict, __pyx_vtabptr_4kivy_8graphics_6shader_Shader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "Shader", (PyObject *)&__pyx_type_4kivy_8graphics_6shader_Shader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_8graphics_6shader_Shader.tp_dict, __pyx_vtabptr_4kivy_8graphics_6shader_Shader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "Shader", (PyObject *)&__pyx_type_4kivy_8graphics_6shader_Shader) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 160; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_8graphics_6shader_Shader.tp_weaklistoffset == 0) __pyx_type_4kivy_8graphics_6shader_Shader.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_8graphics_6shader_Shader, __weakref__);
   __pyx_ptype_4kivy_8graphics_6shader_Shader = &__pyx_type_4kivy_8graphics_6shader_Shader;
   /*--- Type import code ---*/
@@ -11527,22 +11471,23 @@ PyMODINIT_FUNC PyInit_shader(void)
  */
   __pyx_v_4kivy_8graphics_6shader_pi = 3.141592653589793;
 
-  /* "kivy/graphics/gl_debug_logger.pxi":1
+  /* "kivy/graphics/gl_debug_logger.pxi":2
+ * from kivy.graphics.c_opengl cimport GLenum, glGetError
  * from kivy.logger import Logger             # <<<<<<<<<<<<<<
  * include "config.pxi"
  * 
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_Logger);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[12]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
@@ -11551,7 +11496,7 @@ PyMODINIT_FUNC PyInit_shader(void)
  * 
  * from os.path import join             # <<<<<<<<<<<<<<
  * from kivy.graphics.c_opengl cimport *
- * IF USE_OPENGL_MOCK == 1:
+ * IF USE_OPENGL_DEBUG == 1:
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
@@ -11567,70 +11512,70 @@ PyMODINIT_FUNC PyInit_shader(void)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/shader.pyx":75
+  /* "kivy/graphics/shader.pyx":73
  * from kivy.graphics.transformation cimport Matrix
  * from kivy.graphics.context cimport get_context
  * from kivy.logger import Logger             # <<<<<<<<<<<<<<
  * from kivy.cache import Cache
  * from kivy import kivy_shader_dir
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_Logger);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Logger);
   __Pyx_GIVEREF(__pyx_n_s_Logger);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy_logger, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_Logger); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Logger, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/shader.pyx":76
+  /* "kivy/graphics/shader.pyx":74
  * from kivy.graphics.context cimport get_context
  * from kivy.logger import Logger
  * from kivy.cache import Cache             # <<<<<<<<<<<<<<
  * from kivy import kivy_shader_dir
  * 
  */
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_s_Cache);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_Cache);
   __Pyx_GIVEREF(__pyx_n_s_Cache);
-  __pyx_t_3 = __Pyx_Import(__pyx_n_s_kivy_cache, __pyx_t_4, -1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_Import(__pyx_n_s_kivy_cache, __pyx_t_4, -1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_Cache); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_Cache); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Cache, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Cache, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "kivy/graphics/shader.pyx":77
+  /* "kivy/graphics/shader.pyx":75
  * from kivy.logger import Logger
  * from kivy.cache import Cache
  * from kivy import kivy_shader_dir             # <<<<<<<<<<<<<<
  * 
  * cdef str header_vs = ''
  */
-  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyList_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_kivy_shader_dir);
   PyList_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_kivy_shader_dir);
   __Pyx_GIVEREF(__pyx_n_s_kivy_shader_dir);
-  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_Import(__pyx_n_s_kivy, __pyx_t_3, -1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_ImportFrom(__pyx_t_4, __pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_kivy_shader_dir, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_kivy_shader_dir, __pyx_t_3) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "kivy/graphics/shader.pyx":79
+  /* "kivy/graphics/shader.pyx":77
  * from kivy import kivy_shader_dir
  * 
  * cdef str header_vs = ''             # <<<<<<<<<<<<<<
@@ -11642,7 +11587,7 @@ PyMODINIT_FUNC PyInit_shader(void)
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_header_vs, __pyx_kp_s_);
   __Pyx_GIVEREF(__pyx_kp_s_);
 
-  /* "kivy/graphics/shader.pyx":80
+  /* "kivy/graphics/shader.pyx":78
  * 
  * cdef str header_vs = ''
  * cdef str header_fs = ''             # <<<<<<<<<<<<<<
@@ -11654,7 +11599,7 @@ PyMODINIT_FUNC PyInit_shader(void)
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_header_fs, __pyx_kp_s_);
   __Pyx_GIVEREF(__pyx_kp_s_);
 
-  /* "kivy/graphics/shader.pyx":81
+  /* "kivy/graphics/shader.pyx":79
  * cdef str header_vs = ''
  * cdef str header_fs = ''
  * cdef str default_vs = ''             # <<<<<<<<<<<<<<
@@ -11666,7 +11611,7 @@ PyMODINIT_FUNC PyInit_shader(void)
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_default_vs, __pyx_kp_s_);
   __Pyx_GIVEREF(__pyx_kp_s_);
 
-  /* "kivy/graphics/shader.pyx":82
+  /* "kivy/graphics/shader.pyx":80
  * cdef str header_fs = ''
  * cdef str default_vs = ''
  * cdef str default_fs = ''             # <<<<<<<<<<<<<<
@@ -11678,7 +11623,7 @@ PyMODINIT_FUNC PyInit_shader(void)
   __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_default_fs, __pyx_kp_s_);
   __Pyx_GIVEREF(__pyx_kp_s_);
 
-  /* "kivy/graphics/shader.pyx":83
+  /* "kivy/graphics/shader.pyx":81
  * cdef str default_vs = ''
  * cdef str default_fs = ''
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:             # <<<<<<<<<<<<<<
@@ -11686,9 +11631,9 @@ PyMODINIT_FUNC PyInit_shader(void)
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  */
   /*with:*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -11702,7 +11647,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __pyx_t_7 = 1;
       }
     }
-    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
@@ -11713,21 +11658,21 @@ PyMODINIT_FUNC PyInit_shader(void)
     PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_kp_s_header_vs);
     __Pyx_GIVEREF(__pyx_kp_s_header_vs);
     __pyx_t_5 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L2_error;}
+    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L2_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_8))) {
@@ -11740,10 +11685,10 @@ PyMODINIT_FUNC PyInit_shader(void)
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L2_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L2_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L2_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L2_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11757,19 +11702,19 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XGOTREF(__pyx_t_11);
         __Pyx_XGOTREF(__pyx_t_12);
         /*try:*/ {
-          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_8) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
+          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_8) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-          /* "kivy/graphics/shader.pyx":84
+          /* "kivy/graphics/shader.pyx":82
  * cdef str default_fs = ''
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:
  *     header_vs = fin.read()             # <<<<<<<<<<<<<<
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  *     header_fs = fin.read()
  */
-          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
+          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __pyx_t_4 = NULL;
@@ -11783,14 +11728,14 @@ PyMODINIT_FUNC PyInit_shader(void)
             }
           }
           if (__pyx_t_4) {
-            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
+            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           } else {
-            __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
+            __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
           }
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_8)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
+          if (!(likely(PyString_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_8)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L6_error;}
           __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_6shader_header_vs);
           __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_header_vs, ((PyObject*)__pyx_t_8));
           __Pyx_GIVEREF(__pyx_t_8);
@@ -11807,7 +11752,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "kivy/graphics/shader.pyx":83
+        /* "kivy/graphics/shader.pyx":81
  * cdef str default_vs = ''
  * cdef str default_fs = ''
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:             # <<<<<<<<<<<<<<
@@ -11816,20 +11761,20 @@ PyMODINIT_FUNC PyInit_shader(void)
  */
         /*except:*/ {
           __Pyx_AddTraceback("kivy.graphics.shader", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
+          if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_8, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
+          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_8, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_5, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
+          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
           __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_14 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
+          if (__pyx_t_14 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
           __pyx_t_15 = ((!(__pyx_t_14 != 0)) != 0);
           if (__pyx_t_15) {
             __Pyx_GIVEREF(__pyx_t_8);
@@ -11837,7 +11782,7 @@ PyMODINIT_FUNC PyInit_shader(void)
             __Pyx_XGIVEREF(__pyx_t_4);
             __Pyx_ErrRestore(__pyx_t_8, __pyx_t_3, __pyx_t_4);
             __pyx_t_8 = 0; __pyx_t_3 = 0; __pyx_t_4 = 0; 
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L8_except_error;}
           }
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11863,7 +11808,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         if (__pyx_t_9) {
           __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__18, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         }
@@ -11878,7 +11823,7 @@ PyMODINIT_FUNC PyInit_shader(void)
     __pyx_L17:;
   }
 
-  /* "kivy/graphics/shader.pyx":85
+  /* "kivy/graphics/shader.pyx":83
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:
  *     header_vs = fin.read()
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:             # <<<<<<<<<<<<<<
@@ -11886,9 +11831,9 @@ PyMODINIT_FUNC PyInit_shader(void)
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  */
   /*with:*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_5 = NULL;
     __pyx_t_7 = 0;
@@ -11902,7 +11847,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __pyx_t_7 = 1;
       }
     }
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_5) {
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
@@ -11913,21 +11858,21 @@ PyMODINIT_FUNC PyInit_shader(void)
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_7, __pyx_kp_s_header_fs);
     __Pyx_GIVEREF(__pyx_kp_s_header_fs);
     __pyx_t_8 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L18_error;}
+    __pyx_t_6 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L18_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_8 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_6))) {
@@ -11940,10 +11885,10 @@ PyMODINIT_FUNC PyInit_shader(void)
       }
     }
     if (__pyx_t_8) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L18_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L18_error;}
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L18_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L18_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -11957,19 +11902,19 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XGOTREF(__pyx_t_11);
         __Pyx_XGOTREF(__pyx_t_10);
         /*try:*/ {
-          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
+          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_6) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-          /* "kivy/graphics/shader.pyx":86
+          /* "kivy/graphics/shader.pyx":84
  *     header_vs = fin.read()
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  *     header_fs = fin.read()             # <<<<<<<<<<<<<<
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  *     default_vs = fin.read()
  */
-          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
+          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __pyx_t_4 = NULL;
@@ -11983,14 +11928,14 @@ PyMODINIT_FUNC PyInit_shader(void)
             }
           }
           if (__pyx_t_4) {
-            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
+            __pyx_t_6 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           } else {
-            __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
+            __pyx_t_6 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
           }
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
+          if (!(likely(PyString_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_6)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L22_error;}
           __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_6shader_header_fs);
           __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_header_fs, ((PyObject*)__pyx_t_6));
           __Pyx_GIVEREF(__pyx_t_6);
@@ -12007,7 +11952,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "kivy/graphics/shader.pyx":85
+        /* "kivy/graphics/shader.pyx":83
  * with open(join(kivy_shader_dir, 'header.vs')) as fin:
  *     header_vs = fin.read()
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:             # <<<<<<<<<<<<<<
@@ -12016,20 +11961,20 @@ PyMODINIT_FUNC PyInit_shader(void)
  */
         /*except:*/ {
           __Pyx_AddTraceback("kivy.graphics.shader", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
+          if (__Pyx_GetException(&__pyx_t_6, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_8 = PyTuple_Pack(3, __pyx_t_6, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
+          __pyx_t_8 = PyTuple_Pack(3, __pyx_t_6, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_8, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
+          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
           __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_15 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
+          if (__pyx_t_15 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
           __pyx_t_14 = ((!(__pyx_t_15 != 0)) != 0);
           if (__pyx_t_14) {
             __Pyx_GIVEREF(__pyx_t_6);
@@ -12037,7 +11982,7 @@ PyMODINIT_FUNC PyInit_shader(void)
             __Pyx_XGIVEREF(__pyx_t_4);
             __Pyx_ErrRestore(__pyx_t_6, __pyx_t_3, __pyx_t_4);
             __pyx_t_6 = 0; __pyx_t_3 = 0; __pyx_t_4 = 0; 
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L24_except_error;}
           }
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12063,7 +12008,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         if (__pyx_t_9) {
           __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__19, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
@@ -12078,7 +12023,7 @@ PyMODINIT_FUNC PyInit_shader(void)
     __pyx_L33:;
   }
 
-  /* "kivy/graphics/shader.pyx":87
+  /* "kivy/graphics/shader.pyx":85
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  *     header_fs = fin.read()
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:             # <<<<<<<<<<<<<<
@@ -12086,9 +12031,9 @@ PyMODINIT_FUNC PyInit_shader(void)
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:
  */
   /*with:*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_8 = NULL;
     __pyx_t_7 = 0;
@@ -12102,7 +12047,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __pyx_t_7 = 1;
       }
     }
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_8) {
       PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_8); __Pyx_GIVEREF(__pyx_t_8); __pyx_t_8 = NULL;
@@ -12113,21 +12058,21 @@ PyMODINIT_FUNC PyInit_shader(void)
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_7, __pyx_kp_s_default_vs);
     __Pyx_GIVEREF(__pyx_kp_s_default_vs);
     __pyx_t_6 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_5 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L34_error;}
+    __pyx_t_5 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L34_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
@@ -12140,10 +12085,10 @@ PyMODINIT_FUNC PyInit_shader(void)
       }
     }
     if (__pyx_t_6) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L34_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L34_error;}
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L34_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L34_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -12157,19 +12102,19 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XGOTREF(__pyx_t_11);
         __Pyx_XGOTREF(__pyx_t_12);
         /*try:*/ {
-          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
+          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "kivy/graphics/shader.pyx":88
+          /* "kivy/graphics/shader.pyx":86
  *     header_fs = fin.read()
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  *     default_vs = fin.read()             # <<<<<<<<<<<<<<
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:
  *     default_fs = fin.read()
  */
-          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
+          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __pyx_t_4 = NULL;
@@ -12183,14 +12128,14 @@ PyMODINIT_FUNC PyInit_shader(void)
             }
           }
           if (__pyx_t_4) {
-            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
+            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           } else {
-            __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
+            __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
           }
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_5)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
+          if (!(likely(PyString_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_5)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L38_error;}
           __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_6shader_default_vs);
           __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_default_vs, ((PyObject*)__pyx_t_5));
           __Pyx_GIVEREF(__pyx_t_5);
@@ -12207,7 +12152,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "kivy/graphics/shader.pyx":87
+        /* "kivy/graphics/shader.pyx":85
  * with open(join(kivy_shader_dir, 'header.fs')) as fin:
  *     header_fs = fin.read()
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:             # <<<<<<<<<<<<<<
@@ -12216,20 +12161,20 @@ PyMODINIT_FUNC PyInit_shader(void)
  */
         /*except:*/ {
           __Pyx_AddTraceback("kivy.graphics.shader", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
+          if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_6 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
+          __pyx_t_6 = PyTuple_Pack(3, __pyx_t_5, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_6, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
+          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
           __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_14 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
+          if (__pyx_t_14 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
           __pyx_t_15 = ((!(__pyx_t_14 != 0)) != 0);
           if (__pyx_t_15) {
             __Pyx_GIVEREF(__pyx_t_5);
@@ -12237,7 +12182,7 @@ PyMODINIT_FUNC PyInit_shader(void)
             __Pyx_XGIVEREF(__pyx_t_4);
             __Pyx_ErrRestore(__pyx_t_5, __pyx_t_3, __pyx_t_4);
             __pyx_t_5 = 0; __pyx_t_3 = 0; __pyx_t_4 = 0; 
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L40_except_error;}
           }
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12263,7 +12208,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         if (__pyx_t_9) {
           __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__20, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          if (unlikely(!__pyx_t_12)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         }
@@ -12278,7 +12223,7 @@ PyMODINIT_FUNC PyInit_shader(void)
     __pyx_L49:;
   }
 
-  /* "kivy/graphics/shader.pyx":89
+  /* "kivy/graphics/shader.pyx":87
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  *     default_vs = fin.read()
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:             # <<<<<<<<<<<<<<
@@ -12286,9 +12231,9 @@ PyMODINIT_FUNC PyInit_shader(void)
  * 
  */
   /*with:*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_join); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_kivy_shader_dir); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -12302,7 +12247,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __pyx_t_7 = 1;
       }
     }
-    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
@@ -12313,21 +12258,21 @@ PyMODINIT_FUNC PyInit_shader(void)
     PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_kp_s_default_fs);
     __Pyx_GIVEREF(__pyx_kp_s_default_fs);
     __pyx_t_5 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_exit); if (unlikely(!__pyx_t_9)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L50_error;}
+    __pyx_t_8 = __Pyx_PyObject_LookupSpecial(__pyx_t_4, __pyx_n_s_enter); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L50_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_8))) {
@@ -12340,10 +12285,10 @@ PyMODINIT_FUNC PyInit_shader(void)
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L50_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L50_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L50_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L50_error;}
     }
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -12357,19 +12302,19 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XGOTREF(__pyx_t_11);
         __Pyx_XGOTREF(__pyx_t_10);
         /*try:*/ {
-          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_8) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
+          if (PyDict_SetItem(__pyx_d, __pyx_n_s_fin, __pyx_t_8) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-          /* "kivy/graphics/shader.pyx":90
+          /* "kivy/graphics/shader.pyx":88
  *     default_vs = fin.read()
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:
  *     default_fs = fin.read()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
+          __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_fin); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
+          __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_read); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __pyx_t_4 = NULL;
@@ -12383,14 +12328,14 @@ PyMODINIT_FUNC PyInit_shader(void)
             }
           }
           if (__pyx_t_4) {
-            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
+            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           } else {
-            __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
+            __pyx_t_8 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
           }
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (!(likely(PyString_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_8)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
+          if (!(likely(PyString_CheckExact(__pyx_t_8))||((__pyx_t_8) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_8)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L54_error;}
           __Pyx_XGOTREF(__pyx_v_4kivy_8graphics_6shader_default_fs);
           __Pyx_DECREF_SET(__pyx_v_4kivy_8graphics_6shader_default_fs, ((PyObject*)__pyx_t_8));
           __Pyx_GIVEREF(__pyx_t_8);
@@ -12407,7 +12352,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "kivy/graphics/shader.pyx":89
+        /* "kivy/graphics/shader.pyx":87
  * with open(join(kivy_shader_dir, 'default.vs')) as fin:
  *     default_vs = fin.read()
  * with open(join(kivy_shader_dir, 'default.fs')) as fin:             # <<<<<<<<<<<<<<
@@ -12416,20 +12361,20 @@ PyMODINIT_FUNC PyInit_shader(void)
  */
         /*except:*/ {
           __Pyx_AddTraceback("kivy.graphics.shader", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
+          if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_8, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
+          __pyx_t_5 = PyTuple_Pack(3, __pyx_t_8, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
           __Pyx_GOTREF(__pyx_t_5);
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_5, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
+          if (unlikely(!__pyx_t_13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
           __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (__pyx_t_15 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
+          if (__pyx_t_15 < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
           __pyx_t_14 = ((!(__pyx_t_15 != 0)) != 0);
           if (__pyx_t_14) {
             __Pyx_GIVEREF(__pyx_t_8);
@@ -12437,7 +12382,7 @@ PyMODINIT_FUNC PyInit_shader(void)
             __Pyx_XGIVEREF(__pyx_t_4);
             __Pyx_ErrRestore(__pyx_t_8, __pyx_t_3, __pyx_t_4);
             __pyx_t_8 = 0; __pyx_t_3 = 0; __pyx_t_4 = 0; 
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L56_except_error;}
           }
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12463,7 +12408,7 @@ PyMODINIT_FUNC PyInit_shader(void)
         if (__pyx_t_9) {
           __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__21, NULL);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          if (unlikely(!__pyx_t_10)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }

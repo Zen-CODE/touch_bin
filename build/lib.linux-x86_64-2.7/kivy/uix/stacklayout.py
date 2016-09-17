@@ -136,7 +136,6 @@ class StackLayout(Layout):
 
     def do_layout(self, *largs):
         if not self.children:
-            self.minimum_size = (0., 0.)
             return
 
         # optimize layout by preventing looking at the same attribute in a loop

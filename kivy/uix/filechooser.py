@@ -17,7 +17,7 @@ vertical list, where folders can be collapsed and expanded.
 .. image:: images/filechooser_list.png
 
 The :class:`FileChooserIconView` presents icons and text from left to right,
-wrapping them as required.
+wrappping them as required.
 
 .. image:: images/filechooser_icon.png
 
@@ -98,11 +98,11 @@ from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import (
     StringProperty, ListProperty, BooleanProperty, ObjectProperty,
-    NumericProperty, AliasProperty)
+    NumericProperty, OptionProperty, AliasProperty)
 from os import listdir
 from os.path import (
     basename, join, sep, normpath, expanduser, altsep,
-    splitdrive, realpath, getsize, isdir, abspath)
+    splitdrive, realpath, getsize, isdir, abspath, pardir)
 from fnmatch import fnmatch
 import collections
 
@@ -176,7 +176,7 @@ class FileSystemLocal(FileSystemAbstract):
             try:
                 return GetFileAttributesExW(fn)[0] & FILE_ATTRIBUTE_HIDDEN
             except error:
-                # This error can occurred when a file is already accessed by
+                # This error can occured when a file is already accessed by
                 # someone else. So don't return to True, because we have lot
                 # of chances to not being able to do anything with it.
                 Logger.exception('unable to access to <%s>' % fn)
@@ -307,8 +307,7 @@ class FileChooserController(RelativeLayout):
 
     :Events:
         `on_entry_added`: entry, parent
-            Fired when a root-level entry is added to the file list. If you
-            return True from this event, the entry is not added to FileChooser.
+            Fired when a root-level entry is added to the file list.
         `on_entries_cleared`
             Fired when the the entries list is cleared, usually when the
             root is refreshed.
@@ -509,9 +508,6 @@ class FileChooserController(RelativeLayout):
     .. versionadded:: 1.8.0
     '''
 
-    _update_files_ev = None
-    _create_files_entries_ev = None
-
     __events__ = ('on_entry_added', 'on_entries_cleared',
                   'on_subentry_to_entry', 'on_remove_subentry', 'on_submit')
 
@@ -556,11 +552,8 @@ class FileChooserController(RelativeLayout):
         self._previous_path = self._previous_path[-2:]
 
     def _trigger_update(self, *args):
-        ev = self._update_files_ev
-        if ev is None:
-            ev = self._update_files_ev = Clock.create_trigger(
-                self._update_files)
-        ev()
+        Clock.unschedule(self._update_files)
+        Clock.schedule_once(self._update_files)
 
     def on_entry_added(self, node, parent=None):
         if self.layout:
@@ -608,8 +601,9 @@ class FileChooserController(RelativeLayout):
                 self.selection.append(entry.path)
         else:
             if _dir and not self.dirselect:
+                self.open_entry
                 return
-            self.selection = [abspath(join(self.path, entry.path)), ]
+            self.selection = [entry.path, ]
 
     def entry_released(self, entry, touch):
         '''(internal) This method must be called by the template when an entry
@@ -626,7 +620,7 @@ class FileChooserController(RelativeLayout):
                 self.open_entry(entry)
             elif touch.is_double_tap:
                 if self.dirselect and self.file_system.is_dir(entry.path):
-                    return
+                    self.open_entry(entry)
                 else:
                     self.dispatch('on_submit', self.selection, touch)
 
@@ -643,7 +637,7 @@ class FileChooserController(RelativeLayout):
             # If entry.path is to jump to previous directory, update path with
             # parent directory
             self.path = abspath(join(self.path, entry.path))
-            self.selection = [self.path, ] if self.dirselect else []
+            self.selection = []
 
     def _apply_filters(self, files):
         if not self.filters:
@@ -686,19 +680,14 @@ class FileChooserController(RelativeLayout):
             parent=self._gitems_parent)
 
         # cancel any previous clock if exist
-        ev = self._create_files_entries_ev
-        if ev is not None:
-            ev.cancel()
+        Clock.unschedule(self._create_files_entries)
 
         # show the progression screen
         self._hide_progress()
         if self._create_files_entries():
             # not enough for creating all the entries, all a clock to continue
             # start a timer for the next 100 ms
-            if ev is None:
-                ev = self._create_files_entries_ev = Clock.schedule_interval(
-                    self._create_files_entries, .1)
-            ev()
+            Clock.schedule_interval(self._create_files_entries, .1)
 
     def _get_file_paths(self, items):
         return [file.path for file in items]
@@ -747,9 +736,7 @@ class FileChooserController(RelativeLayout):
         self._hide_progress()
         self._gitems = None
         self._gitems_gen = None
-        ev = self._create_files_entries_ev
-        if ev is not None:
-            ev.cancel()
+        Clock.unschedule(self._create_files_entries)
         return False
 
     def cancel(self, *largs):
@@ -758,20 +745,14 @@ class FileChooserController(RelativeLayout):
 
         .. versionadded:: 1.2.0
         '''
-        ev = self._create_files_entries_ev
-        if ev is not None:
-            ev.cancel()
-
+        Clock.unschedule(self._create_files_entries)
         self._hide_progress()
         if len(self._previous_path) > 1:
             # if we cancel any action, the path will be set same as the
             # previous one, so we can safely cancel the update of the previous
             # path.
             self.path = self._previous_path[-2]
-
-            ev = self._update_files_ev
-            if ev is not None:
-                ev.cancel()
+            Clock.unschedule(self._update_files)
 
     def _show_progress(self):
         if self._progress:

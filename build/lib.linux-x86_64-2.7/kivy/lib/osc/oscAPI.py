@@ -132,9 +132,9 @@ def sendMsg(oscAddress, dataArray=[], ipAddr='127.0.0.1', port=9000, typehint=No
     '''create and send normal OSC msgs
         defaults to '127.0.0.1', port 9000
     '''
-    with oscLock:
-        outSocket.sendto(
-            createBinaryMsg(oscAddress, dataArray, typehint),  (ipAddr, port))
+    oscLock.acquire()
+    outSocket.sendto( createBinaryMsg(oscAddress, dataArray, typehint),  (ipAddr, port))
+    oscLock.release()
 
 
 def createBundle():
@@ -142,23 +142,24 @@ def createBundle():
     '''
     b = OSC.OSCMessage()
     b.address = ""
-    b.append(b"#bundle")
+    b.append("#bundle")
     b.append(0)
     b.append(0)
     return b
 
 
 def appendToBundle(bundle, oscAddress, dataArray):
-    '''create OSC message and append it to a given bundle
+    '''create OSC mesage and append it to a given bundle
     '''
-    bundle.append(createBinaryMsg(oscAddress, dataArray),  b'b')
+    bundle.append( createBinaryMsg(oscAddress, dataArray),  'b')
 
 
 def sendBundle(bundle, ipAddr='127.0.0.1', port=9000) :
     '''convert bundle to a binary and send it
     '''
-    with oscLock:
-        outSocket.sendto(bundle.message, (ipAddr, port))
+    oscLock.acquire()
+    outSocket.sendto(bundle.message, (ipAddr, port))
+    oscLock.release()
 
 
 def createBinaryMsg(oscAddress, dataArray, typehint=None):

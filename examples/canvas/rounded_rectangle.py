@@ -2,7 +2,9 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.graphics import Color, Ellipse, Rectangle, RoundedRectangle
+from kivy.uix.label import Label
 from kivy.lang import Builder
+from kivy.factory import Factory
 
 TEXTURE = 'kiwi.jpg'
 YELLOW = (1, .7, 0)

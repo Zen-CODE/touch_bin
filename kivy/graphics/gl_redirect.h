@@ -1,14 +1,8 @@
 /**
  * Redirect the inclusion of GL file to the selected provider
  */
-#ifndef __gl_redirect_h_
-#define __gl_redirect_h_
- 
-#include "config.h"
 
-#if __USE_OPENGL_MOCK
-#include "gl_mock.h"
-#else
+#include "config.h"
 
 #if __USE_GLEW
 #	include <GL/glew.h>
@@ -135,6 +129,3 @@ void glew_dynamic_binding() {
 
 #endif /* __GLEW_DYNAMIC_BINDING */
 #endif /* __USE_GLEW */
-#endif /* __USE_OPENGL_MOCK */
-
-#endif /* __gl2platform_h_ */

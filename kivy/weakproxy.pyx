@@ -1,16 +1,5 @@
-"""
-Weak Proxy
-==========
-
-In order to allow garbage collection, the weak proxy provides
-`weak references <https://en.wikipedia.org/wiki/Weak_reference>`_ to objects.
-It effectively enhances the
-`weakref.proxy <https://docs.python.org/2/library/weakref.html#weakref.proxy>`_
-by adding comparison support.
-"""
 import weakref
 import operator
-
 
 cdef class WeakProxy(object):
     '''Replacement for weakref.proxy to support comparisons

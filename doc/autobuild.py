@@ -7,14 +7,12 @@ Be careful if you change anything in !
 '''
 
 ignore_list = (
-    'kivy._clock',
     'kivy._event',
     'kivy.factory_registers',
     'kivy.graphics.buffer',
     'kivy.graphics.vbo',
     'kivy.graphics.vertex',
-    'kivy.uix.recycleview.__init__',
-    'kivy.setupconfig'
+    'kivy.lib.osc'
 )
 
 import os
@@ -63,26 +61,23 @@ import kivy.input.recorder
 import kivy.interactive
 import kivy.garden
 from kivy.factory import Factory
-from kivy.lib import osc, ddsfile, mtdev
 
 # check for silenced build
-BE_QUIET = True
-if os.environ.get('BE_QUIET') == 'False':
-    BE_QUIET = False
+BE_QUIET = False
+for arg in sys.argv:
+    if "silenced=" in arg:
+        if arg.split("=")[1] == "yes":
+            BE_QUIET = True
 
 # force loading of all classes from factory
 for x in list(Factory.classes.keys())[:]:
     getattr(Factory, x)
 
+
 # Directory of doc
 base_dir = os.path.dirname(__file__)
 dest_dir = os.path.join(base_dir, 'sources')
 examples_framework_dir = os.path.join(base_dir, '..', 'examples', 'framework')
-
-# Check touch file
-base = 'autobuild.py-done'
-with open(os.path.join(base_dir, base), 'w') as f:
-    f.write('')
 
 
 def writefile(filename, data):
@@ -220,7 +215,7 @@ for package in packages:
 
     # search modules
     m = list(modules.keys())
-    m.sort(key=lambda x: extract_summary_line(sys.modules[x].__doc__).upper())
+    m.sort(key=lambda x: extract_summary_line(sys.modules[x].__doc__))
     for module in m:
         packagemodule = module.rsplit('.', 1)[0]
         if packagemodule != package:

@@ -2,9 +2,6 @@
 Tree View
 =========
 
-.. image:: images/treeview.png
-    :align: right
-
 .. versionadded:: 1.0.4
 
 
@@ -352,14 +349,6 @@ class TreeView(Widget):
             self._selected_node.is_selected = False
         node.is_selected = True
         self._selected_node = node
-
-    def deselect_node(self, *args):
-        '''Deselect any selected node.
-
-        .. versionadded:: 1.9.2
-        '''
-        if self._selected_node:
-            self._selected_node.is_selected = False
 
     def toggle_node(self, node):
         '''Toggle the state of the node (open/collapsed).

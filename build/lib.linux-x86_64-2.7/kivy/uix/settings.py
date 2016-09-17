@@ -149,7 +149,7 @@ that displays a json settings panel with some way to switch between
 panels. An instance will be automatically created by :class:`Settings`.
 
 Interface widgets may be anything you like, but *must* have a method
-add_panel that receives newly created json settings panels for the
+add_panel that recieves newly created json settings panels for the
 interface to display. See the documentation for
 :class:`InterfaceWithSidebar` for more information. They may
 optionally dispatch an on_close event, for instance if a close button
@@ -165,10 +165,11 @@ __all__ = ('Settings', 'SettingsPanel', 'SettingItem', 'SettingString',
            'SettingPath', 'SettingBoolean', 'SettingNumeric', 'SettingOptions',
            'SettingTitle', 'SettingsWithSidebar', 'SettingsWithSpinner',
            'SettingsWithTabbedPanel', 'SettingsWithNoMenu',
-           'InterfaceWithSidebar', 'ContentPanel', 'MenuSidebar')
+           'InterfaceWithSidebar', 'ContentPanel')
 
 import json
 import os
+from kivy.compat import string_types
 from kivy.factory import Factory
 from kivy.metrics import dp
 from kivy.config import ConfigParser
@@ -692,17 +693,16 @@ class InterfaceWithSidebar(BoxLayout):
         display. Any replacement for ContentPanel *must* implement
         this method.
 
-        :Parameters:
-            `panel`: :class:`SettingsPanel`
-                It should be stored and the interface should provide a way to
-                switch between panels.
-            `name`:
-                The name of the panel as a string. It may be used to represent
-                the panel but isn't necessarily unique.
-            `uid`:
-                A unique int identifying the panel. It should be used to
-                identify and switch between panels.
+        :param panel: A :class:`SettingsPanel`. It should be stored
+                      and the interface should provide a way to switch
+                      between panels.
 
+        :param name: The name of the panel as a string. It
+                     may be used to represent the panel but isn't necessarily
+                     unique.
+
+        :param uid: A unique int identifying the panel. It should be
+                    used to identify and switch between panels.
         '''
         self.menu.add_item(name, uid)
         self.content.add_panel(panel, name, uid)
@@ -727,7 +727,7 @@ class InterfaceWithSpinner(BoxLayout):
     '''(internal) A reference to the sidebar menu widget.
 
     :attr:`menu` is an :class:`~kivy.properties.ObjectProperty` and
-    defaults to None.
+    defauls to None.
     '''
 
     content = ObjectProperty()
@@ -749,16 +749,16 @@ class InterfaceWithSpinner(BoxLayout):
         display. Any replacement for ContentPanel *must* implement
         this method.
 
-        :Parameters:
-            `panel`: :class:`SettingsPanel`
-                It should be stored and the interface should provide a way to
-                switch between panels.
-            `name`:
-                The name of the panel as a string. It may be used to represent
-                the panel but may not be unique.
-            `uid`:
-                A unique int identifying the panel. It should be used to
-                identify and switch between panels.
+        :param panel: A :class:`SettingsPanel`. It should be stored
+                      and the interface should provide a way to switch
+                      between panels.
+
+        :param name: The name of the panel as a string. It
+                     may be used to represent the panel but may not
+                     be unique.
+
+        :param uid: A unique int identifying the panel. It should be
+                    used to identify and switch between panels.
 
         '''
         self.content.add_panel(panel, name, uid)
@@ -814,15 +814,14 @@ class ContentPanel(ScrollView):
         display. Any replacement for ContentPanel *must* implement
         this method.
 
-        :Parameters:
-            `panel`: :class:`SettingsPanel`
-                It should be stored and displayed when requested.
-            `name`:
-                The name of the panel as a string. It may be used to represent
-                the panel.
-            `uid`:
-                A unique int identifying the panel. It should be stored and
-                used to identify panels when switching.
+        :param panel: A :class:`SettingsPanel`. It should be stored
+                      and displayed when requested.
+
+        :param name: The name of the panel as a string. It
+                     may be used to represent the panel.
+
+        :param uid: A unique int identifying the panel. It should be
+                    stored and used to identify panels when switching.
 
         '''
         self.panels[uid] = panel
@@ -833,12 +832,9 @@ class ContentPanel(ScrollView):
         '''The uid of the currently displayed panel. Changing this will
         automatically change the displayed panel.
 
-        :Parameters:
-            `uid`:
-                A panel uid. It should be used to retrieve and display
-                a settings panel that has previously been added with
-                :meth:`add_panel`.
-
+        :param uid: A panel uid. It should be used to retrieve and
+                    display a settings panel that has previously been
+                    added with :meth:`add_panel`.
         '''
         uid = self.current_uid
         if uid in self.panels:
@@ -1186,14 +1182,12 @@ class MenuSidebar(FloatLayout):
     def add_item(self, name, uid):
         '''This method is used to add new panels to the menu.
 
-        :Parameters:
-            `name`:
-                The name (a string) of the panel. It should be used
-                to represent the panel in the menu.
-            `uid`:
-                The name (an int) of the panel. It should be used internally
-                to represent the panel and used to set self.selected_uid when
-                the panel is changed.
+        :param name: The name (a string) of the panel. It should be
+                     used to represent the panel in the menu.
+
+        :param uid: The name (an int) of the panel. It should be used
+                    internally to represent the panel and used to set
+                    self.selected_uid when the panel is changed.
 
         '''
 

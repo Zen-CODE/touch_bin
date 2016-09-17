@@ -2,9 +2,6 @@
 Stencil View
 ============
 
-.. image:: images/stencilview.gif
-    :align: right
-
 .. versionadded:: 1.0.4
 
 :class:`StencilView` limits the drawing of child widgets to the StencilView's

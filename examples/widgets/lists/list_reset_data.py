@@ -7,13 +7,16 @@ from kivy.adapters.models import SelectableDataItem
 
 from kivy.uix.listview import ListItemButton
 
+from random import choice
+from string import ascii_uppercase, digits
+
 import random
 
 
 class DataItem(SelectableDataItem):
-    def __init__(self, name, **kwargs):
-        self.name = name
+    def __init__(self, **kwargs):
         super(DataItem, self).__init__(**kwargs)
+        self.name = ''.join(choice(ascii_uppercase + digits) for x in range(6))
 
 
 class MainView(FloatLayout):
@@ -25,9 +28,9 @@ class MainView(FloatLayout):
         super(MainView, self).__init__(**kwargs)
 
         data_items = []
-        data_items.append(DataItem('One'))
-        data_items.append(DataItem('Two'))
-        data_items.append(DataItem('Three'))
+        data_items.append(DataItem())
+        data_items.append(DataItem())
+        data_items.append(DataItem())
 
         list_item_args_converter = lambda row_index, obj: {'text': obj.name,
                                                            'size_hint_y': None,
@@ -59,7 +62,7 @@ class MainView(FloatLayout):
         else:
             random_index = random.randint(0, len(items) - 1)
             item = items[random_index]
-            items[random_index] = DataItem('Changed')
+            items[random_index] = DataItem()
             self.toggle = 'adding'
             print('changed {0} to {1}'.format(item.name,
                                               items[random_index].name))

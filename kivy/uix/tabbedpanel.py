@@ -102,9 +102,7 @@ To change the background of a individual tab, use these two properties::
 
 A TabbedPanelStrip contains the individual tab headers. To change the
 appearance of this tab strip, override the canvas of TabbedPanelStrip.
-For example, in the kv language:
-
-.. code-block:: kv
+For example, in the kv language::
 
     <TabbedPanelStrip>
         canvas:
@@ -184,12 +182,10 @@ class TabbedPanelHeader(ToggleButton):
 class TabbedPanelItem(TabbedPanelHeader):
     '''This is a convenience class that provides a header of type
     TabbedPanelHeader and links it with the content automatically. Thus
-    facilitating you to simply do the following in kv language:
-
-    .. code-block:: kv
+    facilitating you to simply do the following in kv language::
 
         <TabbedPanel>:
-            # ...other settings
+            ...other settings
             TabbedPanelItem:
                 BoxLayout:
                     Label:
@@ -251,7 +247,7 @@ class StripLayout(GridLayout):
     '''Background image to be used for the Strip layout of the TabbedPanel.
 
     :attr:`background_image` is a :class:`~kivy.properties.StringProperty` and
-    defaults to a transparent image.
+     defaults to a transparent image.
     '''
 
 
@@ -460,8 +456,6 @@ class TabbedPanel(GridLayout):
     :attr:`default_tab_content` is an :class:`~kivy.properties.AliasProperty`.
     '''
 
-    _update_top_ev = _update_tab_ev = _update_tabs_ev = None
-
     def __init__(self, **kwargs):
         # these variables need to be initialized before the kv lang is
         # processed setup the base layout for the tabbed panel
@@ -487,13 +481,8 @@ class TabbedPanel(GridLayout):
         self._setup_default_tab()
         self.switch_to(self.default_tab)
 
-    def switch_to(self, header, do_scroll=False):
+    def switch_to(self, header):
         '''Switch to a specific panel header.
-
-        .. versionchanged:: 1.9.2
-
-        If used with `do_scroll=True`, it scrolls
-        to the header's tab too.
         '''
         header_content = header.content
         self._current_tab.state = 'normal'
@@ -507,10 +496,6 @@ class TabbedPanel(GridLayout):
         if parent:
             parent.remove_widget(header_content)
         self.add_widget(header_content)
-
-        if do_scroll:
-            tabs = self._tab_strip
-            tabs.parent.scroll_to(header)
 
     def clear_tabs(self, *l):
         self_tabs = self._tab_strip
@@ -597,11 +582,8 @@ class TabbedPanel(GridLayout):
         self._default_tab.text = self.default_tab_text
 
     def on_tab_width(self, *l):
-        ev = self._update_tab_ev
-        if ev is None:
-            ev = self._update_tab_ev = Clock.create_trigger(
-                self._update_tab_width, 0)
-        ev()
+        Clock.unschedule(self._update_tab_width)
+        Clock.schedule_once(self._update_tab_width, 0)
 
     def on_tab_height(self, *l):
         self._tab_layout.height = self._tab_strip.height = self.tab_height
@@ -625,7 +607,7 @@ class TabbedPanel(GridLayout):
             raise TabbedPanelException('`default_tab_class` should be\
                 subclassed from `TabbedPanelHeader`')
 
-        # no need to instantiate if class is TabbedPanelHeader
+        # no need to instanciate if class is TabbedPanelHeader
         if cls != TabbedPanelHeader:
             self._current_tab = self._original_tab = self._default_tab = cls()
 
@@ -662,11 +644,8 @@ class TabbedPanel(GridLayout):
             self.switch_to(self.default_tab)
 
     def _reposition_tabs(self, *l):
-        ev = self._update_tabs_ev
-        if ev is None:
-            ev = self._update_tabs_ev = Clock.create_trigger(
-                self._update_tabs, 0)
-        ev()
+        Clock.unschedule(self._update_tabs)
+        Clock.schedule_once(self._update_tabs, 0)
 
     def _update_tabs(self, *l):
         self_content = self.content
@@ -819,11 +798,8 @@ class TabbedPanel(GridLayout):
 
     def _update_top(self, *args):
         sctr, top, scrl_v_width, x, y = args
-        ev = self._update_top_ev
-        if ev is not None:
-            ev.cancel()
-
-        ev = self._update_top_ev = Clock.schedule_once(
+        Clock.unschedule(partial(self._updt_top, sctr, top, scrl_v_width))
+        Clock.schedule_once(
             partial(self._updt_top, sctr, top, scrl_v_width), 0)
 
     def _updt_top(self, sctr, top, scrl_v_width, *args):

@@ -4,9 +4,6 @@ Interactive launcher
 
 .. versionadded:: 1.3.0
 
-.. versionchanged:: 1.9.2
-    The interactive launcher has been deprecated.
-
 The :class:`InteractiveLauncher` provides a user-friendly python shell
 interface to an :class:`App` so that it can be prototyped and debugged
 interactively.
@@ -22,7 +19,7 @@ Creating an InteractiveLauncher
 -------------------------------
 
 Take your existing subclass of :class:`App` (this can be production code) and
-pass an instance to the :class:`InteractiveLauncher` constructor. ::
+pass an instance to the :class:`InteractiveLauncher` constructor.::
 
     from kivy.interactive import InteractiveLauncher
     from kivy.app import App
@@ -52,7 +49,7 @@ Interactive Development
 IPython provides a fast way to learn the Kivy API. The :class:`App` instance
 and all of it's attributes, including methods and the entire widget tree,
 can be quickly listed by using the '.' operator and pressing 'tab'. Try this
-code in an Ipython shell. ::
+code in an Ipython shell.::
 
     from kivy.interactive import InteractiveLauncher
     from kivy.app import App
@@ -148,7 +145,7 @@ TODO
 Unit tests, examples, and a better explanation of which methods are safe in a
 running application would be nice. All three would be excellent.
 
-Could be re-written with a context-manager style i.e. ::
+Could be re-written with a context-manager style i.e.::
 
     with safe:
         foo()
@@ -160,12 +157,11 @@ Any use cases besides compacting code?
 __all__ = ('SafeMembrane', 'InteractiveLauncher')
 
 import inspect
-from threading import Thread, Event
 
 from kivy.app import App
 from kivy.base import EventLoop
 from kivy.clock import Clock
-from kivy.utils import deprecated
+from threading import Thread, Event
 
 
 def safeWait(dt):
@@ -304,7 +300,6 @@ class InteractiveLauncher(SafeMembrane):
 
     __slots__ = ('_ref', 'safe', 'confirmed', 'thread', 'app')
 
-    @deprecated
     def __init__(self, app=None, *args, **kwargs):
         if app is None:
             app = App()

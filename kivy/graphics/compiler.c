@@ -473,7 +473,7 @@ struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 typedef struct __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t __pyx_t_4kivy_8graphics_6vertex_vertex_attr_t;
 
 /* "vertex.pxd":3
- * from kivy.graphics.c_opengl cimport GLuint
+ * from c_opengl cimport GLuint
  * 
  * cdef struct vertex_t:             # <<<<<<<<<<<<<<
  *     float x, y
@@ -569,9 +569,9 @@ struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update;
 struct __pyx_opt_args_4kivy_8graphics_12instructions_13RenderContext_set_state;
 
 /* "instructions.pxd":33
- *         cpdef flag_update(self, int do_parent=?, list _instrs=?)
+ *         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
  *     ELSE:
- *         cpdef flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
+ *         cdef void flag_update(self, int do_parent=?)             # <<<<<<<<<<<<<<
  *     cdef void flag_update_done(self)
  *     cdef void set_parent(self, Instruction parent)
  */
@@ -1414,7 +1414,7 @@ static struct __pyx_vtabstruct_4kivy_6_event_EventObservers *__pyx_vtabptr_4kivy
 
 struct __pyx_vtabstruct_4kivy_8graphics_12instructions_Instruction {
   int (*apply)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
-  PyObject *(*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, int __pyx_skip_dispatch, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
+  void (*flag_update)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_opt_args_4kivy_8graphics_12instructions_11Instruction_flag_update *__pyx_optional_args);
   void (*flag_update_done)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*set_parent)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *, struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
   void (*reload)(struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *);
@@ -2258,9 +2258,7 @@ static struct __pyx_obj_4kivy_8graphics_12instructions_InstructionGroup *__pyx_f
  */
         __pyx_t_7.__pyx_n = 1;
         __pyx_t_7.do_parent = 0;
-        __pyx_t_3 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_oldrc->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_oldrc), 0, &__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_oldrc->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_oldrc), &__pyx_t_7); 
         goto __pyx_L6;
       }
       __pyx_L6:;
@@ -2575,9 +2573,7 @@ static struct __pyx_obj_4kivy_8graphics_12instructions_InstructionGroup *__pyx_f
  */
     __pyx_t_7.__pyx_n = 1;
     __pyx_t_7.do_parent = 0;
-    __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_rc->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_rc), 0, &__pyx_t_7); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    ((struct __pyx_vtabstruct_4kivy_8graphics_12instructions_RenderContext *)__pyx_v_rc->__pyx_base.__pyx_base.__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.__pyx_base.__pyx_base.flag_update(((struct __pyx_obj_4kivy_8graphics_12instructions_Instruction *)__pyx_v_rc), &__pyx_t_7); 
     goto __pyx_L19;
   }
   __pyx_L19:;

@@ -118,16 +118,13 @@ use the |RelativeLayout|. More on that later) and |size|, is an absolute size.
 Widgets Z Index
 ---------------
 
-The order of widget drawing is based on the widget's position in
-the widget tree. The :attr:`~kivy.uix.widget.Widget.add_widget`
-method takes an `index` parameter which can be used to specify it's position in
-the widget tree::
+The order of drawing widgets is based on position in
+the widget tree. The last widget's canvas is drawn last (on top of everything
+else inside its parent). add_widget takes a `index` parameter::
 
     root.add_widget(widget, index)
 
-The lower indexed widgets will be drawn above those with a higher index. Keep
-in mind that the default for `index` is 0, so widgets added later
-are drawn on top of the others unless specified otherwise.
+for setting the z-index.
 
 Organize with Layouts
 ---------------------
@@ -276,7 +273,7 @@ If you want to control the absolute |size| of a |Widget|, you can set
 
 |pos_hint| is a dict, which defaults to empty. As for |size_hint|, layouts honor
 |pos_hint| differently, but generally you can add values to any of the |pos|
-attributes (|x|, |y|, |right|, |top|, |center_x|, |center_y|) to have the
+attributes (|x|, |y|, |left|, |top|, |center_x|, |center_y|) to have the
 |Widget| positioned relative to its |parent|.
 
 Let's experiment with the following code in kivycatalog to understand |pos_hint|
@@ -437,8 +434,7 @@ Both of the Apps should look something like this:
 
 .. image:: images/layout_background.png
 
-Add a color to the background of a **custom layouts rule/class**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**To add a color to the background of a **custom layouts rule/class** **
 
 The way we add background to the layout's instance can quickly become
 cumbersome if we need to use multiple layouts. To help with this, you can
@@ -697,7 +693,7 @@ To try to understand what is happening here, start from line 13::
     texture: self.background_image.texture
 
 This specifies that the `texture` property of `BorderImage` will be updated
-whenever the `texture` property of `background_image` updates. We define the
+whenever the `texture` property of `background_inage` updates. We define the
 background_image property at line 40::
 
     background_image = ObjectProperty(...
@@ -710,7 +706,7 @@ the animation changes, and the texture of BorderImage instruction is updated in
 the process.
 
 You can also just blit custom data to the texture. For details, look at the
-documentation of :class:`~kivy.graphics.texture.Texture`.
+documention of :class:`~kivy.graphics.texture.Texture`.
 
 Nesting Layouts
 ---------------

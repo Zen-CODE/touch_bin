@@ -19,10 +19,11 @@ from kivy.config import Config
 from kivy.logger import Logger
 from kivy.base import EventLoop, stopTouchApp
 from kivy.modules import Modules
+from kivy.metrics import dp
 from kivy.event import EventDispatcher
 from kivy.properties import ListProperty, ObjectProperty, AliasProperty, \
     NumericProperty, OptionProperty, StringProperty, BooleanProperty
-from kivy.utils import platform, reify, deprecated
+from kivy.utils import platform, reify
 from kivy.context import get_current_context
 from kivy.uix.behaviors import FocusBehavior
 from kivy.setupconfig import USE_SDL2
@@ -31,7 +32,7 @@ from kivy.graphics.transformation import Matrix
 # late import
 VKeyboard = None
 android = None
-Animation = None
+
 
 class Keyboard(EventDispatcher):
     '''Keyboard interface that is returned by
@@ -244,39 +245,14 @@ class WindowBase(EventDispatcher):
             .. versionadded:: 1.9.0
 
         `on_cursor_enter`:
-            Fired when the cursor enters the window.
+            Fired when when the cursor enters the window.
 
             .. versionadded:: 1.9.1
 
         `on_cursor_leave`:
-            Fired when the cursor leaves the window.
+            Fired when when the cursor leaves the window.
 
             .. versionadded:: 1.9.1
-
-        `on_minimize`:
-            Fired when the window is minimized.
-
-            .. versionadded:: 1.9.2
-
-        `on_maximize`:
-            Fired when the window is maximized.
-
-            .. versionadded:: 1.9.2
-
-        `on_restore`:
-            Fired when the window is restored.
-
-            .. versionadded:: 1.9.2
-
-        `on_hide`:
-            Fired when the window is hidden.
-
-            .. versionadded:: 1.9.2
-
-        `on_show`:
-            Fired when when the window is shown.
-
-            .. versionadded:: 1.9.2
 
         `on_keyboard`: key, scancode, codepoint, modifier
             Fired when the keyboard is used for input.
@@ -285,7 +261,7 @@ class WindowBase(EventDispatcher):
                 The *unicode* parameter has been deprecated in favor of
                 codepoint, and will be removed completely in future versions.
 
-        `on_key_down`: key, scancode, codepoint, modifier
+        `on_key_down`: key, scancode, codepoint
             Fired when a key pressed.
 
             .. versionchanged:: 1.3.0
@@ -319,7 +295,6 @@ class WindowBase(EventDispatcher):
     _modifiers = ListProperty([])
     _rotation = NumericProperty(0)
     _clearcolor = ObjectProperty([0, 0, 0, 1])
-    _focus = BooleanProperty(True)
 
     children = ListProperty([])
     '''List of the children of this window.
@@ -478,7 +453,7 @@ class WindowBase(EventDispatcher):
         if x not in (0, 90, 180, 270):
             raise ValueError('can rotate only 0, 90, 180, 270 degrees')
         self._rotation = x
-        if not self.initialized:
+        if self.initialized is False:
             return
         self.dispatch('on_resize', *self.size)
         self.dispatch('on_rotate', x)
@@ -523,27 +498,13 @@ class WindowBase(EventDispatcher):
     '''
 
     _keyboard_changed = BooleanProperty(False)
-    _kheight = NumericProperty(0)
-
-    def _animate_content(self):
-        '''Animate content to IME height.
-        '''
-        kargs = self.keyboard_anim_args
-        global Animation
-        if not Animation:
-            from kivy.animation import Animation
-        Animation.cancel_all(self)
-        Animation(
-            _kheight = self.keyboard_height + self.keyboard_padding,
-            d=kargs['d'], t=kargs['t']).start(self)
 
     def _upd_kbd_height(self, *kargs):
         self._keyboard_changed = not self._keyboard_changed
-        self._animate_content()
+        self.update_viewport()
 
     def _get_ios_kheight(self):
-        import ios
-        return ios.get_kheight()
+        return 0
 
     def _get_android_kheight(self):
         if USE_SDL2:  # Placeholder until the SDL2 bootstrap supports this
@@ -561,34 +522,15 @@ class WindowBase(EventDispatcher):
         return 0
 
     keyboard_height = AliasProperty(_get_kheight, None,
-                                    bind=('_keyboard_changed',), cached=True)
-    '''Returns the height of the softkeyboard/IME on mobile platforms.
+                                    bind=('_keyboard_changed',),
+                                    cache=True)
+    '''Rerturns the height of the softkeyboard/IME on mobile platforms.
     Will return 0 if not on mobile platform or if IME is not active.
 
     .. versionadded:: 1.9.0
 
     :attr:`keyboard_height` is a read-only
-    :class:`~kivy.properties.AliasProperty` and defaults to 0.
-    '''
-
-    keyboard_anim_args = {'t': 'in_out_quart', 'd': .5}
-    '''The attributes for animating softkeyboard/IME.
-    `t` = `transition`, `d` = `duration`. Will have no effect on desktops.
-
-    .. versionadded:: 1.9.2
-
-    :attr:`keyboard_anim_args` is a dict with values
-    't': 'in_out_quart', 'd': `.5`.
-    '''
-
-    keyboard_padding = NumericProperty(0)
-    '''The padding to have between the softkeyboard/IME & target
-    or bottom of window. Will have no effect on desktops.
-
-    .. versionadded:: 1.9.2
-
-    :attr:`keyboard_padding` is a
-    :class:`~kivy.properties.NumericProperty` and defaults to 0.
+    :class:`~kivy.propertries.AliasProperty` and defaults to 0.
     '''
 
     def _set_system_size(self, size):
@@ -620,8 +562,6 @@ class WindowBase(EventDispatcher):
 
     borderless = BooleanProperty(False)
     '''When set to True, this property removes the window border/decoration.
-    Check the :mod:`~kivy.config` documentation for a more detailed
-    explanation on the values.
 
     .. versionadded:: 1.9.0
 
@@ -659,15 +599,12 @@ class WindowBase(EventDispatcher):
     defaults to True.
     '''
 
-    def _get_focus(self):
-        return self._focus
+    focus = BooleanProperty(True)
+    '''Set whether or not the window currently has focus.
 
-    focus = AliasProperty(_get_focus, None, bind=('_focus',))
-    '''Check whether or not the window currently has focus.
+    .. versionadded::1.9.1
 
-    .. versionadded:: 1.9.1
-
-    :attr:`focus` is a read-only :class:`~kivy.properties.AliasProperty` and
+    :attr:`focus` is a :class:`~kivy.properties.BooleanProperty and
     defaults to True.
     '''
 
@@ -685,11 +622,8 @@ class WindowBase(EventDispatcher):
     canvas = ObjectProperty(None)
     title = StringProperty('Kivy')
 
-    trigger_create_window = None
-
     __events__ = (
         'on_draw', 'on_flip', 'on_rotate', 'on_resize', 'on_close',
-        'on_minimize', 'on_maximize', 'on_restore', 'on_hide', 'on_show',
         'on_motion', 'on_touch_down', 'on_touch_move', 'on_touch_up',
         'on_mouse_down', 'on_mouse_move', 'on_mouse_up', 'on_keyboard',
         'on_key_down', 'on_key_up', 'on_textinput', 'on_dropfile',
@@ -722,7 +656,6 @@ class WindowBase(EventDispatcher):
         # Create a trigger for updating the keyboard height
         self.trigger_keyboard_height = Clock.create_trigger(
             self._upd_kbd_height, .5)
-        self.bind(_kheight=lambda *args: self.update_viewport())
 
         # set the default window parameter according to the configuration
         if 'borderless' not in kwargs:
@@ -815,7 +748,6 @@ class WindowBase(EventDispatcher):
                 'left', '_size', 'system_size'):
             self.unbind(**{prop: self.trigger_create_window})
 
-    @deprecated
     def toggle_fullscreen(self):
         '''Toggle between fullscreen and windowed mode.
 
@@ -831,8 +763,12 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.0
 
         .. note::
-            This feature requires the SDL2 window provider and is currently only
+            This feature requires a SDL2 window provider and is currently only
             supported on desktop platforms.
+
+        .. warning::
+            This code is still experimental, and its API may be subject to
+            change in a future version.
         '''
         Logger.warning('Window: maximize() is not implemented in the current '
                         'window provider.')
@@ -844,8 +780,12 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.0
 
         .. note::
-            This feature requires the SDL2 window provider and is currently only
+            This feature requires a SDL2 window provider and is currently only
             supported on desktop platforms.
+
+        .. warning::
+            This code is still experimental, and its API may be subject to
+            change in a future version.
         '''
         Logger.warning('Window: minimize() is not implemented in the current '
                         'window provider.')
@@ -857,8 +797,12 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.0
 
         .. note::
-            This feature requires the SDL2 window provider and is currently only
+            This feature requires a SDL2 window provider and is currently only
             supported on desktop platforms.
+
+        .. warning::
+            This code is still experimental, and its API may be subject to
+            change in a future version.
         '''
         Logger.warning('Window: restore() is not implemented in the current '
                         'window provider.')
@@ -870,8 +814,12 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.0
 
         .. note::
-            This feature requires the SDL2 window provider and is currently only
+            This feature requires a SDL2 window provider and is currently only
             supported on desktop platforms.
+
+        .. warning::
+            This code is still experimental, and its API may be subject to
+            change in a future version.
         '''
         Logger.warning('Window: hide() is not implemented in the current '
                         'window provider.')
@@ -883,8 +831,12 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.0
 
         .. note::
-            This feature requires the SDL2 window provider and is currently only
+            This feature requires a SDL2 window provider and is currently only
             supported on desktop platforms.
+
+        .. warning::
+            This code is still experimental, and its API may be subject to
+            change in a future version.
         '''
         Logger.warning('Window: show() is not implemented in the current '
                         'window provider.')
@@ -896,8 +848,12 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.1
 
         .. note::
-            This feature requires the SDL2 window provider and is currently only
+            This feature requires a SDL2 window provider and is currently only
             supported on desktop platforms.
+
+        .. warning::
+            This code is still experimental, and its API may be subject to
+            change in a future version.
         '''
         Logger.warning('Window: raise_window is not implemented in the current '
                         'window provider.')
@@ -926,7 +882,7 @@ class WindowBase(EventDispatcher):
         '''
         # just to be sure, if the trigger is set, and if this method is
         # manually called, unset the trigger
-        self.trigger_create_window.cancel()
+        Clock.unschedule(self.create_window)
 
         # ensure the window creation will not be called twice
         if platform in ('android', 'ios'):
@@ -1130,7 +1086,7 @@ class WindowBase(EventDispatcher):
         smode = self.softinput_mode
         target = self._system_keyboard.target
         targettop = max(0, target.to_window(0, target.y)[1]) if target else 0
-        kheight = self._kheight
+        kheight = self.keyboard_height
 
         w2, h2 = w / 2., h / 2.
         r = radians(self.rotation)
@@ -1218,56 +1174,6 @@ class WindowBase(EventDispatcher):
         Modules.unregister_window(self)
         EventLoop.remove_event_listener(self)
 
-    def on_minimize(self, *largs):
-        '''Event called when the window is minimized.
-
-        .. versionadded:: 1.9.2
-
-        .. note::
-            This feature requires the SDL2 window provider.
-        '''
-        pass
-
-    def on_maximize(self, *largs):
-        '''Event called when the window is maximized.
-
-        .. versionadded:: 1.9.2
-
-        .. note::
-            This feature requires the SDL2 window provider.
-        '''
-        pass
-
-    def on_restore(self, *largs):
-        '''Event called when the window is restored.
-
-        .. versionadded:: 1.9.2
-
-        .. note::
-            This feature requires the SDL2 window provider.
-        '''
-        pass
-
-    def on_hide(self, *largs):
-        '''Event called when the window is hidden.
-
-        .. versionadded:: 1.9.2
-
-        .. note::
-            This feature requires the SDL2 window provider.
-        '''
-        pass
-
-    def on_show(self, *largs):
-        '''Event called when the window is shown.
-
-        .. versionadded:: 1.9.2
-
-        .. note::
-            This feature requires the SDL2 window provider.
-        '''
-        pass
-
     def on_request_close(self, *largs, **kwargs):
         '''Event called before we close the window. If a bound function returns
         `True`, the window will not be closed. If the the event is triggered
@@ -1287,7 +1193,7 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.1
 
         .. note::
-            This feature requires the SDL2 window provider.
+            This feature requires a SDL2 window provider.
         '''
         pass
 
@@ -1297,7 +1203,7 @@ class WindowBase(EventDispatcher):
         .. versionadded:: 1.9.1
 
         .. note::
-            This feature requires the SDL2 window provider.
+            This feature requires a SDL2 window provider.
         '''
         pass
 
@@ -1395,8 +1301,8 @@ class WindowBase(EventDispatcher):
                            "semantics.")
 
     def on_textinput(self, text):
-        '''Event called when text: i.e. alpha numeric non control keys or set
-        of keys is entered. As it is not guaranteed whether we get one
+        '''Event called whem text: i.e. alpha numeric non control keys or set
+        of keys is entered. As it is not gaurenteed whether we get one
         character or multiple ones, this event supports handling multiple
         characters.
 

@@ -34,7 +34,7 @@ This widget class was designed with a couple of principles in mind:
   If a simple AABB is not sufficient, you can override the method to
   perform the collision checks with more complex shapes, e.g. a polygon.
   You can also check if a widget collides with another widget with
-  :meth:`~Widget.collide_widget`.
+  :meth:`Widget.collide_widget`.
 
 
 We also have some default values and behaviors that you should be aware of:
@@ -52,9 +52,9 @@ We also have some default values and behaviors that you should be aware of:
 * The default size_hint is (1, 1). If the parent is a :class:`Layout`, then the
   widget size will be the parent layout's size.
 
-* :meth:`~Widget.on_touch_down`, :meth:`~Widget.on_touch_move`,
-  :meth:`~Widget.on_touch_up` don't do any sort of collisions. If you want to
-  know if the touch is inside your widget, use :meth:`~Widget.collide_point`.
+* :meth:`Widget.on_touch_down`, :meth:`Widget.on_touch_move`,
+  :meth:`Widget.on_touch_up` don't do any sort of collisions. If you want to
+  know if the touch is inside your widget, use :meth:`Widget.collide_point`.
 
 Using Properties
 ----------------
@@ -118,55 +118,29 @@ Widget touch event bubbling
 ---------------------------
 
 When you catch touch events between multiple widgets, you often
-need to be aware of the order in which these events are propagated. In Kivy,
-events bubble up from the first child upwards through the other children.
-If a widget has children, the event is passed through its children before
-being passed on to the widget after it.
+need to be aware of the order in which these events are propogated. In Kivy,
+events bubble up from the most recently added widget and then backwards through
+its children (from the most recently added back to the first child). This order
+is the same for the `on_touch_move` and `on_touch_up` events.
 
-As the :meth:`~kivy.uix.widget.Widget.on_touch_up` method inserts widgets at
-index 0 by default, this means the event goes from the most recently added
-widget back to the first one added. Consider the following:
-
-.. code-block:: python
-
-    box = BoxLayout()
-    box.add_widget(Label(text="a"))
-    box.add_widget(Label(text="b"))
-    box.add_widget(Label(text="c"))
-
-The label with text "c" gets the event first, "b" second and "a" last. You can
-reverse this order by manually specifying the index:
+If you want to reverse this order, you can raise events in the children before
+the parent by using the `super` command. For example:
 
 .. code-block:: python
 
-    box = BoxLayout()
-    box.add_widget(Label(text="a"), index=0)
-    box.add_widget(Label(text="b"), index=1)
-    box.add_widget(Label(text="c"), index=2)
+    class MyWidget(Widget):
+        def on_touch_down(self, touch):
+            super(MyWidget, self).on_touch_down(touch)
+            # Do stuff here
 
-Now the order would be "a", "b" then "c". One thing to keep in mind when using
-kv is that declaring a widget uses the
-:meth:`~kivy.uix.widget.Widget.add_widget` method for insertion. Hence, using
+In general, this would seldom be the best approach as every event bubbles all
+the way through event time and there is no way of determining if it has been
+handled. In order to stop this event bubbling, one of these methods must
+return `True`. At this point, Kivy assumes the event has been handled and the
+propogation stops.
 
-.. code-block:: kv
-
-    BoxLayout:
-        MyLabel:
-            text: "a"
-        MyLabel:
-            text: "b"
-        MyLabel:
-            text: "c"
-
-would result in the event order "c", "b" then "a" as "c" was actually the last
-added widget. It thus has index 0, "b" index 1 and "a" index 2. Effectively,
-the child order is the reverse of its listed order.
-
-This ordering is the same for the :meth:`~kivy.uix.widget.Widget.on_touch_move`
-and :meth:`~kivy.uix.widget.Widget.on_touch_up` events.
-
-In order to stop this event bubbling, a method can return `True`. This tells
-Kivy the event has been handled and the event propagation stops. For example:
+This means that the recommended approach is to let the event bubble naturally
+but swallow the event if it has been handled. For example:
 
 .. code-block:: python
 
@@ -176,22 +150,23 @@ Kivy the event has been handled and the event propagation stops. For example:
                 # Do stuff here and kill the event
                 return True
             else:
+                # Continue normal event bubbling
                 return super(MyWidget, self).on_touch_down(touch)
 
 This approach gives you good control over exactly how events are dispatched
 and managed. Sometimes, however, you may wish to let the event be completely
-propagated before taking action. You can use the
+propogated before taking action. You can use the
 :class:`~kivy.clock.Clock` to help you here:
 
 .. code-block:: python
 
-    class MyWidget(Label):
+    class MyLabel(Label):
         def on_touch_down(self, touch, after=False):
             if after:
                 print "Fired after the event has been dispatched!"
             else:
                 Clock.schedule_once(lambda dt: self.on_touch_down(touch, True))
-                return super(MyWidget, self).on_touch_down(touch)
+                return super(MyLabel, self).on_touch_down(touch)
 
 Usage of :attr:`Widget.center`, :attr:`Widget.right`, and :attr:`Widget.top`
 ----------------------------------------------------------------------------
@@ -495,9 +470,9 @@ class Widget(WidgetBase):
             `index`: int, defaults to 0
                 Index to insert the widget in the list. Notice that the default
                 of 0 means the widget is inserted at the beginning of the list
-                and will thus be drawn on top of other sibling widgets. For a
-                full discussion of the index and widget hierarchy, please see
-                the :doc:`Widgets Programming Guide <guide/widgets>`.
+                and will thus appear under the other widgets. For a full
+                discussion on the index and widget hierarchy, please see the
+                :doc:`Widgets Programming Guide <guide/widgets>`.
 
                 .. versionadded:: 1.0.5
             `canvas`: str, defaults to None
@@ -628,8 +603,7 @@ class Widget(WidgetBase):
 
         if self.parent is not None:
             canvas_parent_index = self.parent.canvas.indexof(self.canvas)
-            if canvas_parent_index > -1:
-                self.parent.canvas.remove(self.canvas)
+            self.parent.canvas.remove(self.canvas)
 
         fbo = Fbo(size=self.size, with_stencilbuffer=True)
 
@@ -644,7 +618,7 @@ class Widget(WidgetBase):
         fbo.texture.save(filename, flipped=False)
         fbo.remove(self.canvas)
 
-        if self.parent is not None and canvas_parent_index > -1:
+        if self.parent is not None:
             self.parent.canvas.insert(canvas_parent_index, self.canvas)
 
         return True
@@ -1050,7 +1024,7 @@ class Widget(WidgetBase):
     what you are doing.
     '''
 
-    parent = ObjectProperty(None, allownone=True, rebind=True)
+    parent = ObjectProperty(None, allownone=True)
     '''Parent of this widget. The parent of a widget is set when the widget
     is added to another widget and unset when the widget is removed from its
     parent.

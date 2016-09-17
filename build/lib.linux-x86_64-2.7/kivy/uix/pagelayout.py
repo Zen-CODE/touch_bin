@@ -2,9 +2,6 @@
 PageLayout
 ==========
 
-.. image:: images/pagelayout.gif
-    :align: right
-
 The :class:`PageLayout` class is used to create a simple multi-page
 layout, in a way that allows easy flipping from one page to another using
 borders.
@@ -15,9 +12,7 @@ borders.
 
 .. versionadded:: 1.8.0
 
-Example:
-
-.. code-block:: kv
+Example::
 
     PageLayout:
         Button:
@@ -118,11 +113,8 @@ class PageLayout(Layout):
                 d=.5, t='in_quad').start(c)
 
     def on_touch_down(self, touch):
-        if (
-            self.disabled or
-            not self.collide_point(*touch.pos) or
-            not self.children
-        ):
+        if (self.disabled or not self.collide_point(*touch.pos) or
+            not self.children):
             return
 
         page = self.children[-self.page - 1]
@@ -206,9 +198,7 @@ class PageLayout(Layout):
                 self._trigger_layout()
 
             touch.ungrab(self)
-
-        if len(self.children) > 1:
-            return self.children[-self.page + 1].on_touch_up(touch)
+        return self.children[-self.page + 1].on_touch_up(touch)
 
 
 if __name__ == '__main__':

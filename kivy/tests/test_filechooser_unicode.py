@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # XXX: please be careful to only save this file with an utf-8 editor
 import unittest
+import logging
 from kivy.compat import PY2
 from kivy import platform
 
@@ -100,3 +101,4 @@ class FileChooserUnicodeTestCase(unittest.TestCase):
             rmdir(self.basepathu)
         except:
             pass
+

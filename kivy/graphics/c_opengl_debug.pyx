@@ -1,11 +1,7 @@
 
 # This file was automatically generated with kivy/tools/stub-gl-debug.py
-include "config.pxi"
 include "common.pxi"
-IF USE_OPENGL_MOCK:
-    cimport kivy.graphics.c_opengl_mock as cgl
-ELSE:
-    cimport kivy.graphics.c_opengl as cgl
+cimport kivy.graphics.c_opengl as cgl
 
 
 cdef void   glActiveTexture (GLenum texture) with gil:

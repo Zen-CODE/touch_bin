@@ -16,8 +16,6 @@ include "config.pxi"
 include "opcodes.pxi"
 
 from c_opengl cimport *
-IF USE_OPENGL_MOCK == 1:
-    from kivy.graphics.c_opengl_mock cimport *
 IF USE_OPENGL_DEBUG == 1:
     from c_opengl_debug cimport *
 from kivy.compat import PY2
@@ -63,7 +61,7 @@ cdef class Instruction(ObjectWithUid):
         return 0
 
     IF DEBUG:
-        cpdef flag_update(self, int do_parent=1, list _instrs=None):
+        cdef int flag_update(self, int do_parent=1, list _instrs=None) except -1:
             cdef list instrs = _instrs if _instrs else []
             if _instrs and self in _instrs:
                 raise RuntimeError('Encountered instruction group render loop: %r in %r' % (self, _instrs,))
@@ -72,7 +70,7 @@ cdef class Instruction(ObjectWithUid):
                 self.parent.flag_update(do_parent=1, _instrs=instrs)
             self.flags |= GI_NEEDS_UPDATE
     ELSE:
-        cpdef flag_update(self, int do_parent=1):
+        cdef void flag_update(self, int do_parent=1):
             if do_parent == 1 and self.parent is not None:
                 self.parent.flag_update()
             self.flags |= GI_NEEDS_UPDATE
@@ -341,9 +339,7 @@ cdef class VertexInstruction(Instruction):
             with self.canvas:
                 Rectangle(source='mylogo.png', pos=self.pos, size=self.size)
 
-        Here's the equivalent in Kivy language:
-
-        .. code-block:: kv
+        Here's the equivalent in Kivy language::
 
             <MyWidget>:
                 canvas:
@@ -372,7 +368,7 @@ cdef class VertexInstruction(Instruction):
         can be negative, and would represent the 'flipped' texture. By default,
         the tex_coords are::
 
-            [u, v, u + w, v, u + w, v + h, u, v + h]
+            [u, v, u + w, v, u + w, y + h, u, y + h]
 
         You can pass your own texture coordinates if you want to achieve fancy
         effects.
@@ -701,7 +697,7 @@ cdef class Canvas(CanvasBase):
 
 # Active Canvas and getActiveCanvas function is used
 # by instructions, so they know which canvas to add
-# themselves to
+# tehmselves to
 cdef CanvasBase ACTIVE_CANVAS = None
 
 cdef CanvasBase getActiveCanvas():
@@ -709,7 +705,7 @@ cdef CanvasBase getActiveCanvas():
     return ACTIVE_CANVAS
 
 # Canvas Stack, for internal use so canvas can be bound
-# inside other canvas, and restored when other canvas is done
+# inside other canvas, and restroed when other canvas is done
 cdef list CANVAS_STACK = list()
 
 cdef pushActiveCanvas(CanvasBase c):

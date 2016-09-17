@@ -34,22 +34,6 @@ import string
 import pprint
 from kivy.compat import string_types
 
-class impulse(object):
-    def __nonzero__(self):
-        return True
-    def __str__(self):
-        return "Impulse"
-    def __repr__(self):
-        return "Impulse"
-
-class null(object):
-    def __nonzero__(self):
-        return False
-    def __str__(self):
-        return "NULL"
-    def __repr__(self):
-        return "NULL"
-
 
 def hexDump(data):
     """Useful utility; prints the string in hexadecimal"""
@@ -83,7 +67,7 @@ class OSCMessage:
         self.clearData()
 
     def clearData(self):
-        self.typetags = b","
+        self.typetags = ","
         self.message = bytes()
 
     def append(self, argument, typehint=None):
@@ -114,18 +98,6 @@ class OSCMessage:
     def __repr__(self):
         return self.getBinary()
 
-def readTrue(data):
-    return (True, data)
-
-def readFalse(data):
-    return (False, data)
-
-def readImpulse(data):
-    return (impulse(), data)
-
-def readNull(data):
-    return (null(), data)
-
 def readString(data):
     if isinstance(data, str):
         length = string.find(data, '\0')
@@ -136,60 +108,53 @@ def readString(data):
 
 
 def readBlob(data):
-    try:
-        length   = struct.unpack(">i", data[0:4])[0]
-        nextData = int(math.ceil((length) / 4.0) * 4) + 4
-        rest = data[nextData:]
-        blob = data[4:length+4]
-        return (blob, rest)
-    except struct.error:
-        print("Error: too few bytes for blob", data, len(data))
-        return ("", data)
+    length   = struct.unpack(">i", data[0:4])[0]
+    nextData = int(math.ceil((length) / 4.0) * 4) + 4
+    return (data[4:length+4], data[nextData:])
 
 
 def readInt(data):
-    try:
+    if(len(data)<4):
+        print("Error: too few bytes for int", data, len(data))
+        rest = data
+        integer = 0
+    else:
         integer = struct.unpack(">i", data[0:4])[0]
         rest    = data[4:]
-        return (integer, rest)
-    except struct.error:
-        print("Error: too few bytes for int", data, len(data))
-        return (0, data)
+
+    return (integer, rest)
 
 
 
 def readLong(data):
     """Tries to interpret the next 8 bytes of the data
     as a 64-bit signed integer."""
-    try:
-        big = struct.unpack(">q", data[0:8])[0]
-        rest = data[8:]
-        return (big, rest)
-    except struct.error:
-        print("Error: too few bytes for long", data, len(data))
-        return (0, data)
+    high, low = struct.unpack(">ll", data[0:8])
+    big = (int(high) << 32) + low
+    rest = data[8:]
+    return (big, rest)
 
 
 def readDouble(data):
     """Tries to interpret the next 8 bytes of the data
     as a 64-bit double float."""
-    try:
-        number = struct.unpack(">d", data[0:8])[0]
-        rest = data[8:]
-        return (number, rest)
-    except struct.error:
-        print("Error: too few bytes for double", data, len(data))
-        return (0, data)
+    floater = struct.unpack(">d", data[0:8])
+    big = float(floater[0])
+    rest = data[8:]
+    return (big, rest)
+
 
 
 def readFloat(data):
-    try:
+    if(len(data)<4):
+        print("Error: too few bytes for float", data, len(data))
+        rest = data
+        float = 0
+    else:
         float = struct.unpack(">f", data[0:4])[0]
         rest  = data[4:]
-        return (float, rest)
-    except struct.error:
-        print("Error: too few bytes for float", data, len(data))
-        return (0, data)
+
+    return (float, rest)
 
 
 def OSCBlob(next):
@@ -200,10 +165,10 @@ def OSCBlob(next):
         length = len(next)
         padded = math.ceil((len(next)) / 4.0) * 4
         binary = struct.pack(">i%ds" % (padded), length, next)
-        tag    = b'b'
+        tag    = 'b'
     else:
-        tag    = b''
-        binary = b''
+        tag    = ''
+        binary = ''
 
     return (tag, binary)
 
@@ -213,36 +178,21 @@ def OSCArgument(data):
     OSC binary representations, returning a
     (typetag, data) tuple."""
 
-    if isinstance(data, bytearray):
-        length = len(data)
-        padded = math.ceil((len(data)) / 4.0) * 4
-        binary = struct.pack(b">i%ds" % (padded), length, str(data))
-        tag = b'b'
-    elif isinstance(data, string_types):
+    if isinstance(data, string_types):
         OSCstringLength = math.ceil((len(data)+1) / 4.0) * 4
-        binary = struct.pack(b">%ds" % (OSCstringLength), data)
-        tag = b"s"
-    elif isinstance(data, bool):
-        binary = b""
-        if data:
-            tag = b"T"
-        else:
-            tag = b"F"
+        if not isinstance(data, bytes):
+            data = data.encode('utf-8')
+        binary = struct.pack(">%ds" % (OSCstringLength), data)
+        tag = "s"
     elif isinstance(data, float):
-        binary = struct.pack(b">f", data)
-        tag = b"f"
+        binary = struct.pack(">f", data)
+        tag = "f"
     elif isinstance(data, int):
-        binary = struct.pack(b">i", data)
-        tag = b"i"
-    elif isinstance(data, impulse):
-        binary = b""
-        tag = b"I"
-    elif isinstance(data, null):
-        binary = b""
-        tag = b"N"
+        binary = struct.pack(">i", data)
+        tag = "i"
     else:
-        binary = b""
-        tag = b""
+        binary = ""
+        tag = ""
 
     return (tag, binary)
 
@@ -270,46 +220,33 @@ def parseArgs(args):
 
 
 def decodeOSC(data):
-    try:
-        """Converts a typetagged OSC message to a Python list."""
-        table = { "i" : readInt,
-                  "f" : readFloat,
-                  "s" : readString,
-                  "b" : readBlob,
-                  "d" : readDouble,
-                  "t" : readLong,
-                  "T" : readTrue,
-                  "F" : readFalse,
-                  "I" : readImpulse,
-                  "N" : readNull
-        }
-        decoded = []
-        address,  rest = readString(data)
-        typetags = b""
-    
-        if address == "#bundle":
-            time, rest = readLong(rest)
-            #decoded.append(address)
-            #decoded.append(time)
-            while len(rest)>0:
-                length, rest = readInt(rest)
-                decoded.append(decodeOSC(rest[:length]))
-                rest = rest[length:]
-    
-        elif len(rest) > 0:
-            typetags, rest = readString(rest)
-            decoded.append(address)
-            decoded.append(typetags)
-            if typetags[0] == b",":
-                for tag in typetags[1:]:
-                    value, rest = table[tag](rest)
-                    decoded.append(value)
-            else:
-                print("Oops, typetag lacks the magic ,")
-    
-        return decoded
-    except Exception as e:
-        print("exception: %s" % (e))
+    """Converts a typetagged OSC message to a Python list."""
+    table = { "i" : readInt, "f" : readFloat, "s" : readString, "b" : readBlob, "d" : readDouble }
+    decoded = []
+    address,  rest = readString(data)
+    typetags = ""
+
+    if address == "#bundle":
+        time, rest = readLong(rest)
+#       decoded.append(address)
+#       decoded.append(time)
+        while len(rest)>0:
+            length, rest = readInt(rest)
+            decoded.append(decodeOSC(rest[:length]))
+            rest = rest[length:]
+
+    elif len(rest) > 0:
+        typetags, rest = readString(rest)
+        decoded.append(address)
+        decoded.append(typetags)
+        if typetags[0] == ",":
+            for tag in typetags[1:]:
+                value, rest = table[tag](rest)
+                decoded.append(value)
+        else:
+            print("Oops, typetag lacks the magic ,")
+
+    return decoded
 
 
 class CallbackManager:
@@ -331,8 +268,6 @@ class CallbackManager:
 
     def dispatch(self, message, source = None):
         """Sends decoded OSC data to an appropriate calback"""
-        if not message or len(message) == 0: # ignore empty messages
-            return
         if type(message[0]) == list :
             # smells like nested messages
             for msg in message :
@@ -341,25 +276,25 @@ class CallbackManager:
             # got a single message
             try:
                 address = message[0]
-                if self.callbacks.has_key(address):
-                    callbackfunction = self.callbacks[address]
-                elif self.callbacks.has_key('default'):
-                    callbackfunction = self.callbacks['default']
-                else:
-                    print('address %s not found ' % address)
-                    return
-
-                callbackfunction(message, source)
-                return
+                callbackfunction = self.callbacks[address]
+            except KeyError as e:
+                # address not found
+                print('address %s not found ' % address)
+                pprint.pprint(message)
             except IndexError as e:
-                import traceback
-                print('OSC callback %s caused an error: %s' % (address, e))
-                traceback.print_exc()
-                print('---------------------')
-                raise
+                print('got malformed OSC message')
+            else:
+                try:
+                    callbackfunction(message, source)
+                except Exception as e:
+                    import traceback
+                    print('OSC callback %s caused an error: %s' % (address, e))
+                    traceback.print_exc()
+                    print('---------------------')
+                    raise
         else:
             raise ValueError("OSC message not recognized", message)
-
+        return
 
     def add(self, callback, name):
         """Adds a callback to our set of callbacks,

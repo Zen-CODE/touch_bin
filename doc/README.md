@@ -11,20 +11,10 @@ How to build the documentation
 You need to install:
 
   * Python Sphinx
-    - With pip:
-    ```
-	pip install sphinx
-	```
-
-    - With apt-get:
-    ```
-    apt-get install python-sphinx
-    ```
-
-    - With MacPorts:
-    ```
-	port install py34-sphinx
-	```
+    - Where apt-get is available:
+         ```
+         apt-get install python-sphinx
+         ```
 
     - On Windows (or from inside your virtualenv):
 

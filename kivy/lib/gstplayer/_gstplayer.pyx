@@ -227,14 +227,14 @@ cdef class GstPlayer:
             self.hid_message = c_bus_connect_message(
                     self.bus, _on_gstplayer_message, <void *>self)
 
-        # instantiate the playbin
+        # instanciate the playbin
         self.playbin = gst_element_factory_make('playbin', NULL)
         if self.playbin == NULL:
             raise GstPlayerException('Unable to create a playbin')
 
         gst_bin_add(<GstBin *>self.pipeline, self.playbin)
 
-        # instantiate an appsink
+        # instanciate an appsink
         if self.sample_cb:
             self.appsink = gst_element_factory_make('appsink', NULL)
             if self.appsink == NULL:

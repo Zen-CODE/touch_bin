@@ -113,7 +113,7 @@ class ModuleContext:
 
 
 class ModuleBase:
-    '''Handle Kivy modules. It will automatically load and instantiate the
+    '''Handle Kivy modules. It will automatically load and instanciate the
     module for the general window.'''
 
     def __init__(self, **kwargs):

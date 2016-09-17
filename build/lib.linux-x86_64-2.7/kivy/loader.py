@@ -63,12 +63,9 @@ class ProxyImage(Image):
     :Events:
         `on_load`
             Fired when the image is loaded or changed.
-        `on_error`
-            Fired when the image cannot be loaded.
-            `error`: Exception data that ocurred
     '''
 
-    __events__ = ('on_load', 'on_error')
+    __events__ = ('on_load', )
 
     def __init__(self, arg, **kwargs):
         loaded = kwargs.pop('loaded', False)
@@ -76,9 +73,6 @@ class ProxyImage(Image):
         self.loaded = loaded
 
     def on_load(self):
-        pass
-
-    def on_error(self, error):
         pass
 
 
@@ -89,7 +83,6 @@ class LoaderBase(object):
     The _update() function is called every 1 / 25.s or each frame if we have
     less than 25 FPS.
     '''
-    _trigger_update = None
 
     def __init__(self):
         self._loading_image = None
@@ -107,8 +100,10 @@ class LoaderBase(object):
         self._trigger_update = Clock.create_trigger(self._update)
 
     def __del__(self):
-        if self._trigger_update is not None:
-            self._trigger_update.cancel()
+        try:
+            Clock.unschedule(self._update)
+        except Exception:
+            pass
 
     def _set_num_workers(self, num):
         if num < 2:
@@ -298,7 +293,7 @@ class LoaderBase(object):
         if proto == 'smb':
             try:
                 # note: it's important to load SMBHandler every time
-                # otherwise the data is occasionally not loaded
+                # otherwise the data is occasionaly not loaded
                 from smb.SMBHandler import SMBHandler
             except ImportError:
                 Logger.warning(
@@ -349,24 +344,13 @@ class LoaderBase(object):
             # FIXME create a clean API for that
             for imdata in data._data:
                 imdata.source = filename
-        except Exception as ex:
+        except Exception:
             Logger.exception('Loader: Failed to load image <%s>' % filename)
             # close file when remote file not found or download error
             try:
-                if _out_osfd:
-                    close(_out_osfd)
+                close(_out_osfd)
             except OSError:
                 pass
-
-            # update client
-            for c_filename, client in self._client[:]:
-                if filename != c_filename:
-                    continue
-                # got one client to update
-                client.image = self.error_image
-                client.dispatch('on_error', error=ex)
-                self._client.remove((c_filename, client))
-
             return self.error_image
         finally:
             if fd:

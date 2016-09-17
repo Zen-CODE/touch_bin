@@ -1,14 +1,4 @@
-'''
-Code Navigation Behavior
-========================
-
-The :class:`~kivy.uix.bahviors.CodeNavigationBehavior` modifies navigation
-behavior in the :class:`~kivy.uix.textinput.TextInput`, making it work like an
-IDE instead of a word processor.
-
-Using this mixin gives the TextInput the ability to recognize whitespace,
-punctuation and case variations (e.g. CamelCase) when moving over text. It
-is currently used by the :class:`~kivy.uix.codeinput.CodeInput` widget.
+'''See :class:`CodeNavigationBehavior` for more details.
 '''
 
 __all__ = ('CodeNavigationBehavior', )
@@ -18,10 +8,8 @@ import string
 
 
 class CodeNavigationBehavior(EventDispatcher):
-    '''Code navigation behavior. Modifies the navigation behavior in TextInput
-    to work like an IDE instead of a word processor. Please see the
-    :mod:`code navigation behaviors module <kivy.uix.behaviors.codenavigation>`
-    documentation for more information.
+    '''Code navigation behavior. Modifies navigation behavior in TextInput
+    work like an IDE instead of a word processor.
 
     .. versionadded:: 1.9.1
     '''

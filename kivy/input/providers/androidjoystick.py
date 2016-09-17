@@ -24,8 +24,7 @@ from kivy.input.provider import MotionEventProvider
 from kivy.input.factory import MotionEventFactory
 from kivy.input.shape import ShapeRect
 from kivy.input.motionevent import MotionEvent
-if 'KIVY_DOC' not in os.environ:
-    import pygame.joystick
+import pygame.joystick
 
 
 class AndroidMotionEvent(MotionEvent):
@@ -85,7 +84,7 @@ class AndroidMotionEventProvider(MotionEventProvider):
                 pressure = joy.get_axis(2) / 1000.
                 radius = joy.get_axis(3) / 1000.
 
-                # new touch ?
+                # new touche ?
                 if pressed and jid not in touches:
                     self.uid += 1
                     touch = AndroidMotionEvent(self.device, self.uid,
@@ -101,7 +100,7 @@ class AndroidMotionEventProvider(MotionEventProvider):
                         continue
                     touch.move([x, y, pressure, radius])
                     dispatch_fn('update', touch)
-                # disappear
+                # disapear
                 elif not pressed and jid in touches:
                     touch = touches[jid]
                     touch.move([x, y, pressure, radius])

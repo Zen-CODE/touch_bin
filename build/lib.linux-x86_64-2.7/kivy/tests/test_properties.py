@@ -310,20 +310,28 @@ class PropertiesTestCase(unittest.TestCase):
         self.assertEqual(wid.basevalue, 1)
         self.assertEqual(observe_called, 0)
 
-        # change the base value, should trigger an update for the cache
-        wid.basevalue = 4
+        # first call, goes in cache
+        self.assertEqual(wid.prop, 2)
         self.assertEqual(observe_called, 1)
 
-        # now read the value again, should use the cache
-        self.assertEqual(wid.prop, 8)
+        # second call, cache used
+        self.assertEqual(wid.prop, 2)
         self.assertEqual(observe_called, 1)
+
+        # change the base value, should trigger an update for the cache
+        wid.basevalue = 4
+        self.assertEqual(observe_called, 2)
+
+        # now read the value again, should use the cache too
+        self.assertEqual(wid.prop, 8)
+        self.assertEqual(observe_called, 2)
 
         # change the prop itself, should trigger an update for the cache
         wid.prop = 4
-        self.assertEqual(observe_called, 2)
+        self.assertEqual(observe_called, 3)
         self.assertEqual(wid.basevalue, 2)
         self.assertEqual(wid.prop, 4)
-        self.assertEqual(observe_called, 2)
+        self.assertEqual(observe_called, 3)
 
     def test_bounded_numeric_property(self):
         from kivy.properties import BoundedNumericProperty
@@ -512,25 +520,3 @@ class PropertiesTestCase(unittest.TestCase):
         self.assertEqual(dict_rebind.text, 'Unset')
         self.assertEqual(dict_false.text, 'Unset')
         self.assertEqual(alias_rebind.text, 'Unset')
-
-    def test_color_property(self):
-        from kivy.properties import ColorProperty
-
-        color = ColorProperty()
-        color.link(wid, 'color')
-        color.link_deps(wid, 'color')
-        self.assertEqual(color.get(wid), [1, 1, 1, 1])
-
-        color.set(wid, "#00ff00")
-        self.assertEqual(color.get(wid), [0, 1, 0, 1])
-
-        color.set(wid, "#7f7fff7f")
-        self.assertEqual(color.get(wid)[0], 127 / 255.)
-        self.assertEqual(color.get(wid)[1], 127 / 255.)
-        self.assertEqual(color.get(wid)[2], 1)
-        self.assertEqual(color.get(wid)[3], 127 / 255.)
-
-        color.set(wid, (1, 1, 0))
-        self.assertEqual(color.get(wid), [1, 1, 0, 1])
-        color.set(wid, (1, 1, 0, 0))
-        self.assertEqual(color.get(wid), [1, 1, 0, 0])

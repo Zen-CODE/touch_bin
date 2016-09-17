@@ -1,6 +1,6 @@
 '''
-UrlRequest
-==========
+Url Request
+===========
 
 .. versionadded:: 1.0.8
 
@@ -66,10 +66,10 @@ from kivy.compat import PY2
 
 if PY2:
     from httplib import HTTPConnection
-    from urlparse import urlparse, urlunparse
+    from urlparse import urlparse
 else:
     from http.client import HTTPConnection
-    from urllib.parse import urlparse, urlunparse
+    from urllib.parse import urlparse
 
 try:
     import ssl
@@ -113,10 +113,6 @@ class UrlRequest(Thread):
 
         Parameter `ca_file` added.
         Parameter `verify` added.
-
-    .. versionchanged:: 1.9.2
-
-        Parameters `proxy_host`, `proxy_port` and `proxy_headers` added.
 
     :Parameters:
         `url`: str
@@ -163,22 +159,13 @@ class UrlRequest(Thread):
             certificates against
         `verify`: bool, defaults to True
             If False, disables SSL CA certificate verification
-        `proxy_host`: str, defaults to None
-            If set, the proxy host to use for this connection.
-        `proxy_port`: int, defaults to None
-            If set, and `proxy_host` is also set, the port to use for
-            connecting to the proxy server.
-        `proxy_headers`: dict, defaults to None
-            If set, and `proxy_host` is also set, the headers to send to the
-            proxy server in the ``CONNECT`` request.
     '''
 
     def __init__(self, url, on_success=None, on_redirect=None,
                  on_failure=None, on_error=None, on_progress=None,
                  req_body=None, req_headers=None, chunk_size=8192,
                  timeout=None, method=None, decode=True, debug=False,
-                 file_path=None, ca_file=None, verify=True, proxy_host=None,
-                 proxy_port=None, proxy_headers=None):
+                 file_path=None, ca_file=None, verify=True):
         super(UrlRequest, self).__init__()
         self._queue = deque()
         self._trigger_result = Clock.create_trigger(self._dispatch_result, 0)
@@ -202,9 +189,6 @@ class UrlRequest(Thread):
         self._method = method
         self.ca_file = ca_file
         self.verify = verify
-        self._proxy_host = proxy_host
-        self._proxy_port = proxy_port
-        self._proxy_headers = proxy_headers
 
         #: Url of the request
         self.url = url
@@ -278,15 +262,6 @@ class UrlRequest(Thread):
             port = int(host[1])
         host = host[0]
 
-        # reconstruct path to pass on the request
-        path = parse.path
-        if parse.params:
-            path += ';' + parse.params
-        if parse.query:
-            path += '?' + parse.query
-        if parse.fragment:
-            path += '#' + parse.fragment
-
         # create connection instance
         args = {}
         if timeout is not None:
@@ -304,17 +279,16 @@ class UrlRequest(Thread):
             ctx.verify_mode = ssl.CERT_NONE
             args['context'] = ctx
 
-        if self._proxy_host:
-            Logger.debug('UrlRequest: {0} - proxy via {1}:{2}'.format(
-                id(self), self._proxy_host, self._proxy_port
-            ))
-            req = cls(self._proxy_host, self._proxy_port, **args)
-            if parse.scheme == 'https':
-                req.set_tunnel(host, port, self._proxy_headers)
-            else:
-                path = urlunparse(parse)
-        else:
-            req = cls(host, port, **args)
+        req = cls(host, port, **args)
+
+        # reconstruct path to pass on the request
+        path = parse.path
+        if parse.params:
+            path += ';' + parse.params
+        if parse.query:
+            path += '?' + parse.query
+        if parse.fragment:
+            path += '#' + parse.fragment
 
         # send request
         method = self._method
@@ -363,7 +337,7 @@ class UrlRequest(Thread):
             else:
                 bytes_so_far, result = get_chunks()
 
-            # ensure that results are dispatched for the last chunk,
+            # ensure that restults are dispatched for the last chunk,
             # avoid trigger
             if report_progress:
                 q(('progress', resp, (bytes_so_far, total_size)))
@@ -406,8 +380,6 @@ class UrlRequest(Thread):
         if content_type is not None:
             ct = content_type.split(';')[0]
             if ct == 'application/json':
-                if isinstance(result, bytes):
-                    result = result.decode('utf-8')
                 try:
                     return loads(result)
                 except:
@@ -559,7 +531,7 @@ if __name__ == '__main__':
         pprint('Got an error:')
         pprint(error)
 
-    req = UrlRequest('https://en.wikipedia.org/w/api.php?format'
+    req = UrlRequest('http://en.wikipedia.org/w/api.php?format'
         '=json&action=query&titles=Kivy&prop=revisions&rvprop=content',
         on_success, on_error)
     while not req.is_finished:

@@ -13,15 +13,10 @@ __all__ = ('GraphicUnitTest', )
 
 import unittest
 import logging
-import os
 log = logging.getLogger('unittest')
 
-_base = object
-if not bool(int(os.environ.get('USE_OPENGL_MOCK', 0))):
-    _base = unittest.TestCase
 
-
-class GraphicUnitTest(_base):
+class GraphicUnitTest(unittest.TestCase):
 
     def render(self, root, framecount=1):
         '''Call rendering process using the `root` widget.
@@ -72,7 +67,7 @@ class GraphicUnitTest(_base):
         from kivy.core.window import Window
         Window.bind(on_flip=self.on_window_flip)
 
-        # ensure our window is correctly created
+        # ensure our window is correcly created
         Window.create_window()
         Window.canvas.clear()
 
@@ -186,7 +181,7 @@ class GraphicUnitTest(_base):
                     fd.write('<td><img src="test_%s"/></td>' %
                              basename(reffn))
                 else:
-                    fd.write('<td>First time, no comparison.</td>')
+                    fd.write('<td>First time, no comparaison.</td>')
                 fd.write('<td><pre>%s</pre></td>' % sourcecode)
                 fd.write('</table></div>')
         finally:

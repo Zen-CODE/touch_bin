@@ -35,7 +35,7 @@ class JsonStore(AbstractStore):
             self._data = loads(data)
 
     def store_sync(self):
-        if not self._is_changed:
+        if self._is_changed is False:
             return
         with open(self.filename, 'w') as fd:
             dump(self._data, fd)

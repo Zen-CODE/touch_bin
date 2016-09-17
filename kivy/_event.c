@@ -437,7 +437,6 @@ struct __pyx_obj_4kivy_10properties_ReferenceListProperty;
 struct __pyx_obj_4kivy_10properties_AliasProperty;
 struct __pyx_obj_4kivy_10properties_VariableListProperty;
 struct __pyx_obj_4kivy_10properties_ConfigParserProperty;
-struct __pyx_obj_4kivy_10properties_ColorProperty;
 struct __pyx_obj_4kivy_6_event_ObjectWithUid;
 struct __pyx_obj_4kivy_6_event_Observable;
 struct __pyx_obj_4kivy_6_event_EventDispatcher;
@@ -716,17 +715,6 @@ struct __pyx_obj_4kivy_10properties_ConfigParserProperty {
 };
 
 
-/* "kivy/properties.pxd":105
- *     cdef inline object _parse_str(self, object value)
- * 
- * cdef class ColorProperty(Property):             # <<<<<<<<<<<<<<
- *     cdef list parse_str(self, EventDispatcher obj, value)
- */
-struct __pyx_obj_4kivy_10properties_ColorProperty {
-  struct __pyx_obj_4kivy_10properties_Property __pyx_base;
-};
-
-
 /* "kivy/_event.pxd":3
  * from cpython.ref cimport PyObject
  * 
@@ -831,7 +819,7 @@ struct __pyx_obj_4kivy_6_event___pyx_scope_struct___get_bases {
 };
 
 
-/* "kivy/_event.pyx":1246
+/* "kivy/_event.pyx":1245
  *         return res
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -1051,20 +1039,6 @@ struct __pyx_vtabstruct_4kivy_10properties_ConfigParserProperty {
 static struct __pyx_vtabstruct_4kivy_10properties_ConfigParserProperty *__pyx_vtabptr_4kivy_10properties_ConfigParserProperty;
 
 
-/* "kivy/properties.pxd":105
- *     cdef inline object _parse_str(self, object value)
- * 
- * cdef class ColorProperty(Property):             # <<<<<<<<<<<<<<
- *     cdef list parse_str(self, EventDispatcher obj, value)
- */
-
-struct __pyx_vtabstruct_4kivy_10properties_ColorProperty {
-  struct __pyx_vtabstruct_4kivy_10properties_Property __pyx_base;
-  PyObject *(*parse_str)(struct __pyx_obj_4kivy_10properties_ColorProperty *, struct __pyx_obj_4kivy_6_event_EventDispatcher *, PyObject *);
-};
-static struct __pyx_vtabstruct_4kivy_10properties_ColorProperty *__pyx_vtabptr_4kivy_10properties_ColorProperty;
-
-
 /* "kivy/_event.pyx":164
  * 
  * 
@@ -1079,7 +1053,7 @@ struct __pyx_vtabstruct_4kivy_6_event_EventDispatcher {
 static struct __pyx_vtabstruct_4kivy_6_event_EventDispatcher *__pyx_vtabptr_4kivy_6_event_EventDispatcher;
 
 
-/* "kivy/_event.pyx":923
+/* "kivy/_event.pyx":922
  * 
  * 
  * cdef class EventObservers:             # <<<<<<<<<<<<<<
@@ -1499,7 +1473,6 @@ static PyTypeObject *__pyx_ptype_4kivy_10properties_ReferenceListProperty = 0;
 static PyTypeObject *__pyx_ptype_4kivy_10properties_AliasProperty = 0;
 static PyTypeObject *__pyx_ptype_4kivy_10properties_VariableListProperty = 0;
 static PyTypeObject *__pyx_ptype_4kivy_10properties_ConfigParserProperty = 0;
-static PyTypeObject *__pyx_ptype_4kivy_10properties_ColorProperty = 0;
 
 /* Module declarations from 'kivy._event' */
 static PyTypeObject *__pyx_ptype_4kivy_6_event_ObjectWithUid = 0;
@@ -1651,9 +1624,9 @@ static char __pyx_k_Default_implementation_of_proxy[] = "Default implementation 
 static char __pyx_k_EventDispatcher_create_property[] = "EventDispatcher.create_property (line 814)";
 static char __pyx_k_Event_dispatcher_All_objects_th[] = "\nEvent dispatcher\n================\n\nAll objects that produce events in Kivy implement the :class:`EventDispatcher`\nwhich provides a consistent interface for registering and manipulating event\nhandlers.\n\n.. versionchanged:: 1.0.9\n    Property discovery and methods have been moved from the\n    :class:`~kivy.uix.widget.Widget` to the :class:`EventDispatcher`.\n";
 static char __pyx_k_home_richard_Repos_kivy_kivy__e[] = "/home/richard/Repos/kivy/kivy/_event.pyx";
-static char __pyx_k_Adds_properties_at_runtime_to_th[] = "Adds properties at runtime to the class. The function accepts\n        keyword arguments of the form `prop_name=prop`, where `prop` is a\n        :class:`Property` instance and `prop_name` is the name of the attribute\n        of the property.\n\n        .. versionadded:: 1.9.1\n\n        .. warning::\n\n            This method is not recommended for common usage because you should\n            declare the properties in your class instead of using this method.\n\n        For example::\n\n            >>> print(wid.property('sticks', quiet=True))\n            None\n            >>> wid.apply_property(sticks=ObjectProperty(55, max=10))\n            >>> print(wid.property('sticks', quiet=True))\n            <kivy.properties.ObjectProperty object at 0x04303130>\n        ";
-static char __pyx_k_Create_a_new_property_at_runtime[] = "Create a new property at runtime.\n\n        .. versionadded:: 1.0.9\n\n        .. versionchanged:: 1.8.0\n            `value` parameter added, can be used to set the default value of the\n            property. Also, the type of the value is used to specialize the\n            created property.\n\n        .. versionchanged:: 1.9.0\n            In the past, if `value` was of type `bool`, a `NumericProperty`\n            would be created, now a `BooleanProperty` is created.\n\n            Also, now and positional and keyword arguments are passed to the\n            property when created.\n\n        .. warning::\n\n            This function is designed for the Kivy language, don't use it in\n            your code. You should declare the property in your class instead of\n            using this method.\n\n        :Parameters:\n            `name`: string\n                Name of the property\n            `value`: object, optional\n                Default value of the property. Type is also used for creating\n                more appropriate property types. Defaults to None.\n\n\n        ::\n\n            >>> mywidget = Widget()\n            >>> mywidget.create_property('custom')\n            >>> mywidget.custom = True\n            >>> print(mywidget.custom)\n            True\n        ";
-static char __pyx_k_EventDispatcher_apply_property_l[] = "EventDispatcher.apply_property (line 873)";
+static char __pyx_k_Adds_properties_at_runtime_to_th[] = "Adds properties at runtime to the class. The function accepts\n        keyword arguments of the form `prop_name=prop`, where `prop` is a\n        :class:`Property` instance and `prop_name` is the name of the attribute\n        of the property.\n\n        .. versionadded:: 1.9.1\n\n        .. warning::\n\n            This method is not reccomended for common usage because you should\n            declare the properties in your class instead of using this method.\n\n        For example::\n\n            >>> print(wid.property('sticks', quiet=True))\n            None\n            >>> wid.apply_property(sticks=ObjectProperty(55, max=10))\n            >>> print(wid.property('sticks', quiet=True))\n            <kivy.properties.ObjectProperty object at 0x04303130>\n        ";
+static char __pyx_k_Create_a_new_property_at_runtime[] = "Create a new property at runtime.\n\n        .. versionadded:: 1.0.9\n\n        .. versionchanged:: 1.8.0\n            `value` parameter added, can be used to set the default value of the\n            property. Also, the type of the value is used to specialize the\n            created property.\n\n        .. versionchanged:: 1.9.0\n            In the past, if `value` was of type `bool`, a `NumericProperty`\n            would be created, now a `BooleanProperty` is created.\n\n            Also, now and positional and keyword arguments are passed to the\n            property when created.\n\n        .. warning::\n\n            This function is designed for the Kivy language, don't use it in\n            your code. You should declare the property in your class instead of\n            using this method.\n\n        :Parameters:\n            `name`: string\n                Name of the property\n            `value`: object, optional\n                Default value of the property. Type is also used for creating\n                more appropriate property types. Defaults to None.\n\n\n        ::\n            >>> mywidget = Widget()\n            >>> mywidget.create_property('custom')\n            >>> mywidget.custom = True\n            >>> print(mywidget.custom)\n            True\n        ";
+static char __pyx_k_EventDispatcher_apply_property_l[] = "EventDispatcher.apply_property (line 872)";
 static char __pyx_k_The_property_s_has_a_forbidden_n[] = "The property <%s> has a forbidden name";
 static char __pyx_k_uid_that_evaluates_to_False_is_n[] = "uid, {}, that evaluates to False is not valid";
 static PyObject *__pyx_kp_s_A_new_event_must_start_with_on;
@@ -8729,7 +8702,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_40properties(struct __
 
 /* Python wrapper */
 static PyObject *__pyx_pw_4kivy_6_event_15EventDispatcher_43create_property(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4kivy_6_event_15EventDispatcher_42create_property[] = "Create a new property at runtime.\n\n        .. versionadded:: 1.0.9\n\n        .. versionchanged:: 1.8.0\n            `value` parameter added, can be used to set the default value of the\n            property. Also, the type of the value is used to specialize the\n            created property.\n\n        .. versionchanged:: 1.9.0\n            In the past, if `value` was of type `bool`, a `NumericProperty`\n            would be created, now a `BooleanProperty` is created.\n\n            Also, now and positional and keyword arguments are passed to the\n            property when created.\n\n        .. warning::\n\n            This function is designed for the Kivy language, don't use it in\n            your code. You should declare the property in your class instead of\n            using this method.\n\n        :Parameters:\n            `name`: string\n                Name of the property\n            `value`: object, optional\n                Default value of the property. Type is also used for creating\n                more appropriate property types. Defaults to None.\n\n\n        ::\n\n            >>> mywidget = Widget()\n            >>> mywidget.create_property('custom')\n            >>> mywidget.custom = True\n            >>> print(mywidget.custom)\n            True\n        ";
+static char __pyx_doc_4kivy_6_event_15EventDispatcher_42create_property[] = "Create a new property at runtime.\n\n        .. versionadded:: 1.0.9\n\n        .. versionchanged:: 1.8.0\n            `value` parameter added, can be used to set the default value of the\n            property. Also, the type of the value is used to specialize the\n            created property.\n\n        .. versionchanged:: 1.9.0\n            In the past, if `value` was of type `bool`, a `NumericProperty`\n            would be created, now a `BooleanProperty` is created.\n\n            Also, now and positional and keyword arguments are passed to the\n            property when created.\n\n        .. warning::\n\n            This function is designed for the Kivy language, don't use it in\n            your code. You should declare the property in your class instead of\n            using this method.\n\n        :Parameters:\n            `name`: string\n                Name of the property\n            `value`: object, optional\n                Default value of the property. Type is also used for creating\n                more appropriate property types. Defaults to None.\n\n\n        ::\n            >>> mywidget = Widget()\n            >>> mywidget.create_property('custom')\n            >>> mywidget.custom = True\n            >>> print(mywidget.custom)\n            True\n        ";
 static PyObject *__pyx_pw_4kivy_6_event_15EventDispatcher_43create_property(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_name = 0;
   PyObject *__pyx_v_value = 0;
@@ -8835,7 +8808,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("create_property", 0);
 
-  /* "kivy/_event.pyx":854
+  /* "kivy/_event.pyx":853
  *         '''
  *         cdef Property prop
  *         if value is None:  # shortcut             # <<<<<<<<<<<<<<
@@ -8846,21 +8819,21 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/_event.pyx":855
+    /* "kivy/_event.pyx":854
  *         cdef Property prop
  *         if value is None:  # shortcut
  *             prop = ObjectProperty(None, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         if isinstance(value, bool):
  *             prop = BooleanProperty(value, *largs, **kwargs)
  */
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 854; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_tuple__13, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_tuple__13, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 854; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_ObjectProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_ObjectProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 854; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8870,7 +8843,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   }
   __pyx_L3:;
 
-  /* "kivy/_event.pyx":856
+  /* "kivy/_event.pyx":855
  *         if value is None:  # shortcut
  *             prop = ObjectProperty(None, *largs, **kwargs)
  *         if isinstance(value, bool):             # <<<<<<<<<<<<<<
@@ -8879,32 +8852,32 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
  */
   __pyx_t_5 = ((PyObject*)&PyBool_Type);
   __Pyx_INCREF(__pyx_t_5);
-  __pyx_t_2 = PyObject_IsInstance(__pyx_v_value, __pyx_t_5); if (unlikely(__pyx_t_2 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_value, __pyx_t_5); if (unlikely(__pyx_t_2 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/_event.pyx":857
+    /* "kivy/_event.pyx":856
  *             prop = ObjectProperty(None, *largs, **kwargs)
  *         if isinstance(value, bool):
  *             prop = BooleanProperty(value, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         elif isinstance(value, (int, float)):
  *             prop = NumericProperty(value, *largs, **kwargs)
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_BooleanProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 857; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_BooleanProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 856; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8913,7 +8886,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
     goto __pyx_L4;
   }
 
-  /* "kivy/_event.pyx":858
+  /* "kivy/_event.pyx":857
  *         if isinstance(value, bool):
  *             prop = BooleanProperty(value, *largs, **kwargs)
  *         elif isinstance(value, (int, float)):             # <<<<<<<<<<<<<<
@@ -8934,27 +8907,27 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/_event.pyx":859
+    /* "kivy/_event.pyx":858
  *             prop = BooleanProperty(value, *largs, **kwargs)
  *         elif isinstance(value, (int, float)):
  *             prop = NumericProperty(value, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         elif isinstance(value, string_types):
  *             prop = StringProperty(value, *largs, **kwargs)
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 858; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 858; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 858; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_NumericProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_NumericProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 858; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8963,41 +8936,41 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
     goto __pyx_L4;
   }
 
-  /* "kivy/_event.pyx":860
+  /* "kivy/_event.pyx":859
  *         elif isinstance(value, (int, float)):
  *             prop = NumericProperty(value, *largs, **kwargs)
  *         elif isinstance(value, string_types):             # <<<<<<<<<<<<<<
  *             prop = StringProperty(value, *largs, **kwargs)
  *         elif isinstance(value, (list, tuple)):
  */
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_types); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_types); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyObject_IsInstance(__pyx_v_value, __pyx_t_5); if (unlikely(__pyx_t_2 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyObject_IsInstance(__pyx_v_value, __pyx_t_5); if (unlikely(__pyx_t_2 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 859; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/_event.pyx":861
+    /* "kivy/_event.pyx":860
  *             prop = NumericProperty(value, *largs, **kwargs)
  *         elif isinstance(value, string_types):
  *             prop = StringProperty(value, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         elif isinstance(value, (list, tuple)):
  *             prop = ListProperty(value, *largs, **kwargs)
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_StringProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 861; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_StringProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 860; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9006,7 +8979,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
     goto __pyx_L4;
   }
 
-  /* "kivy/_event.pyx":862
+  /* "kivy/_event.pyx":861
  *         elif isinstance(value, string_types):
  *             prop = StringProperty(value, *largs, **kwargs)
  *         elif isinstance(value, (list, tuple)):             # <<<<<<<<<<<<<<
@@ -9027,27 +9000,27 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/_event.pyx":863
+    /* "kivy/_event.pyx":862
  *             prop = StringProperty(value, *largs, **kwargs)
  *         elif isinstance(value, (list, tuple)):
  *             prop = ListProperty(value, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         elif isinstance(value, dict):
  *             prop = DictProperty(value, *largs, **kwargs)
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 862; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 862; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 862; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_ListProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 863; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_ListProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 862; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9056,7 +9029,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
     goto __pyx_L4;
   }
 
-  /* "kivy/_event.pyx":864
+  /* "kivy/_event.pyx":863
  *         elif isinstance(value, (list, tuple)):
  *             prop = ListProperty(value, *largs, **kwargs)
  *         elif isinstance(value, dict):             # <<<<<<<<<<<<<<
@@ -9067,27 +9040,27 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "kivy/_event.pyx":865
+    /* "kivy/_event.pyx":864
  *             prop = ListProperty(value, *largs, **kwargs)
  *         elif isinstance(value, dict):
  *             prop = DictProperty(value, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         else:
  *             prop = ObjectProperty(value, *largs, **kwargs)
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_DictProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 865; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_DictProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 864; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9097,27 +9070,27 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   }
   /*else*/ {
 
-    /* "kivy/_event.pyx":867
+    /* "kivy/_event.pyx":866
  *             prop = DictProperty(value, *largs, **kwargs)
  *         else:
  *             prop = ObjectProperty(value, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         prop.link(self, name)
  *         prop.link_deps(self, name)
  */
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 867; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 866; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
-    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 867; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 866; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 867; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 866; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = __pyx_v_kwargs;
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_ObjectProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 867; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_10properties_ObjectProperty)), __pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 866; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9126,29 +9099,29 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   }
   __pyx_L4:;
 
-  /* "kivy/_event.pyx":868
+  /* "kivy/_event.pyx":867
  *         else:
  *             prop = ObjectProperty(value, *largs, **kwargs)
  *         prop.link(self, name)             # <<<<<<<<<<<<<<
  *         prop.link_deps(self, name)
  *         self.__properties[name] = prop
  */
-  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 868; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 867; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "kivy/_event.pyx":869
+  /* "kivy/_event.pyx":868
  *             prop = ObjectProperty(value, *largs, **kwargs)
  *         prop.link(self, name)
  *         prop.link_deps(self, name)             # <<<<<<<<<<<<<<
  *         self.__properties[name] = prop
  *         setattr(self.__class__, name, prop)
  */
-  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link_deps(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link_deps(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 868; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "kivy/_event.pyx":870
+  /* "kivy/_event.pyx":869
  *         prop.link(self, name)
  *         prop.link_deps(self, name)
  *         self.__properties[name] = prop             # <<<<<<<<<<<<<<
@@ -9157,20 +9130,20 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
  */
   if (unlikely(__pyx_v_self->__pyx___properties == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 870; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_self->__pyx___properties, __pyx_v_name, ((PyObject *)__pyx_v_prop)) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 870; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(PyDict_SetItem(__pyx_v_self->__pyx___properties, __pyx_v_name, ((PyObject *)__pyx_v_prop)) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 869; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/_event.pyx":871
+  /* "kivy/_event.pyx":870
  *         prop.link_deps(self, name)
  *         self.__properties[name] = prop
  *         setattr(self.__class__, name, prop)             # <<<<<<<<<<<<<<
  * 
  *     def apply_property(self, **kwargs):
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 870; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = PyObject_SetAttr(__pyx_t_5, __pyx_v_name, ((PyObject *)__pyx_v_prop)); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 871; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = PyObject_SetAttr(__pyx_t_5, __pyx_v_name, ((PyObject *)__pyx_v_prop)); if (unlikely(__pyx_t_7 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 870; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "kivy/_event.pyx":814
@@ -9197,7 +9170,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":873
+/* "kivy/_event.pyx":872
  *         setattr(self.__class__, name, prop)
  * 
  *     def apply_property(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -9207,7 +9180,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_42create_property(stru
 
 /* Python wrapper */
 static PyObject *__pyx_pw_4kivy_6_event_15EventDispatcher_45apply_property(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_4kivy_6_event_15EventDispatcher_44apply_property[] = "Adds properties at runtime to the class. The function accepts\n        keyword arguments of the form `prop_name=prop`, where `prop` is a\n        :class:`Property` instance and `prop_name` is the name of the attribute\n        of the property.\n\n        .. versionadded:: 1.9.1\n\n        .. warning::\n\n            This method is not recommended for common usage because you should\n            declare the properties in your class instead of using this method.\n\n        For example::\n\n            >>> print(wid.property('sticks', quiet=True))\n            None\n            >>> wid.apply_property(sticks=ObjectProperty(55, max=10))\n            >>> print(wid.property('sticks', quiet=True))\n            <kivy.properties.ObjectProperty object at 0x04303130>\n        ";
+static char __pyx_doc_4kivy_6_event_15EventDispatcher_44apply_property[] = "Adds properties at runtime to the class. The function accepts\n        keyword arguments of the form `prop_name=prop`, where `prop` is a\n        :class:`Property` instance and `prop_name` is the name of the attribute\n        of the property.\n\n        .. versionadded:: 1.9.1\n\n        .. warning::\n\n            This method is not reccomended for common usage because you should\n            declare the properties in your class instead of using this method.\n\n        For example::\n\n            >>> print(wid.property('sticks', quiet=True))\n            None\n            >>> wid.apply_property(sticks=ObjectProperty(55, max=10))\n            >>> print(wid.property('sticks', quiet=True))\n            <kivy.properties.ObjectProperty object at 0x04303130>\n        ";
 static PyObject *__pyx_pw_4kivy_6_event_15EventDispatcher_45apply_property(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -9246,22 +9219,22 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("apply_property", 0);
 
-  /* "kivy/_event.pyx":896
+  /* "kivy/_event.pyx":895
  *         cdef Property prop
  *         cdef str name
  *         for name, prop in kwargs.items():             # <<<<<<<<<<<<<<
  *             prop.link(self, name)
  *             prop.link_deps(self, name)
  */
-  __pyx_t_1 = __Pyx_PyDict_Items(__pyx_v_kwargs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyDict_Items(__pyx_v_kwargs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -9269,16 +9242,16 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_COMPILING_IN_CPYTHON
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         #endif
       }
     } else {
@@ -9287,7 +9260,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          else {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         break;
       }
@@ -9303,7 +9276,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       #if CYTHON_COMPILING_IN_CPYTHON
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -9316,15 +9289,15 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -9332,7 +9305,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
       __Pyx_GOTREF(__pyx_t_5);
       index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L6_unpacking_done;
@@ -9340,39 +9313,39 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __pyx_L6_unpacking_done:;
     }
-    if (!(likely(PyString_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_5)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_4kivy_10properties_Property))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(PyString_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_5)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_4kivy_10properties_Property))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 895; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_XDECREF_SET(__pyx_v_name, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
     __Pyx_XDECREF_SET(__pyx_v_prop, ((struct __pyx_obj_4kivy_10properties_Property *)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "kivy/_event.pyx":897
+    /* "kivy/_event.pyx":896
  *         cdef str name
  *         for name, prop in kwargs.items():
  *             prop.link(self, name)             # <<<<<<<<<<<<<<
  *             prop.link_deps(self, name)
  *             self.__properties[name] = prop
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 897; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 896; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "kivy/_event.pyx":898
+    /* "kivy/_event.pyx":897
  *         for name, prop in kwargs.items():
  *             prop.link(self, name)
  *             prop.link_deps(self, name)             # <<<<<<<<<<<<<<
  *             self.__properties[name] = prop
  *             setattr(self.__class__, name, prop)
  */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link_deps(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 898; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = ((struct __pyx_vtabstruct_4kivy_10properties_Property *)__pyx_v_prop->__pyx_vtab)->link_deps(__pyx_v_prop, __pyx_v_self, __pyx_v_name, 0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 897; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "kivy/_event.pyx":899
+    /* "kivy/_event.pyx":898
  *             prop.link(self, name)
  *             prop.link_deps(self, name)
  *             self.__properties[name] = prop             # <<<<<<<<<<<<<<
@@ -9381,23 +9354,23 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
  */
     if (unlikely(__pyx_v_self->__pyx___properties == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 898; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
-    if (unlikely(PyDict_SetItem(__pyx_v_self->__pyx___properties, __pyx_v_name, ((PyObject *)__pyx_v_prop)) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(PyDict_SetItem(__pyx_v_self->__pyx___properties, __pyx_v_name, ((PyObject *)__pyx_v_prop)) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 898; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/_event.pyx":900
+    /* "kivy/_event.pyx":899
  *             prop.link_deps(self, name)
  *             self.__properties[name] = prop
  *             setattr(self.__class__, name, prop)             # <<<<<<<<<<<<<<
  * 
  *     property proxy_ref:
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 900; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = PyObject_SetAttr(__pyx_t_1, __pyx_v_name, ((PyObject *)__pyx_v_prop)); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 900; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_9 = PyObject_SetAttr(__pyx_t_1, __pyx_v_name, ((PyObject *)__pyx_v_prop)); if (unlikely(__pyx_t_9 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 899; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "kivy/_event.pyx":896
+    /* "kivy/_event.pyx":895
  *         cdef Property prop
  *         cdef str name
  *         for name, prop in kwargs.items():             # <<<<<<<<<<<<<<
@@ -9407,7 +9380,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kivy/_event.pyx":873
+  /* "kivy/_event.pyx":872
  *         setattr(self.__class__, name, prop)
  * 
  *     def apply_property(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -9434,7 +9407,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_44apply_property(struc
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":906
+/* "kivy/_event.pyx":905
  *         .. versionadded:: 1.9.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9460,7 +9433,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_9proxy_ref___get__(str
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "kivy/_event.pyx":907
+  /* "kivy/_event.pyx":906
  *         '''
  *         def __get__(self):
  *             return self             # <<<<<<<<<<<<<<
@@ -9472,7 +9445,7 @@ static PyObject *__pyx_pf_4kivy_6_event_15EventDispatcher_9proxy_ref___get__(str
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "kivy/_event.pyx":906
+  /* "kivy/_event.pyx":905
  *         .. versionadded:: 1.9.0
  *         '''
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -9595,7 +9568,7 @@ static int __pyx_pf_4kivy_6_event_15EventDispatcher_20_kwargs_applied_init_4__de
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":912
+/* "kivy/_event.pyx":911
  * cdef class BoundCallback:
  * 
  *     def __cinit__(self, object func, tuple largs, dict kwargs, int is_ref,             # <<<<<<<<<<<<<<
@@ -9621,7 +9594,7 @@ static int __pyx_pw_4kivy_6_event_13BoundCallback_1__cinit__(PyObject *__pyx_v_s
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_func,&__pyx_n_s_largs,&__pyx_n_s_kwargs,&__pyx_n_s_is_ref,&__pyx_n_s_uid,0};
     PyObject* values[5] = {0,0,0,0,0};
 
-    /* "kivy/_event.pyx":913
+    /* "kivy/_event.pyx":912
  * 
  *     def __cinit__(self, object func, tuple largs, dict kwargs, int is_ref,
  *                   uid=None):             # <<<<<<<<<<<<<<
@@ -9649,17 +9622,17 @@ static int __pyx_pw_4kivy_6_event_13BoundCallback_1__cinit__(PyObject *__pyx_v_s
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_largs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_kwargs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, 2); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_is_ref)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, 3); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
         case  4:
         if (kw_args > 0) {
@@ -9668,7 +9641,7 @@ static int __pyx_pw_4kivy_6_event_13BoundCallback_1__cinit__(PyObject *__pyx_v_s
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9684,22 +9657,22 @@ static int __pyx_pw_4kivy_6_event_13BoundCallback_1__cinit__(PyObject *__pyx_v_s
     __pyx_v_func = values[0];
     __pyx_v_largs = ((PyObject*)values[1]);
     __pyx_v_kwargs = ((PyObject*)values[2]);
-    __pyx_v_is_ref = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_is_ref == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_is_ref = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_is_ref == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     __pyx_v_uid = values[4];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy._event.BoundCallback.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_largs), (&PyTuple_Type), 1, "largs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kwargs), (&PyDict_Type), 1, "kwargs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 912; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_largs), (&PyTuple_Type), 1, "largs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_kwargs), (&PyDict_Type), 1, "kwargs", 1))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 911; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_r = __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_v_self), __pyx_v_func, __pyx_v_largs, __pyx_v_kwargs, __pyx_v_is_ref, __pyx_v_uid);
 
-  /* "kivy/_event.pyx":912
+  /* "kivy/_event.pyx":911
  * cdef class BoundCallback:
  * 
  *     def __cinit__(self, object func, tuple largs, dict kwargs, int is_ref,             # <<<<<<<<<<<<<<
@@ -9721,7 +9694,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "kivy/_event.pyx":914
+  /* "kivy/_event.pyx":913
  *     def __cinit__(self, object func, tuple largs, dict kwargs, int is_ref,
  *                   uid=None):
  *         self.func = func             # <<<<<<<<<<<<<<
@@ -9734,7 +9707,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   __Pyx_DECREF(__pyx_v_self->func);
   __pyx_v_self->func = __pyx_v_func;
 
-  /* "kivy/_event.pyx":915
+  /* "kivy/_event.pyx":914
  *                   uid=None):
  *         self.func = func
  *         self.largs = largs             # <<<<<<<<<<<<<<
@@ -9747,7 +9720,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   __Pyx_DECREF(__pyx_v_self->largs);
   __pyx_v_self->largs = __pyx_v_largs;
 
-  /* "kivy/_event.pyx":916
+  /* "kivy/_event.pyx":915
  *         self.func = func
  *         self.largs = largs
  *         self.kwargs = kwargs             # <<<<<<<<<<<<<<
@@ -9760,7 +9733,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   __Pyx_DECREF(__pyx_v_self->kwargs);
   __pyx_v_self->kwargs = __pyx_v_kwargs;
 
-  /* "kivy/_event.pyx":917
+  /* "kivy/_event.pyx":916
  *         self.largs = largs
  *         self.kwargs = kwargs
  *         self.is_ref = is_ref             # <<<<<<<<<<<<<<
@@ -9769,7 +9742,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
  */
   __pyx_v_self->is_ref = __pyx_v_is_ref;
 
-  /* "kivy/_event.pyx":918
+  /* "kivy/_event.pyx":917
  *         self.kwargs = kwargs
  *         self.is_ref = is_ref
  *         self.lock = unlocked             # <<<<<<<<<<<<<<
@@ -9778,7 +9751,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
  */
   __pyx_v_self->lock = __pyx_e_4kivy_6_event_unlocked;
 
-  /* "kivy/_event.pyx":919
+  /* "kivy/_event.pyx":918
  *         self.is_ref = is_ref
  *         self.lock = unlocked
  *         self.prev = self.next = None             # <<<<<<<<<<<<<<
@@ -9796,7 +9769,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   __Pyx_DECREF(((PyObject *)__pyx_v_self->next));
   __pyx_v_self->next = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)Py_None);
 
-  /* "kivy/_event.pyx":920
+  /* "kivy/_event.pyx":919
  *         self.lock = unlocked
  *         self.prev = self.next = None
  *         self.uid = uid             # <<<<<<<<<<<<<<
@@ -9809,7 +9782,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   __Pyx_DECREF(__pyx_v_self->uid);
   __pyx_v_self->uid = __pyx_v_uid;
 
-  /* "kivy/_event.pyx":912
+  /* "kivy/_event.pyx":911
  * cdef class BoundCallback:
  * 
  *     def __cinit__(self, object func, tuple largs, dict kwargs, int is_ref,             # <<<<<<<<<<<<<<
@@ -9823,7 +9796,7 @@ static int __pyx_pf_4kivy_6_event_13BoundCallback___cinit__(struct __pyx_obj_4ki
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":931
+/* "kivy/_event.pyx":930
  *     '''
  * 
  *     def __cinit__(self, int dispatch_reverse=0, dispatch_value=1):             # <<<<<<<<<<<<<<
@@ -9869,7 +9842,7 @@ static int __pyx_pw_4kivy_6_event_14EventObservers_1__cinit__(PyObject *__pyx_v_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 931; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 930; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9880,7 +9853,7 @@ static int __pyx_pw_4kivy_6_event_14EventObservers_1__cinit__(PyObject *__pyx_v_
       }
     }
     if (values[0]) {
-      __pyx_v_dispatch_reverse = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_dispatch_reverse == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 931; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      __pyx_v_dispatch_reverse = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_dispatch_reverse == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 930; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
     } else {
       __pyx_v_dispatch_reverse = ((int)0);
     }
@@ -9888,7 +9861,7 @@ static int __pyx_pw_4kivy_6_event_14EventObservers_1__cinit__(PyObject *__pyx_v_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 931; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 930; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("kivy._event.EventObservers.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9910,7 +9883,7 @@ static int __pyx_pf_4kivy_6_event_14EventObservers___cinit__(struct __pyx_obj_4k
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "kivy/_event.pyx":932
+  /* "kivy/_event.pyx":931
  * 
  *     def __cinit__(self, int dispatch_reverse=0, dispatch_value=1):
  *         self.dispatch_reverse = dispatch_reverse             # <<<<<<<<<<<<<<
@@ -9919,17 +9892,17 @@ static int __pyx_pf_4kivy_6_event_14EventObservers___cinit__(struct __pyx_obj_4k
  */
   __pyx_v_self->dispatch_reverse = __pyx_v_dispatch_reverse;
 
-  /* "kivy/_event.pyx":933
+  /* "kivy/_event.pyx":932
  *     def __cinit__(self, int dispatch_reverse=0, dispatch_value=1):
  *         self.dispatch_reverse = dispatch_reverse
  *         self.dispatch_value = dispatch_value             # <<<<<<<<<<<<<<
  *         self.last_callback = self.first_callback = None
  *         self.uid = 1  # start with 1 so uid is always evaluated to True
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dispatch_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 933; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_dispatch_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 932; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_self->dispatch_value = __pyx_t_1;
 
-  /* "kivy/_event.pyx":934
+  /* "kivy/_event.pyx":933
  *         self.dispatch_reverse = dispatch_reverse
  *         self.dispatch_value = dispatch_value
  *         self.last_callback = self.first_callback = None             # <<<<<<<<<<<<<<
@@ -9947,7 +9920,7 @@ static int __pyx_pf_4kivy_6_event_14EventObservers___cinit__(struct __pyx_obj_4k
   __Pyx_DECREF(((PyObject *)__pyx_v_self->first_callback));
   __pyx_v_self->first_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)Py_None);
 
-  /* "kivy/_event.pyx":935
+  /* "kivy/_event.pyx":934
  *         self.dispatch_value = dispatch_value
  *         self.last_callback = self.first_callback = None
  *         self.uid = 1  # start with 1 so uid is always evaluated to True             # <<<<<<<<<<<<<<
@@ -9960,7 +9933,7 @@ static int __pyx_pf_4kivy_6_event_14EventObservers___cinit__(struct __pyx_obj_4k
   __Pyx_DECREF(__pyx_v_self->uid);
   __pyx_v_self->uid = __pyx_int_1;
 
-  /* "kivy/_event.pyx":931
+  /* "kivy/_event.pyx":930
  *     '''
  * 
  *     def __cinit__(self, int dispatch_reverse=0, dispatch_value=1):             # <<<<<<<<<<<<<<
@@ -9979,7 +9952,7 @@ static int __pyx_pf_4kivy_6_event_14EventObservers___cinit__(struct __pyx_obj_4k
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":937
+/* "kivy/_event.pyx":936
  *         self.uid = 1  # start with 1 so uid is always evaluated to True
  * 
  *     cdef inline void bind(self, object observer, object src_observer, int is_ref) except *:             # <<<<<<<<<<<<<<
@@ -10004,7 +9977,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("bind", 0);
 
-  /* "kivy/_event.pyx":941
+  /* "kivy/_event.pyx":940
  *         bound, we don't add it again.
  *         '''
  *         cdef BoundCallback callback = self.first_callback             # <<<<<<<<<<<<<<
@@ -10016,7 +9989,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   __pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":945
+  /* "kivy/_event.pyx":944
  *         cdef int cb_equal
  * 
  *         while callback is not None:             # <<<<<<<<<<<<<<
@@ -10028,7 +10001,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (!__pyx_t_3) break;
 
-    /* "kivy/_event.pyx":946
+    /* "kivy/_event.pyx":945
  * 
  *         while callback is not None:
  *             if is_ref and not callback.is_ref:             # <<<<<<<<<<<<<<
@@ -10046,21 +10019,21 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":947
+      /* "kivy/_event.pyx":946
  *         while callback is not None:
  *             if is_ref and not callback.is_ref:
  *                 cb_equal = callback.func == src_observer             # <<<<<<<<<<<<<<
  *             elif callback.is_ref and not is_ref:
  *                 cb_equal = callback.func() == observer
  */
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->func, __pyx_v_src_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 947; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 947; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->func, __pyx_v_src_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 946; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 946; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_cb_equal = __pyx_t_4;
       goto __pyx_L5;
     }
 
-    /* "kivy/_event.pyx":948
+    /* "kivy/_event.pyx":947
  *             if is_ref and not callback.is_ref:
  *                 cb_equal = callback.func == src_observer
  *             elif callback.is_ref and not is_ref:             # <<<<<<<<<<<<<<
@@ -10078,7 +10051,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":949
+      /* "kivy/_event.pyx":948
  *                 cb_equal = callback.func == src_observer
  *             elif callback.is_ref and not is_ref:
  *                 cb_equal = callback.func() == observer             # <<<<<<<<<<<<<<
@@ -10097,22 +10070,22 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
         }
       }
       if (__pyx_t_6) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 949; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 948; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else {
-        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 949; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 948; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_v_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 949; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_v_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 948; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 949; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 948; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_cb_equal = __pyx_t_4;
       goto __pyx_L5;
     }
 
-    /* "kivy/_event.pyx":950
+    /* "kivy/_event.pyx":949
  *             elif callback.is_ref and not is_ref:
  *                 cb_equal = callback.func() == observer
  *             elif is_ref:             # <<<<<<<<<<<<<<
@@ -10122,7 +10095,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_t_3 = (__pyx_v_is_ref != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":951
+      /* "kivy/_event.pyx":950
  *                 cb_equal = callback.func() == observer
  *             elif is_ref:
  *                 cb_equal = callback.func() == src_observer             # <<<<<<<<<<<<<<
@@ -10141,37 +10114,37 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
         }
       }
       if (__pyx_t_6) {
-        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 951; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 950; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else {
-        __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 951; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 950; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyObject_RichCompare(__pyx_t_5, __pyx_v_src_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 951; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyObject_RichCompare(__pyx_t_5, __pyx_v_src_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 950; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 951; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 950; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_cb_equal = __pyx_t_4;
       goto __pyx_L5;
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":953
+      /* "kivy/_event.pyx":952
  *                 cb_equal = callback.func() == src_observer
  *             else:
  *                 cb_equal = callback.func == observer             # <<<<<<<<<<<<<<
  *             if (callback.lock != deleted and callback.largs is None and
  *                 callback.kwargs is None and cb_equal):
  */
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->func, __pyx_v_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 953; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 953; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->func, __pyx_v_observer, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 952; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 952; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_cb_equal = __pyx_t_4;
     }
     __pyx_L5:;
 
-    /* "kivy/_event.pyx":954
+    /* "kivy/_event.pyx":953
  *             else:
  *                 cb_equal = callback.func == observer
  *             if (callback.lock != deleted and callback.largs is None and             # <<<<<<<<<<<<<<
@@ -10192,7 +10165,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
       goto __pyx_L11_bool_binop_done;
     }
 
-    /* "kivy/_event.pyx":955
+    /* "kivy/_event.pyx":954
  *                 cb_equal = callback.func == observer
  *             if (callback.lock != deleted and callback.largs is None and
  *                 callback.kwargs is None and cb_equal):             # <<<<<<<<<<<<<<
@@ -10211,7 +10184,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_L11_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":956
+      /* "kivy/_event.pyx":955
  *             if (callback.lock != deleted and callback.largs is None and
  *                 callback.kwargs is None and cb_equal):
  *                 return             # <<<<<<<<<<<<<<
@@ -10221,7 +10194,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
       goto __pyx_L0;
     }
 
-    /* "kivy/_event.pyx":957
+    /* "kivy/_event.pyx":956
  *                 callback.kwargs is None and cb_equal):
  *                 return
  *             callback = callback.next             # <<<<<<<<<<<<<<
@@ -10234,16 +10207,16 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_t_1 = 0;
   }
 
-  /* "kivy/_event.pyx":959
+  /* "kivy/_event.pyx":958
  *             callback = callback.next
  * 
  *         new_callback = BoundCallback(observer, None, None, is_ref)             # <<<<<<<<<<<<<<
  *         if self.first_callback is None:
  *             self.last_callback = self.first_callback = new_callback
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_is_ref); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_is_ref); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 958; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 958; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_observer);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_observer);
@@ -10257,13 +10230,13 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_6_event_BoundCallback)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 959; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_6_event_BoundCallback)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 958; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":960
+  /* "kivy/_event.pyx":959
  * 
  *         new_callback = BoundCallback(observer, None, None, is_ref)
  *         if self.first_callback is None:             # <<<<<<<<<<<<<<
@@ -10274,7 +10247,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/_event.pyx":961
+    /* "kivy/_event.pyx":960
  *         new_callback = BoundCallback(observer, None, None, is_ref)
  *         if self.first_callback is None:
  *             self.last_callback = self.first_callback = new_callback             # <<<<<<<<<<<<<<
@@ -10295,7 +10268,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   }
   /*else*/ {
 
-    /* "kivy/_event.pyx":963
+    /* "kivy/_event.pyx":962
  *             self.last_callback = self.first_callback = new_callback
  *         else:
  *             self.last_callback.next = new_callback             # <<<<<<<<<<<<<<
@@ -10308,7 +10281,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __Pyx_DECREF(((PyObject *)__pyx_v_self->last_callback->next));
     __pyx_v_self->last_callback->next = __pyx_v_new_callback;
 
-    /* "kivy/_event.pyx":964
+    /* "kivy/_event.pyx":963
  *         else:
  *             self.last_callback.next = new_callback
  *             new_callback.prev = self.last_callback             # <<<<<<<<<<<<<<
@@ -10323,7 +10296,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
     __pyx_v_new_callback->prev = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "kivy/_event.pyx":965
+    /* "kivy/_event.pyx":964
  *             self.last_callback.next = new_callback
  *             new_callback.prev = self.last_callback
  *             self.last_callback = new_callback             # <<<<<<<<<<<<<<
@@ -10338,7 +10311,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   }
   __pyx_L15:;
 
-  /* "kivy/_event.pyx":937
+  /* "kivy/_event.pyx":936
  *         self.uid = 1  # start with 1 so uid is always evaluated to True
  * 
  *     cdef inline void bind(self, object observer, object src_observer, int is_ref) except *:             # <<<<<<<<<<<<<<
@@ -10359,7 +10332,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_bind(struct __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/_event.pyx":967
+/* "kivy/_event.pyx":966
  *             self.last_callback = new_callback
  * 
  *     cdef inline object fbind(self, object observer, tuple largs, dict kwargs,             # <<<<<<<<<<<<<<
@@ -10383,7 +10356,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fbind", 0);
 
-  /* "kivy/_event.pyx":973
+  /* "kivy/_event.pyx":972
  *         can unref it before calling.
  *         '''
  *         cdef object uid = self.uid             # <<<<<<<<<<<<<<
@@ -10395,14 +10368,14 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   __pyx_v_uid = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":974
+  /* "kivy/_event.pyx":973
  *         '''
  *         cdef object uid = self.uid
  *         self.uid += 1             # <<<<<<<<<<<<<<
  *         cdef BoundCallback new_callback = BoundCallback(
  *             observer, largs if largs else None, kwargs if kwargs else None,
  */
-  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->uid, __pyx_int_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_self->uid, __pyx_int_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 973; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->uid);
@@ -10410,7 +10383,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   __pyx_v_self->uid = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":976
+  /* "kivy/_event.pyx":975
  *         self.uid += 1
  *         cdef BoundCallback new_callback = BoundCallback(
  *             observer, largs if largs else None, kwargs if kwargs else None,             # <<<<<<<<<<<<<<
@@ -10425,7 +10398,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
     __Pyx_INCREF(Py_None);
     __pyx_t_1 = Py_None;
   }
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_kwargs); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 976; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_kwargs); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_2) {
     __Pyx_INCREF(__pyx_v_kwargs);
     __pyx_t_3 = __pyx_v_kwargs;
@@ -10434,24 +10407,24 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
     __pyx_t_3 = Py_None;
   }
 
-  /* "kivy/_event.pyx":977
+  /* "kivy/_event.pyx":976
  *         cdef BoundCallback new_callback = BoundCallback(
  *             observer, largs if largs else None, kwargs if kwargs else None,
  *             is_ref, uid)             # <<<<<<<<<<<<<<
  * 
  *         if self.first_callback is None:
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_is_ref); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 977; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_is_ref); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 976; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "kivy/_event.pyx":975
+  /* "kivy/_event.pyx":974
  *         cdef object uid = self.uid
  *         self.uid += 1
  *         cdef BoundCallback new_callback = BoundCallback(             # <<<<<<<<<<<<<<
  *             observer, largs if largs else None, kwargs if kwargs else None,
  *             is_ref, uid)
  */
-  __pyx_t_5 = PyTuple_New(5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyTuple_New(5); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_observer);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_observer);
@@ -10468,13 +10441,13 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_6_event_BoundCallback)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 975; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)((PyObject*)__pyx_ptype_4kivy_6_event_BoundCallback)), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 974; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_new_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "kivy/_event.pyx":979
+  /* "kivy/_event.pyx":978
  *             is_ref, uid)
  * 
  *         if self.first_callback is None:             # <<<<<<<<<<<<<<
@@ -10485,7 +10458,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   __pyx_t_6 = (__pyx_t_2 != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/_event.pyx":980
+    /* "kivy/_event.pyx":979
  * 
  *         if self.first_callback is None:
  *             self.last_callback = self.first_callback = new_callback             # <<<<<<<<<<<<<<
@@ -10506,7 +10479,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   }
   /*else*/ {
 
-    /* "kivy/_event.pyx":982
+    /* "kivy/_event.pyx":981
  *             self.last_callback = self.first_callback = new_callback
  *         else:
  *             self.last_callback.next = new_callback             # <<<<<<<<<<<<<<
@@ -10519,7 +10492,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
     __Pyx_DECREF(((PyObject *)__pyx_v_self->last_callback->next));
     __pyx_v_self->last_callback->next = __pyx_v_new_callback;
 
-    /* "kivy/_event.pyx":983
+    /* "kivy/_event.pyx":982
  *         else:
  *             self.last_callback.next = new_callback
  *             new_callback.prev = self.last_callback             # <<<<<<<<<<<<<<
@@ -10534,7 +10507,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
     __pyx_v_new_callback->prev = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "kivy/_event.pyx":984
+    /* "kivy/_event.pyx":983
  *             self.last_callback.next = new_callback
  *             new_callback.prev = self.last_callback
  *             self.last_callback = new_callback             # <<<<<<<<<<<<<<
@@ -10549,7 +10522,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   }
   __pyx_L3:;
 
-  /* "kivy/_event.pyx":985
+  /* "kivy/_event.pyx":984
  *             new_callback.prev = self.last_callback
  *             self.last_callback = new_callback
  *         return uid             # <<<<<<<<<<<<<<
@@ -10561,7 +10534,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   __pyx_r = __pyx_v_uid;
   goto __pyx_L0;
 
-  /* "kivy/_event.pyx":967
+  /* "kivy/_event.pyx":966
  *             self.last_callback = new_callback
  * 
  *     cdef inline object fbind(self, object observer, tuple largs, dict kwargs,             # <<<<<<<<<<<<<<
@@ -10585,7 +10558,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_fbind(stru
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":987
+/* "kivy/_event.pyx":986
  *         return uid
  * 
  *     cdef inline void unbind(self, object observer, int stop_on_first) except *:             # <<<<<<<<<<<<<<
@@ -10608,7 +10581,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("unbind", 0);
 
-  /* "kivy/_event.pyx":993
+  /* "kivy/_event.pyx":992
  *         '''
  *         cdef object f
  *         cdef BoundCallback callback = self.first_callback             # <<<<<<<<<<<<<<
@@ -10620,11 +10593,11 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
   __pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":995
+  /* "kivy/_event.pyx":994
  *         cdef BoundCallback callback = self.first_callback
  * 
  *         while callback is not None:             # <<<<<<<<<<<<<<
- *             # try a quick comparison
+ *             # try a quick comparision
  *             if callback.lock == deleted or callback.largs is not None or callback.kwargs is not None:
  */
   while (1) {
@@ -10632,9 +10605,9 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (!__pyx_t_3) break;
 
-    /* "kivy/_event.pyx":997
+    /* "kivy/_event.pyx":996
  *         while callback is not None:
- *             # try a quick comparison
+ *             # try a quick comparision
  *             if callback.lock == deleted or callback.largs is not None or callback.kwargs is not None:             # <<<<<<<<<<<<<<
  *                 callback = callback.next
  *                 continue
@@ -10658,8 +10631,8 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":998
- *             # try a quick comparison
+      /* "kivy/_event.pyx":997
+ *             # try a quick comparision
  *             if callback.lock == deleted or callback.largs is not None or callback.kwargs is not None:
  *                 callback = callback.next             # <<<<<<<<<<<<<<
  *                 continue
@@ -10670,7 +10643,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
       __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "kivy/_event.pyx":999
+      /* "kivy/_event.pyx":998
  *             if callback.lock == deleted or callback.largs is not None or callback.kwargs is not None:
  *                 callback = callback.next
  *                 continue             # <<<<<<<<<<<<<<
@@ -10680,7 +10653,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
       goto __pyx_L3_continue;
     }
 
-    /* "kivy/_event.pyx":1002
+    /* "kivy/_event.pyx":1001
  * 
  *             # now match the actual callback function
  *             if callback.is_ref:             # <<<<<<<<<<<<<<
@@ -10690,7 +10663,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     __pyx_t_3 = (__pyx_v_callback->is_ref != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1003
+      /* "kivy/_event.pyx":1002
  *             # now match the actual callback function
  *             if callback.is_ref:
  *                 f = callback.func()             # <<<<<<<<<<<<<<
@@ -10709,10 +10682,10 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
         }
       }
       if (__pyx_t_6) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1003; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1002; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       } else {
-        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1003; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1002; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -10722,7 +10695,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1005
+      /* "kivy/_event.pyx":1004
  *                 f = callback.func()
  *             else:
  *                 f = callback.func             # <<<<<<<<<<<<<<
@@ -10736,19 +10709,19 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     }
     __pyx_L9:;
 
-    /* "kivy/_event.pyx":1006
+    /* "kivy/_event.pyx":1005
  *             else:
  *                 f = callback.func
  *             if f != observer:             # <<<<<<<<<<<<<<
  *                 callback = callback.next
  *                 continue
  */
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_f, __pyx_v_observer, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1006; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1006; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_f, __pyx_v_observer, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1005; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_3 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1005; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1007
+      /* "kivy/_event.pyx":1006
  *                 f = callback.func
  *             if f != observer:
  *                 callback = callback.next             # <<<<<<<<<<<<<<
@@ -10760,7 +10733,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
       __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "kivy/_event.pyx":1008
+      /* "kivy/_event.pyx":1007
  *             if f != observer:
  *                 callback = callback.next
  *                 continue             # <<<<<<<<<<<<<<
@@ -10770,16 +10743,16 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
       goto __pyx_L3_continue;
     }
 
-    /* "kivy/_event.pyx":1010
+    /* "kivy/_event.pyx":1009
  *                 continue
  * 
  *             self.remove_callback(callback)             # <<<<<<<<<<<<<<
  *             callback = callback.next
  * 
  */
-    __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, NULL); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1010; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, NULL); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1009; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/_event.pyx":1011
+    /* "kivy/_event.pyx":1010
  * 
  *             self.remove_callback(callback)
  *             callback = callback.next             # <<<<<<<<<<<<<<
@@ -10791,7 +10764,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "kivy/_event.pyx":1013
+    /* "kivy/_event.pyx":1012
  *             callback = callback.next
  * 
  *             if stop_on_first:             # <<<<<<<<<<<<<<
@@ -10801,7 +10774,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     __pyx_t_3 = (__pyx_v_stop_on_first != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1014
+      /* "kivy/_event.pyx":1013
  * 
  *             if stop_on_first:
  *                 return             # <<<<<<<<<<<<<<
@@ -10813,7 +10786,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
     __pyx_L3_continue:;
   }
 
-  /* "kivy/_event.pyx":987
+  /* "kivy/_event.pyx":986
  *         return uid
  * 
  *     cdef inline void unbind(self, object observer, int stop_on_first) except *:             # <<<<<<<<<<<<<<
@@ -10834,7 +10807,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_unbind(struct _
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/_event.pyx":1016
+/* "kivy/_event.pyx":1015
  *                 return
  * 
  *     cdef inline void funbind(self, object observer, tuple largs, dict kwargs) except *:             # <<<<<<<<<<<<<<
@@ -10857,7 +10830,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
   __Pyx_INCREF(__pyx_v_largs);
   __Pyx_INCREF(__pyx_v_kwargs);
 
-  /* "kivy/_event.pyx":1021
+  /* "kivy/_event.pyx":1020
  *         largs and kwargs must match the largs and kwargs from when binding.
  *         '''
  *         cdef BoundCallback callback = self.first_callback             # <<<<<<<<<<<<<<
@@ -10869,7 +10842,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
   __pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":1022
+  /* "kivy/_event.pyx":1021
  *         '''
  *         cdef BoundCallback callback = self.first_callback
  *         largs = largs if largs else None             # <<<<<<<<<<<<<<
@@ -10887,14 +10860,14 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
   __Pyx_DECREF_SET(__pyx_v_largs, ((PyObject*)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":1023
+  /* "kivy/_event.pyx":1022
  *         cdef BoundCallback callback = self.first_callback
  *         largs = largs if largs else None
  *         kwargs = kwargs if kwargs else None             # <<<<<<<<<<<<<<
  * 
  *         while callback is not None:
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_kwargs); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1023; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_kwargs); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1022; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_t_2) {
     __Pyx_INCREF(__pyx_v_kwargs);
     __pyx_t_1 = __pyx_v_kwargs;
@@ -10905,7 +10878,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
   __Pyx_DECREF_SET(__pyx_v_kwargs, ((PyObject*)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":1025
+  /* "kivy/_event.pyx":1024
  *         kwargs = kwargs if kwargs else None
  * 
  *         while callback is not None:             # <<<<<<<<<<<<<<
@@ -10917,7 +10890,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (!__pyx_t_3) break;
 
-    /* "kivy/_event.pyx":1026
+    /* "kivy/_event.pyx":1025
  * 
  *         while callback is not None:
  *             if (callback.lock == deleted or             # <<<<<<<<<<<<<<
@@ -10931,7 +10904,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
       goto __pyx_L6_bool_binop_done;
     }
 
-    /* "kivy/_event.pyx":1027
+    /* "kivy/_event.pyx":1026
  *         while callback is not None:
  *             if (callback.lock == deleted or
  *                 not callback.is_ref and callback.func != observer or             # <<<<<<<<<<<<<<
@@ -10943,8 +10916,8 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
       goto __pyx_L8_next_or;
     } else {
     }
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->func, __pyx_v_observer, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1027; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1027; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->func, __pyx_v_observer, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1026; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1026; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (!__pyx_t_2) {
     } else {
@@ -10953,7 +10926,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
     }
     __pyx_L8_next_or:;
 
-    /* "kivy/_event.pyx":1028
+    /* "kivy/_event.pyx":1027
  *             if (callback.lock == deleted or
  *                 not callback.is_ref and callback.func != observer or
  *                 callback.is_ref and callback.func() != observer or             # <<<<<<<<<<<<<<
@@ -10977,16 +10950,16 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
       }
     }
     if (__pyx_t_5) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1027; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1027; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_v_observer, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_v_observer, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1027; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1027; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (!__pyx_t_2) {
     } else {
@@ -10995,29 +10968,29 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
     }
     __pyx_L10_next_or:;
 
-    /* "kivy/_event.pyx":1029
+    /* "kivy/_event.pyx":1028
  *                 not callback.is_ref and callback.func != observer or
  *                 callback.is_ref and callback.func() != observer or
  *                 callback.largs != largs or callback.kwargs != kwargs):             # <<<<<<<<<<<<<<
  *                 callback = callback.next
  *                 continue
  */
-    __pyx_t_4 = PyObject_RichCompare(__pyx_v_callback->largs, __pyx_v_largs, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1029; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1029; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyObject_RichCompare(__pyx_v_callback->largs, __pyx_v_largs, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (!__pyx_t_2) {
     } else {
       __pyx_t_3 = __pyx_t_2;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_4 = PyObject_RichCompare(__pyx_v_callback->kwargs, __pyx_v_kwargs, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1029; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1029; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyObject_RichCompare(__pyx_v_callback->kwargs, __pyx_v_kwargs, Py_NE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1028; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_3 = __pyx_t_2;
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1030
+      /* "kivy/_event.pyx":1029
  *                 callback.is_ref and callback.func() != observer or
  *                 callback.largs != largs or callback.kwargs != kwargs):
  *                 callback = callback.next             # <<<<<<<<<<<<<<
@@ -11029,7 +11002,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
       __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_4));
       __pyx_t_4 = 0;
 
-      /* "kivy/_event.pyx":1031
+      /* "kivy/_event.pyx":1030
  *                 callback.largs != largs or callback.kwargs != kwargs):
  *                 callback = callback.next
  *                 continue             # <<<<<<<<<<<<<<
@@ -11039,16 +11012,16 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
       goto __pyx_L3_continue;
     }
 
-    /* "kivy/_event.pyx":1033
+    /* "kivy/_event.pyx":1032
  *                 continue
  * 
  *             self.remove_callback(callback)             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-    __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, NULL); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1033; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, NULL); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1032; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/_event.pyx":1034
+    /* "kivy/_event.pyx":1033
  * 
  *             self.remove_callback(callback)
  *             return             # <<<<<<<<<<<<<<
@@ -11059,7 +11032,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
     __pyx_L3_continue:;
   }
 
-  /* "kivy/_event.pyx":1016
+  /* "kivy/_event.pyx":1015
  *                 return
  * 
  *     cdef inline void funbind(self, object observer, tuple largs, dict kwargs) except *:             # <<<<<<<<<<<<<<
@@ -11081,7 +11054,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_funbind(struct 
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/_event.pyx":1036
+/* "kivy/_event.pyx":1035
  *             return
  * 
  *     cdef inline object unbind_uid(self, object uid):             # <<<<<<<<<<<<<<
@@ -11104,7 +11077,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("unbind_uid", 0);
 
-  /* "kivy/_event.pyx":1040
+  /* "kivy/_event.pyx":1039
  *         a ValueError is raised.
  *         '''
  *         cdef BoundCallback callback = self.first_callback             # <<<<<<<<<<<<<<
@@ -11116,25 +11089,25 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
   __pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":1041
+  /* "kivy/_event.pyx":1040
  *         '''
  *         cdef BoundCallback callback = self.first_callback
  *         if not uid:             # <<<<<<<<<<<<<<
  *             raise ValueError(
  *                 'uid, {}, that evaluates to False is not valid'.format(uid))
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_uid); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1041; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_uid); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1040; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_3 = ((!__pyx_t_2) != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/_event.pyx":1043
+    /* "kivy/_event.pyx":1042
  *         if not uid:
  *             raise ValueError(
  *                 'uid, {}, that evaluates to False is not valid'.format(uid))             # <<<<<<<<<<<<<<
  * 
  *         while callback is not None:
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_uid_that_evaluates_to_False_is_n, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1043; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_uid_that_evaluates_to_False_is_n, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_4))) {
@@ -11147,42 +11120,42 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_uid); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1043; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_uid); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
     } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1043; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __Pyx_GIVEREF(__pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_INCREF(__pyx_v_uid);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_uid);
       __Pyx_GIVEREF(__pyx_v_uid);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1043; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "kivy/_event.pyx":1042
+    /* "kivy/_event.pyx":1041
  *         cdef BoundCallback callback = self.first_callback
  *         if not uid:
  *             raise ValueError(             # <<<<<<<<<<<<<<
  *                 'uid, {}, that evaluates to False is not valid'.format(uid))
  * 
  */
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1041; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1041; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1042; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1041; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
 
-  /* "kivy/_event.pyx":1045
+  /* "kivy/_event.pyx":1044
  *                 'uid, {}, that evaluates to False is not valid'.format(uid))
  * 
  *         while callback is not None:             # <<<<<<<<<<<<<<
@@ -11194,19 +11167,19 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
     __pyx_t_2 = (__pyx_t_3 != 0);
     if (!__pyx_t_2) break;
 
-    /* "kivy/_event.pyx":1046
+    /* "kivy/_event.pyx":1045
  * 
  *         while callback is not None:
  *             if callback.uid != uid:             # <<<<<<<<<<<<<<
  *                 callback = callback.next
  *                 continue
  */
-    __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->uid, __pyx_v_uid, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1046; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1046; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyObject_RichCompare(__pyx_v_callback->uid, __pyx_v_uid, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1045; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1045; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_2) {
 
-      /* "kivy/_event.pyx":1047
+      /* "kivy/_event.pyx":1046
  *         while callback is not None:
  *             if callback.uid != uid:
  *                 callback = callback.next             # <<<<<<<<<<<<<<
@@ -11218,7 +11191,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
       __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "kivy/_event.pyx":1048
+      /* "kivy/_event.pyx":1047
  *             if callback.uid != uid:
  *                 callback = callback.next
  *                 continue             # <<<<<<<<<<<<<<
@@ -11228,7 +11201,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
       goto __pyx_L4_continue;
     }
 
-    /* "kivy/_event.pyx":1050
+    /* "kivy/_event.pyx":1049
  *                 continue
  * 
  *             if callback.lock != deleted:             # <<<<<<<<<<<<<<
@@ -11238,19 +11211,19 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
     __pyx_t_2 = ((__pyx_v_callback->lock != __pyx_e_4kivy_6_event_deleted) != 0);
     if (__pyx_t_2) {
 
-      /* "kivy/_event.pyx":1051
+      /* "kivy/_event.pyx":1050
  * 
  *             if callback.lock != deleted:
  *                 self.remove_callback(callback)             # <<<<<<<<<<<<<<
  *             return
  * 
  */
-      __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, NULL); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1051; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, NULL); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1050; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       goto __pyx_L7;
     }
     __pyx_L7:;
 
-    /* "kivy/_event.pyx":1052
+    /* "kivy/_event.pyx":1051
  *             if callback.lock != deleted:
  *                 self.remove_callback(callback)
  *             return             # <<<<<<<<<<<<<<
@@ -11263,7 +11236,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
     __pyx_L4_continue:;
   }
 
-  /* "kivy/_event.pyx":1036
+  /* "kivy/_event.pyx":1035
  *             return
  * 
  *     cdef inline object unbind_uid(self, object uid):             # <<<<<<<<<<<<<<
@@ -11288,7 +11261,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers_unbind_uid
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":1054
+/* "kivy/_event.pyx":1053
  *             return
  * 
  *     cdef inline void remove_callback(self, BoundCallback callback, int force=0) except *:             # <<<<<<<<<<<<<<
@@ -11309,7 +11282,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
     }
   }
 
-  /* "kivy/_event.pyx":1062
+  /* "kivy/_event.pyx":1061
  *         except if force, then it can be anything.
  *         '''
  *         if callback.lock == locked and not force:             # <<<<<<<<<<<<<<
@@ -11327,7 +11300,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "kivy/_event.pyx":1063
+    /* "kivy/_event.pyx":1062
  *         '''
  *         if callback.lock == locked and not force:
  *             callback.lock = deleted             # <<<<<<<<<<<<<<
@@ -11339,7 +11312,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
   }
   /*else*/ {
 
-    /* "kivy/_event.pyx":1065
+    /* "kivy/_event.pyx":1064
  *             callback.lock = deleted
  *         else:
  *             if callback.prev is not None:             # <<<<<<<<<<<<<<
@@ -11350,7 +11323,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "kivy/_event.pyx":1066
+      /* "kivy/_event.pyx":1065
  *         else:
  *             if callback.prev is not None:
  *                 callback.prev.next = callback.next             # <<<<<<<<<<<<<<
@@ -11368,7 +11341,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1068
+      /* "kivy/_event.pyx":1067
  *                 callback.prev.next = callback.next
  *             else:
  *                 self.first_callback = callback.next             # <<<<<<<<<<<<<<
@@ -11385,7 +11358,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
     }
     __pyx_L6:;
 
-    /* "kivy/_event.pyx":1069
+    /* "kivy/_event.pyx":1068
  *             else:
  *                 self.first_callback = callback.next
  *             if callback.next is not None:             # <<<<<<<<<<<<<<
@@ -11396,7 +11369,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
     __pyx_t_1 = (__pyx_t_2 != 0);
     if (__pyx_t_1) {
 
-      /* "kivy/_event.pyx":1070
+      /* "kivy/_event.pyx":1069
  *                 self.first_callback = callback.next
  *             if callback.next is not None:
  *                 callback.next.prev = callback.prev             # <<<<<<<<<<<<<<
@@ -11414,7 +11387,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1072
+      /* "kivy/_event.pyx":1071
  *                 callback.next.prev = callback.prev
  *             else:
  *                 self.last_callback = callback.prev             # <<<<<<<<<<<<<<
@@ -11433,7 +11406,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
   }
   __pyx_L3:;
 
-  /* "kivy/_event.pyx":1054
+  /* "kivy/_event.pyx":1053
  *             return
  * 
  *     cdef inline void remove_callback(self, BoundCallback callback, int force=0) except *:             # <<<<<<<<<<<<<<
@@ -11445,7 +11418,7 @@ static CYTHON_INLINE void __pyx_f_4kivy_6_event_14EventObservers_remove_callback
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kivy/_event.pyx":1074
+/* "kivy/_event.pyx":1073
  *                 self.last_callback = callback.prev
  * 
  *     cdef inline object _dispatch(             # <<<<<<<<<<<<<<
@@ -11472,7 +11445,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_dispatch", 0);
 
-  /* "kivy/_event.pyx":1084
+  /* "kivy/_event.pyx":1083
  *         cdef object result
  *         cdef dict d
  *         cdef tuple param = (obj, value) if self.dispatch_value else (obj, )             # <<<<<<<<<<<<<<
@@ -11480,7 +11453,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  * 
  */
   if ((__pyx_v_self->dispatch_value != 0)) {
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1084; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1083; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_obj);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
@@ -11491,7 +11464,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_1 = __pyx_t_2;
     __pyx_t_2 = 0;
   } else {
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1084; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1083; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_obj);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
@@ -11502,7 +11475,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   __pyx_v_param = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":1085
+  /* "kivy/_event.pyx":1084
  *         cdef dict d
  *         cdef tuple param = (obj, value) if self.dispatch_value else (obj, )
  *         cdef tuple fargs = None             # <<<<<<<<<<<<<<
@@ -11512,7 +11485,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   __Pyx_INCREF(Py_None);
   __pyx_v_fargs = ((PyObject*)Py_None);
 
-  /* "kivy/_event.pyx":1087
+  /* "kivy/_event.pyx":1086
  *         cdef tuple fargs = None
  * 
  *         if slargs is not None and skwargs is not None:  # both kw and largs             # <<<<<<<<<<<<<<
@@ -11532,7 +11505,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "kivy/_event.pyx":1088
+    /* "kivy/_event.pyx":1087
  * 
  *         if slargs is not None and skwargs is not None:  # both kw and largs
  *             if largs is not None:             # <<<<<<<<<<<<<<
@@ -11543,16 +11516,16 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1089
+      /* "kivy/_event.pyx":1088
  *         if slargs is not None and skwargs is not None:  # both kw and largs
  *             if largs is not None:
  *                 fargs = slargs + param + largs             # <<<<<<<<<<<<<<
  *             else:
  *                 fargs = slargs + param
  */
-      __pyx_t_1 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1089; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1088; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_largs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1089; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_largs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1088; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_fargs, ((PyObject*)__pyx_t_2));
@@ -11561,21 +11534,21 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1091
+      /* "kivy/_event.pyx":1090
  *                 fargs = slargs + param + largs
  *             else:
  *                 fargs = slargs + param             # <<<<<<<<<<<<<<
  * 
  *             if kwargs is not None:
  */
-      __pyx_t_2 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1091; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1090; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF_SET(__pyx_v_fargs, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
     }
     __pyx_L6:;
 
-    /* "kivy/_event.pyx":1093
+    /* "kivy/_event.pyx":1092
  *                 fargs = slargs + param
  * 
  *             if kwargs is not None:             # <<<<<<<<<<<<<<
@@ -11586,7 +11559,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1094
+      /* "kivy/_event.pyx":1093
  * 
  *             if kwargs is not None:
  *                 d = dict(skwargs)             # <<<<<<<<<<<<<<
@@ -11595,21 +11568,21 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  */
       if (unlikely(__pyx_v_skwargs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' is not iterable");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1094; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1093; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __pyx_t_2 = PyDict_Copy(__pyx_v_skwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1094; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyDict_Copy(__pyx_v_skwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1093; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_d = ((PyObject*)__pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "kivy/_event.pyx":1095
+      /* "kivy/_event.pyx":1094
  *             if kwargs is not None:
  *                 d = dict(skwargs)
  *                 d.update(kwargs)             # <<<<<<<<<<<<<<
  *             else:
  *                 d = skwargs
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_d, __pyx_n_s_update); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1095; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_d, __pyx_n_s_update); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1094; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_6 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_1))) {
@@ -11622,16 +11595,16 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         }
       }
       if (!__pyx_t_6) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1095; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1094; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
       } else {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1095; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1094; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_7);
         PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
         __Pyx_INCREF(__pyx_v_kwargs);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_kwargs);
         __Pyx_GIVEREF(__pyx_v_kwargs);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1095; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1094; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
@@ -11641,7 +11614,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1097
+      /* "kivy/_event.pyx":1096
  *                 d.update(kwargs)
  *             else:
  *                 d = skwargs             # <<<<<<<<<<<<<<
@@ -11653,7 +11626,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     __pyx_L7:;
 
-    /* "kivy/_event.pyx":1099
+    /* "kivy/_event.pyx":1098
  *                 d = skwargs
  * 
  *             return f(*fargs, **d)             # <<<<<<<<<<<<<<
@@ -11661,15 +11634,15 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *             if largs is not None:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = PySequence_Tuple(__pyx_v_fargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1099; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PySequence_Tuple(__pyx_v_fargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1098; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     if (unlikely(__pyx_v_d == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1099; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1098; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
     __pyx_t_1 = __pyx_v_d;
     __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1099; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1098; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -11678,7 +11651,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     goto __pyx_L0;
   }
 
-  /* "kivy/_event.pyx":1100
+  /* "kivy/_event.pyx":1099
  * 
  *             return f(*fargs, **d)
  *         elif slargs is not None:  # only largs             # <<<<<<<<<<<<<<
@@ -11689,7 +11662,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   __pyx_t_4 = (__pyx_t_3 != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/_event.pyx":1101
+    /* "kivy/_event.pyx":1100
  *             return f(*fargs, **d)
  *         elif slargs is not None:  # only largs
  *             if largs is not None:             # <<<<<<<<<<<<<<
@@ -11700,16 +11673,16 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1102
+      /* "kivy/_event.pyx":1101
  *         elif slargs is not None:  # only largs
  *             if largs is not None:
  *                 fargs = slargs + param + largs             # <<<<<<<<<<<<<<
  *             else:
  *                 fargs = slargs + param
  */
-      __pyx_t_7 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1101; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = PyNumber_Add(__pyx_t_7, __pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyNumber_Add(__pyx_t_7, __pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1101; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_fargs, ((PyObject*)__pyx_t_1));
@@ -11718,21 +11691,21 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1104
+      /* "kivy/_event.pyx":1103
  *                 fargs = slargs + param + largs
  *             else:
  *                 fargs = slargs + param             # <<<<<<<<<<<<<<
  * 
  *             if kwargs is None:
  */
-      __pyx_t_1 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PyNumber_Add(__pyx_v_slargs, __pyx_v_param); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1103; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF_SET(__pyx_v_fargs, ((PyObject*)__pyx_t_1));
       __pyx_t_1 = 0;
     }
     __pyx_L8:;
 
-    /* "kivy/_event.pyx":1106
+    /* "kivy/_event.pyx":1105
  *                 fargs = slargs + param
  * 
  *             if kwargs is None:             # <<<<<<<<<<<<<<
@@ -11743,7 +11716,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1107
+      /* "kivy/_event.pyx":1106
  * 
  *             if kwargs is None:
  *                 return f(*fargs)             # <<<<<<<<<<<<<<
@@ -11751,9 +11724,9 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                 return f(*fargs, **kwargs)
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_1 = PySequence_Tuple(__pyx_v_fargs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = PySequence_Tuple(__pyx_v_fargs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1106; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_1, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_1, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1106; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_r = __pyx_t_7;
@@ -11762,7 +11735,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1109
+      /* "kivy/_event.pyx":1108
  *                 return f(*fargs)
  *             else:
  *                 return f(*fargs, **kwargs)             # <<<<<<<<<<<<<<
@@ -11770,15 +11743,15 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *             if kwargs is not None:
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_7 = PySequence_Tuple(__pyx_v_fargs); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1109; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_7 = PySequence_Tuple(__pyx_v_fargs); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_7);
       if (unlikely(__pyx_v_kwargs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1109; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __pyx_t_1 = __pyx_v_kwargs;
       __Pyx_INCREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1109; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -11788,7 +11761,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
   }
 
-  /* "kivy/_event.pyx":1110
+  /* "kivy/_event.pyx":1109
  *             else:
  *                 return f(*fargs, **kwargs)
  *         elif skwargs is not None:  # only kwargs             # <<<<<<<<<<<<<<
@@ -11799,7 +11772,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   __pyx_t_3 = (__pyx_t_4 != 0);
   if (__pyx_t_3) {
 
-    /* "kivy/_event.pyx":1111
+    /* "kivy/_event.pyx":1110
  *                 return f(*fargs, **kwargs)
  *         elif skwargs is not None:  # only kwargs
  *             if kwargs is not None:             # <<<<<<<<<<<<<<
@@ -11810,7 +11783,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1112
+      /* "kivy/_event.pyx":1111
  *         elif skwargs is not None:  # only kwargs
  *             if kwargs is not None:
  *                 d = dict(skwargs)             # <<<<<<<<<<<<<<
@@ -11819,21 +11792,21 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  */
       if (unlikely(__pyx_v_skwargs == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' is not iterable");
-        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
-      __pyx_t_2 = PyDict_Copy(__pyx_v_skwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = PyDict_Copy(__pyx_v_skwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1111; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_d = ((PyObject*)__pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "kivy/_event.pyx":1113
+      /* "kivy/_event.pyx":1112
  *             if kwargs is not None:
  *                 d = dict(skwargs)
  *                 d.update(kwargs)             # <<<<<<<<<<<<<<
  *             else:
  *                 d = skwargs
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_d, __pyx_n_s_update); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_d, __pyx_n_s_update); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_7 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_1))) {
@@ -11846,16 +11819,16 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         }
       }
       if (!__pyx_t_7) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_kwargs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
       } else {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7); __Pyx_GIVEREF(__pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_INCREF(__pyx_v_kwargs);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_kwargs);
         __Pyx_GIVEREF(__pyx_v_kwargs);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -11865,7 +11838,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1115
+      /* "kivy/_event.pyx":1114
  *                 d.update(kwargs)
  *             else:
  *                 d = skwargs             # <<<<<<<<<<<<<<
@@ -11877,7 +11850,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     __pyx_L10:;
 
-    /* "kivy/_event.pyx":1117
+    /* "kivy/_event.pyx":1116
  *                 d = skwargs
  * 
  *             if largs is None:             # <<<<<<<<<<<<<<
@@ -11888,7 +11861,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_3 = (__pyx_t_4 != 0);
     if (__pyx_t_3) {
 
-      /* "kivy/_event.pyx":1118
+      /* "kivy/_event.pyx":1117
  * 
  *             if largs is None:
  *                 if self.dispatch_value:             # <<<<<<<<<<<<<<
@@ -11898,7 +11871,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       __pyx_t_3 = (__pyx_v_self->dispatch_value != 0);
       if (__pyx_t_3) {
 
-        /* "kivy/_event.pyx":1119
+        /* "kivy/_event.pyx":1118
  *             if largs is None:
  *                 if self.dispatch_value:
  *                     return f(obj, value, **d)             # <<<<<<<<<<<<<<
@@ -11906,7 +11879,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                     return f(obj, **d)
  */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_v_obj);
         PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
@@ -11916,11 +11889,11 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         __Pyx_GIVEREF(__pyx_v_value);
         if (unlikely(__pyx_v_d == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_1 = __pyx_v_d;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -11930,7 +11903,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       }
       /*else*/ {
 
-        /* "kivy/_event.pyx":1121
+        /* "kivy/_event.pyx":1120
  *                     return f(obj, value, **d)
  *                 else:
  *                     return f(obj, **d)             # <<<<<<<<<<<<<<
@@ -11938,18 +11911,18 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                 if self.dispatch_value:
  */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_v_obj);
         PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_obj);
         __Pyx_GIVEREF(__pyx_v_obj);
         if (unlikely(__pyx_v_d == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_1 = __pyx_v_d;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -11960,7 +11933,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1123
+      /* "kivy/_event.pyx":1122
  *                     return f(obj, **d)
  *             else:
  *                 if self.dispatch_value:             # <<<<<<<<<<<<<<
@@ -11970,7 +11943,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       __pyx_t_3 = (__pyx_v_self->dispatch_value != 0);
       if (__pyx_t_3) {
 
-        /* "kivy/_event.pyx":1124
+        /* "kivy/_event.pyx":1123
  *             else:
  *                 if self.dispatch_value:
  *                     return f(obj, value, *largs, **d)             # <<<<<<<<<<<<<<
@@ -11978,7 +11951,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                     return f(obj, *largs, **d)
  */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_v_obj);
         PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
@@ -11986,19 +11959,19 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         __Pyx_INCREF(__pyx_v_value);
         PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_value);
         __Pyx_GIVEREF(__pyx_v_value);
-        __pyx_t_1 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_d == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_1 = __pyx_v_d;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12008,7 +11981,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       }
       /*else*/ {
 
-        /* "kivy/_event.pyx":1126
+        /* "kivy/_event.pyx":1125
  *                     return f(obj, value, *largs, **d)
  *                 else:
  *                     return f(obj, *largs, **d)             # <<<<<<<<<<<<<<
@@ -12016,24 +11989,24 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *             if largs is None:
  */
         __Pyx_XDECREF(__pyx_r);
-        __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_v_obj);
         PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
         __Pyx_GIVEREF(__pyx_v_obj);
-        __pyx_t_1 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_1 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (unlikely(__pyx_v_d == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         }
         __pyx_t_1 = __pyx_v_d;
         __Pyx_INCREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12045,7 +12018,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   }
   /*else*/ {
 
-    /* "kivy/_event.pyx":1128
+    /* "kivy/_event.pyx":1127
  *                     return f(obj, *largs, **d)
  *         else:  # no args
  *             if largs is None:             # <<<<<<<<<<<<<<
@@ -12056,7 +12029,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     __pyx_t_4 = (__pyx_t_3 != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1129
+      /* "kivy/_event.pyx":1128
  *         else:  # no args
  *             if largs is None:
  *                 if kwargs is None:             # <<<<<<<<<<<<<<
@@ -12067,7 +12040,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       __pyx_t_3 = (__pyx_t_4 != 0);
       if (__pyx_t_3) {
 
-        /* "kivy/_event.pyx":1130
+        /* "kivy/_event.pyx":1129
  *             if largs is None:
  *                 if kwargs is None:
  *                     if self.dispatch_value:             # <<<<<<<<<<<<<<
@@ -12077,7 +12050,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         __pyx_t_3 = (__pyx_v_self->dispatch_value != 0);
         if (__pyx_t_3) {
 
-          /* "kivy/_event.pyx":1131
+          /* "kivy/_event.pyx":1130
  *                 if kwargs is None:
  *                     if self.dispatch_value:
  *                         return f(obj, value)             # <<<<<<<<<<<<<<
@@ -12098,7 +12071,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
               __pyx_t_8 = 1;
             }
           }
-          __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_7 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_7);
           if (__pyx_t_6) {
             PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __Pyx_GIVEREF(__pyx_t_6); __pyx_t_6 = NULL;
@@ -12109,7 +12082,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
           __Pyx_INCREF(__pyx_v_value);
           PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_8, __pyx_v_value);
           __Pyx_GIVEREF(__pyx_v_value);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12119,7 +12092,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         }
         /*else*/ {
 
-          /* "kivy/_event.pyx":1133
+          /* "kivy/_event.pyx":1132
  *                         return f(obj, value)
  *                     else:
  *                         return f(obj)             # <<<<<<<<<<<<<<
@@ -12139,16 +12112,16 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
             }
           }
           if (!__pyx_t_7) {
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_obj); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1133; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_obj); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1132; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_2);
           } else {
-            __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1133; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1132; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_6);
             PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7); __Pyx_GIVEREF(__pyx_t_7); __pyx_t_7 = NULL;
             __Pyx_INCREF(__pyx_v_obj);
             PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_obj);
             __Pyx_GIVEREF(__pyx_v_obj);
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1133; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1132; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           }
@@ -12160,7 +12133,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       }
       /*else*/ {
 
-        /* "kivy/_event.pyx":1135
+        /* "kivy/_event.pyx":1134
  *                         return f(obj)
  *                 else:
  *                     if self.dispatch_value:             # <<<<<<<<<<<<<<
@@ -12170,7 +12143,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         __pyx_t_3 = (__pyx_v_self->dispatch_value != 0);
         if (__pyx_t_3) {
 
-          /* "kivy/_event.pyx":1136
+          /* "kivy/_event.pyx":1135
  *                 else:
  *                     if self.dispatch_value:
  *                         return f(obj, value, **kwargs)             # <<<<<<<<<<<<<<
@@ -12178,7 +12151,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                         return f(obj, **kwargs)
  */
           __Pyx_XDECREF(__pyx_r);
-          __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_INCREF(__pyx_v_obj);
           PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
@@ -12188,11 +12161,11 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
           __Pyx_GIVEREF(__pyx_v_value);
           if (unlikely(__pyx_v_kwargs == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           __pyx_t_1 = __pyx_v_kwargs;
           __Pyx_INCREF(__pyx_t_1);
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12202,7 +12175,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         }
         /*else*/ {
 
-          /* "kivy/_event.pyx":1138
+          /* "kivy/_event.pyx":1137
  *                         return f(obj, value, **kwargs)
  *                     else:
  *                         return f(obj, **kwargs)             # <<<<<<<<<<<<<<
@@ -12210,18 +12183,18 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                 if kwargs is None:
  */
           __Pyx_XDECREF(__pyx_r);
-          __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_INCREF(__pyx_v_obj);
           PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_obj);
           __Pyx_GIVEREF(__pyx_v_obj);
           if (unlikely(__pyx_v_kwargs == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           __pyx_t_1 = __pyx_v_kwargs;
           __Pyx_INCREF(__pyx_t_1);
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -12233,7 +12206,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1140
+      /* "kivy/_event.pyx":1139
  *                         return f(obj, **kwargs)
  *             else:
  *                 if kwargs is None:             # <<<<<<<<<<<<<<
@@ -12244,7 +12217,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       __pyx_t_4 = (__pyx_t_3 != 0);
       if (__pyx_t_4) {
 
-        /* "kivy/_event.pyx":1141
+        /* "kivy/_event.pyx":1140
  *             else:
  *                 if kwargs is None:
  *                     if self.dispatch_value:             # <<<<<<<<<<<<<<
@@ -12254,7 +12227,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         __pyx_t_4 = (__pyx_v_self->dispatch_value != 0);
         if (__pyx_t_4) {
 
-          /* "kivy/_event.pyx":1142
+          /* "kivy/_event.pyx":1141
  *                 if kwargs is None:
  *                     if self.dispatch_value:
  *                         return f(obj, value, *largs)             # <<<<<<<<<<<<<<
@@ -12262,7 +12235,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                         return f(obj, *largs)
  */
           __Pyx_XDECREF(__pyx_r);
-          __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_INCREF(__pyx_v_obj);
           PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_obj);
@@ -12270,13 +12243,13 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
           __Pyx_INCREF(__pyx_v_value);
           PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_value);
           __Pyx_GIVEREF(__pyx_v_value);
-          __pyx_t_1 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __pyx_r = __pyx_t_1;
@@ -12285,7 +12258,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         }
         /*else*/ {
 
-          /* "kivy/_event.pyx":1144
+          /* "kivy/_event.pyx":1143
  *                         return f(obj, value, *largs)
  *                     else:
  *                         return f(obj, *largs)             # <<<<<<<<<<<<<<
@@ -12293,18 +12266,18 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                     if self.dispatch_value:
  */
           __Pyx_XDECREF(__pyx_r);
-          __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1143; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_INCREF(__pyx_v_obj);
           PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_obj);
           __Pyx_GIVEREF(__pyx_v_obj);
-          __pyx_t_6 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1143; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_6); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1143; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_2, NULL); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1143; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_r = __pyx_t_6;
@@ -12314,7 +12287,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
       }
       /*else*/ {
 
-        /* "kivy/_event.pyx":1146
+        /* "kivy/_event.pyx":1145
  *                         return f(obj, *largs)
  *                 else:
  *                     if self.dispatch_value:             # <<<<<<<<<<<<<<
@@ -12324,7 +12297,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         __pyx_t_4 = (__pyx_v_self->dispatch_value != 0);
         if (__pyx_t_4) {
 
-          /* "kivy/_event.pyx":1147
+          /* "kivy/_event.pyx":1146
  *                 else:
  *                     if self.dispatch_value:
  *                         return f(obj, value, *largs, **kwargs)             # <<<<<<<<<<<<<<
@@ -12332,7 +12305,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *                         return f(obj, *largs, **kwargs)
  */
           __Pyx_XDECREF(__pyx_r);
-          __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_INCREF(__pyx_v_obj);
           PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_obj);
@@ -12340,19 +12313,19 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
           __Pyx_INCREF(__pyx_v_value);
           PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_v_value);
           __Pyx_GIVEREF(__pyx_v_value);
-          __pyx_t_2 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_1 = PyNumber_Add(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyNumber_Add(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           if (unlikely(__pyx_v_kwargs == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           __pyx_t_2 = __pyx_v_kwargs;
           __Pyx_INCREF(__pyx_t_2);
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -12362,7 +12335,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
         }
         /*else*/ {
 
-          /* "kivy/_event.pyx":1149
+          /* "kivy/_event.pyx":1148
  *                         return f(obj, value, *largs, **kwargs)
  *                     else:
  *                         return f(obj, *largs, **kwargs)             # <<<<<<<<<<<<<<
@@ -12370,24 +12343,24 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
  *     cdef inline int dispatch(self, object obj, object value, tuple largs,
  */
           __Pyx_XDECREF(__pyx_r);
-          __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_INCREF(__pyx_v_obj);
           PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_obj);
           __Pyx_GIVEREF(__pyx_v_obj);
-          __pyx_t_2 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_2 = PySequence_Tuple(__pyx_v_largs); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_1 = PyNumber_Add(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_1 = PyNumber_Add(__pyx_t_6, __pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           if (unlikely(__pyx_v_kwargs == Py_None)) {
             PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+            {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           }
           __pyx_t_2 = __pyx_v_kwargs;
           __Pyx_INCREF(__pyx_t_2);
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1149; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_v_f, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1148; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -12399,7 +12372,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
     }
   }
 
-  /* "kivy/_event.pyx":1074
+  /* "kivy/_event.pyx":1073
  *                 self.last_callback = callback.prev
  * 
  *     cdef inline object _dispatch(             # <<<<<<<<<<<<<<
@@ -12424,7 +12397,7 @@ static CYTHON_INLINE PyObject *__pyx_f_4kivy_6_event_14EventObservers__dispatch(
   return __pyx_r;
 }
 
-/* "kivy/_event.pyx":1151
+/* "kivy/_event.pyx":1150
  *                         return f(obj, *largs, **kwargs)
  * 
  *     cdef inline int dispatch(self, object obj, object value, tuple largs,             # <<<<<<<<<<<<<<
@@ -12458,7 +12431,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dispatch", 0);
 
-  /* "kivy/_event.pyx":1188
+  /* "kivy/_event.pyx":1187
  *         cdef object f, result
  *         cdef BoundLock current_lock, last_lock
  *         cdef int done = 0, res = 0, reverse = self.dispatch_reverse             # <<<<<<<<<<<<<<
@@ -12470,7 +12443,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_t_1 = __pyx_v_self->dispatch_reverse;
   __pyx_v_reverse = __pyx_t_1;
 
-  /* "kivy/_event.pyx":1190
+  /* "kivy/_event.pyx":1189
  *         cdef int done = 0, res = 0, reverse = self.dispatch_reverse
  * 
  *         if reverse:  # dispatch starting from last until first             # <<<<<<<<<<<<<<
@@ -12480,7 +12453,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_t_2 = (__pyx_v_reverse != 0);
   if (__pyx_t_2) {
 
-    /* "kivy/_event.pyx":1191
+    /* "kivy/_event.pyx":1190
  * 
  *         if reverse:  # dispatch starting from last until first
  *             callback = self.last_callback  # start callback             # <<<<<<<<<<<<<<
@@ -12492,7 +12465,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "kivy/_event.pyx":1192
+    /* "kivy/_event.pyx":1191
  *         if reverse:  # dispatch starting from last until first
  *             callback = self.last_callback  # start callback
  *             final = self.first_callback  # last callback             # <<<<<<<<<<<<<<
@@ -12507,7 +12480,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   }
   /*else*/ {
 
-    /* "kivy/_event.pyx":1194
+    /* "kivy/_event.pyx":1193
  *             final = self.first_callback  # last callback
  *         else:
  *             callback = self.first_callback             # <<<<<<<<<<<<<<
@@ -12519,7 +12492,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "kivy/_event.pyx":1195
+    /* "kivy/_event.pyx":1194
  *         else:
  *             callback = self.first_callback
  *             final = self.last_callback             # <<<<<<<<<<<<<<
@@ -12533,7 +12506,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   }
   __pyx_L3:;
 
-  /* "kivy/_event.pyx":1196
+  /* "kivy/_event.pyx":1195
  *             callback = self.first_callback
  *             final = self.last_callback
  *         if callback is None:             # <<<<<<<<<<<<<<
@@ -12544,7 +12517,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_t_4 = (__pyx_t_2 != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/_event.pyx":1197
+    /* "kivy/_event.pyx":1196
  *             final = self.last_callback
  *         if callback is None:
  *             return 0             # <<<<<<<<<<<<<<
@@ -12555,7 +12528,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     goto __pyx_L0;
   }
 
-  /* "kivy/_event.pyx":1200
+  /* "kivy/_event.pyx":1199
  * 
  * 
  *         last_lock = final.lock  # save the state of the lock of final callback             # <<<<<<<<<<<<<<
@@ -12565,7 +12538,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_t_5 = __pyx_v_final->lock;
   __pyx_v_last_lock = __pyx_t_5;
 
-  /* "kivy/_event.pyx":1201
+  /* "kivy/_event.pyx":1200
  * 
  *         last_lock = final.lock  # save the state of the lock of final callback
  *         if last_lock == unlocked:  # lock the final callback             # <<<<<<<<<<<<<<
@@ -12575,7 +12548,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_t_4 = ((__pyx_v_last_lock == __pyx_e_4kivy_6_event_unlocked) != 0);
   if (__pyx_t_4) {
 
-    /* "kivy/_event.pyx":1202
+    /* "kivy/_event.pyx":1201
  *         last_lock = final.lock  # save the state of the lock of final callback
  *         if last_lock == unlocked:  # lock the final callback
  *             final.lock = locked             # <<<<<<<<<<<<<<
@@ -12587,7 +12560,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   }
   __pyx_L5:;
 
-  /* "kivy/_event.pyx":1204
+  /* "kivy/_event.pyx":1203
  *             final.lock = locked
  * 
  *         while not done and callback is not None:             # <<<<<<<<<<<<<<
@@ -12607,7 +12580,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_L8_bool_binop_done:;
     if (!__pyx_t_4) break;
 
-    /* "kivy/_event.pyx":1205
+    /* "kivy/_event.pyx":1204
  * 
  *         while not done and callback is not None:
  *             done = final is callback             # <<<<<<<<<<<<<<
@@ -12617,7 +12590,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_4 = (__pyx_v_final == __pyx_v_callback);
     __pyx_v_done = __pyx_t_4;
 
-    /* "kivy/_event.pyx":1207
+    /* "kivy/_event.pyx":1206
  *             done = final is callback
  * 
  *             if callback.lock == deleted:             # <<<<<<<<<<<<<<
@@ -12627,7 +12600,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_4 = ((__pyx_v_callback->lock == __pyx_e_4kivy_6_event_deleted) != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1208
+      /* "kivy/_event.pyx":1207
  * 
  *             if callback.lock == deleted:
  *                 callback = callback.prev if reverse else callback.next             # <<<<<<<<<<<<<<
@@ -12644,7 +12617,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
       __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "kivy/_event.pyx":1209
+      /* "kivy/_event.pyx":1208
  *             if callback.lock == deleted:
  *                 callback = callback.prev if reverse else callback.next
  *                 continue             # <<<<<<<<<<<<<<
@@ -12654,7 +12627,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
       goto __pyx_L6_continue;
     }
 
-    /* "kivy/_event.pyx":1212
+    /* "kivy/_event.pyx":1211
  * 
  *             # save the lock state (currently only either locked or unlocked)
  *             current_lock = callback.lock             # <<<<<<<<<<<<<<
@@ -12664,7 +12637,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_5 = __pyx_v_callback->lock;
     __pyx_v_current_lock = __pyx_t_5;
 
-    /* "kivy/_event.pyx":1213
+    /* "kivy/_event.pyx":1212
  *             # save the lock state (currently only either locked or unlocked)
  *             current_lock = callback.lock
  *             if current_lock == unlocked:  # and lock it if unlocked             # <<<<<<<<<<<<<<
@@ -12674,7 +12647,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_4 = ((__pyx_v_current_lock == __pyx_e_4kivy_6_event_unlocked) != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1214
+      /* "kivy/_event.pyx":1213
  *             current_lock = callback.lock
  *             if current_lock == unlocked:  # and lock it if unlocked
  *                 callback.lock = locked             # <<<<<<<<<<<<<<
@@ -12686,7 +12659,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     }
     __pyx_L11:;
 
-    /* "kivy/_event.pyx":1216
+    /* "kivy/_event.pyx":1215
  *                 callback.lock = locked
  * 
  *             if callback.is_ref:             # <<<<<<<<<<<<<<
@@ -12696,7 +12669,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_4 = (__pyx_v_callback->is_ref != 0);
     if (__pyx_t_4) {
 
-      /* "kivy/_event.pyx":1217
+      /* "kivy/_event.pyx":1216
  * 
  *             if callback.is_ref:
  *                 f = callback.func()             # <<<<<<<<<<<<<<
@@ -12715,17 +12688,17 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
         }
       }
       if (__pyx_t_8) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else {
-        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1217; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1216; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       }
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "kivy/_event.pyx":1218
+      /* "kivy/_event.pyx":1217
  *             if callback.is_ref:
  *                 f = callback.func()
  *                 if f is None:             # <<<<<<<<<<<<<<
@@ -12736,7 +12709,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
       __pyx_t_6 = (__pyx_t_4 != 0);
       if (__pyx_t_6) {
 
-        /* "kivy/_event.pyx":1219
+        /* "kivy/_event.pyx":1218
  *                 f = callback.func()
  *                 if f is None:
  *                     self.remove_callback(callback, current_lock == unlocked)             # <<<<<<<<<<<<<<
@@ -12745,9 +12718,9 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
  */
         __pyx_t_9.__pyx_n = 1;
         __pyx_t_9.force = (__pyx_v_current_lock == __pyx_e_4kivy_6_event_unlocked);
-        __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, &__pyx_t_9); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, &__pyx_t_9); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-        /* "kivy/_event.pyx":1220
+        /* "kivy/_event.pyx":1219
  *                 if f is None:
  *                     self.remove_callback(callback, current_lock == unlocked)
  *                     callback = callback.prev if reverse else callback.next             # <<<<<<<<<<<<<<
@@ -12764,7 +12737,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
         __Pyx_DECREF_SET(__pyx_v_callback, ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_3));
         __pyx_t_3 = 0;
 
-        /* "kivy/_event.pyx":1221
+        /* "kivy/_event.pyx":1220
  *                     self.remove_callback(callback, current_lock == unlocked)
  *                     callback = callback.prev if reverse else callback.next
  *                     continue             # <<<<<<<<<<<<<<
@@ -12777,7 +12750,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1223
+      /* "kivy/_event.pyx":1222
  *                     continue
  *             else:
  *                 f = callback.func             # <<<<<<<<<<<<<<
@@ -12791,7 +12764,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     }
     __pyx_L12:;
 
-    /* "kivy/_event.pyx":1226
+    /* "kivy/_event.pyx":1225
  * 
  *             result = self._dispatch(
  *                 f, callback.largs, callback.kwargs, obj, value, largs, kwargs)             # <<<<<<<<<<<<<<
@@ -12803,21 +12776,21 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_7 = __pyx_v_callback->kwargs;
     __Pyx_INCREF(__pyx_t_7);
 
-    /* "kivy/_event.pyx":1225
+    /* "kivy/_event.pyx":1224
  *                 f = callback.func
  * 
  *             result = self._dispatch(             # <<<<<<<<<<<<<<
  *                 f, callback.largs, callback.kwargs, obj, value, largs, kwargs)
  * 
  */
-    __pyx_t_8 = __pyx_f_4kivy_6_event_14EventObservers__dispatch(__pyx_v_self, __pyx_v_f, ((PyObject*)__pyx_t_3), ((PyObject*)__pyx_t_7), __pyx_v_obj, __pyx_v_value, __pyx_v_largs, __pyx_v_kwargs); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = __pyx_f_4kivy_6_event_14EventObservers__dispatch(__pyx_v_self, __pyx_v_f, ((PyObject*)__pyx_t_3), ((PyObject*)__pyx_t_7), __pyx_v_obj, __pyx_v_value, __pyx_v_largs, __pyx_v_kwargs); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_result, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "kivy/_event.pyx":1228
+    /* "kivy/_event.pyx":1227
  *                 f, callback.largs, callback.kwargs, obj, value, largs, kwargs)
  * 
  *             if current_lock == unlocked:  # now unlock/delete if it was unlocked             # <<<<<<<<<<<<<<
@@ -12827,7 +12800,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_6 = ((__pyx_v_current_lock == __pyx_e_4kivy_6_event_unlocked) != 0);
     if (__pyx_t_6) {
 
-      /* "kivy/_event.pyx":1229
+      /* "kivy/_event.pyx":1228
  * 
  *             if current_lock == unlocked:  # now unlock/delete if it was unlocked
  *                 if callback.lock == deleted:             # <<<<<<<<<<<<<<
@@ -12837,7 +12810,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
       __pyx_t_6 = ((__pyx_v_callback->lock == __pyx_e_4kivy_6_event_deleted) != 0);
       if (__pyx_t_6) {
 
-        /* "kivy/_event.pyx":1230
+        /* "kivy/_event.pyx":1229
  *             if current_lock == unlocked:  # now unlock/delete if it was unlocked
  *                 if callback.lock == deleted:
  *                     self.remove_callback(callback, 1)             # <<<<<<<<<<<<<<
@@ -12846,12 +12819,12 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
  */
         __pyx_t_9.__pyx_n = 1;
         __pyx_t_9.force = 1;
-        __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, &__pyx_t_9); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+        __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_callback, &__pyx_t_9); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1229; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
         goto __pyx_L15;
       }
       /*else*/ {
 
-        /* "kivy/_event.pyx":1232
+        /* "kivy/_event.pyx":1231
  *                     self.remove_callback(callback, 1)
  *                 else:
  *                     callback.lock = unlocked             # <<<<<<<<<<<<<<
@@ -12865,14 +12838,14 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     }
     __pyx_L14:;
 
-    /* "kivy/_event.pyx":1234
+    /* "kivy/_event.pyx":1233
  *                     callback.lock = unlocked
  * 
  *             if result and stop_on_true:             # <<<<<<<<<<<<<<
  *                 res = done = 1
  *             callback = callback.prev if reverse else callback.next
  */
-    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_result); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1234; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_result); if (unlikely(__pyx_t_4 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1233; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (__pyx_t_4) {
     } else {
       __pyx_t_6 = __pyx_t_4;
@@ -12883,7 +12856,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_L17_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "kivy/_event.pyx":1235
+      /* "kivy/_event.pyx":1234
  * 
  *             if result and stop_on_true:
  *                 res = done = 1             # <<<<<<<<<<<<<<
@@ -12896,7 +12869,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     }
     __pyx_L16:;
 
-    /* "kivy/_event.pyx":1236
+    /* "kivy/_event.pyx":1235
  *             if result and stop_on_true:
  *                 res = done = 1
  *             callback = callback.prev if reverse else callback.next             # <<<<<<<<<<<<<<
@@ -12915,7 +12888,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_L6_continue:;
   }
 
-  /* "kivy/_event.pyx":1239
+  /* "kivy/_event.pyx":1238
  * 
  *         # now unlock/delete the final callback if we locked it
  *         if last_lock == unlocked:             # <<<<<<<<<<<<<<
@@ -12925,7 +12898,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_t_6 = ((__pyx_v_last_lock == __pyx_e_4kivy_6_event_unlocked) != 0);
   if (__pyx_t_6) {
 
-    /* "kivy/_event.pyx":1240
+    /* "kivy/_event.pyx":1239
  *         # now unlock/delete the final callback if we locked it
  *         if last_lock == unlocked:
  *             if final.lock == deleted:             # <<<<<<<<<<<<<<
@@ -12935,7 +12908,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
     __pyx_t_6 = ((__pyx_v_final->lock == __pyx_e_4kivy_6_event_deleted) != 0);
     if (__pyx_t_6) {
 
-      /* "kivy/_event.pyx":1241
+      /* "kivy/_event.pyx":1240
  *         if last_lock == unlocked:
  *             if final.lock == deleted:
  *                 self.remove_callback(final, 1)             # <<<<<<<<<<<<<<
@@ -12944,12 +12917,12 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
  */
       __pyx_t_9.__pyx_n = 1;
       __pyx_t_9.force = 1;
-      __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_final, &__pyx_t_9); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1241; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_f_4kivy_6_event_14EventObservers_remove_callback(__pyx_v_self, __pyx_v_final, &__pyx_t_9); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1240; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       goto __pyx_L20;
     }
     /*else*/ {
 
-      /* "kivy/_event.pyx":1243
+      /* "kivy/_event.pyx":1242
  *                 self.remove_callback(final, 1)
  *             else:
  *                 final.lock = unlocked             # <<<<<<<<<<<<<<
@@ -12963,7 +12936,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   }
   __pyx_L19:;
 
-  /* "kivy/_event.pyx":1244
+  /* "kivy/_event.pyx":1243
  *             else:
  *                 final.lock = unlocked
  *         return res             # <<<<<<<<<<<<<<
@@ -12973,7 +12946,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
   __pyx_r = __pyx_v_res;
   goto __pyx_L0;
 
-  /* "kivy/_event.pyx":1151
+  /* "kivy/_event.pyx":1150
  *                         return f(obj, *largs, **kwargs)
  * 
  *     cdef inline int dispatch(self, object obj, object value, tuple largs,             # <<<<<<<<<<<<<<
@@ -12998,7 +12971,7 @@ static CYTHON_INLINE int __pyx_f_4kivy_6_event_14EventObservers_dispatch(struct 
 }
 static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_GeneratorObject *__pyx_generator, PyObject *__pyx_sent_value); /* proto */
 
-/* "kivy/_event.pyx":1246
+/* "kivy/_event.pyx":1245
  *         return res
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -13041,7 +13014,7 @@ static PyObject *__pyx_pf_4kivy_6_event_14EventObservers_2__iter__(struct __pyx_
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_GeneratorObject *gen = __Pyx_Generator_New((__pyx_generator_body_t) __pyx_gb_4kivy_6_event_14EventObservers_4generator1, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_EventObservers___iter); if (unlikely(!gen)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_GeneratorObject *gen = __Pyx_Generator_New((__pyx_generator_body_t) __pyx_gb_4kivy_6_event_14EventObservers_4generator1, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_EventObservers___iter); if (unlikely(!gen)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -13080,9 +13053,9 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "kivy/_event.pyx":1250
+  /* "kivy/_event.pyx":1249
  *         data.
  *         '''
  *         cdef BoundCallback callback = self.first_callback             # <<<<<<<<<<<<<<
@@ -13095,7 +13068,7 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
   __pyx_cur_scope->__pyx_v_callback = ((struct __pyx_obj_4kivy_6_event_BoundCallback *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "kivy/_event.pyx":1252
+  /* "kivy/_event.pyx":1251
  *         cdef BoundCallback callback = self.first_callback
  * 
  *         while callback is not None:             # <<<<<<<<<<<<<<
@@ -13107,7 +13080,7 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
     __pyx_t_3 = (__pyx_t_2 != 0);
     if (!__pyx_t_3) break;
 
-    /* "kivy/_event.pyx":1254
+    /* "kivy/_event.pyx":1253
  *         while callback is not None:
  *             yield (
  *                 callback.func, callback.largs if callback.largs is not None else (),             # <<<<<<<<<<<<<<
@@ -13123,7 +13096,7 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
       __pyx_t_1 = __pyx_empty_tuple;
     }
 
-    /* "kivy/_event.pyx":1255
+    /* "kivy/_event.pyx":1254
  *             yield (
  *                 callback.func, callback.largs if callback.largs is not None else (),
  *                 callback.kwargs if callback.kwargs is not None else {},             # <<<<<<<<<<<<<<
@@ -13135,29 +13108,29 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
       __Pyx_INCREF(__pyx_cur_scope->__pyx_v_callback->kwargs);
       __pyx_t_4 = __pyx_cur_scope->__pyx_v_callback->kwargs;
     } else {
-      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_4 = __pyx_t_5;
       __pyx_t_5 = 0;
     }
 
-    /* "kivy/_event.pyx":1256
+    /* "kivy/_event.pyx":1255
  *                 callback.func, callback.largs if callback.largs is not None else (),
  *                 callback.kwargs if callback.kwargs is not None else {},
  *                 callback.is_ref, callback.uid)             # <<<<<<<<<<<<<<
  *             callback = callback.next
  */
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_callback->is_ref); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1256; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_callback->is_ref); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_5);
 
-    /* "kivy/_event.pyx":1254
+    /* "kivy/_event.pyx":1253
  *         while callback is not None:
  *             yield (
  *                 callback.func, callback.largs if callback.largs is not None else (),             # <<<<<<<<<<<<<<
  *                 callback.kwargs if callback.kwargs is not None else {},
  *                 callback.is_ref, callback.uid)
  */
-    __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_6 = PyTuple_New(5); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1253; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_callback->func);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_cur_scope->__pyx_v_callback->func);
@@ -13182,9 +13155,9 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
     __pyx_generator->resume_label = 1;
     return __pyx_r;
     __pyx_L6_resume_from_yield:;
-    if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1253; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (unlikely(!__pyx_sent_value)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1252; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "kivy/_event.pyx":1257
+    /* "kivy/_event.pyx":1256
  *                 callback.kwargs if callback.kwargs is not None else {},
  *                 callback.is_ref, callback.uid)
  *             callback = callback.next             # <<<<<<<<<<<<<<
@@ -13197,7 +13170,7 @@ static PyObject *__pyx_gb_4kivy_6_event_14EventObservers_4generator1(__pyx_Gener
     __pyx_t_6 = 0;
   }
 
-  /* "kivy/_event.pyx":1246
+  /* "kivy/_event.pyx":1245
  *         return res
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -14398,14 +14371,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__12);
   __Pyx_GIVEREF(__pyx_slice__12);
 
-  /* "kivy/_event.pyx":855
+  /* "kivy/_event.pyx":854
  *         cdef Property prop
  *         if value is None:  # shortcut
  *             prop = ObjectProperty(None, *largs, **kwargs)             # <<<<<<<<<<<<<<
  *         if isinstance(value, bool):
  *             prop = BooleanProperty(value, *largs, **kwargs)
  */
-  __pyx_tuple__13 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 855; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__13 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__13)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 854; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
@@ -14550,9 +14523,9 @@ PyMODINIT_FUNC PyInit__event(void)
   if (PyObject_SetAttrString(__pyx_m, "EventDispatcher", (PyObject *)&__pyx_type_4kivy_6_event_EventDispatcher) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 164; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (__pyx_type_4kivy_6_event_EventDispatcher.tp_weaklistoffset == 0) __pyx_type_4kivy_6_event_EventDispatcher.tp_weaklistoffset = offsetof(struct __pyx_obj_4kivy_6_event_EventDispatcher, __weakref__);
   __pyx_ptype_4kivy_6_event_EventDispatcher = &__pyx_type_4kivy_6_event_EventDispatcher;
-  if (PyType_Ready(&__pyx_type_4kivy_6_event_BoundCallback) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 910; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_6_event_BoundCallback) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 909; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_6_event_BoundCallback.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "BoundCallback", (PyObject *)&__pyx_type_4kivy_6_event_BoundCallback) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 910; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "BoundCallback", (PyObject *)&__pyx_type_4kivy_6_event_BoundCallback) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 909; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_4kivy_6_event_BoundCallback = &__pyx_type_4kivy_6_event_BoundCallback;
   __pyx_vtabptr_4kivy_6_event_EventObservers = &__pyx_vtable_4kivy_6_event_EventObservers;
   __pyx_vtable_4kivy_6_event_EventObservers.bind = (void (*)(struct __pyx_obj_4kivy_6_event_EventObservers *, PyObject *, PyObject *, int))__pyx_f_4kivy_6_event_14EventObservers_bind;
@@ -14563,11 +14536,11 @@ PyMODINIT_FUNC PyInit__event(void)
   __pyx_vtable_4kivy_6_event_EventObservers.remove_callback = (void (*)(struct __pyx_obj_4kivy_6_event_EventObservers *, struct __pyx_obj_4kivy_6_event_BoundCallback *, struct __pyx_opt_args_4kivy_6_event_14EventObservers_remove_callback *__pyx_optional_args))__pyx_f_4kivy_6_event_14EventObservers_remove_callback;
   __pyx_vtable_4kivy_6_event_EventObservers._dispatch = (PyObject *(*)(struct __pyx_obj_4kivy_6_event_EventObservers *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *, PyObject *))__pyx_f_4kivy_6_event_14EventObservers__dispatch;
   __pyx_vtable_4kivy_6_event_EventObservers.dispatch = (int (*)(struct __pyx_obj_4kivy_6_event_EventObservers *, PyObject *, PyObject *, PyObject *, PyObject *, int))__pyx_f_4kivy_6_event_14EventObservers_dispatch;
-  if (PyType_Ready(&__pyx_type_4kivy_6_event_EventObservers) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 923; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_6_event_EventObservers) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 922; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_6_event_EventObservers.tp_print = 0;
   #if CYTHON_COMPILING_IN_CPYTHON
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_4kivy_6_event_EventObservers, "__iter__"); if (unlikely(!wrapper)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 923; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_4kivy_6_event_EventObservers, "__iter__"); if (unlikely(!wrapper)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 922; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
       __pyx_wrapperbase_4kivy_6_event_14EventObservers_2__iter__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_4kivy_6_event_14EventObservers_2__iter__.doc = __pyx_doc_4kivy_6_event_14EventObservers_2__iter__;
@@ -14575,13 +14548,13 @@ PyMODINIT_FUNC PyInit__event(void)
     }
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_type_4kivy_6_event_EventObservers.tp_dict, __pyx_vtabptr_4kivy_6_event_EventObservers) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 923; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "EventObservers", (PyObject *)&__pyx_type_4kivy_6_event_EventObservers) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 923; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_4kivy_6_event_EventObservers.tp_dict, __pyx_vtabptr_4kivy_6_event_EventObservers) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 922; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "EventObservers", (PyObject *)&__pyx_type_4kivy_6_event_EventObservers) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 922; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_4kivy_6_event_EventObservers = &__pyx_type_4kivy_6_event_EventObservers;
   if (PyType_Ready(&__pyx_type_4kivy_6_event___pyx_scope_struct___get_bases) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 43; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_6_event___pyx_scope_struct___get_bases.tp_print = 0;
   __pyx_ptype_4kivy_6_event___pyx_scope_struct___get_bases = &__pyx_type_4kivy_6_event___pyx_scope_struct___get_bases;
-  if (PyType_Ready(&__pyx_type_4kivy_6_event___pyx_scope_struct_1___iter__) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1246; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_4kivy_6_event___pyx_scope_struct_1___iter__) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1245; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_4kivy_6_event___pyx_scope_struct_1___iter__.tp_print = 0;
   __pyx_ptype_4kivy_6_event___pyx_scope_struct_1___iter__ = &__pyx_type_4kivy_6_event___pyx_scope_struct_1___iter__;
   /*--- Type import code ---*/
@@ -14612,8 +14585,6 @@ PyMODINIT_FUNC PyInit__event(void)
   __pyx_vtabptr_4kivy_10properties_VariableListProperty = (struct __pyx_vtabstruct_4kivy_10properties_VariableListProperty*)__Pyx_GetVtable(__pyx_ptype_4kivy_10properties_VariableListProperty->tp_dict); if (unlikely(!__pyx_vtabptr_4kivy_10properties_VariableListProperty)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_4kivy_10properties_ConfigParserProperty = __Pyx_ImportType("kivy.properties", "ConfigParserProperty", sizeof(struct __pyx_obj_4kivy_10properties_ConfigParserProperty), 1); if (unlikely(!__pyx_ptype_4kivy_10properties_ConfigParserProperty)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_vtabptr_4kivy_10properties_ConfigParserProperty = (struct __pyx_vtabstruct_4kivy_10properties_ConfigParserProperty*)__Pyx_GetVtable(__pyx_ptype_4kivy_10properties_ConfigParserProperty->tp_dict); if (unlikely(!__pyx_vtabptr_4kivy_10properties_ConfigParserProperty)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_4kivy_10properties_ColorProperty = __Pyx_ImportType("kivy.properties", "ColorProperty", sizeof(struct __pyx_obj_4kivy_10properties_ColorProperty), 1); if (unlikely(!__pyx_ptype_4kivy_10properties_ColorProperty)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_vtabptr_4kivy_10properties_ColorProperty = (struct __pyx_vtabstruct_4kivy_10properties_ColorProperty*)__Pyx_GetVtable(__pyx_ptype_4kivy_10properties_ColorProperty->tp_dict); if (unlikely(!__pyx_vtabptr_4kivy_10properties_ColorProperty)) {__pyx_filename = __pyx_f[2]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   /*--- Variable import code ---*/
   /*--- Function import code ---*/
   /*--- Execution code ---*/

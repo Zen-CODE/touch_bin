@@ -480,8 +480,6 @@ class VideoPlayer(GridLayout):
     # internals
     container = ObjectProperty(None)
 
-    _video_load_ev = None
-
     def __init__(self, **kwargs):
         self._video = None
         self._image = None
@@ -495,11 +493,8 @@ class VideoPlayer(GridLayout):
             self._trigger_video_load()
 
     def _trigger_video_load(self, *largs):
-        ev = self._video_load_ev
-        if ev is None:
-            ev = self._video_load_ev = Clock.schedule_once(self._do_video_load,
-                                                           -1)
-        ev()
+        Clock.unschedule(self._do_video_load)
+        Clock.schedule_once(self._do_video_load, -1)
 
     def on_source(self, instance, value):
         # we got a value, try to see if we have an image for it
@@ -642,7 +637,7 @@ class VideoPlayer(GridLayout):
             window.add_widget(self)
 
             # ensure the video widget is in 0, 0, and the size will be
-            # readjusted
+            # reajusted
             self.pos = (0, 0)
             self.size = (100, 100)
             self.pos_hint = {}

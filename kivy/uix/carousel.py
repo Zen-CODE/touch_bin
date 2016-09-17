@@ -2,9 +2,6 @@
 Carousel
 ========
 
-.. image:: images/carousel.gif
-    :align: right
-
 .. versionadded:: 1.4.0
 
 The :class:`Carousel` widget provides the classic mobile-friendly carousel view
@@ -91,8 +88,8 @@ class Carousel(StencilView):
     min_move = NumericProperty(0.2)
     '''Defines the minimum distance to be covered before the touch is
     considered a swipe gesture and the Carousel content changed.
-    This is a expressed as a fraction of the Carousel's width.
-    If the movement doesn't reach this minimum value, the movement is
+    This is a percentage of the Carousel width.
+    If the movement doesn't reach this minimum value, then the movement is
     cancelled and the content is restored to its original position.
 
     :attr:`min_move` is a :class:`~kivy.properties.NumericProperty` and
@@ -243,14 +240,6 @@ class Carousel(StencilView):
     .. versionadded:: 1.8.0
     '''
 
-    ignore_perpendicular_swipes = BooleanProperty(False)
-    '''ignore swipes on axis perpendicular to direction.
-
-    .. versionadded:: 1.9.2
-    :attr:`ignore_perpendicular_swipes` is a :class:`~kivy.properties.BooleanProperty` and
-    defaults to False.
-    '''
-
     #### private properties, for internal use only ###
     _index = NumericProperty(0, allownone=True)
     _prev = ObjectProperty(None, allownone=True)
@@ -259,14 +248,11 @@ class Carousel(StencilView):
     _offset = NumericProperty(0)
     _touch = ObjectProperty(None, allownone=True)
 
-    _change_touch_mode_ev = None
-
     def __init__(self, **kwargs):
         self._trigger_position_visible_slides = Clock.create_trigger(
             self._position_visible_slides, -1)
         super(Carousel, self).__init__(**kwargs)
         self._skip_slide = None
-        self.touch_mode_change = False
 
     def load_slide(self, slide):
         '''Animate to the slide that is passed as the argument.
@@ -339,9 +325,9 @@ class Carousel(StencilView):
         for container in self.slides_container:
             super_remove(container)
 
-        if self._prev and self._prev.parent is not self:
+        if self._prev:
             super(Carousel, self).add_widget(self._prev)
-        if self._next and self._next.parent is not self:
+        if self._next:
             super(Carousel, self).add_widget(self._next)
         if self._current:
             super(Carousel, self).add_widget(self._current)
@@ -522,24 +508,11 @@ class Carousel(StencilView):
         touch.ud[uid] = {
             'mode': 'unknown',
             'time': touch.time_start}
-        self._change_touch_mode_ev = Clock.schedule_once(
-            self._change_touch_mode, self.scroll_timeout / 1000.)
-        self.touch_mode_change = False
+        Clock.schedule_once(self._change_touch_mode,
+                            self.scroll_timeout / 1000.)
         return True
 
     def on_touch_move(self, touch):
-        if self.touch_mode_change == False:
-            if self.ignore_perpendicular_swipes and self.direction in ('top','bottom'):
-                if abs(touch.oy - touch.y) < self.scroll_distance:
-                    if abs(touch.ox - touch.x) > self.scroll_distance:
-                        self._change_touch_mode()
-                        self.touchModeChange = True
-            elif self.ignore_perpendicular_swipes and self.direction in ('right','left'):
-                if abs(touch.ox - touch.x) < self.scroll_distance:
-                    if abs(touch.oy - touch.y) > self.scroll_distance:
-                        self._change_touch_mode()
-                        self.touchModeChange = True
-
         if self._get_uid('cavoid') in touch.ud:
             return
         if self._touch is not touch:
@@ -555,9 +528,7 @@ class Carousel(StencilView):
             else:
                 distance = abs(touch.oy - touch.y)
             if distance > self.scroll_distance:
-                ev = self._change_touch_mode_ev
-                if ev is not None:
-                    ev.cancel()
+                Clock.unschedule(self._change_touch_mode)
                 ud['mode'] = 'scroll'
         else:
             if direction[0] in ('r', 'l'):
@@ -574,9 +545,7 @@ class Carousel(StencilView):
             self._touch = None
             ud = touch.ud[self._get_uid()]
             if ud['mode'] == 'unknown':
-                ev = self._change_touch_mode_ev
-                if ev is not None:
-                    ev.cancel()
+                Clock.unschedule(self._change_touch_mode)
                 super(Carousel, self).on_touch_down(touch)
                 Clock.schedule_once(partial(self._do_touch_up, touch), .1)
             else:

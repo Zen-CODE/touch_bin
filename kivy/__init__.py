@@ -28,15 +28,14 @@ __all__ = (
     'kivy_config_fn', 'kivy_usermodules_dir',
 )
 
-__version__ = '1.9.2-dev0'
+__version__ = '1.9.1'
 
 import sys
 import shutil
 from getopt import getopt, GetoptError
-from os import environ, mkdir
-from os.path import dirname, join, basename, exists, expanduser
+from os import environ, mkdir, pathsep
+from os.path import dirname, join, basename, exists, expanduser, isdir
 import pkgutil
-from kivy.compat import PY2
 from kivy.logger import Logger, LOG_LEVELS
 from kivy.utils import platform
 
@@ -142,7 +141,7 @@ def get_includes():
     modules with Kivy as a dependency. Currently returns the location of the
     kivy.graphics module.
 
-    .. versionadded:: 1.9.1
+    .. versionadded:: 1.9.2
     '''
     root_dir = dirname(__file__)
     return [join(root_dir, 'graphics'), join(root_dir, 'tools', 'gles_compat')]
@@ -285,10 +284,6 @@ if not environ.get('KIVY_DOC_INCLUDE'):
         elif platform == 'ios':
             user_home_dir = join(expanduser('~'), 'Documents')
         kivy_home_dir = join(user_home_dir, '.kivy')
-
-    if PY2:
-        kivy_home_dir = kivy_home_dir.decode(sys.getfilesystemencoding())
-
     kivy_config_fn = join(kivy_home_dir, 'config.ini')
     kivy_usermodules_dir = join(kivy_home_dir, 'mods')
     kivy_userexts_dir = join(kivy_home_dir, 'extensions')
@@ -318,7 +313,7 @@ if not environ.get('KIVY_DOC_INCLUDE'):
     if ('KIVY_UNITTEST' not in environ and
             'KIVY_PACKAGING' not in environ and
             'KIVY_NO_ARGS' not in environ):
-        # save sys argv, otherwise, gstreamer use it and display help..
+        # save sys argv, otherwize, gstreamer use it and display help..
         sys_argv = sys.argv
         sys.argv = sys.argv[:1]
 
@@ -336,19 +331,14 @@ if not environ.get('KIVY_DOC_INCLUDE'):
 
         mp_fork = None
         try:
-            for opt, arg in opts:
-                if opt == '--multiprocessing-fork':
-                    mp_fork = True
-                    break
+            mp_fork = opts['multiprocessing-fork']
         except:
             pass
 
         # set argv to the non-read args
         sys.argv = sys_argv[0:1] + args
         if mp_fork is not None:
-            # Needs to be first opt for support_freeze to work
-            sys.argv.insert(1, '--multiprocessing-fork')
-
+            sys.argv = sys.argv + ['--multiprocessing-fork']
     else:
         opts = []
         args = []
