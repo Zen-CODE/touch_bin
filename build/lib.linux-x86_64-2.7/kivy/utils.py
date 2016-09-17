@@ -24,6 +24,25 @@ from os import environ
 from sys import platform as _sys_platform
 from re import match, split
 
+def rgba(s, *args):
+    '''Return a kivy color (4 value from 0-1 range) from either a hex string or
+       a list of 0-255 values
+
+    .. versionadded:: 1.9.2
+    '''
+    if isinstance(s, string_types):
+        return get_color_from_hex(s)
+    elif isinstance(s, (list, tuple)):
+        s = map(lambda x: x / 255., s)
+        if len(s) == 3:
+            return list(s) + [1]
+        return s
+    elif isinstance(s, (int, float)):
+        s = map(lambda x: x / 255., [s] + list(args))
+        if len(s) == 3:
+            return list(s) + [1]
+        return s
+    raise Exception('Invalid value (not a string / list / tuple)')
 
 def boundary(value, minvalue, maxvalue):
     '''Limit a value between a minvalue and maxvalue.'''
